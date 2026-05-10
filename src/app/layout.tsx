@@ -13,14 +13,14 @@ const outfit = Outfit({ subsets: ["latin"], variable: '--font-outfit', display: 
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://recruitmentos.smallgrp.com"),
-    title: "RecruitmentOS - The Automated Lead Engine for Recruiting Agencies",
-    description: "The only Recruiting agency lead generation platform that guarantees quality with a 6%+ reply rate.",
+    title: "RecruitmentOS — Done-For-You BD for Recruitment Agencies",
+    description: "RecruitmentOS automates your entire BD pipeline — job sourcing, candidate matching, and personalised outreach at scale. 100 hiring-manager contacts + 10 replies in 60 days or we work free.",
     icons: {
         icon: "/favicon.svg",
     },
     openGraph: {
-        title: "RecruitmentOS - The Automated Lead Engine for Recruiting Agencies",
-        description: "The only Recruiting agency lead generation platform that guarantees quality with a 6%+ reply rate.",
+        title: "RecruitmentOS — Done-For-You BD for Recruitment Agencies",
+        description: "RecruitmentOS automates your entire BD pipeline — job sourcing, candidate matching, and personalised outreach at scale. 100 hiring-manager contacts + 10 replies in 60 days or we work free.",
         type: "website",
     },
 };

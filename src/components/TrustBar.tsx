@@ -1,8 +1,8 @@
 const stats = [
-    { value: '10+', label: 'Agencies automated' },
-    { value: '500+', label: 'Jobs processed daily' },
-    { value: '5.3%', label: 'Avg. reply rate' },
-    { value: '+30%', label: 'Revenue growth' },
+    { value: '12+', label: 'Agencies automated' },
+    { value: '1M+', label: 'Jobs monitored daily' },
+    { value: '6%+', label: 'Avg. reply rate' },
+    { value: '$185', label: 'Cost per placement' },
 ];
 
 export default function TrustBar() {

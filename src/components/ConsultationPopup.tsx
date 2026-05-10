@@ -68,7 +68,7 @@ export default function ConsultationPopup() {
 
                 <div className="text-center mb-4">
                     <h2 className="text-lg font-extrabold text-[#0A0A0A] tracking-tight mb-2 border-b border-[#E5E5E5] pb-2">
-                        Live chat with CEO
+                        Chat with a consultant
                     </h2>
                 </div>
 

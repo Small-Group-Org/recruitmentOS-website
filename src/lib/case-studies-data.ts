@@ -1,5 +1,54 @@
 export const caseStudies = [
   {
+    slug: 'german-electronics-agency-4x-placements',
+    title: '10 → 40+ Placements a Month. Same Team. Same Headcount.',
+    image: '/case-studies/germany-case-study.webp',
+    problem: `A 6-person electronics recruitment agency in Germany had been running for four years. They specialised in engineering and technical roles — semiconductors, embedded systems, industrial automation.
+
+The founder was billing around €180,000 a month, but growth had stalled. Two BD analysts were doing outreach manually: scraping job boards, finding hiring managers on LinkedIn, writing individual emails. They were getting through maybe 400–500 contacts a month between them. At a 5–6% reply rate, that meant 20–30 conversations, and maybe 10 placements a month — on a good month.
+
+The founder was still doing 30% of the outreach himself. He was working 60-hour weeks. The pipeline was inconsistent. Some months 10 placements, some months 6. He couldn't predict revenue more than 3–4 weeks ahead.
+
+"People are still doing all of this manually. I want everything automated. I want the money, not the work."`,
+    rootCause: `The constraint wasn't his team's effort — both analysts were working hard. It was the volume ceiling manual BD creates.
+
+At 200–250 contacts per analyst per month, you hit the ceiling of what a human can do with a spreadsheet and LinkedIn. The math doesn't scale: 500 contacts × 6% reply rate × 20% placement conversion = 6 placements. You'd need 5× the team to hit 30 placements on the same process.
+
+The founder had tried hiring a third analyst six months earlier. That person left after 8 weeks — the work was repetitive and the feedback loop was slow. He'd also bought Apollo and Smartlead licences but never properly configured them. €12,000 written off.
+
+The actual problem: BD was still a human function, and human functions don't scale linearly without compressing margin.`,
+    solution: `We took over the entire BD function. The two analysts stayed on the team — they moved to candidate-side work, which they'd been asking to do for months.
+
+Week 1: Stack configured on their existing accounts — Apollo for data, Smartlead for sending, their three existing domains warmed up properly. Target criteria defined: electronics and semiconductor companies in DACH region with 50–500 employees, hiring managers in engineering leadership.
+
+Week 2: First batch out. 800 verified contacts, personalised outreach referencing specific open roles. Replies started coming in by day 10.
+
+Month 1: 2,400 contacts reached. 50 verified replies from hiring managers. Pipeline went from 20 conversations to 50+ without the founder touching a single email.
+
+Month 2+: System optimised on live reply data. Sequences adjusted. Contact rate scaled to 5,000+ per month. At 6%+, that's 300+ replies. Even at a conservative 3% placement rate from replies, you're at 9+ placements from outreach alone — before any inbound or referral work.`,
+    result: `Month 3: 40 placements. Month 5: 57 placements — the agency's best month in four years.
+
+Outbound touches went from 10,000 to 60,000+ a month. Same team. The two BD analysts were now doing candidate delivery work. The founder dropped from 60 to 25 hours a week.
+
+Revenue went from €180K/month to €380K/month within six months. The founder stopped doing any outreach personally.
+
+Key numbers:
+— 10 → 40+ placements/month (avg over 6 months)
+— 57 placements in peak month
+— 60 → 25 founder hours/week
+— 10,000 → 60,000+ outbound touches/month
+— €180K → €380K monthly revenue run rate`,
+    takeaway: `The placement count didn't 4× because the team worked harder. It 4× because the volume ceiling was removed.
+
+At 500 contacts/month, 40 placements is mathematically impossible — no matter how good your team is. At 60,000 contacts/month with a 6%+ reply rate, it's expected.
+
+The founder's 60-hour weeks weren't a character flaw. They were a structural problem. Once BD was removed from the human layer entirely, his time freed up automatically. He didn't have to discipline himself into working less. There was simply nothing left for him to do in that function.
+
+The two analysts who'd been doing manual BD are still at the company. They're doing work they find more valuable. Nobody was replaced. The function was automated.`,
+    cardTitle: '4× placements. 57 in a single month. Founder at 25hrs/week.',
+    cardStats: '10 → 40+ placements/month',
+  },
+  {
     slug: 'client-growth-ai',
     title: 'Recruitment AI Case Study',
     image: '/case-studies/germany-case-study.webp',
