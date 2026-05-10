@@ -8,8 +8,8 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
 
     const navLinks = [
         { name: 'How it works', href: '/#how-it-works' },
+        { name: 'Pricing', href: '/pricing' },
         { name: 'Case Studies', href: '/case-studies' },
-        { name: 'Pricing', href: '/#pricing' },
         { name: 'Tools', href: '/tools' },
         { name: 'Resources', href: '/resources' },
     ];
@@ -37,8 +37,7 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
                             </Link>
                         ))}
                         <Link
-                            href="https://cal.com/tusharm/30min?user=tusharm"
-                            target="_blank"
+                            href="/fit-call"
                             className="bg-[#0A0A0A] text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-[#1a1a1a] transition-colors"
                         >
                             Book a fit call
@@ -79,8 +78,7 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
                             </Link>
                         ))}
                         <Link
-                            href="https://cal.com/tusharm/30min?user=tusharm"
-                            target="_blank"
+                            href="/fit-call"
                             className="block bg-[#0A0A0A] text-white px-5 py-2.5 rounded-lg text-sm font-medium text-center mt-2"
                         >
                             Book a fit call

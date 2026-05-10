@@ -35,28 +35,27 @@ export default function Hero() {
                     {/* CTAs */}
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
                         <Link
-                            href="https://cal.com/tusharm/30min?user=tusharm"
-                            target="_blank"
+                            href="/fit-call"
                             onClick={() => trackCTAClick('Book a fit call', 'Hero')}
                             className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-7 py-3.5 sm:px-9 sm:py-4 rounded-full font-semibold hover:bg-[#222222] hover:-translate-y-1 hover:shadow-xl active:scale-95 transition-all duration-300 text-base sm:text-lg group"
                         >
-                            Book a 20-min fit call
+                            Book a 30-min fit call
                             <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg>
                         </Link>
                         <Link
                             href="/calculator"
-                            onClick={() => trackCTAClick('Calculate revenue gap', 'Hero')}
+                            onClick={() => trackCTAClick('Calculate volume gap', 'Hero')}
                             className="inline-flex items-center justify-center bg-white text-[#0A0A0A] border border-[#e5e5e5] px-7 py-3.5 sm:px-9 sm:py-4 rounded-full text-base sm:text-lg font-medium hover:bg-[#f9fafb] hover:-translate-y-1 hover:shadow-md active:scale-95 transition-all duration-300"
                         >
-                            Calculate my revenue gap →
+                            Calculate my volume gap →
                         </Link>
                     </div>
 
                     {/* Trust line */}
                     <p className="text-sm text-[#6B7280] font-medium">
-                        $2,500/mo &middot; Setup in 7 days &middot; 100 contacts in 60 days or we work free
+                        Build from $500 &middot; Run from $1,300/mo &middot; 100 contacts in 60 days or we work free
                     </p>
                 </div>
             </div>

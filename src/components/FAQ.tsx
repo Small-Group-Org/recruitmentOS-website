@@ -4,6 +4,22 @@ import { useState } from 'react';
 
 const faqs = [
     {
+        question: 'What\'s the difference between Build and Run?',
+        answer: 'Build is a one-time engagement (30–60 days, $500–$1,000 setup) where we design and stand up the BD engine on your stack — niche-specific ICP map, signal layer, sequence design, CRM mapping, deliverability, reply SOPs. Run is the monthly retainer ($1,300–$6,500/mo) that operates the system day-to-day: list curation, sequence execution, reply triage, weekly reporting. You can\'t have Run without Build — the Build is what makes Run niche-specific.',
+    },
+    {
+        question: 'Do you really turn agencies down?',
+        answer: 'Yes. We turn down sub-$50K/month agencies, agencies with no clear niche, agencies whose bottleneck is candidates not clients, agencies with sub-$2K placement fees (the math doesn\'t work), and founders who want a deliverable to hand to their VA instead of a partner. The fit call is where we figure that out together — by minute 28 you\'ll know.',
+    },
+    {
+        question: 'What counts as a "qualified meeting"?',
+        answer: 'Defined upfront — in writing — before any Run contract. The Qualified Meeting Definition spells out title list, company size, geography, sector, show-up rate, and reschedule policy. Signed by both parties. Reviewed and re-signed every quarter. So "qualified" means the same thing in month 6 as it did on day 1.',
+    },
+    {
+        question: 'How niche-specific does the system get?',
+        answer: 'Niche-specific is the only mode we operate in — generic spray-and-pray burns domains and reputations. For a biotech recruitment agency we track FDA approvals, clinical trial milestones, and funded biotechs. For accounting we track partner moves and audit firm restructures. For exec search we track CFO/COO transitions. The signal layer is built per client during the Build week — we don\'t reuse one client\'s map for another.',
+    },
+    {
         question: 'Will this work for my specific niche?',
         answer: 'Almost certainly yes. The system is built on job-board data and hiring-manager enrichment — both of which work across engineering, finance, legal, healthcare, supply chain, and any other professional vertical. The targeting rules are configured to your niche at onboarding. If we have worked in your exact niche before, we\'ll tell you. If we haven\'t, we\'ll tell you that too.',
     },

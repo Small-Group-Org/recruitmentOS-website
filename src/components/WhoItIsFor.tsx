@@ -1,27 +1,33 @@
 export default function WhoItIsFor() {
     const forItems = [
-        'You bill $50K–$400K per month',
-        'You have 3–25 recruiters',
-        'Permanent placements, average fee $5K+',
-        'Your bottleneck is client acquisition, not candidates',
-        "You'd rather pay one fixed monthly cost than hire a BD team",
+        '$500K–$5M annual revenue (≥ $50K/month floor)',
+        'Clear, specific niche — biotech, accounting, tech, finance, healthcare, exec search',
+        'Permanent placements with average fee $5K+',
+        'Bottleneck is client acquisition, not candidates',
+        'You\'d rather rent a function than hire and manage a BD team',
+        'Founder / MD / Commercial Director on the call',
     ];
 
     const notForItems = [
-        "You're a solo recruiter or under $50K/month",
-        'Your bottleneck is candidates, not clients',
-        'You only do success-fee or pure performance deals',
+        'Solo recruiter or below $50K/month',
+        '"We do recruitment in general" — no specific niche',
+        'Bottleneck is candidate scarcity, not client acquisition',
+        'Sub-$2K placement fees (the math doesn\'t work)',
         'You want a self-serve tool you operate yourself',
+        'You want a deliverable to hand to your VA, not a partner',
     ];
 
     return (
         <section className="py-16 md:py-24 bg-white border-t border-[#e5e5e5]" id="who-its-for">
-            <div className="max-w-[1000px] mx-auto px-4 sm:px-6">
+            <div className="max-w-[1100px] mx-auto px-4 sm:px-6">
                 <div className="mb-10 md:mb-14">
                     <p className="text-xs font-medium text-[#6b7280] uppercase tracking-widest mb-3">Fit Filter</p>
                     <h2 className="text-[#0A0A0A] text-3xl md:text-4xl font-extrabold tracking-tight">
                         Is this for you?
                     </h2>
+                    <p className="text-[16px] text-[#6b7280] mt-3 max-w-2xl">
+                        We work with one buyer archetype: the <strong className="text-[#0A0A0A]">&ldquo;done-with-it owner.&rdquo;</strong> You&apos;ve burned $5K–$25K on a previous tool or agency. You don&apos;t want to learn another tool. You want someone to take BD off your desk entirely.
+                    </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -53,7 +59,7 @@ export default function WhoItIsFor() {
                 </div>
 
                 <p className="mt-8 text-sm text-[#6b7280] italic text-center md:text-left">
-                    If the right column describes you, please don&apos;t book a call. We&apos;ll waste each other&apos;s time.
+                    If the right column describes you, please don&apos;t book a call. We&apos;ll waste each other&apos;s time — and we&apos;ll point you at someone who does what you actually need.
                 </p>
             </div>
         </section>
