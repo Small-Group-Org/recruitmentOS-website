@@ -36,7 +36,7 @@ export default function Hero() {
         return () => clearInterval(interval);
     }, []);
 
-    const fullText = "Outsourced BD Function";
+    const fullText = "AI-Powered Placement Engine";
     const [typedText, setTypedText] = useState("");
 
     useEffect(() => {
@@ -106,23 +106,23 @@ export default function Hero() {
                     </div>
 
                     <p className="text-lg md:text-xl text-[#000000] font-medium mb-12 max-w-3xl mx-auto leading-relaxed">
-                        We help recruitment agencies build, scale, and manage a completely done-for-you business development engine that consistently delivers qualified meetings with hiring managers.
+                        RecruitmentOS scrapes 1M+ jobs, matches candidates to open roles, and sends personalized outreach to Hiring managers all on Autopilot.
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
                         <Link
                             href="https://cal.com/tusharm/30min?user=tusharm"
                             target="_blank"
-                            onClick={() => trackCTAClick('Book a Fit Call', 'Hero')}
+                            onClick={() => trackCTAClick('Book a Demo', 'Hero')}
                             className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-medium hover:bg-[#222222] hover:-translate-y-1 hover:shadow-xl active:scale-95 transition-all duration-300 text-base sm:text-lg group"
                         >
-                            Book a Fit Call
+                            Book a Demo
                             <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg>
                         </Link>
                         <Link
-                            href="#demo"
+                            href="#how-it-works"
                             className="inline-flex items-center justify-center bg-white text-[#0A0A0A] border border-[#e5e5e5] px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-medium hover:bg-[#f9fafb] hover:-translate-y-1 hover:shadow-md active:scale-95 transition-all duration-300"
                         >
                             See How It Works
@@ -132,7 +132,9 @@ export default function Hero() {
                         </Link>
                     </div>
 
-
+                    <p className="text-sm text-[#0A0A0A]">
+                        Setup in &lt;7 days &middot; No long-term contract &middot; Cancel anytime
+                    </p>
                 </div>
             </div>
         </section>

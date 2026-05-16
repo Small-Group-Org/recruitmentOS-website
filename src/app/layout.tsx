@@ -5,7 +5,6 @@ import Analytics from "@/components/Analytics";
 import UTMTracker from "@/components/UTMTracker";
 import SiteHeader from "@/components/SiteHeader";
 import ConsultationPopup from "@/components/ConsultationPopup";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 const inter = Inter({ subsets: ["latin"], variable: '--font-inter', display: 'swap' });
 const dmSerif = DM_Serif_Display({ weight: '400', subsets: ["latin"], variable: '--font-serif', display: 'swap' });
@@ -14,14 +13,14 @@ const outfit = Outfit({ subsets: ["latin"], variable: '--font-outfit', display: 
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://recruitmentos.smallgrp.com"),
-    title: "RecruitmentOS - Done-For-You Recruitment BD",
-    description: "Premium outsourced business development and signal-based lead generation for recruitment agencies.",
+    title: "RecruitmentOS - The Automated Lead Engine for Recruiting Agencies",
+    description: "The only Recruiting agency lead generation platform that guarantees quality with a 6%+ reply rate.",
     icons: {
         icon: "/favicon.svg",
     },
     openGraph: {
-        title: "RecruitmentOS - Done-For-You Recruitment BD",
-        description: "Premium outsourced business development and signal-based lead generation for recruitment agencies.",
+        title: "RecruitmentOS - The Automated Lead Engine for Recruiting Agencies",
+        description: "The only Recruiting agency lead generation platform that guarantees quality with a 6%+ reply rate.",
         type: "website",
     },
 };
@@ -38,7 +37,6 @@ export default function RootLayout({
                 <Analytics />
                 <UTMTracker />
                 <ConsultationPopup />
-                <FloatingWhatsApp />
                 {children}
             </body>
         </html>

@@ -1,34 +1,29 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useState } from 'react';
 
 export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => void }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const navLinks = [
-        { name: 'Services', href: '/#services' },
-        { name: 'How It Works', href: '/#how-it-works' },
         { name: 'Case Studies', href: '/case-studies' },
-        { name: 'Pricing', href: '/pricing' },
+        { name: 'Services', href: '/#services' },
+        // { name: 'Pricing', href: '/pricing' },
+        { name: 'Tools', href: '/tools' },
         { name: 'Resources', href: '/resources' },
-        { name: 'About', href: '/about' },
     ];
 
     return (
         <header className="bg-white/90 backdrop-blur-md border-b border-[#e5e5e5] w-full">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6 py-4">
                 <nav className="flex items-center justify-between">
-                    <Link href="/" className="flex items-center">
-                        <Image
-                            src="/logo.webp"
-                            alt="RecruitmentOS"
-                            width={160}
-                            height={40}
-                            className="h-9 w-auto object-contain"
-                            priority
-                        />
+                    <Link href="/" className="flex items-center font-bold text-2xl sm:text-3xl tracking-tight">
+                        <span className="text-[#0A0A0A]">Recruitment</span>
+                        <span className="flex items-center text-orange-500 ml-2">
+                            <span className="animate-[spin_4s_linear_infinite] inline-block leading-none">O</span>
+                            <span>S</span>
+                        </span>
                     </Link>
 
                     <div className="hidden md:flex items-center gap-8">
@@ -46,7 +41,7 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
                             target="_blank"
                             className="bg-[#0A0A0A] text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-[#1a1a1a] transition-colors"
                         >
-                            Book a Fit Call
+                            Book a Demo
                         </Link>
                     </div>
 
@@ -88,7 +83,7 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
                             target="_blank"
                             className="block bg-[#0A0A0A] text-white px-5 py-2.5 rounded-lg text-sm font-medium text-center mt-2"
                         >
-                            Book a Fit Call
+                            Book a Demo
                         </Link>
                     </div>
                 )}

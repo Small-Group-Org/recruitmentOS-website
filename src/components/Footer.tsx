@@ -1,31 +1,16 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function Footer() {
     return (
         <footer className="py-8 bg-white border-t border-[#e5e5e5]">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div className="flex items-center gap-5 text-[#9ca3af]">
-                        <Link href="https://www.instagram.com/recruitmentos/" target="_blank" aria-label="Instagram" className="hover:text-[#F97316] transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                            </svg>
-                        </Link>
-                        <Link href="https://www.linkedin.com/company/recruitmentos/" target="_blank" aria-label="LinkedIn" className="hover:text-[#F97316] transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                <rect x="2" y="9" width="4" height="12"></rect>
-                                <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                        </Link>
-                        <Link href="#" target="_blank" aria-label="Facebook" className="hover:text-[#F97316] transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </Link>
+                    <div className="flex items-center font-black text-xl tracking-tight">
+                        <span className="text-[#0A0A0A]">Recruitment</span>
+                        <span className="flex items-center text-orange-500 ml-1.5">
+                            <span className="animate-[spin_4s_linear_infinite] inline-block leading-none">O</span>
+                            <span>S</span>
+                        </span>
                     </div>
 
                     <div className="flex items-center gap-6 text-xs text-[#9ca3af]">
