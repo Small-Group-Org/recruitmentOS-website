@@ -1,9 +1,11 @@
 'use client';
 
 import React from 'react';
+import ROICalculator from './ROICalculator';
 
 export default function Pricing() {
   return (
+    <>
     <div id="pricing-root" className="pricing-container fade-up delay-1">
       <style dangerouslySetInnerHTML={{ __html: `
         .pricing-container {
@@ -592,5 +594,7 @@ export default function Pricing() {
         </div>
       </div>
     </div>
+    <ROICalculator />
+    </>
   );
 }
