@@ -5,6 +5,15 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useToolGate } from '@/hooks/useToolGate';
 import { Tool } from '@/lib/tools-data';
+import VolumeGapCalculator from './VolumeGapCalculator';
+import GeneralROICalculator from './GeneralROICalculator';
+import BDScorecard from './BDScorecard';
+
+const INTERACTIVE_COMPONENTS: Record<string, React.ComponentType> = {
+  'volume-gap-calculator': VolumeGapCalculator,
+  'general-roi': GeneralROICalculator,
+  'bd-scorecard': BDScorecard,
+};
 
 export default function ToolPageClient({ tool }: { tool: Tool }) {
   const { isUnlocked, isHydrated } = useToolGate();
@@ -84,6 +93,16 @@ export default function ToolPageClient({ tool }: { tool: Tool }) {
               </ul>
             </div>
 
+            {/* Inline interactive component (calculator, scorecard, etc.) */}
+            {tool.interactive && INTERACTIVE_COMPONENTS[tool.slug] && (
+              <div className="mt-10">
+                {(() => {
+                  const Component = INTERACTIVE_COMPONENTS[tool.slug];
+                  return <Component />;
+                })()}
+              </div>
+            )}
+
             {/* Launch Tool CTA if embedUrl is set */}
             {tool.embedUrl && (
               <div className="mt-10 rounded-3xl border border-[#E5E5E5] bg-white shadow-sm overflow-hidden">
@@ -140,8 +159,8 @@ export default function ToolPageClient({ tool }: { tool: Tool }) {
                 Access Unlocked
               </div>
 
-              {/* Only show the external resource button if there is NO embedded tool */}
-              {!tool.embedUrl && (
+              {/* Show external resource button only when there's no embed AND no interactive component */}
+              {!tool.embedUrl && !tool.interactive && tool.resourceUrl && (
                 <>
                   <h3 className="text-base font-bold text-[#0A0A0A] mb-4 tracking-tight">
                     Your free resource
@@ -161,7 +180,7 @@ export default function ToolPageClient({ tool }: { tool: Tool }) {
                 </a>
               )}
 
-              <div className={!tool.embedUrl && !tool.videoUrl ? "pt-2 flex flex-col gap-2" : "border-t border-[#E5E5E5] pt-4 flex flex-col gap-2"}>
+              <div className={!tool.embedUrl && !tool.videoUrl && !tool.interactive ? "pt-2 flex flex-col gap-2" : "border-t border-[#E5E5E5] pt-4 flex flex-col gap-2"}>
                 {tool.communityUrl && (
                   <a href={tool.communityUrl} target="_blank" rel="noopener noreferrer"
                     className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-bold"

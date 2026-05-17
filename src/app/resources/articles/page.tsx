@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import { articles } from '@/lib/articles-data';
+import { buildCanonical } from '@/lib/seo';
 
 export const metadata = {
   title: 'Articles — RecruitmentOS',
   description: 'Deep-dives on recruitment lead generation, ICP, outreach, KPIs, and the AI stack — built for specialist staffing agencies.',
+  alternates: { canonical: buildCanonical('/resources/articles') },
 };
 
 export default function ArticlesPage() {

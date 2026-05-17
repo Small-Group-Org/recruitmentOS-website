@@ -72,10 +72,8 @@ export default function Hero() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-                        {/* Primary CTA — TODO: swap href to '/fit-call' once step 43 ships */}
                         <Link
-                            href="https://cal.com/tusharm/30min?user=tusharm"
-                            target="_blank"
+                            href="/fit-call"
                             onClick={() => trackCTAClick('Book a fit call', 'Hero')}
                             className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-medium hover:bg-[#222222] hover:-translate-y-1 hover:shadow-xl active:scale-95 transition-all duration-300 text-base sm:text-lg group"
                         >
@@ -84,9 +82,8 @@ export default function Hero() {
                                 <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg>
                         </Link>
-                        {/* Secondary CTA — TODO: swap href to '/methodology' once step 40 ships */}
                         <Link
-                            href="#system"
+                            href="/methodology"
                             className="inline-flex items-center justify-center bg-white text-[#0A0A0A] border border-[#e5e5e5] px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-medium hover:bg-[#f9fafb] hover:-translate-y-1 hover:shadow-md active:scale-95 transition-all duration-300 group"
                         >
                             See how it works

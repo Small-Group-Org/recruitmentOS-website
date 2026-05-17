@@ -4,6 +4,9 @@ import Footer from '@/components/Footer';
 import { articles, getArticleBySlug } from '@/lib/articles-data';
 import { getArticleBody } from '@/lib/articles-server';
 import { renderMarkdown } from '@/lib/markdown';
+import { JsonLd } from '@/components/JsonLd';
+import { articleSchema } from '@/lib/schemas';
+import { buildCanonical } from '@/lib/seo';
 
 export function generateStaticParams() {
   return articles
@@ -18,6 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${article.title} — RecruitmentOS`,
     description: article.description,
+    alternates: { canonical: buildCanonical(`/resources/articles/${slug}`) },
   };
 }
 
@@ -35,6 +39,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
 
   return (
     <main className="min-h-screen bg-white">
+      <JsonLd data={articleSchema(article)} />
       <div className="pt-24 pb-32">
         <div className="max-w-[820px] mx-auto px-6 sm:px-10">
           <Link

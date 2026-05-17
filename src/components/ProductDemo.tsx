@@ -26,16 +26,16 @@ export default function ProductDemo() {
                 {/* Heading */}
                 <div className="text-center mb-12">
                     <p className="text-xs font-semibold uppercase tracking-widest text-[#FF6A00] mb-3">
-                        Product Demo
+                        Walkthrough
                     </p>
                     <h2
                         className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#0A0A0A] mb-4"
                         style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}
                     >
-                        See RecruitmentOS in Action
+                        See the system in action.
                     </h2>
-                    <p className="text-base md:text-lg text-[#6B7280] max-w-2xl mx-auto">
-                        Watch how our AI automates sourcing, matching, and outreach — end to end.
+                    <p className="section-sub max-w-2xl mx-auto">
+                        How the engine works end to end — niche immersion, signal sourcing, outreach, reply triage. Full face-cam walkthrough coming soon.
                     </p>
                 </div>
 
