@@ -1,30 +1,49 @@
-'use client';
-
-import React from 'react';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { caseStudies } from '@/lib/case-studies-data';
+import { buildCanonical } from '@/lib/seo';
 
-export default function CaseStudyDetailPage() {
-  const { slug } = useParams();
+export function generateStaticParams() {
+  return caseStudies.map((s) => ({ slug: s.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const study = caseStudies.find((s) => s.slug === slug);
+  if (!study) return {};
+
+  const description = study.problem
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 155);
+
+  const canonical = buildCanonical(`/case-studies/${slug}`);
+
+  return {
+    title: `${study.title} — RecruitmentOS case study`,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title: study.title,
+      description,
+      url: canonical,
+      siteName: 'RecruitmentOS',
+      type: 'article',
+      images: study.image ? [{ url: study.image }] : undefined,
+    },
+  };
+}
+
+export default async function CaseStudyDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const study = caseStudies.find((s) => s.slug === slug);
 
-  if (!study) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Case Study Not Found</h1>
-          <Link href="/case-studies" className="text-[#FF6A00] font-bold">Back to List</Link>
-        </div>
-      </div>
-    );
-  }
+  if (!study) notFound();
 
   return (
     <div className="min-h-screen bg-white pt-24 pb-32 animate-fadeIn">
       <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
 
-        {/* Back Link */}
         <Link
           href="/case-studies"
           className="inline-flex items-center text-sm text-black hover:text-[#FF6A00] transition-colors mb-16 animate-slideUp"
@@ -36,16 +55,14 @@ export default function CaseStudyDetailPage() {
         </Link>
 
         <div className="animate-slideUp">
-          {/* Title Section */}
           <h1 className="text-2xl md:text-3xl font-bold mb-16 max-w-5xl leading-tight">
             {study.title}
           </h1>
 
-          {/* Two Column Layout (40/60) */}
           <div className="grid grid-cols-1 lg:grid-cols-[40fr_60fr] gap-12 lg:gap-24 items-start">
 
-            {/* Left: Image */}
             <div className="rounded-xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={study.image}
                 alt={study.title}
@@ -53,7 +70,6 @@ export default function CaseStudyDetailPage() {
               />
             </div>
 
-            {/* Right: Content */}
             <div className="space-y-6 text-black text-lg leading-snug antialiased" style={{ color: '#000000' }}>
 
               <div>
@@ -86,22 +102,11 @@ export default function CaseStudyDetailPage() {
         </div>
       </div>
 
-      <style jsx global>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes slideUp {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.5s ease-out forwards;
-        }
-        .animate-slideUp {
-          opacity: 0;
-          animation: slideUp 0.6s ease-out forwards;
-        }
+      <style>{`
+        @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px) } to { opacity: 1; transform: translateY(0) } }
+        .animate-fadeIn { animation: fadeIn 0.5s ease-out forwards }
+        .animate-slideUp { opacity: 0; animation: slideUp 0.6s ease-out forwards }
       `}</style>
     </div>
   );
