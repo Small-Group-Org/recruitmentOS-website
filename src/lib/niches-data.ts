@@ -14,9 +14,9 @@ export type Niche = {
     sampleOpener: string;
 };
 
-// NOTE: initial 3 niches are placeholders per README open decision #8.
-// Tushar to confirm which 3 should ship first (could be tech/finance/healthcare instead).
-// `sampleOpener` for each should be reviewed/rewritten by Tushar — generic openers kill the page's quality signal.
+// Openers are signal-anchored and intentionally avoid quoting placement counts
+// we can't yet defend with case-study data. Re-introduce concrete numbers per
+// niche once the case-studies page carries the matching evidence.
 
 export const niches: Niche[] = [
     {
@@ -42,7 +42,7 @@ export const niches: Niche[] = [
             'Generic "biotech" agencies serving any therapeutic area — niche is too broad to filter',
             'Companies primarily hiring through retained executive search firms',
         ],
-        sampleOpener: 'Saw [Company] just disclosed Phase 2 readouts for [program] in their last 10-Q — congrats on the data. Typically when a program hits Phase 2, our biotech clients are scaling clinical ops 3–4 months out. We\'ve placed 12 Directors of Clinical Operations across Series B/C biotechs this year, average time-to-shortlist 6 days. Worth a 20-minute look at the candidate map for [therapeutic area]?',
+        sampleOpener: '[First name] — saw [Company] disclosed Phase 2 readouts for [program] in the latest 10-Q. Congrats on the data. In our work with Series B/C biotech, that milestone reliably triggers a clinical-ops scale-up 3–4 months out — Directors of Clinical Operations, Trial Managers, plus a CRA bench. We track that pattern across the sector and can have a shortlist for [therapeutic area] in front of you inside two weeks. Worth 20 minutes to walk through the candidate map?',
     },
     {
         slug: 'accounting',
@@ -67,7 +67,7 @@ export const niches: Niche[] = [
             'Sub-$50K placement-fee markets — math doesn\'t support our retainer',
             'Bookkeeping / AP-AR-only hires — too low-fee for our cost structure',
         ],
-        sampleOpener: 'Saw [Company] announced the acquisition of [target] last month — based on similar deals you\'ll be hiring a senior finance integration lead within 8 weeks. We\'ve placed 9 Controllers post-PE-acquisition this year in your sector. The candidate map for [city] looks pretty strong right now — 14 actively-interested profiles in the Director / Senior Manager band. Worth a look?',
+        sampleOpener: '[First name] — saw [Company] announced the acquisition of [target] last month. Post-deal, the pattern we see is a senior finance integration hire (Controller or Director of Finance) inside 8 weeks, often followed by an FP&A backfill. The [city] market for that band is in a good window right now — strong passive supply, fee pressure still reasonable. Happy to share a no-commitment longlist if it\'s useful. 20-minute call this week or next?',
     },
     {
         slug: 'executive-search',
@@ -92,7 +92,7 @@ export const niches: Niche[] = [
             'Companies under $50M revenue — our signal layer fires too rarely',
             'Family-owned businesses without external board governance — buying signals are too opaque',
         ],
-        sampleOpener: 'Saw your last 10-Q referenced "evaluating leadership succession" around the CFO seat. Typically when that language shows up, an executive search mandate follows within 60 days. We\'ve closed 7 CFO retained searches in your sector this year — average time-to-offer 42 days. Worth opening the longlist for [sector] to see what the market looks like?',
+        sampleOpener: '[First name] — your last 10-Q referenced "evaluating leadership succession" around the CFO seat. In our experience that language reliably precedes a retained search mandate inside 60 days. We map executive talent in [sector] continuously and could put a confidential longlist in front of you before the mandate even formally opens. No deck, no pitch — just the market view. Worth a 20-minute conversation?',
     },
 ];
 

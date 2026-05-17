@@ -7,11 +7,6 @@ export const metadata = {
     title: '10 Verified Hiring-Manager Contacts a Day — Free | RecruitmentOS',
     description: 'Apply with your niche. If you\'re a fit, we send 10 hand-verified hiring-manager contacts in your niche every day for 30 days. 300 leads. No commitment.',
     alternates: { canonical: buildCanonical('/free-leads-campaign') },
-    robots: {
-        // TODO: flip to index/follow once delivery pipeline is staffed (README open decision #3)
-        index: false,
-        follow: false,
-    },
 };
 
 const howItWorks = [

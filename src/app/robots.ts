@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
         rules: {
             userAgent: '*',
             allow: '/',
-            disallow: ['/tools/gate', '/free-leads-campaign'],
+            disallow: ['/tools/gate'],
         },
         sitemap: `${SITE_URL}/sitemap.xml`,
     };
