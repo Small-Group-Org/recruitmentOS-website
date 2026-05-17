@@ -106,9 +106,34 @@ const TABS: { id: TabId; label: string; count: number }[] = [
     { id: 'articles', label: 'Articles', count: articles.length },
 ];
 
+const VALID_TABS: TabId[] = ['resources', 'tools', 'articles'];
+
+function readTabFromHash(): TabId {
+    if (typeof window === 'undefined') return 'resources';
+    const hash = window.location.hash.replace('#', '') as TabId;
+    return VALID_TABS.includes(hash) ? hash : 'resources';
+}
+
 export default function Resources() {
     const [showModal, setShowModal] = useState(false);
     const [activeTab, setActiveTab] = useState<TabId>('resources');
+
+    // Restore tab from URL hash on mount + listen for hashchange (e.g. back button)
+    useEffect(() => {
+        setActiveTab(readTabFromHash());
+        function onHashChange() { setActiveTab(readTabFromHash()); }
+        window.addEventListener('hashchange', onHashChange);
+        return () => window.removeEventListener('hashchange', onHashChange);
+    }, []);
+
+    function selectTab(id: TabId) {
+        setActiveTab(id);
+        if (typeof window !== 'undefined') {
+            // replaceState — clicking tabs doesn't pollute history, but the hash IS in the URL,
+            // so navigating away and pressing Back returns to /resources with the right tab active.
+            window.history.replaceState(null, '', `#${id}`);
+        }
+    }
 
     const handleSkillsClick = useCallback((e: React.MouseEvent) => {
         e.preventDefault();
@@ -146,7 +171,7 @@ export default function Resources() {
                                 aria-selected={isActive}
                                 aria-controls={`panel-${tab.id}`}
                                 id={`tab-${tab.id}`}
-                                onClick={() => setActiveTab(tab.id)}
+                                onClick={() => selectTab(tab.id)}
                                 className={`relative pb-3 sm:pb-4 -mb-[1px] flex items-center gap-2 text-sm sm:text-base font-bold transition-colors ${
                                     isActive
                                         ? 'text-[#0A0A0A] border-b-2 border-[#FF6A00]'
