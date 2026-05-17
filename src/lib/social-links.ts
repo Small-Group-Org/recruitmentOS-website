@@ -1,4 +1,4 @@
-export type SocialIconName = 'linkedin' | 'instagram' | 'youtube' | 'whatsapp';
+export type SocialIconName = 'linkedin' | 'instagram' | 'whatsapp';
 
 export type SocialLink = {
     name: string;
@@ -20,13 +20,6 @@ export const socialLinks: SocialLink[] = [
         ariaLabel: 'RecruitmentOS on Instagram',
         icon: 'instagram',
     },
-    // YouTube — pending channel URL confirmation from Tushar (README open decision #4).
-    // {
-    //     name: 'YouTube',
-    //     url: 'https://www.youtube.com/@recruitmentos',
-    //     ariaLabel: 'RecruitmentOS on YouTube',
-    //     icon: 'youtube',
-    // },
     {
         name: 'WhatsApp community',
         url: 'https://chat.whatsapp.com/I9PLSmDMJ06B6qYYVsRb0q?mode=gi_t',
