@@ -13,8 +13,8 @@ import { JsonLd } from '@/components/JsonLd';
 import { serviceWithOffersSchema } from '@/lib/schemas';
 
 export const metadata = {
-    title: 'How RecruitmentOS Works — Build + Run',
-    description: 'The two-part system: a 30–60 day Build to design your BD engine, then a monthly Run that operates it on your stack.',
+    title: 'How RecruitmentOS Works — Setup + Run',
+    description: 'The two-part system: a 30–60 day Setup to design your BD engine, then a monthly Run that operates it on your stack.',
     alternates: { canonical: buildCanonical('/methodology') },
 };
 
@@ -42,13 +42,13 @@ export default function MethodologyPage() {
                             How RecruitmentOS works.
                         </h1>
                         <p className="hero-sub mb-8">
-                            Two parts. A 30–60 day <strong className="font-semibold text-[#0A0A0A]">Build</strong> to design and stand up the BD engine on your stack. A monthly <strong className="font-semibold text-[#0A0A0A]">Run</strong> to operate it.
+                            Two parts. A 30–60 day <strong className="font-semibold text-[#0A0A0A]">Setup</strong> to design and stand up the BD engine on your stack. A monthly <strong className="font-semibold text-[#0A0A0A]">Run</strong> to operate it.
                         </p>
 
                         {/* 2-phase visual */}
                         <div className="bg-[#F9FAFB] border border-[#E5E5E5] rounded-2xl p-6 flex flex-col sm:flex-row gap-4 items-stretch">
                             <div className="flex-1 bg-white border border-[#E5E5E5] rounded-xl p-5">
-                                <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-2">Build · One-time</p>
+                                <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-2">Setup · One-time</p>
                                 <p className="text-base font-bold text-[#0A0A0A]">Day 1 → Day 60</p>
                                 <p className="text-sm text-[#6B7280] mt-1">ICP map · Signal engine · Outreach engine · Handover</p>
                             </div>
@@ -94,8 +94,8 @@ export default function MethodologyPage() {
 
                     {/* Build deliverables */}
                     <section className="mb-20 bg-[#0A0A0A] rounded-2xl px-8 sm:px-12 py-12">
-                        <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">The Build, in one block</p>
-                        <h2 className="text-white text-2xl sm:text-3xl font-bold mb-8 leading-tight">What you get at end of Build (Day 60).</h2>
+                        <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">The Setup, in one block</p>
+                        <h2 className="text-white text-2xl sm:text-3xl font-bold mb-8 leading-tight">What you get at end of Setup (Day 60).</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             {buildDeliverables.map((d) => (
                                 <div key={d} className="flex items-center gap-3 py-2 border-b border-white/10">

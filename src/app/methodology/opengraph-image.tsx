@@ -8,6 +8,6 @@ export default function Image() {
     return renderOgImage(
         'RecruitmentOS · Methodology',
         'How RecruitmentOS works.',
-        'Build the BD engine in 60 days. Run it on your stack.',
+        'Set up the BD engine in 60 days. Run it on your stack.',
     );
 }

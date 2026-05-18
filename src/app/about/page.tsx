@@ -107,7 +107,7 @@ export default function AboutPage() {
                             <li className="flex items-start gap-4">
                                 <span className="text-[#FF6A00] font-bold flex-shrink-0 mt-1">→</span>
                                 <p className="text-base sm:text-lg text-[#374151] font-medium leading-relaxed">
-                                    I turn down 7 in 10 agencies that ask. The 3 non-compromises (no outreach without niche-specific filtering · no promised meetings without a written QMD · no Build for an agency whose delivery isn't ready) <Link href="/methodology" className="text-[#FF6A00] font-bold underline underline-offset-2 hover:text-[#0A0A0A]">explain why</Link>.
+                                    I turn down 7 in 10 agencies that ask. The 3 non-compromises (no outreach without niche-specific filtering · no promised meetings without a written QMD · no Setup for an agency whose delivery isn't ready) <Link href="/methodology" className="text-[#FF6A00] font-bold underline underline-offset-2 hover:text-[#0A0A0A]">explain why</Link>.
                                 </p>
                             </li>
                         </ul>

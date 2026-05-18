@@ -10,7 +10,7 @@ export const methodologySteps: MethodologyStep[] = [
     {
         number: '01',
         name: 'Niche Immersion',
-        phase: 'Build · Week 1–2',
+        phase: 'Setup · Week 1–2',
         body: 'Before a single email goes out, we map your niche in depth: titles that buy, geographies you win in, signals that fire 4–8 weeks before a hire happens. The output is a written ICP map and a signal-source list specific to your niche.',
         subComponents: [
             { title: 'ICP map', description: 'Titles, headcount bands, geography' },
@@ -21,8 +21,8 @@ export const methodologySteps: MethodologyStep[] = [
     {
         number: '02',
         name: 'Signal Engine',
-        phase: 'Build · Week 2–3',
-        body: 'We build the data layer that turns niche signals into ranked hiring-manager contacts. Apify/Phantombuster scrapes feed a daily list; ZoomInfo/Apollo enriches; Clay or Smartlead handles routing.',
+        phase: 'Setup · Week 2–3',
+        body: 'We build the data layer that turns niche signals into ranked hiring-manager contacts. Apify/Phantombuster scrapes feed a daily list; ZoomInfo/BetterContact enriches; Clay or Smartlead handles routing.',
         subComponents: [
             { title: 'Daily scrape jobs', description: 'Runs at 06:00 UTC, posts new list to your CRM' },
             { title: 'Enrichment', description: 'Verified email, mobile, LinkedIn' },
@@ -32,7 +32,7 @@ export const methodologySteps: MethodologyStep[] = [
     {
         number: '03',
         name: 'Outreach Engine',
-        phase: 'Build · Week 3–5 → Run · ongoing',
+        phase: 'Setup · Week 3–5 → Run · ongoing',
         body: 'Multi-step sequences across email + LinkedIn, niche-aware copy, and trigger-specific openers. Built on your sending infrastructure (Smartlead, your domains, your inboxes — you own the deliverability).',
         subComponents: [
             { title: 'Sequence design', description: '4-touch cold + 3-touch warm' },
@@ -42,13 +42,13 @@ export const methodologySteps: MethodologyStep[] = [
     },
     {
         number: '04',
-        name: 'Reply Triage + Handover',
+        name: 'Reply Filtering & Handoff',
         phase: 'Run · ongoing',
-        body: 'Replies get classified into 6 buckets. Only positive-intent replies go to your recruiters. Everything else gets routed: objections to nurture, wrong-person to LinkedIn, not-now to long-cycle, unsubscribes to suppression.',
+        body: 'We sort every reply. Interested ones land in your recruiters\' inboxes within 4 business hours. Everything else — not-now, wrong-person, unsubscribes — gets handled on our side, so your team only sees the replies worth their time.',
         subComponents: [
-            { title: '6-bucket triage', description: 'Yes / objection / wrong person / not now / unsub / spam' },
-            { title: 'Recruiter handover SLA', description: 'Qualified replies in your inbox within 4 business hours' },
-            { title: 'Weekly reporting', description: 'Pipeline, reply rate, meeting count, qualified-meeting count' },
+            { title: 'Reply sorting', description: 'Interested / not now / wrong person / unsubscribe' },
+            { title: 'Handoff SLA', description: 'Qualified replies in your inbox within 4 business hours' },
+            { title: 'Weekly reporting', description: 'Pipeline, reply rate, meeting count' },
         ],
     },
 ];
@@ -90,7 +90,7 @@ export const nonCompromises: { title: string; body: string }[] = [
         body: 'Title list, geography, company size, show-up rate — defined and signed before contracts.',
     },
     {
-        title: 'No Build for an agency whose delivery isn\'t ready.',
+        title: 'No Setup for an agency whose delivery isn\'t ready.',
         body: 'If they can\'t articulate who handles the inbound or candidate pipeline, we tell them to fix that first and come back. Lost revenue. Worth it.',
     },
 ];

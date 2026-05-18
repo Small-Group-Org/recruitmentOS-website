@@ -10,7 +10,6 @@ const tools = [
   { name: 'LinkedIn', icon: '/logos/linkedin.webp' },
   { name: 'Lusha', icon: '/logos/lusha.webp' },
   { name: 'Hunter', icon: '/logos/hunter.webp' },
-  { name: 'Apollo', icon: '/logos/apollo.webp' },
   { name: 'Indeed', icon: '/logos/indeed.webp' },
   { name: 'Stepstone', icon: '/logos/stepstone.webp' },
   { name: 'Clay', icon: '/logos/clay.webp' },

@@ -41,7 +41,7 @@ export default function FitCallPage() {
                     <section className="mb-12 bg-[#F9FAFB] border border-[#E5E5E5] rounded-2xl p-6 sm:p-8">
                         <h2 className="text-lg font-bold text-[#0A0A0A] mb-4">What happens on the call</h2>
                         <p className="text-sm sm:text-base text-[#374151] font-medium leading-relaxed">
-                            We open the <strong className="text-[#0A0A0A] font-bold">180-point BD scorecard</strong> live, score your agency together, run your <strong className="text-[#0A0A0A] font-bold">volume math</strong> against your actual placement target, and identify the 1–3 highest-leverage things we'd build first. Either we agree this is a fit and you get a Build proposal, or Tushar tells you honestly it's not a fit and points you somewhere useful.
+                            We open the <strong className="text-[#0A0A0A] font-bold">180-point BD scorecard</strong> live, score your agency together, run your <strong className="text-[#0A0A0A] font-bold">volume math</strong> against your actual placement target, and identify the 1–3 highest-leverage things we'd set up first. Either we agree this is a fit and you get a Setup proposal, or Tushar tells you honestly it's not a fit and points you somewhere useful.
                         </p>
                     </section>
 

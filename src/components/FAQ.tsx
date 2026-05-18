@@ -6,16 +6,16 @@ import { faqSchema } from '@/lib/schemas';
 
 const faqs = [
     {
-        question: "What's the difference between Build and Run?",
-        answer: "Build is a one-time 30–60 day engagement where we design and stand up your BD engine — ICP map, signal engine, sequences, CRM mapping, deliverability config, reply SOPs, and team handover. Run is the monthly retainer where we operate it: daily list curation, sequence execution, reply triage, weekly reporting, and monthly iteration.",
+        question: "What's the difference between Setup and Run?",
+        answer: "Setup is a one-time 30–60 day engagement where we design and stand up your BD engine — ICP map, signal engine, sequences, CRM mapping, deliverability config, reply SOPs, and team handover. Run is the monthly retainer where we operate it: daily list curation, sequence execution, reply filtering, weekly reporting, and monthly iteration.",
     },
     {
         question: 'How are the leads sourced?',
-        answer: 'Daily signal scraping — departures, funding announcements, leadership changes, restructures, hiring intent — via Apify/Phantombuster, enriched via ZoomInfo or Apollo, ranked by signal recency and niche fit, and filtered to match your ICP map.',
+        answer: 'Daily signal scraping — departures, funding announcements, leadership changes, restructures, hiring intent — via Apify/Phantombuster, enriched via ZoomInfo or BetterContact, ranked by signal recency and niche fit, and filtered to match your ICP map.',
     },
     {
         question: 'Do you really turn agencies down?',
-        answer: "Yes. Three non-compromises: no outreach without niche-specific filtering, no promised meetings without a written Qualified Meeting Definition, and no Build for an agency whose delivery isn't ready. If you don't pass the 6-question fit interview, we won't take you on — even if you want to proceed.",
+        answer: "Yes. Three non-compromises: no outreach without niche-specific filtering, no promised meetings without a written Qualified Meeting Definition, and no Setup for an agency whose delivery isn't ready. If you don't pass the 6-question fit interview, we won't take you on — even if you want to proceed.",
     },
     {
         question: 'What does the 60-day guarantee mean?',
@@ -35,7 +35,7 @@ const faqs = [
     },
     {
         question: 'How long does setup take?',
-        answer: 'The Build is 30–60 days end-to-end. Most agencies see their first verified replies during week 4–5 as deliverability ramps and the signal engine starts surfacing real opportunities. Full handover at day 60.',
+        answer: 'The Setup is 30–60 days end-to-end. Most agencies see their first verified replies during week 4–5 as deliverability ramps and the signal engine starts surfacing real opportunities. Full handover at day 60.',
     },
     {
         question: 'Who owns the data and infrastructure?',
