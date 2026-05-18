@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 const tools = [
   { name: 'n8n', icon: '/logos/n8n.webp' },
   { name: 'Claude', icon: '/logos/claude.webp' },
