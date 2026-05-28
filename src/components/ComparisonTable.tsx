@@ -42,10 +42,10 @@ export default function ComparisonTable() {
                         📊 Side by Side
                     </div>
                     <h2 className="text-2xl sm:text-3xl md:text-[48px] font-black mb-4 text-[#1E293B] tracking-tight leading-tight">
-                        The Real Cost of Doing It Manually
+                        Why most recruitment agencies are stuck — and what actually fixes it.
                     </h2>
                     <p className="text-lg text-[#475569] font-medium max-w-[560px] mx-auto">
-                        Your competitors are still hiring recruiters. Here&apos;s what you save.
+                        Find where you sit.
                     </p>
                 </div>
 

@@ -16,7 +16,7 @@ const outfit = Outfit({ subsets: ["latin"], variable: '--font-outfit', display: 
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://recruitmentos.smallgrp.com"),
-    title: "RecruitmentOS — Done-For-You BD for Recruitment Agencies ($500K–$5M)",
+    title: "RecruitmentOS — Done-For-You BD for Recruitment Agencies",
     description: "We replace your BD function — sourcing, enrichment, outreach, reply handling on your stack. 100 hiring-manager contacts in 60 days or we work free.",
     icons: {
         icon: "/favicon.svg",

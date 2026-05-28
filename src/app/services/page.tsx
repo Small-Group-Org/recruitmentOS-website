@@ -6,7 +6,7 @@ import { buildCanonical } from '@/lib/seo';
 
 export const metadata = {
     title: 'What We Do — 5 BD Services | RecruitmentOS',
-    description: 'Five clearly-named services. One outcome: your BD function, replaced. Built for established recruitment agencies billing $500K–$5M.',
+    description: 'Five clearly-named services. One outcome: your BD function, replaced. Built for established recruitment agencies.',
     alternates: { canonical: buildCanonical('/services') },
 };
 

@@ -41,13 +41,9 @@ export default function FitCallForm() {
     const [data, setData] = useState<FormState>(INITIAL);
     const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
     const [errorMsg, setErrorMsg] = useState('');
-    const [softReject, setSoftReject] = useState(false);
 
     const update = (key: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setData(prev => ({ ...prev, [key]: e.target.value }));
-        if (key === 'revenue') {
-            setSoftReject(e.target.value === 'Under $500K');
-        }
     };
 
     async function onSubmit(e: FormEvent) {
@@ -158,11 +154,6 @@ export default function FitCallForm() {
                     <option value="" disabled>Pick one</option>
                     {REVENUE_BANDS.map(b => <option key={b} value={b}>{b}</option>)}
                 </select>
-                {softReject && (
-                    <p className="text-xs text-[#FF6A00] font-medium mt-2">
-                        We don't serve agencies under $50K/mo yet — but you can still submit. We may point you to <a href="/tools" className="underline font-bold">free tools</a> instead.
-                    </p>
-                )}
             </Field>
 
             <Field label="Current monthly outreach volume" required>

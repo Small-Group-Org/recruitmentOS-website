@@ -8,6 +8,6 @@ export default function Image() {
     return renderOgImage(
         'RecruitmentOS · Tools',
         'Calculators, scorecards, advisors.',
-        'Built for $500K–$5M recruitment agencies',
+        'Built for recruitment agencies',
     );
 }

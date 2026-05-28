@@ -23,10 +23,9 @@ const whatYouGet = [
 ];
 
 const notForYou = [
-    'Sub-$50K/mo agencies (we can\'t help yet)',
-    'Generalists with no clear niche (we can\'t filter without one)',
-    'Outside the $500K–$5M revenue band',
+    'Agencies with no clear niche — we can\'t filter without one',
     'Agencies whose bottleneck is candidates, not clients',
+    'Agencies not ready to handle more client meetings',
 ];
 
 export default function FreeLeadsCampaignPage() {

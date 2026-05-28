@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import RetroGrid from './RetroGrid';
 
 export default function Hero() {
-    const fullText = "FOR $500K–$5M RECRUITMENT AGENCIES";
+    const fullText = "FOR RECRUITMENT AGENCIES";
     const [typedText, setTypedText] = useState("");
 
     useEffect(() => {
@@ -23,7 +23,7 @@ export default function Hero() {
     }, []);
 
     return (
-        <section className="relative overflow-hidden pt-12 pb-24 md:pt-20 md:pb-40 bg-[#F9FAFB]" id="hero">
+        <section className="relative overflow-hidden pt-3 pb-24 md:pt-2 md:pb-40 bg-[#F9FAFB]" id="hero">
             <RetroGrid />
             <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 text-center">
                 <div className="flex flex-col items-center justify-center">
@@ -31,8 +31,8 @@ export default function Hero() {
                         <div className="inline-flex items-center justify-center gap-2.5 bg-[#0A0A0A] border border-white/10 rounded-full px-4 py-1.5 text-[0.7rem] font-semibold text-white uppercase tracking-widest relative">
                             <div className="w-3.5 h-3.5 text-white/90 animate-spin-slow shrink-0 flex items-center justify-center">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-                                    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
-                                    <circle cx="12" cy="12" r="3"/>
+                                    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                                    <circle cx="12" cy="12" r="3" />
                                 </svg>
                             </div>
                             <span className="relative z-10 min-h-[1em]">
@@ -56,41 +56,57 @@ export default function Hero() {
                         style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}
                     >
                         <span className="block mb-2 font-semibold text-[#000000]">
-                            Stop hunting for hiring companies.
+                            We replace your BD function.
                         </span>
                         <span className="block font-bold scale-y-105 text-[#FF6A00]">
-                            We do it for you.
+                            You stop being the bottleneck.
                         </span>
                     </h1>
 
                     <p className="hero-sub mb-8 max-w-3xl mx-auto">
-                        Outsourced BD for established recruitment agencies billing $500K–$5M annually. We replace your entire BD pipeline — sourcing, enrichment, outreach, and reply handling — on your stack.
+                        The outsourced BD function for established recruitment agencies. We handle sourcing, enrichment, outreach, and reply filtering on your stack — your team steps in when a hiring manager replies &ldquo;yes, send me candidates.&rdquo;
                     </p>
 
                     <p className="text-sm sm:text-base font-semibold text-[#FF6A00] mb-12 max-w-2xl mx-auto leading-relaxed">
-                        100 hiring-manager contacts and 10 verified replies in 60 days — or we work free until we do.
+                        100 verified hiring-manager contacts + 10 positive replies in 60 days — or we keep working, free.
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
                         <Link
                             href="/fit-call"
-                            onClick={() => trackCTAClick('Book a fit call', 'Hero')}
+                            onClick={() => trackCTAClick('Book a strategy call', 'Hero')}
                             className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-medium hover:bg-[#222222] hover:-translate-y-1 hover:shadow-xl active:scale-95 transition-all duration-300 text-base sm:text-lg group"
                         >
-                            Book a fit call
+                            Book a strategy call
                             <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg>
                         </Link>
                         <Link
-                            href="/methodology"
-                            className="inline-flex items-center justify-center bg-white text-[#0A0A0A] border border-[#e5e5e5] px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-medium hover:bg-[#f9fafb] hover:-translate-y-1 hover:shadow-md active:scale-95 transition-all duration-300 group"
+                            href="/case-studies"
+                            className="inline-flex items-center justify-center text-[#6b7280] hover:text-[#0A0A0A] px-4 py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors duration-200 group"
                         >
-                            See how it works
+                            See Case Studies
                             <svg className="ml-1.5 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg>
                         </Link>
+                    </div>
+
+                    {/* Trust bar */}
+                    <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[0.78rem] font-medium text-[#6b7280]">
+                        {[
+                            'Live in <7 days',
+                            '60-day guarantee',
+                            '30-day notice to cancel',
+                        ].map((item) => (
+                            <span key={item} className="flex items-center gap-1.5">
+                                <svg className="w-3.5 h-3.5 text-[#22c55e] shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M16.704 5.296a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 1.414-1.414L8 12.586l7.296-7.29a1 1 0 0 1 1.408-.006z" clipRule="evenodd" />
+                                </svg>
+                                {item}
+                            </span>
+                        ))}
                     </div>
                 </div>
             </div>

@@ -25,14 +25,15 @@ export default function AnnouncementBanner() {
                     className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 group cursor-pointer"
                 >
                     <span className="bg-[#00D47E] text-[#001D3D] text-[9px] sm:text-[10px] font-extrabold uppercase tracking-widest px-2 py-0.5 rounded-full flex-shrink-0 shadow-[0_0_12px_rgba(0,212,126,0.5)] animate-pulse">
-                        Free · Live
+                        Free offer
                     </span>
                     <span className="text-white text-xs sm:text-sm font-medium tracking-tight leading-snug">
-                        <span className="font-bold text-[#FF6A00]">10 verified hiring-manager contacts a day</span>
-                        <span className="hidden sm:inline"> — free for 30 days. 300 leads, zero commitment.</span>
-                        <span className="sm:hidden"> · free 30 days</span>
+                        <span className="hidden sm:inline">Free for recruitment agencies: </span>
+                        <span className="font-bold text-[#FF6A00]">10 verified hiring-manager contacts in your niche, every day, for 30 days</span>
+                        <span className="hidden sm:inline">,  300 leads. No commitment.</span>
+                        <span className="sm:hidden"> · 300 leads, free</span>
                         <span className="ml-2 inline-flex items-center gap-1 font-bold text-[#00D47E] group-hover:gap-2 transition-all">
-                            Apply
+                            Apply now
                             <span aria-hidden>→</span>
                         </span>
                     </span>

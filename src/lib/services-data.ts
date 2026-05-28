@@ -48,7 +48,7 @@ export const services: Service[] = [
     {
         slug: 'reporting-iteration',
         number: '05',
-        name: 'Reporting & Iteration',
+        name: 'Reporting & Optimisation',
         oneLine: 'We close the loop weekly and tune monthly.',
         deepDive: 'Weekly pipeline reports, monthly sequence iteration, quarterly business reviews. Every metric tied back to your placement target.',
         outcome: 'Monthly iteration log + QBR',

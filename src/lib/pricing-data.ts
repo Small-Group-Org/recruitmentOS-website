@@ -4,6 +4,9 @@ export type Bracket = {
     capacityLabel: string;
     maxPlacements: number;
     monthlyUsd: number;
+    buildFeeUsd: number;
+    leadsPerMo: string;
+    targetPlacements: number;
     roiMultiplier: number;
     capabilityBullets: string[];
 };
@@ -15,6 +18,9 @@ export const brackets: Bracket[] = [
         capacityLabel: 'up to 4 placements/mo',
         maxPlacements: 4,
         monthlyUsd: 1300,
+        buildFeeUsd: 500,
+        leadsPerMo: '2,500',
+        targetPlacements: 2,
         roiMultiplier: 24,
         capabilityBullets: [
             'Qualified hiring-manager meetings, booked',
@@ -29,6 +35,9 @@ export const brackets: Bracket[] = [
         capacityLabel: 'up to 10 placements/mo',
         maxPlacements: 10,
         monthlyUsd: 2750,
+        buildFeeUsd: 750,
+        leadsPerMo: '8,750',
+        targetPlacements: 7,
         roiMultiplier: 26,
         capabilityBullets: [
             'Everything in Starter',
@@ -43,6 +52,9 @@ export const brackets: Bracket[] = [
         capacityLabel: 'up to 25 placements/mo',
         maxPlacements: 25,
         monthlyUsd: 6500,
+        buildFeeUsd: 1000,
+        leadsPerMo: '25,000',
+        targetPlacements: 20,
         roiMultiplier: 31,
         capabilityBullets: [
             'Everything in Growth',

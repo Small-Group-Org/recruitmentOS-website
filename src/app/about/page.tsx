@@ -62,7 +62,7 @@ export default function AboutPage() {
                             Tushar Mangla.
                         </h1>
                         <p className="hero-sub">
-                            Founder, RecruitmentOS. I run the BD function for established recruitment agencies billing $500K–$5M annually.
+                            Founder, RecruitmentOS. I run the BD function for established recruitment agencies.
                         </p>
                     </div>
 

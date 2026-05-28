@@ -49,6 +49,9 @@ export default function Pricing() {
                     </div>
                 </div>
 
+                {/* ROI Table */}
+                <ROITable />
+
                 {/* Outside-brackets CTA */}
                 <div className="border-t border-[#E5E5E5] pt-12 sm:pt-16 text-center max-w-2xl mx-auto">
                     <h3 className="text-xl sm:text-2xl font-bold text-[#0A0A0A] mb-3 leading-tight">
@@ -70,6 +73,71 @@ export default function Pricing() {
 
             </div>
         </section>
+    );
+}
+
+// ROI scenarios table
+const roiScenarios = [
+    {
+        label: 'Conservative',
+        placements: 1,
+        feePerPlacement: 8000,
+        retainer: 1300,
+        color: 'text-[#6b7280]',
+    },
+    {
+        label: 'Realistic',
+        placements: 3,
+        feePerPlacement: 10000,
+        retainer: 1300,
+        color: 'text-[#0A0A0A]',
+    },
+    {
+        label: 'Upside',
+        placements: 6,
+        feePerPlacement: 12000,
+        retainer: 2750,
+        color: 'text-[#FF6A00]',
+    },
+];
+
+function ROITable() {
+    return (
+        <div className="mb-12 sm:mb-16 border-t border-[#E5E5E5] pt-12 sm:pt-16">
+            <div className="mb-8 max-w-2xl">
+                <p className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-3">ROI math</p>
+                <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold tracking-tight leading-tight mb-2">
+                    Run the numbers before the call.
+                </h2>
+                <p className="text-[#6b7280] text-base">Based on Starter retainer ($1,300/mo). Your numbers on the fit call.</p>
+            </div>
+
+            <div className="rounded-2xl border border-[#E5E5E5] overflow-hidden">
+                {/* Header */}
+                <div className="grid grid-cols-4 bg-[#0A0A0A] text-white text-[11px] font-bold uppercase tracking-widest">
+                    <div className="px-5 py-4 text-[#6b7280]">Scenario</div>
+                    <div className="px-5 py-4">Placements/mo</div>
+                    <div className="px-5 py-4">Revenue in</div>
+                    <div className="px-5 py-4 text-[#22c55e]">Net after retainer</div>
+                </div>
+                {roiScenarios.map((s, i) => {
+                    const revenue = s.placements * s.feePerPlacement;
+                    const net = revenue - s.retainer;
+                    return (
+                        <div key={s.label} className={`grid grid-cols-4 border-t border-[#E5E5E5] ${i === 1 ? 'bg-[#FFF9F4]' : 'bg-white'}`}>
+                            <div className={`px-5 py-5 text-sm font-bold ${s.color}`}>{s.label}</div>
+                            <div className="px-5 py-5 text-sm text-[#374151] font-medium">{s.placements}</div>
+                            <div className="px-5 py-5 text-sm text-[#374151] font-medium">${revenue.toLocaleString()}</div>
+                            <div className="px-5 py-5 text-sm font-bold text-[#22c55e]">${net.toLocaleString()}</div>
+                        </div>
+                    );
+                })}
+            </div>
+
+            <p className="mt-4 text-[13px] text-[#9ca3af] leading-relaxed">
+                You own all infra. We operate it. If you fire us, everything keeps running.
+            </p>
+        </div>
     );
 }
 
@@ -98,6 +166,20 @@ function BracketCard({ bracket, isActive }: { bracket: Bracket; isActive: boolea
                     ${bracket.monthlyUsd.toLocaleString()}
                 </span>
                 <span className="text-base font-bold text-[#9CA3AF] ml-1">/mo</span>
+                <div className="mt-2 text-[12px] text-[#9CA3AF] font-medium">
+                    + ${bracket.buildFeeUsd.toLocaleString()} one-time build fee
+                </div>
+            </div>
+
+            <div className="mb-4 flex gap-4">
+                <div className="flex flex-col">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#9CA3AF]">Leads/mo</span>
+                    <span className="text-sm font-bold text-[#0A0A0A]">{bracket.leadsPerMo}</span>
+                </div>
+                <div className="flex flex-col">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#9CA3AF]">Target placements</span>
+                    <span className="text-sm font-bold text-[#0A0A0A]">{bracket.targetPlacements}/mo</span>
+                </div>
             </div>
 
             <ul className="space-y-2.5 mb-6 flex-grow">

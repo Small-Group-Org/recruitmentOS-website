@@ -7,4 +7,4 @@ export function buildCanonical(path: string): string {
     return `${SITE_URL}${clean}`;
 }
 
-export const DEFAULT_OG_DESCRIPTION = 'Done-for-you BD for established recruitment agencies billing $500K–$5M annually.';
+export const DEFAULT_OG_DESCRIPTION = 'Done-for-you BD for established recruitment agencies.';

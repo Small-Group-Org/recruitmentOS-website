@@ -9,7 +9,7 @@ export const organizationSchema = {
     name: SITE_NAME,
     url: SITE_URL,
     logo: `${SITE_URL}/og-image.png`,
-    description: 'Done-for-you BD function for established recruitment agencies billing $500K–$5M annually.',
+    description: 'Done-for-you BD function for established recruitment agencies.',
     founder: {
         '@type': 'Person',
         name: 'Tushar Mangla',

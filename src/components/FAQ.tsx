@@ -61,6 +61,14 @@ const faqs = [
         question: 'What data do we get with each lead?',
         answer: 'Hiring manager name, direct email, job title, LinkedIn URL, company name, company size, signal that triggered the lead (departure, funding, hiring trigger), and recency of the signal. Everything you need to send a relevant first touch.',
     },
+    {
+        question: 'What agencies do you work with?',
+        answer: "Established recruitment agencies where the owner is the current BD bottleneck. Specifically: you have a delivery team that can handle more clients, you've placed at least a handful of clients in the last 12 months, you have a defined niche (not \"all industries\"), and you've already tried at least one BD method that didn't scale. We don't require a specific revenue band — we require that your delivery is ready for more volume before we start generating it.",
+    },
+    {
+        question: 'How do we know the ROI makes sense?',
+        answer: "We run the math live on the fit call. You give us your average placement fee, your close rate, and your current lead-to-meeting ratio. We map those against the volume the engine produces and the retainer cost. If the numbers don't work at your fee level, we'll tell you on the call — we'd rather lose the sale than set up a system that can't pay for itself.",
+    },
 ];
 
 // Adapter for JSON-LD schema (uses {q, a} shape)

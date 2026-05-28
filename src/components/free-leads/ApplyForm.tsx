@@ -4,13 +4,13 @@ import { useState, FormEvent } from 'react';
 
 const ACCESS_KEY = '0e7ac89b-a20a-4df5-a7b9-b5fc081df584';
 
-type RevenueBand = '$500K–$1M' | '$1M–$2M' | '$2M–$5M' | '$5M+' | 'Under $500K (we likely cannot help yet)';
+type RevenueBand = 'Under $500K' | '$500K–$1M' | '$1M–$2M' | '$2M–$5M' | '$5M+';
 const REVENUE_BANDS: RevenueBand[] = [
+    'Under $500K',
     '$500K–$1M',
     '$1M–$2M',
     '$2M–$5M',
     '$5M+',
-    'Under $500K (we likely cannot help yet)',
 ];
 
 type FormState = {

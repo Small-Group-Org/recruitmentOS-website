@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'RecruitmentOS - The Automated Lead Engine for Recruiting Agencies';
+export const alt = 'RecruitmentOS — Done-For-You BD for Recruitment Agencies';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -73,7 +73,7 @@ export default async function Image() {
             marginBottom: 8,
           }}
         >
-          The Automated Lead Engine
+          We replace your BD function.
         </div>
         <div
           style={{
@@ -84,7 +84,7 @@ export default async function Image() {
             marginBottom: 50,
           }}
         >
-          for Recruiting Agencies
+          You stop being the bottleneck.
         </div>
 
         {/* Stats */}
