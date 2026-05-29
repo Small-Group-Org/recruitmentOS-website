@@ -4,8 +4,7 @@ import React from 'react';
 
 const features = [
     {
-        title: 'Detect Hiring Signals Early',
-        description: 'We surface hiring intent 4–8 weeks before the job post goes live',
+        title: 'Detect Hiring Signals',
         icon: (
             <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -13,8 +12,7 @@ const features = [
         ),
     },
     {
-        title: 'Find & Enrich Decision-Makers',
-        description: 'Direct email + LinkedIn of the hiring manager, not the HR inbox',
+        title: 'Enrich Decision-Makers',
         icon: (
             <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
@@ -22,8 +20,7 @@ const features = [
         ),
     },
     {
-        title: 'Run Multi-Channel BD Outreach',
-        description: 'Email + LinkedIn sequences operated daily on your stack',
+        title: 'Multi-Channel Outreach',
         icon: (
             <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -31,8 +28,7 @@ const features = [
         ),
     },
     {
-        title: 'Filter Replies, Hand Off Hot Leads',
-        description: 'You only see positive-intent replies — nothing else lands in your inbox',
+        title: 'Filter & Hand Off Leads',
         icon: (
             <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -99,12 +95,11 @@ export default function FeaturesDiagram() {
                         {/* 4 Cards in 2x2 Grid using absolute positions to match SVG paths */}
                         <div className="absolute top-[200px] left-0 w-full grid grid-cols-2 gap-x-4 gap-y-16 px-2">
                              {features.map((feature, i) => (
-                                <div key={feature.title} className="bg-white border border-[#E5E5E5] rounded-2xl p-4 shadow-[0_4px_16px_rgba(0,0,0,0.04)] z-20">
-                                    <div className="w-10 h-10 rounded-xl bg-[#FFF4EB] flex items-center justify-center text-[#FF6A00] mb-3">
+                                <div key={feature.title} className="bg-white border border-[#E5E5E5] rounded-2xl p-4 shadow-[0_4px_16px_rgba(0,0,0,0.04)] z-20 flex items-center gap-3">
+                                    <div className="w-9 h-9 rounded-xl bg-[#FFF4EB] flex items-center justify-center text-[#FF6A00] shrink-0">
                                         {feature.icon}
                                     </div>
-                                    <h4 className="text-sm font-bold text-[#0A0A0A] leading-snug mb-1">{feature.title}</h4>
-                                    <p className="text-[10px] text-[#9CA3AF] font-medium leading-tight">{feature.description}</p>
+                                    <h4 className="text-[13px] font-bold text-[#0A0A0A] leading-snug">{feature.title}</h4>
                                 </div>
                              ))}
                         </div>
@@ -144,12 +139,11 @@ export default function FeaturesDiagram() {
                             const positionClasses = ['top-0 left-0', 'top-0 right-0', 'bottom-0 left-0', 'bottom-0 right-0'];
                             return (
                                 <div key={feature.title} className={`absolute ${positionClasses[i]} z-20 w-[180px] lg:w-[220px] group`}>
-                                    <div className="bg-white border border-[#E5E5E5] rounded-[2rem] p-6 shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:shadow-xl transition-all duration-300">
-                                        <div className="w-12 h-12 rounded-2xl bg-[#FFF4EB] flex items-center justify-center text-[#FF6A00] mb-4 group-hover:scale-110 transition-transform">
+                                    <div className="bg-white border border-[#E5E5E5] rounded-[1.5rem] p-5 shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:shadow-xl transition-all duration-300 flex items-center gap-3">
+                                        <div className="w-11 h-11 rounded-2xl bg-[#FFF4EB] flex items-center justify-center text-[#FF6A00] shrink-0 group-hover:scale-110 transition-transform">
                                             {feature.icon}
                                         </div>
-                                        <h4 className="text-lg font-bold text-[#0A0A0A] leading-tight mb-2">{feature.title}</h4>
-                                        <p className="text-sm text-[#9CA3AF] font-medium leading-relaxed">{feature.description}</p>
+                                        <h4 className="text-base font-bold text-[#0A0A0A] leading-tight">{feature.title}</h4>
                                     </div>
                                 </div>
                             );

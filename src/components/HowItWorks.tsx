@@ -95,70 +95,66 @@ export default function HowItWorks() {
                     </p>
                 </div>
 
-                {/* Steps */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    {steps.map((step, idx) => (
-                        <div
-                            key={step.number}
-                            className="group relative bg-white border border-[#E5E5E5] rounded-2xl p-7 sm:p-8 cursor-default transition-all duration-300 hover:border-[#FF6A00]/40 hover:shadow-[0_8px_32px_rgba(255,106,0,0.07)]"
-                            style={{
-                                opacity: visible ? 1 : 0,
-                                transform: visible ? 'translateY(0)' : 'translateY(24px)',
-                                transition: `opacity 0.55s ease ${idx * 0.1}s, transform 0.55s ease ${idx * 0.1}s, border-color 0.2s, box-shadow 0.2s`,
-                            }}
-                            onMouseEnter={() => setActiveStep(idx)}
-                            onMouseLeave={() => setActiveStep(null)}
-                        >
-                            {/* Step number */}
-                            <span
-                                className="block text-[72px] font-extrabold leading-none select-none mb-4 transition-colors duration-300"
-                                style={{
-                                    fontFamily: 'var(--font-mono)',
-                                    color: activeStep === idx ? '#FF6A00' : '#F0EDE7',
-                                    letterSpacing: '-0.04em',
-                                }}
+                {/* Steps — single frame, four compact columns */}
+                <div
+                    className="rounded-2xl border border-[#E5E5E5] bg-white overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.04)]"
+                    style={{
+                        opacity: visible ? 1 : 0,
+                        transform: visible ? 'translateY(0)' : 'translateY(24px)',
+                        transition: 'opacity 0.55s ease, transform 0.55s ease',
+                    }}
+                >
+                    <div className="grid grid-cols-1 md:grid-cols-4">
+                        {steps.map((step, idx) => (
+                            <div
+                                key={step.number}
+                                className={`group relative p-6 md:p-7 cursor-default transition-colors duration-300 hover:bg-[#FFFAF5] border-[#E5E5E5] ${idx < steps.length - 1 ? 'border-b md:border-b-0 md:border-r' : ''}`}
+                                onMouseEnter={() => setActiveStep(idx)}
+                                onMouseLeave={() => setActiveStep(null)}
                             >
-                                {step.number}
-                            </span>
-
-                            {/* Pill + Icon */}
-                            <div className="flex items-center gap-2 mb-4">
-                                <div className="w-9 h-9 rounded-xl bg-[#FFF4EB] flex items-center justify-center text-[#FF6A00] shrink-0 group-hover:scale-110 transition-transform duration-200">
-                                    {step.icon}
+                                {/* Step number + icon */}
+                                <div className="flex items-center justify-between mb-4">
+                                    <span
+                                        className="text-[40px] font-extrabold leading-none select-none transition-colors duration-300"
+                                        style={{
+                                            fontFamily: 'var(--font-mono)',
+                                            color: activeStep === idx ? '#FF6A00' : '#E8E4DC',
+                                            letterSpacing: '-0.04em',
+                                        }}
+                                    >
+                                        {step.number}
+                                    </span>
+                                    <div className="w-9 h-9 rounded-xl bg-[#FFF4EB] flex items-center justify-center text-[#FF6A00] shrink-0 group-hover:scale-110 transition-transform duration-200">
+                                        {step.icon}
+                                    </div>
                                 </div>
+
+                                {/* Pill */}
                                 <span
-                                    className="text-[10px] font-bold uppercase tracking-widest text-[#FF6A00] bg-[#FFF4EB] px-2.5 py-1 rounded-full"
+                                    className="inline-block text-[9px] font-bold uppercase tracking-widest text-[#FF6A00] bg-[#FFF4EB] px-2 py-1 rounded-full mb-3"
                                     style={{ fontFamily: 'var(--font-mono)' }}
                                 >
                                     {step.pill}
                                 </span>
+
+                                {/* Title */}
+                                <h3
+                                    className="text-[#0A0A0A] text-base md:text-lg font-bold leading-snug mb-2"
+                                    style={{ fontFamily: 'var(--font-outfit)' }}
+                                >
+                                    {step.title}
+                                </h3>
+
+                                {/* Body */}
+                                <p
+                                    className="text-[#6B7280] leading-relaxed text-[13px]"
+                                    style={{ fontFamily: 'var(--font-outfit)' }}
+                                >
+                                    {step.body}
+                                </p>
                             </div>
-
-                            {/* Title */}
-                            <h3
-                                className="text-[#0A0A0A] text-xl sm:text-2xl font-bold leading-snug mb-3"
-                                style={{ fontFamily: 'var(--font-outfit)' }}
-                            >
-                                {step.title}
-                            </h3>
-
-                            {/* Body */}
-                            <p
-                                className="text-[#6B7280] leading-relaxed text-sm sm:text-base"
-                                style={{ fontFamily: 'var(--font-outfit)' }}
-                            >
-                                {step.body}
-                            </p>
-
-                            {/* Bottom connector line (not on last row) */}
-                            {idx < steps.length - 2 && (
-                                <div
-                                    className="hidden md:block absolute bottom-[-11px] left-1/2 -translate-x-1/2 w-px h-[22px] bg-[#E5E5E5]"
-                                    aria-hidden
-                                />
-                            )}
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
 
                 {/* Bottom CTA strip */}

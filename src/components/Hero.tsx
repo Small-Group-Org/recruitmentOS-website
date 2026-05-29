@@ -68,10 +68,10 @@ export default function Hero() {
                     </p>
 
                     <p className="text-sm sm:text-base font-semibold text-[#FF6A00] mb-12 max-w-2xl mx-auto leading-relaxed">
-                        100 verified hiring-manager contacts + 10 positive replies in 60 days — or we keep working, free.
+                        20k+ verified hiring-manager contacts + 10 positive replies in 60 days — or we keep working, free.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link
                             href="/fit-call"
                             onClick={() => trackCTAClick('Book a strategy call', 'Hero')}
@@ -91,22 +91,6 @@ export default function Hero() {
                                 <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg>
                         </Link>
-                    </div>
-
-                    {/* Trust bar */}
-                    <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[0.78rem] font-medium text-[#6b7280]">
-                        {[
-                            'Live in <7 days',
-                            '60-day guarantee',
-                            '30-day notice to cancel',
-                        ].map((item) => (
-                            <span key={item} className="flex items-center gap-1.5">
-                                <svg className="w-3.5 h-3.5 text-[#22c55e] shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fillRule="evenodd" d="M16.704 5.296a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 1.414-1.414L8 12.586l7.296-7.29a1 1 0 0 1 1.408-.006z" clipRule="evenodd" />
-                                </svg>
-                                {item}
-                            </span>
-                        ))}
                     </div>
                 </div>
             </div>

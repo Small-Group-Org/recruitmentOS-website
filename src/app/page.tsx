@@ -8,7 +8,6 @@ import ToolTicker from '@/components/ToolTicker';
 import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
 import ProductDemo from '@/components/ProductDemo';
-import ContactForm from '@/components/ContactForm';
 import FAQ from '@/components/FAQ';
 import { buildCanonical } from '@/lib/seo';
 
@@ -38,11 +37,6 @@ export default function Home() {
             <ToolTicker />
             <FinalCTA />
             <FAQ />
-            <section className="py-16 sm:py-24 md:py-32 bg-white border-t border-[#e5e5e5]" id="contact-form">
-                <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
-                    <ContactForm variant="embed" />
-                </div>
-            </section>
             <Footer />
         </main>
     );

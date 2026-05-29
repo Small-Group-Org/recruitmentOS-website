@@ -5,7 +5,7 @@ import { services } from '@/lib/services-data';
 
 export default function Features() {
     return (
-        <section className="py-24 bg-white" id="services">
+        <section className="py-20 bg-white" id="services">
             <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
 
                 <div className="mb-12 sm:mb-16 max-w-2xl">
@@ -48,24 +48,15 @@ export default function Features() {
                     <p className="text-base sm:text-lg text-[#374151] font-medium max-w-xl">
                         Want the full breakdown of every service — deep-dive, outcome, what we deliver?
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-3">
-                        <Link
-                            href="/services"
-                            className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 rounded-full font-medium hover:bg-[#222222] transition-colors text-base group"
-                        >
-                            See all five services
-                            <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </Link>
-                        <Link
-                            href="https://cal.com/tusharm/30min?user=tusharm"
-                            target="_blank"
-                            className="inline-flex items-center justify-center bg-white text-[#0A0A0A] border border-[#E5E5E5] px-6 py-3 rounded-full font-medium hover:bg-[#F9FAFB] transition-colors text-base"
-                        >
-                            Book a fit call
-                        </Link>
-                    </div>
+                    <Link
+                        href="/services"
+                        className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 rounded-full font-medium hover:bg-[#222222] transition-colors text-base group shrink-0"
+                    >
+                        See all five services
+                        <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </Link>
                 </div>
             </div>
         </section>

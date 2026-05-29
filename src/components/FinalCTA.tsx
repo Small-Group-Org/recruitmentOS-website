@@ -1,26 +1,8 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function FinalCTA() {
-    const calRef = useRef<HTMLDivElement>(null);
-    const [calVisible, setCalVisible] = useState(false);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setCalVisible(true);
-                    observer.disconnect();
-                }
-            },
-            { rootMargin: '300px' }
-        );
-        if (calRef.current) observer.observe(calRef.current);
-        return () => observer.disconnect();
-    }, []);
-
     return (
         <section className="py-16 sm:py-28 md:py-40 bg-[#FAFAFA] border-t border-[#e5e5e5]" id="contact">
             <div className="max-w-[900px] mx-auto px-4 sm:px-6 text-center">
@@ -49,27 +31,9 @@ export default function FinalCTA() {
                     </Link>
                 </div>
 
-                <p className="text-sm text-[#9ca3af] mb-12">
+                <p className="text-sm text-[#9ca3af]">
                     Live in &lt;7 days &middot; 60-day guarantee &middot; 30-day notice to cancel
                 </p>
-
-                {/* Cal.com Embed — lazy loaded */}
-                <div ref={calRef} className="w-full max-w-[1000px] mx-auto rounded-2xl overflow-hidden border border-[#e5e5e5] h-[700px] bg-white shadow-sm ring-1 ring-black/5">
-                    {calVisible ? (
-                        <iframe
-                            src="https://cal.com/tusharm/30min?overlayCalendar=true"
-                            width="100%"
-                            height="100%"
-                            frameBorder="0"
-                            title="Schedule a Demo"
-                            className="w-full h-full"
-                        />
-                    ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-[#FAFAFA]">
-                            <p className="text-[#9CA3AF] text-sm font-medium">Loading calendar…</p>
-                        </div>
-                    )}
-                </div>
             </div>
         </section>
     );
