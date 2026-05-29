@@ -1,4 +1,5 @@
 import Hero from '@/components/Hero';
+import HowItWorks from '@/components/HowItWorks';
 import TrustBar from '@/components/TrustBar';
 import FeaturesDiagram from '@/components/FeaturesDiagram';
 import BeforeAfter from '@/components/BeforeAfter';
@@ -30,6 +31,7 @@ export default function Home() {
             <Hero />
             <ProductDemo />
             <TrustBar />
+            <HowItWorks />
             <FeaturesDiagram />
             <BeforeAfter />
             <Features />

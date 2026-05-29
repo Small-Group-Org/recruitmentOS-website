@@ -5,8 +5,8 @@ import { JsonLd } from '@/components/JsonLd';
 import { serviceWithOffersSchema } from '@/lib/schemas';
 
 export const metadata = {
-  title: 'Pricing — RecruitmentOS Setup + Run',
-  description: 'Bundled packages priced by an on-page calculator. Starter $1,300 · Growth $2,750 · Pro $6,500/mo. 60-day guarantee.',
+  title: 'Pricing — RecruitmentOS Lead Packages',
+  description: 'Verified leads by volume. Starter from $49 · Growth from $149 · Scale from $299 · Enterprise custom. Email + LinkedIn data, managed outreach, monthly or annual.',
   alternates: { canonical: buildCanonical('/pricing') },
 };
 
