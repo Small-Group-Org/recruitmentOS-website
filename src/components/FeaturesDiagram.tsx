@@ -29,7 +29,7 @@ const features = [
         label: 'Enrich Decision-Makers',
         pill: 'Decision-Maker Enrichment',
         title: 'Find the Right Decision-Maker — Not HR',
-        body: 'We enrich each company with the direct contact of the actual hiring manager — the person who controls the budget and the brief. Email, LinkedIn, verified. You never land in the wrong inbox.',
+        body: 'We run waterfall enrichment across 20+ data sources to surface the direct contact of the actual hiring manager — the person who controls the budget and the brief. Every contact comes email- and phone-verified. You never land in the wrong inbox.',
         icon: (
             <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />

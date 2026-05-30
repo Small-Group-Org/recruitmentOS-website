@@ -29,7 +29,7 @@ const steps = [
     {
         number: '03',
         title: 'Find the Right Decision-Maker — Not HR',
-        body: "We enrich each company with the direct contact of the actual hiring manager — the person who controls the budget and the brief. Email, LinkedIn, verified. You never land in the wrong inbox.",
+        body: "We run waterfall enrichment across 20+ data sources to surface the direct contact of the actual hiring manager — the person who controls the budget and the brief. Every contact comes email- and phone-verified. You never land in the wrong inbox.",
         pill: 'Decision-Maker Enrichment',
         icon: (
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
