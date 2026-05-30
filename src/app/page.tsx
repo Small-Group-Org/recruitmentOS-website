@@ -30,7 +30,10 @@ export default function Home() {
             <Hero />
             <ProductDemo />
             <TrustBar />
-            <HowItWorks />
+            {/* HowItWorks shown on mobile only — on desktop the robot diagram reveals the same detail on hover */}
+            <div className="md:hidden">
+                <HowItWorks />
+            </div>
             <FeaturesDiagram />
             <BeforeAfter />
             <Features />
