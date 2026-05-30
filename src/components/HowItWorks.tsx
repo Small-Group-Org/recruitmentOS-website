@@ -1,6 +1,5 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
 
 const steps = [
     {
@@ -51,101 +50,62 @@ const steps = [
 ];
 
 export default function HowItWorks() {
-    const [activeStep, setActiveStep] = useState<number | null>(null);
-    const [visible, setVisible] = useState(false);
-    const sectionRef = useRef<HTMLElement>(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setVisible(true);
-                    observer.disconnect();
-                }
-            },
-            { threshold: 0.08 }
-        );
-        if (sectionRef.current) observer.observe(sectionRef.current);
-        return () => observer.disconnect();
-    }, []);
-
     return (
         <section
-            ref={sectionRef}
-            className="py-20 sm:py-28 md:py-36 bg-[#FAFAFA] border-t border-[#E5E5E5]"
+            className="py-16 bg-[#FAFAFA] border-t border-[#E5E5E5]"
             id="how-it-works"
         >
-            <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
+            <div className="max-w-[640px] mx-auto px-5">
 
                 {/* Header */}
-                <div className="mb-14 md:mb-20">
-                    <p className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-3"
+                <div className="mb-8">
+                    <p className="text-[11px] font-bold text-[#FF6A00] uppercase tracking-widest mb-3"
                         style={{ fontFamily: 'var(--font-mono)' }}>
                         How It Works
                     </p>
                     <h2
-                        className="text-[#0A0A0A] max-w-2xl tracking-tight leading-tight mb-4"
+                        className="text-[#0A0A0A] text-[1.75rem] font-bold tracking-tight leading-[1.15] mb-3"
                         style={{ fontFamily: 'var(--font-serif)' }}
                     >
                         Four steps from signal&nbsp;to&nbsp;signed client.
                     </h2>
-                    <p className="section-sub max-w-xl">
+                    <p className="text-[#6B7280] text-[15px] leading-relaxed">
                         RecruitmentOS runs the entire BD pipeline for you — niche-matched,
                         data-verified, and delivered to your inbox as warm opportunities.
                     </p>
                 </div>
 
-                {/* Steps — single frame, four compact columns */}
-                <div
-                    className="rounded-2xl border border-[#E5E5E5] bg-white overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.04)]"
-                    style={{
-                        opacity: visible ? 1 : 0,
-                        transform: visible ? 'translateY(0)' : 'translateY(24px)',
-                        transition: 'opacity 0.55s ease, transform 0.55s ease',
-                    }}
-                >
-                    <div className="grid grid-cols-1 md:grid-cols-4">
-                        {steps.map((step, idx) => (
-                            <div
-                                key={step.number}
-                                className={`group relative p-6 md:p-7 cursor-default transition-colors duration-300 hover:bg-[#FFFAF5] border-[#E5E5E5] ${idx < steps.length - 1 ? 'border-b md:border-b-0 md:border-r' : ''}`}
-                                onMouseEnter={() => setActiveStep(idx)}
-                                onMouseLeave={() => setActiveStep(null)}
-                            >
-                                {/* Step number + icon */}
-                                <div className="flex items-center justify-between mb-4">
+                {/* Steps — compact vertical list */}
+                <ol className="rounded-2xl border border-[#E5E5E5] bg-white overflow-hidden">
+                    {steps.map((step) => (
+                        <li
+                            key={step.number}
+                            className="flex gap-4 p-5 border-b border-[#E5E5E5] last:border-0"
+                        >
+                            <div className="w-10 h-10 rounded-xl bg-[#FFF4EB] flex items-center justify-center text-[#FF6A00] shrink-0">
+                                {step.icon}
+                            </div>
+                            <div className="min-w-0">
+                                <div className="flex items-center gap-2 mb-1.5">
                                     <span
-                                        className="text-[40px] font-extrabold leading-none select-none transition-colors duration-300"
-                                        style={{
-                                            fontFamily: 'var(--font-mono)',
-                                            color: activeStep === idx ? '#FF6A00' : '#E8E4DC',
-                                            letterSpacing: '-0.04em',
-                                        }}
+                                        className="text-[11px] font-bold text-[#D1D5DB]"
+                                        style={{ fontFamily: 'var(--font-mono)' }}
                                     >
                                         {step.number}
                                     </span>
-                                    <div className="w-9 h-9 rounded-xl bg-[#FFF4EB] flex items-center justify-center text-[#FF6A00] shrink-0 group-hover:scale-110 transition-transform duration-200">
-                                        {step.icon}
-                                    </div>
+                                    <span
+                                        className="text-[9px] font-bold uppercase tracking-widest text-[#FF6A00]"
+                                        style={{ fontFamily: 'var(--font-mono)' }}
+                                    >
+                                        {step.pill}
+                                    </span>
                                 </div>
-
-                                {/* Pill */}
-                                <span
-                                    className="inline-block text-[9px] font-bold uppercase tracking-widest text-[#FF6A00] bg-[#FFF4EB] px-2 py-1 rounded-full mb-3"
-                                    style={{ fontFamily: 'var(--font-mono)' }}
-                                >
-                                    {step.pill}
-                                </span>
-
-                                {/* Title */}
                                 <h3
-                                    className="text-[#0A0A0A] text-base md:text-lg font-bold leading-snug mb-2"
+                                    className="text-[#0A0A0A] text-[15px] font-bold leading-snug mb-1"
                                     style={{ fontFamily: 'var(--font-outfit)' }}
                                 >
                                     {step.title}
                                 </h3>
-
-                                {/* Body */}
                                 <p
                                     className="text-[#6B7280] leading-relaxed text-[13px]"
                                     style={{ fontFamily: 'var(--font-outfit)' }}
@@ -153,23 +113,17 @@ export default function HowItWorks() {
                                     {step.body}
                                 </p>
                             </div>
-                        ))}
-                    </div>
-                </div>
+                        </li>
+                    ))}
+                </ol>
 
-                {/* Bottom CTA strip */}
-                <div className="mt-12 sm:mt-16 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 border-t border-[#E5E5E5] pt-10">
-                    <p
-                        className="text-base sm:text-lg font-medium text-[#374151] max-w-md"
-                        style={{ fontFamily: 'var(--font-outfit)' }}
-                    >
-                        Want to see this running on your stack before you commit?
-                    </p>
+                {/* Bottom CTA */}
+                <div className="mt-8 text-center">
                     <a
                         href="https://cal.com/tusharm/30min?user=tusharm"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-[#222] transition-colors group"
+                        className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-[#222] transition-colors group w-full sm:w-auto"
                         style={{ fontFamily: 'var(--font-outfit)' }}
                         id="how-it-works-cta"
                     >
