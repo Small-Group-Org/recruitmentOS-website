@@ -5,58 +5,81 @@ import { services } from '@/lib/services-data';
 
 export default function Features() {
     return (
-        <section className="py-20 bg-white" id="services">
+        <section className="py-20 md:py-28 bg-white border-t border-[#E5E5E5]" id="services">
             <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
+                <div className="grid lg:grid-cols-[0.85fr_1.4fr] gap-12 lg:gap-20">
 
-                <div className="mb-12 sm:mb-16 max-w-2xl">
-                    <p className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-3">What we do</p>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0A0A0A] tracking-tight leading-tight mb-4">
-                        Five services. One outcome — your BD function, replaced.
-                    </h2>
-                    <p className="section-sub max-w-xl">
-                        Each service maps to a specific bottleneck. Bundle them or scope individually.
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
-                    {services.map((service) => (
-                        <Link
-                            key={service.slug}
-                            href={`/services#service-${service.slug}`}
-                            className="group flex flex-col bg-white border border-[#E5E5E5] rounded-2xl p-6 hover:border-[#FF6A00]/40 hover:shadow-sm transition-all"
+                    {/* Left — intro (sticky on desktop) */}
+                    <div className="lg:sticky lg:top-28 self-start">
+                        <p
+                            className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-4"
+                            style={{ fontFamily: 'var(--font-mono)' }}
                         >
-                            <div className="flex items-center gap-2 mb-4">
-                                <span className="text-[10px] font-mono font-bold text-[#9CA3AF]">{service.number}</span>
-                                <span className={`inline-block text-[10px] font-bold uppercase tracking-[0.1em] px-2.5 py-1 rounded-sm ${service.tagColor}`}>
-                                    {service.name}
-                                </span>
-                            </div>
-                            <h3 className="text-lg sm:text-xl font-bold text-[#0A0A0A] leading-snug mb-3 group-hover:text-[#FF6A00] transition-colors">
-                                {service.oneLine}
-                            </h3>
-                            <span className="mt-auto inline-flex items-center text-sm font-bold text-[#0A0A0A]">
-                                Details
-                                <svg className="ml-1.5 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </span>
+                            What we do
+                        </p>
+                        <h2 className="text-3xl sm:text-4xl font-bold text-[#0A0A0A] tracking-tight leading-[1.15] mb-5">
+                            Five services. One outcome — your BD function, replaced.
+                        </h2>
+                        <p className="text-[#6B7280] text-base leading-relaxed mb-8 max-w-sm">
+                            Each service maps to a specific bottleneck. Bundle them or scope individually.
+                        </p>
+                        <Link
+                            href="/services"
+                            className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 rounded-full font-medium hover:bg-[#222222] transition-colors text-sm group"
+                        >
+                            See all five services
+                            <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
                         </Link>
-                    ))}
-                </div>
+                    </div>
 
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-[#E5E5E5] pt-8">
-                    <p className="text-base sm:text-lg text-[#374151] font-medium max-w-xl">
-                        Want the full breakdown of every service — deep-dive, outcome, what we deliver?
-                    </p>
-                    <Link
-                        href="/services"
-                        className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 rounded-full font-medium hover:bg-[#222222] transition-colors text-base group shrink-0"
-                    >
-                        See all five services
-                        <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </Link>
+                    {/* Right — service list */}
+                    <div className="border-t border-[#E5E5E5]">
+                        {services.map((service) => (
+                            <Link
+                                key={service.slug}
+                                href={`/services#service-${service.slug}`}
+                                className="group grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_auto] items-start md:items-center gap-x-5 md:gap-x-8 py-6 border-b border-[#E5E5E5] transition-colors"
+                            >
+                                {/* Number */}
+                                <span
+                                    className="text-sm font-bold text-[#D1D5DB] group-hover:text-[#FF6A00] transition-colors pt-0.5 md:pt-0"
+                                    style={{ fontFamily: 'var(--font-mono)' }}
+                                >
+                                    {service.number}
+                                </span>
+
+                                {/* Name + one-liner */}
+                                <div className="min-w-0">
+                                    <h3 className="text-base md:text-lg font-bold text-[#0A0A0A] leading-snug group-hover:text-[#FF6A00] transition-colors">
+                                        {service.name}
+                                    </h3>
+                                    <p className="text-sm text-[#6B7280] leading-snug mt-1">
+                                        {service.oneLine}
+                                    </p>
+                                    {/* Outcome — inline on mobile */}
+                                    <div className="md:hidden mt-3 inline-flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] shrink-0" />
+                                        <span className="text-[12px] font-semibold text-[#0A0A0A]">{service.outcome}</span>
+                                    </div>
+                                </div>
+
+                                {/* Outcome + arrow — desktop */}
+                                <div className="hidden md:flex items-center gap-6 justify-self-end">
+                                    <div className="flex items-center gap-2 max-w-[200px]">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] shrink-0" />
+                                        <span className="text-[13px] font-semibold text-[#0A0A0A] leading-snug text-right">
+                                            {service.outcome}
+                                        </span>
+                                    </div>
+                                    <svg className="w-4 h-4 text-[#D1D5DB] group-hover:text-[#FF6A00] group-hover:translate-x-1 transition-all shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
