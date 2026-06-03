@@ -1,5 +1,4 @@
 import Hero from '@/components/Hero';
-import HowItWorks from '@/components/HowItWorks';
 import TrustBar from '@/components/TrustBar';
 import FeaturesDiagram from '@/components/FeaturesDiagram';
 import BeforeAfter from '@/components/BeforeAfter';
@@ -32,10 +31,6 @@ export default function Home() {
             <ProductDemo />
             <TrustBar />
             <CaseStudiesPreview />
-            {/* HowItWorks shown on mobile only — desktop sees the full step detail in FeaturesDiagram */}
-            <div className="md:hidden">
-                <HowItWorks />
-            </div>
             <FeaturesDiagram />
             <BeforeAfter />
             <Features />
