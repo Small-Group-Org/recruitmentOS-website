@@ -4,10 +4,10 @@ import React from 'react';
 
 const features = [
     {
-        label: 'Detect Hiring Signals',
-        pill: 'Signal Detection',
-        title: 'Find Jobs That Match Your Niche',
-        body: 'We scan live job boards, LinkedIn, and hiring signals across your target sectors and locations — surfacing only roles that fit your placement niche. No guesswork. No wasted effort.',
+        step: '01',
+        pill: 'Signal-Triggered Sourcing',
+        title: 'We spot hiring before your competitors do',
+        body: 'We monitor live job boards, LinkedIn, and hiring signals across your target sectors — surfacing roles in your niche the moment demand appears, often before the job post goes live.',
         icon: (
             <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -15,10 +15,10 @@ const features = [
         ),
     },
     {
-        label: 'Target Companies',
-        pill: 'Company Targeting',
-        title: 'Identify the Companies Behind the Roles',
-        body: "Once we know what's moving in your market, we map every company actively hiring in those roles — including stealth hiring signals before the job post even goes live.",
+        step: '02',
+        pill: 'Identify Hiring Companies',
+        title: 'Pinpoint the companies actually hiring',
+        body: "We map every company actively hiring for those roles — including stealth hiring signals — so your outreach only ever targets companies with a live, current need.",
         icon: (
             <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-4 8v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -26,10 +26,10 @@ const features = [
         ),
     },
     {
-        label: 'Enrich Decision-Makers',
-        pill: 'Decision-Maker Enrichment',
-        title: 'Find the Right Decision-Maker — Not HR',
-        body: 'We run waterfall enrichment across 20+ data sources to surface the direct contact of the actual hiring manager — the person who controls the budget and the brief. Every contact comes email- and phone-verified. You never land in the wrong inbox.',
+        step: '03',
+        pill: 'Find the Hiring Manager',
+        title: 'Reach the decision-maker, not HR',
+        body: 'Waterfall enrichment across 20+ sources surfaces the direct contact of the actual hiring manager — the person who owns the budget. Every contact is email- and phone-verified.',
         icon: (
             <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -37,10 +37,10 @@ const features = [
         ),
     },
     {
-        label: 'Outreach & Handoff',
-        pill: 'Outreach & Handoff',
-        title: 'Outreach, Replies & Warm Handoff',
-        body: 'We run personalised multi-channel sequences on your stack. Positive replies are filtered and handed off to you as warm leads — ready to close. You only see conversations worth having.',
+        step: '04',
+        pill: 'Outreach & Reply Filtering',
+        title: 'Outreach, replies & warm handoff',
+        body: 'We run personalised multi-channel sequences on your stack, then filter every reply. Only positive, on-brief replies reach you — ready to close. You step in when they say "yes."',
         icon: (
             <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -49,157 +49,140 @@ const features = [
     },
 ];
 
-// Reusable hover detail popover shown on each diagram card.
-function DetailPopover({
-    feature,
-    placement,
-    align = 'left',
-}: {
-    feature: (typeof features)[number];
-    placement: 'top' | 'bottom';
-    align?: 'left' | 'right';
-}) {
-    const vertical = placement === 'bottom' ? 'top-full mt-3' : 'bottom-full mb-3';
-    const horizontal = align === 'right' ? 'right-0' : 'left-0';
+// Detailed step card — full content always visible (no hover).
+function StepCard({ feature }: { feature: (typeof features)[number] }) {
     return (
-        <div
-            className={`absolute ${vertical} ${horizontal} w-[300px] max-w-[90vw] z-40 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 pointer-events-none`}
-        >
-            <div className="bg-white border border-[#E5E5E5] rounded-2xl p-5 shadow-[0_16px_48px_rgba(0,0,0,0.14)]">
-                <h4 className="text-[15px] font-bold text-[#0A0A0A] leading-snug mb-2">{feature.title}</h4>
-                <p className="text-[13px] text-[#6B7280] leading-relaxed">{feature.body}</p>
+        <div className="relative bg-white border border-[#E5E5E5] rounded-[1.5rem] p-5 shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:shadow-xl hover:border-[#FF6A00]/40 hover:-translate-y-0.5 transition-all duration-300">
+            <span
+                className="absolute top-4 right-5 text-xl font-bold text-[#EFEFEF] leading-none"
+                style={{ fontFamily: 'var(--font-mono)' }}
+            >
+                {feature.step}
+            </span>
+            <div className="flex items-center gap-3 mb-3">
+                <div className="w-11 h-11 rounded-2xl bg-[#FFF4EB] flex items-center justify-center text-[#FF6A00] shrink-0">
+                    {feature.icon}
+                </div>
+                <span
+                    className="text-[10px] font-bold uppercase tracking-widest text-[#FF6A00] leading-tight pr-6"
+                    style={{ fontFamily: 'var(--font-mono)' }}
+                >
+                    {feature.pill}
+                </span>
+            </div>
+            <h3 className="text-[14px] font-bold text-[#0A0A0A] leading-snug mb-1.5">{feature.title}</h3>
+            <p className="text-[12.5px] text-[#6B7280] leading-relaxed">{feature.body}</p>
+        </div>
+    );
+}
+
+// Center hub — robot with soft glow (no muddy blend mode).
+function Hub({ size = 'lg' }: { size?: 'lg' | 'sm' }) {
+    const robot = size === 'lg' ? 'w-32 h-32' : 'w-24 h-24';
+    const wrap = size === 'lg' ? 'w-44 h-44' : 'w-32 h-32';
+    return (
+        <div className="flex flex-col items-center justify-center">
+            <div className={`text-xl font-extrabold text-[#0A0A0A] tracking-tight leading-none mb-1`}>
+                Recruitment<span className="text-[#FF6A00]">OS</span>
+            </div>
+            <div className={`relative flex items-center justify-center ${wrap}`}>
+                <div
+                    aria-hidden
+                    className="absolute inset-0 rounded-full"
+                    style={{ background: 'radial-gradient(circle, rgba(255,106,0,0.18) 0%, rgba(255,106,0,0) 66%)' }}
+                />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                    src="/logos/robot.webp"
+                    alt="RecruitmentOS AI assistant"
+                    className={`relative ${robot} object-contain animate-float`}
+                    style={{ filter: 'drop-shadow(0 10px 16px rgba(10,10,10,0.16))' }}
+                />
             </div>
         </div>
     );
 }
 
+const connectorPaths = [
+    { d: 'M500 300 C 380 250, 260 185, 165 155', delay: '0s' },    // top-left
+    { d: 'M500 300 C 620 250, 740 185, 835 155', delay: '0.4s' },  // top-right
+    { d: 'M500 300 C 380 350, 260 415, 165 445', delay: '0.8s' },  // bottom-left
+    { d: 'M500 300 C 620 350, 740 415, 835 445', delay: '1.2s' },  // bottom-right
+];
+
 export default function FeaturesDiagram() {
-    // We'll use two sets of paths - one for mobile, one for desktop
-    const desktopPaths = [
-        { d: 'M 400 250 C 300 250, 200 180, 140 120', delay: '0s' },      // top-left
-        { d: 'M 400 250 C 500 250, 600 180, 660 120', delay: '0.4s' },    // top-right
-        { d: 'M 400 250 C 300 250, 200 320, 140 380', delay: '0.8s' },    // bottom-left
-        { d: 'M 400 250 C 500 250, 600 320, 660 380', delay: '1.2s' },    // bottom-right
-    ];
-
-    const mobilePaths = [
-        { d: 'M 200 80 C 180 150, 150 180, 100 220', delay: '0s' },     // card 1
-        { d: 'M 200 80 C 220 150, 250 180, 300 220', delay: '0.4s' },   // card 2
-        { d: 'M 200 80 C 180 250, 150 350, 100 420', delay: '0.8s' },   // card 3
-        { d: 'M 200 80 C 220 250, 250 350, 300 420', delay: '1.2s' },   // card 4
-    ];
-
     return (
         <section className="py-12 sm:py-20 md:py-28 bg-white" id="solution-overview">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
                 <div className="text-center mb-12 md:mb-16">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-[#FF6A00] mb-3">
+                        How the engine runs
+                    </p>
                     <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
                         The BD engine, running in the background.
                     </h2>
-                    <p className="hidden md:block text-sm text-[#9CA3AF] mt-3">
-                        Hover any step to see how it works.
+                    <p className="section-sub max-w-2xl mx-auto mt-3">
+                        Four steps that turn live hiring signals into warm replies — handled for you, on your stack.
                     </p>
                 </div>
 
-                {/* Unified Diagram Container */}
-                <div className="relative w-full overflow-visible">
-                    
-                    {/* Mobile Architecture (Vertical) */}
-                    <div className="md:hidden relative w-full h-[650px] mx-auto">
-                        <svg viewBox="0 0 400 600" fill="none" className="absolute inset-0 w-full h-full pointer-events-none z-10">
-                            <defs>
-                                <marker id="arrowhead-mob" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
-                                    <polygon points="0 0, 6 2, 0 4" fill="#FF6A00" />
-                                </marker>
-                            </defs>
-                            {mobilePaths.map((arrow, i) => (
-                                <g key={i}>
-                                    <path d={arrow.d} stroke="#E5E5E5" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead-mob)" />
-                                    <path d={arrow.d} stroke="#FF6A00" strokeWidth="2" fill="none" strokeDasharray="8 12" className="animate-flow" style={{ animationDelay: arrow.delay }} />
-                                    <circle r="3" fill="#FF6A00" className="animate-dot" style={{ animationDelay: arrow.delay }}>
-                                        <animateMotion dur="2.5s" repeatCount="indefinite" begin={arrow.delay} path={arrow.d} />
-                                    </circle>
-                                </g>
-                            ))}
-                        </svg>
+                {/* ── Desktop: animated hub-and-spoke ─────────────────────────── */}
+                <div className="hidden md:block relative max-w-[1100px] mx-auto">
+                    {/* Animated connector lines (decorative) */}
+                    <svg
+                        viewBox="0 0 1000 600"
+                        preserveAspectRatio="none"
+                        fill="none"
+                        className="absolute inset-0 w-full h-full pointer-events-none z-0"
+                    >
+                        {connectorPaths.map((arrow, i) => (
+                            <g key={i}>
+                                <path d={arrow.d} stroke="#EDEDED" strokeWidth="2" fill="none" />
+                                <path
+                                    d={arrow.d}
+                                    stroke="#FF6A00"
+                                    strokeWidth="2.5"
+                                    fill="none"
+                                    strokeDasharray="12 20"
+                                    className="animate-flow"
+                                    style={{ animationDelay: arrow.delay }}
+                                />
+                                <circle r="4" fill="#FF6A00">
+                                    <animateMotion dur="2.6s" repeatCount="indefinite" begin={arrow.delay} path={arrow.d} />
+                                </circle>
+                            </g>
+                        ))}
+                    </svg>
 
-                        {/* Top Robot */}
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center">
-                            <div className="text-sm font-extrabold text-[#0A0A0A] tracking-tight mb-0.5">
-                                Recruitment<span className="text-[#FF6A00]">OS</span>
-                            </div>
-                            <img src="/logos/robot.webp" alt="RecruitmentOS AI Bot" className="w-24 h-24 object-contain animate-float mix-blend-multiply" />
+                    {/* Grid: cards in the four corners, hub centered */}
+                    <div className="relative z-10 grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] grid-rows-2 items-center gap-x-10 lg:gap-x-16 gap-y-10">
+                        <div className="w-full max-w-[300px]">
+                            <StepCard feature={features[0]} />
                         </div>
-
-                        {/* 4 Cards in 2x2 Grid using absolute positions to match SVG paths */}
-                        <div className="absolute top-[200px] left-0 w-full grid grid-cols-2 gap-x-4 gap-y-16 px-2">
-                             {features.map((feature) => (
-                                <div key={feature.label} className="bg-white border border-[#E5E5E5] rounded-2xl p-4 shadow-[0_4px_16px_rgba(0,0,0,0.04)] z-20 flex items-center gap-3">
-                                    <div className="w-9 h-9 rounded-xl bg-[#FFF4EB] flex items-center justify-center text-[#FF6A00] shrink-0">
-                                        {feature.icon}
-                                    </div>
-                                    <span
-                                        className="text-[10px] font-bold uppercase tracking-widest text-[#FF6A00] leading-tight"
-                                        style={{ fontFamily: 'var(--font-mono)' }}
-                                    >
-                                        {feature.pill}
-                                    </span>
-                                </div>
-                             ))}
+                        <div className="col-start-2 row-span-2 px-2">
+                            <Hub size="lg" />
+                        </div>
+                        <div className="w-full max-w-[300px] justify-self-end">
+                            <StepCard feature={features[1]} />
+                        </div>
+                        <div className="w-full max-w-[300px]">
+                            <StepCard feature={features[2]} />
+                        </div>
+                        <div className="w-full max-w-[300px] justify-self-end">
+                            <StepCard feature={features[3]} />
                         </div>
                     </div>
+                </div>
 
-                    {/* Desktop Architecture (Horizontal Diagram) */}
-                    <div className="hidden md:block relative w-full max-w-[800px] mx-auto" style={{ aspectRatio: '800 / 500' }}>
-                        <svg viewBox="0 0 800 500" fill="none" className="absolute inset-0 w-full h-full z-10 pointer-events-none">
-                            <defs>
-                                <marker id="arrowhead-desk" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-                                    <polygon points="0 0, 8 3, 0 6" fill="#FF6A00" />
-                                </marker>
-                            </defs>
-                            {desktopPaths.map((arrow, i) => (
-                                <g key={i}>
-                                    <path d={arrow.d} stroke="#E5E5E5" strokeWidth="2" fill="none" markerEnd="url(#arrowhead-desk)" />
-                                    <path d={arrow.d} stroke="#FF6A00" strokeWidth="2.5" fill="none" strokeDasharray="12 20" className="animate-flow" style={{ animationDelay: arrow.delay }} />
-                                    <circle r="4" fill="#FF6A00">
-                                        <animateMotion dur="2.5s" repeatCount="indefinite" begin={arrow.delay} path={arrow.d} />
-                                    </circle>
-                                </g>
-                            ))}
-                        </svg>
-
-                        {/* Center Hub */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-                            <div className="flex flex-col items-center justify-center">
-                                <div className="text-xl font-extrabold text-[#0A0A0A] tracking-tight leading-none mb-1">
-                                    Recruitment<span className="text-[#FF6A00]">OS</span>
-                                </div>
-                                <img src="/logos/robot.webp" alt="RecruitmentOS AI Bot" className="w-32 h-32 object-contain animate-float mix-blend-multiply" />
-                            </div>
-                        </div>
-
-                        {/* Feature Cards positioned absolutely around center */}
-                        {features.map((feature, i) => {
-                            const positionClasses = ['top-0 left-0', 'top-0 right-0', 'bottom-0 left-0', 'bottom-0 right-0'];
-                            const placement: 'top' | 'bottom' = i < 2 ? 'bottom' : 'top';
-                            const align: 'left' | 'right' = i % 2 === 1 ? 'right' : 'left';
-                            return (
-                                <div key={feature.label} className={`absolute ${positionClasses[i]} z-20 w-[180px] lg:w-[220px] group`}>
-                                    <div className="relative bg-white border border-[#E5E5E5] rounded-[1.5rem] p-5 shadow-[0_4px_16px_rgba(0,0,0,0.04)] cursor-default hover:shadow-xl hover:border-[#FF6A00]/40 transition-all duration-300 flex items-center gap-3 group-hover:-translate-y-0.5">
-                                        <div className="w-11 h-11 rounded-2xl bg-[#FFF4EB] flex items-center justify-center text-[#FF6A00] shrink-0 group-hover:scale-110 transition-transform">
-                                            {feature.icon}
-                                        </div>
-                                        <span
-                                            className="text-[11px] font-bold uppercase tracking-widest text-[#FF6A00] leading-tight"
-                                            style={{ fontFamily: 'var(--font-mono)' }}
-                                        >
-                                            {feature.pill}
-                                        </span>
-                                    </div>
-                                    <DetailPopover feature={feature} placement={placement} align={align} />
-                                </div>
-                            );
-                        })}
+                {/* ── Mobile: hub on top, detailed cards stacked ──────────────── */}
+                <div className="md:hidden">
+                    <div className="mb-8">
+                        <Hub size="sm" />
+                    </div>
+                    <div className="grid grid-cols-1 gap-4">
+                        {features.map((feature) => (
+                            <StepCard key={feature.step} feature={feature} />
+                        ))}
                     </div>
                 </div>
             </div>

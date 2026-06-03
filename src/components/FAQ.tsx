@@ -6,36 +6,44 @@ import { faqSchema } from '@/lib/schemas';
 
 const faqs = [
     {
-        question: "What's the difference between Setup and Run?",
-        answer: "Setup is a one-time 30–60 day engagement where we design and stand up your BD engine — ICP map, signal engine, sequences, CRM mapping, deliverability config, reply SOPs, and team handover. Run is the monthly retainer where we operate it: daily list curation, sequence execution, reply filtering, weekly reporting, and monthly iteration.",
+        question: 'How do we know the ROI makes sense?',
+        answer: "We run the math live on the fit call. You give us your average placement fee, your close rate, and your current lead-to-meeting ratio. We map those against the volume the engine produces and the retainer cost. If the numbers don't work at your fee level, we'll tell you on the call — we'd rather lose the sale than set up a system that can't pay for itself.",
     },
     {
-        question: 'How are the leads sourced?',
-        answer: 'Daily signal scraping — departures, funding announcements, leadership changes, restructures, hiring intent — via Apify/Phantombuster, enriched via ZoomInfo or BetterContact, ranked by signal recency and niche fit, and filtered to match your ICP map.',
-    },
-    {
-        question: 'Do you really turn agencies down?',
-        answer: "Yes. Three non-compromises: no outreach without niche-specific filtering, no promised meetings without a written Qualified Meeting Definition, and no Setup for an agency whose delivery isn't ready. If you don't pass the 6-question fit interview, we won't take you on — even if you want to proceed.",
+        question: 'How quickly does this pay for itself?',
+        answer: "For most agencies a single placement covers months of the retainer. We size the math to your fee on the fit call — at typical placement fees, one closed role from the pipeline usually pays back the engagement several times over. The guarantee (below) means you carry almost none of the downside while it ramps.",
     },
     {
         question: 'What does the 60-day guarantee mean?',
-        answer: '100 hiring-manager contacts in your pipeline and 10 verified replies within 60 days, or we work free until we deliver. Verified reply = a positive-intent reply from a hiring manager that matches your Qualified Meeting Definition.',
+        answer: '20,000+ verified hiring-manager contacts in your pipeline and 10 positive replies within 60 days, or we keep working free until we deliver. A positive reply = an on-brief reply from a hiring manager that matches your agreed Qualified Meeting Definition.',
+    },
+    {
+        question: 'How is this different from hiring another BD rep?',
+        answer: "A BD rep costs $60K+/year and handles maybe 50 prospects a day. The engine processes thousands of verified, signal-triggered leads a month, runs daily, and costs a fraction. It doesn't replace your recruiters — it replaces the prospecting layer so they only ever see qualified replies.",
+    },
+    {
+        question: 'How does the engagement work — what do we actually pay for?',
+        answer: "Two parts. First, a one-time setup (30–60 days) where we design and stand up your BD engine: ICP map, signal sourcing, sequences, CRM mapping, deliverability, reply SOPs, and team handover. Then a monthly retainer where we operate it for you — daily list curation, outreach, reply filtering, weekly reporting, and ongoing iteration. We walk through exact pricing for your situation on the fit call.",
+    },
+    {
+        question: 'How are the leads sourced?',
+        answer: 'Daily signal scraping — departures, funding announcements, leadership changes, restructures, hiring intent — enriched across 20+ data sources, ranked by signal recency and niche fit, and filtered to match your ICP. You only get companies with a live, current need.',
+    },
+    {
+        question: 'What data do we get with each lead?',
+        answer: 'Hiring manager name, direct email, job title, LinkedIn URL, company name, company size, the signal that triggered the lead (departure, funding, hiring trigger), and how recent that signal is. Everything you need to send a relevant first touch.',
     },
     {
         question: 'What counts as a "qualified meeting"?',
-        answer: 'A qualified meeting is defined in a 7-component template signed before the Run contract executes: correct title, correct authority level, correct niche, confirmed interest, confirmed budget band, defined next step, and a scheduled call. Every client gets a customised definition.',
+        answer: 'A qualified meeting is defined in a 7-component template signed before the retainer starts: correct title, correct authority level, correct niche, confirmed interest, confirmed budget band, defined next step, and a scheduled call. Every client gets a customised definition — so "qualified" means the same thing to both of us.',
     },
     {
-        question: 'How does the 10-Leads-a-Day campaign work?',
-        answer: 'Apply at /free-leads-campaign with your niche, agency website, and monthly revenue. We verify fit within 24 hours. If approved, you receive 10 hand-verified hiring-manager contacts in your niche every day at 09:00 UTC for 30 days. 300 leads total. No commitment, no upsell during the campaign.',
+        question: 'How long until we see results?',
+        answer: 'Setup runs 30–60 days end-to-end. Most agencies see their first verified replies during week 4–5 as deliverability ramps and the signal engine starts surfacing real opportunities. Full handover at day 60.',
     },
     {
-        question: 'What if we cancel Run mid-month?',
+        question: 'What if we cancel mid-month?',
         answer: '30-day notice to cancel. No 3, 6, or 12-month minimums. At exit, you receive full handover documentation — every sequence, every domain config, every contact list. The pipeline keeps working without us.',
-    },
-    {
-        question: 'How long does setup take?',
-        answer: 'The Setup is 30–60 days end-to-end. Most agencies see their first verified replies during week 4–5 as deliverability ramps and the signal engine starts surfacing real opportunities. Full handover at day 60.',
     },
     {
         question: 'Who owns the data and infrastructure?',
@@ -43,31 +51,23 @@ const faqs = [
     },
     {
         question: 'What if we only need outreach — not the full system?',
-        answer: "Most agencies need all five services together (BD strategy, signal sourcing, outreach, reply triage, reporting). But if you have a working ICP and just need execution, we can scope a leaner Run engagement. We decide on the fit call.",
+        answer: "Most agencies need all five services together (BD strategy, signal sourcing, outreach, reply triage, reporting). But if you have a working ICP and just need execution, we can scope a leaner engagement. We decide on the fit call.",
     },
     {
-        question: 'How is this different from hiring another BD rep?',
-        answer: "A BD rep costs $60K+/year and handles maybe 50 prospects a day. The engine processes 2,500–25,000 verified leads/month, runs daily, and costs a fraction. It doesn't replace your recruiters — it replaces the prospecting layer so they only see qualified replies.",
+        question: 'Do you really turn agencies down?',
+        answer: "Yes. Three non-compromises: no outreach without niche-specific filtering, no promised meetings without a written Qualified Meeting Definition, and no setup for an agency whose delivery isn't ready. If you don't pass the 6-question fit interview, we won't take you on — even if you want to proceed.",
     },
     {
         question: 'How do you handle niche specificity?',
         answer: 'Each agency gets their own ICP map and signal sources. A biotech recruiter and an accounting recruiter share zero source data — we don\'t pretend they do. Niche specificity is the single biggest predictor of whether the engine performs.',
     },
     {
-        question: 'Why WhatsApp?',
-        answer: 'Tushar replies personally to questions there. The floating button bottom-right of every page opens a chat directly with him. Most queries get a same-day reply — faster than email.',
-    },
-    {
-        question: 'What data do we get with each lead?',
-        answer: 'Hiring manager name, direct email, job title, LinkedIn URL, company name, company size, signal that triggered the lead (departure, funding, hiring trigger), and recency of the signal. Everything you need to send a relevant first touch.',
-    },
-    {
         question: 'What agencies do you work with?',
         answer: "Established recruitment agencies where the owner is the current BD bottleneck. Specifically: you have a delivery team that can handle more clients, you've placed at least a handful of clients in the last 12 months, you have a defined niche (not \"all industries\"), and you've already tried at least one BD method that didn't scale. We don't require a specific revenue band — we require that your delivery is ready for more volume before we start generating it.",
     },
     {
-        question: 'How do we know the ROI makes sense?',
-        answer: "We run the math live on the fit call. You give us your average placement fee, your close rate, and your current lead-to-meeting ratio. We map those against the volume the engine produces and the retainer cost. If the numbers don't work at your fee level, we'll tell you on the call — we'd rather lose the sale than set up a system that can't pay for itself.",
+        question: 'How does the 10-Leads-a-Day campaign work?',
+        answer: 'Apply at /free-leads-campaign with your niche, agency website, and monthly revenue. We verify fit within 24 hours. If approved, you receive 10 hand-verified hiring-manager contacts in your niche every day at 09:00 UTC for 30 days. 300 leads total. No commitment, no upsell during the campaign.',
     },
 ];
 

@@ -123,6 +123,115 @@ export const packages: Package[] = [
     },
 ];
 
+// ─── Pricing plans (3-tier card layout) ───────────────────────────────────────
+// Self-serve leads → managed email → full multichannel BD. Each plan exposes a
+// set of volume options the buyer picks from a dropdown on the card.
+
+export type PlanId = 'leads' | 'email' | 'multichannel';
+
+export type PlanVolumeOption = {
+    /** Raw lead count, e.g. 500, 2000 */
+    leads: number;
+    /** Collapsed dropdown label, e.g. "500 leads" / "2,000 leads/mo" */
+    label: string;
+    /** Price in USD */
+    price: number;
+    /** Sub-line under the price, e.g. "$0.09 / lead" or "6K emails · Smartlead Basic" */
+    detail: string;
+};
+
+export type PricingPlan = {
+    id: PlanId;
+    /** Top pill, e.g. "Data only" */
+    category: string;
+    /** Pill icon key */
+    icon: 'data' | 'mail' | 'network';
+    name: string;
+    tagline: string;
+    billing: 'one-off' | 'monthly';
+    /** Marks the "Most popular" card */
+    highlight: boolean;
+    options: PlanVolumeOption[];
+    /** Index of the volume option selected by default */
+    defaultIndex: number;
+    features: string[];
+    cta: { label: string; href: string };
+};
+
+const CAL_LINK = 'https://cal.com/tusharm/30min?user=tusharm';
+
+export const pricingPlans: PricingPlan[] = [
+    {
+        id: 'leads',
+        category: 'Data only',
+        icon: 'data',
+        name: 'Leads',
+        tagline: 'Signal-detected, enriched contacts. You handle outreach.',
+        billing: 'one-off',
+        highlight: false,
+        defaultIndex: 0,
+        options: [
+            { leads: 500, label: '500 leads', price: 45, detail: '$0.09 / lead' },
+            { leads: 2000, label: '2,000 leads', price: 149, detail: '$0.07 / lead' },
+            { leads: 5000, label: '5,000 leads', price: 299, detail: '$0.06 / lead' },
+            { leads: 10000, label: '10,000 leads', price: 500, detail: '$0.05 / lead' },
+            { leads: 20000, label: '20,000 leads', price: 840, detail: '$0.04 / lead' },
+        ],
+        features: [
+            'Hiring signal detection',
+            'Decision-maker enrichment',
+            'CSV export',
+            'Top-up anytime',
+        ],
+        cta: { label: 'Get leads', href: CAL_LINK },
+    },
+    {
+        id: 'email',
+        category: 'Leads + email',
+        icon: 'mail',
+        name: 'Email outreach',
+        tagline: 'We run the campaigns end-to-end. You take the replies.',
+        billing: 'monthly',
+        highlight: true,
+        defaultIndex: 0,
+        options: [
+            { leads: 2000, label: '2,000 leads/mo', price: 375, detail: '6K emails · Smartlead Basic' },
+            { leads: 5000, label: '5,000 leads/mo', price: 699, detail: '15K emails · Smartlead Pro' },
+            { leads: 10000, label: '10,000 leads/mo', price: 999, detail: '30K emails · Smartlead Custom' },
+        ],
+        features: [
+            'Everything in Leads',
+            '3-step AI-personalised email per lead',
+            'Client dashboard to track every email',
+            'Weekly connect with your account manager',
+            'Smartlead plan included',
+        ],
+        cta: { label: 'Book a call', href: CAL_LINK },
+    },
+    {
+        id: 'multichannel',
+        category: 'Full BD',
+        icon: 'network',
+        name: 'Multichannel',
+        tagline: 'Email + LinkedIn. Full outsourced BD function.',
+        billing: 'monthly',
+        highlight: false,
+        defaultIndex: 0,
+        options: [
+            { leads: 2000, label: '2,000 leads/mo', price: 499, detail: 'email + LinkedIn sequences' },
+            { leads: 5000, label: '5,000 leads/mo', price: 849, detail: 'email + LinkedIn sequences' },
+            { leads: 10000, label: '10,000 leads/mo', price: 1299, detail: 'email + LinkedIn sequences' },
+        ],
+        features: [
+            'Everything in Email outreach',
+            'LinkedIn DM sequences',
+            'Multi-touch follow-up',
+            'Dedicated account manager',
+        ],
+        cta: { label: 'Book a call', href: CAL_LINK },
+    },
+];
+
 // ─── Add-ons ──────────────────────────────────────────────────────────────────
 
 export type AddOn = {

@@ -82,15 +82,6 @@ export default function Hero() {
                                 <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg>
                         </Link>
-                        <Link
-                            href="/case-studies"
-                            className="inline-flex items-center justify-center text-[#6b7280] hover:text-[#0A0A0A] px-4 py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors duration-200 group"
-                        >
-                            See Case Studies
-                            <svg className="ml-1.5 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
-                        </Link>
                     </div>
                 </div>
             </div>

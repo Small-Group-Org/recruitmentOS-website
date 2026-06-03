@@ -15,7 +15,7 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
     ];
 
     return (
-        <header className="w-full bg-transparent relative z-50">
+        <header className="w-full bg-white/90 backdrop-blur-md border-b border-[#e5e5e5] relative z-50">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
                 <nav className="flex items-center justify-between h-16">
                     <Link href="/" className="flex items-center font-bold text-2xl sm:text-3xl tracking-tight z-50">

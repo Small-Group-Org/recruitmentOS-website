@@ -8,6 +8,7 @@ import ToolTicker from '@/components/ToolTicker';
 import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
 import ProductDemo from '@/components/ProductDemo';
+import CaseStudiesPreview from '@/components/CaseStudiesPreview';
 import FAQ from '@/components/FAQ';
 import { buildCanonical } from '@/lib/seo';
 
@@ -30,7 +31,8 @@ export default function Home() {
             <Hero />
             <ProductDemo />
             <TrustBar />
-            {/* HowItWorks shown on mobile only — on desktop the robot diagram reveals the same detail on hover */}
+            <CaseStudiesPreview />
+            {/* HowItWorks shown on mobile only — desktop sees the full step detail in FeaturesDiagram */}
             <div className="md:hidden">
                 <HowItWorks />
             </div>

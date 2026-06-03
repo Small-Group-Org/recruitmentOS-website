@@ -35,7 +35,7 @@ export default function ProductDemo() {
                         See the system in action.
                     </h2>
                     <p className="section-sub max-w-2xl mx-auto">
-                        How the engine works end to end — niche immersion, signal sourcing, outreach, reply triage. Full face-cam walkthrough coming soon.
+                        A 60-second look at how the engine works end to end — niche immersion, signal sourcing, outreach, and reply triage.
                     </p>
                 </div>
 

@@ -6,7 +6,7 @@ import { serviceWithOffersSchema } from '@/lib/schemas';
 
 export const metadata = {
   title: 'Pricing — RecruitmentOS Lead Packages',
-  description: 'Verified leads by volume. Starter from $49 · Growth from $149 · Scale from $299 · Enterprise custom. Email + LinkedIn data, managed outreach, monthly or annual.',
+  description: 'Pay for pipeline, not promises. Leads from $45 one-off · Managed email outreach from $375/mo · Full multichannel BD from $499/mo. Pick your volume on any plan.',
   alternates: { canonical: buildCanonical('/pricing') },
 };
 
