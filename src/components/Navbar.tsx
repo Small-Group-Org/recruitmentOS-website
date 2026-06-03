@@ -26,7 +26,7 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
                         </span>
                     </Link>
 
-                    <div className="hidden md:flex items-center gap-8">
+                    <div className="hidden lg:flex items-center gap-8">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
@@ -38,7 +38,7 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
                         ))}
                     </div>
 
-                    <div className="hidden md:flex items-center gap-2">
+                    <div className="hidden lg:flex items-center gap-2">
                         <Link
                             href="/tools"
                             className="inline-flex items-center px-5 py-2 rounded-full border border-[#1A1A1A] bg-transparent text-[#1A1A1A] text-sm font-medium hover:bg-neutral-100 transition-colors"
@@ -56,7 +56,7 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
 
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="p-2.5 md:hidden text-[#0A0A0A]"
+                        className="p-2.5 lg:hidden text-[#0A0A0A]"
                         aria-label="Toggle menu"
                     >
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -76,7 +76,7 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
                 </nav>
 
                 {isMenuOpen && (
-                    <div className="md:hidden pt-4 pb-2 space-y-3 border-t border-[#e5e5e5] mt-4">
+                    <div className="lg:hidden pt-4 pb-2 space-y-3 border-t border-[#e5e5e5] mt-4">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
