@@ -95,7 +95,7 @@ const stackItems = [
 export default function ClaudeMCPPage() {
     return (
         <main className="min-h-screen bg-white">
-            <div className="pt-24 pb-32">
+            <div className="pt-12 pb-24">
                 <div className="max-w-[1100px] mx-auto px-6 sm:px-10">
 
                     {/* Back Link */}

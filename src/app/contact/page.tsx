@@ -13,7 +13,7 @@ export const metadata = {
 export default function ContactPage() {
     return (
         <main className="min-h-screen bg-white">
-            <div className="pt-24 pb-32">
+            <div className="pt-12 pb-24">
                 <div className="max-w-[900px] mx-auto px-6 sm:px-10">
 
                     <Link
@@ -28,7 +28,7 @@ export default function ContactPage() {
 
                     <div className="mb-12 sm:mb-16 max-w-2xl">
                         <p className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-3">Contact</p>
-                        <h1 className="text-[#0A0A0A] text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-5">
+                        <h1 className="text-[#0A0A0A] text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.05] mb-5">
                             Send Tushar a note.
                         </h1>
                         <p className="hero-sub">

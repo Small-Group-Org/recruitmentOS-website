@@ -31,7 +31,7 @@ const notForYou = [
 export default function FreeLeadsCampaignPage() {
     return (
         <main className="min-h-screen bg-white">
-            <div className="pt-24 pb-32">
+            <div className="pt-12 pb-24">
                 <div className="max-w-[1100px] mx-auto px-6 sm:px-10">
 
                     <Link
@@ -49,7 +49,7 @@ export default function FreeLeadsCampaignPage() {
                         <p className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-3">
                             Limited campaign · 3 agencies per niche per month
                         </p>
-                        <h1 className="text-[#0A0A0A] text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-6">
+                        <h1 className="text-[#0A0A0A] text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.05] mb-6">
                             Get 10 verified hiring-manager contacts a day. For 30 days. Free.
                         </h1>
                         <p className="hero-sub mb-8">

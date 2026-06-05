@@ -53,15 +53,15 @@ h3 {
 /* Sub-headline typography rule — drops sub-heads from bold to medium (500). */
 /* Applied to the line directly below a hero H1 (.hero-sub) or section H2 (.section-sub). */
 .hero-sub {
-    font-weight: 500;
-    font-size: clamp(1.125rem, 1.8vw, 1.375rem);
-    line-height: 1.5;
+    font-weight: 400;
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    line-height: 1.6;
     color: var(--muted);
 }
 .section-sub {
-    font-weight: 500;
-    font-size: clamp(1rem, 1.4vw, 1.125rem);
-    line-height: 1.55;
+    font-weight: 400;
+    font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+    line-height: 1.6;
     color: var(--muted);
 }
 

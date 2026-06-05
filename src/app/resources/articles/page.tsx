@@ -14,7 +14,7 @@ export default function ArticlesPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <div className="pt-24 pb-32">
+      <div className="pt-12 pb-24">
         <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
           <Link
             href="/resources"
@@ -26,9 +26,9 @@ export default function ArticlesPage() {
             BACK TO RESOURCES
           </Link>
 
-          <div className="mb-14 sm:mb-20 max-w-3xl">
+          <div className="mb-10 sm:mb-12 max-w-3xl">
             <p className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-3">Articles</p>
-            <h1 className="text-[#0A0A0A] text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-5">
+            <h1 className="text-[#0A0A0A] text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.05] mb-5">
               Recruitment lead gen, decoded.
             </h1>
             <p className="text-[#6B7280] text-base sm:text-lg leading-relaxed">

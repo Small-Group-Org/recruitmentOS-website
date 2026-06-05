@@ -17,7 +17,7 @@ export const metadata = {
 
 export default function CaseStudiesListPage() {
   return (
-    <div className="min-h-screen bg-[#FAFAFA] pt-24 pb-32 animate-fadeIn">
+    <div className="min-h-screen bg-[#FAFAFA] pt-12 pb-24 animate-fadeIn">
       <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
 
         <div className="mb-20 animate-slideUp">
