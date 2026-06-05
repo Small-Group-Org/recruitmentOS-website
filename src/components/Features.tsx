@@ -58,10 +58,15 @@ export default function Features() {
                                     <p className="text-sm text-[#6B7280] leading-snug mt-1">
                                         {service.oneLine}
                                     </p>
-                                    {/* Outcome — inline on mobile */}
-                                    <div className="md:hidden mt-3 inline-flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] shrink-0" />
-                                        <span className="text-[12px] font-semibold text-[#0A0A0A]">{service.outcome}</span>
+                                    {/* Outcome + arrow — inline on mobile */}
+                                    <div className="md:hidden mt-3 flex items-center justify-between">
+                                        <div className="inline-flex items-center gap-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] shrink-0" />
+                                            <span className="text-[12px] font-semibold text-[#0A0A0A]">{service.outcome}</span>
+                                        </div>
+                                        <svg className="w-4 h-4 text-[#D1D5DB] group-hover:text-[#FF6A00] group-hover:translate-x-1 transition-all shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
                                     </div>
                                 </div>
 

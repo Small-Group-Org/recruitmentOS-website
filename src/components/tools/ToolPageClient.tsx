@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useToolGate } from '@/hooks/useToolGate';
 import { Tool } from '@/lib/tools-data';
@@ -19,6 +19,13 @@ export default function ToolPageClient({ tool }: { tool: Tool }) {
   const { isUnlocked, isHydrated } = useToolGate();
   const [gateOpen, setGateOpen] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+
+  // Auto-start if the user is already unlocked (returning user after form fill)
+  useEffect(() => {
+    if (isHydrated && isUnlocked && tool.interactive) {
+      setHasStarted(true);
+    }
+  }, [isHydrated, isUnlocked, tool.interactive]);
 
   function handlePrimaryCta() {
     if (tool.interactive) {
@@ -70,11 +77,11 @@ export default function ToolPageClient({ tool }: { tool: Tool }) {
       )}
 
       <main className="min-h-screen bg-[#F9FAFB]">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 py-16 sm:py-24">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 pt-8 pb-16 sm:pt-12 sm:pb-24">
 
           <Link href="/tools"
-            className="inline-flex items-center text-sm font-medium text-[#6B7280] hover:text-[#0A0A0A] transition-colors mb-10">
-            <svg className="mr-1.5 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            className="inline-flex items-center text-xs font-medium text-[#9CA3AF] hover:text-[#0A0A0A] transition-colors mb-4">
+            <svg className="mr-1 w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
             All Tools
@@ -84,52 +91,41 @@ export default function ToolPageClient({ tool }: { tool: Tool }) {
 
             {/* Left — always visible */}
             <div className="lg:col-span-3">
-              <div className="flex items-center gap-2 mb-5">
-                <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-md"
+
+              {/* Pill row */}
+              <div className="flex items-center gap-1.5 mb-2">
+                <span className="inline-flex items-center text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border border-[#FF6A00]/30"
                   style={{ background: '#FFF4EB', color: '#FF6A00' }}>
                   {tool.category}
                 </span>
-                <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-md text-[#9CA3AF]"
-                  style={{ background: '#F3F4F6' }}>
+                <span className="inline-flex items-center text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border border-[#E5E5E5] text-[#9CA3AF]"
+                  style={{ background: '#F9FAFB' }}>
                   {tool.badge}
                 </span>
                 {tool.isNew && (
-                  <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-md"
+                  <span className="inline-flex items-center text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full"
                     style={{ background: '#FF6A00', color: '#fff' }}>
-                    New
+                    ✦ New
                   </span>
                 )}
               </div>
 
-              <h1 className="text-4xl sm:text-5xl font-bold text-[#0A0A0A] mb-4 tracking-tight leading-[1.1]">
+              {/* Title */}
+              <h1 className="text-xl sm:text-2xl font-bold text-[#0A0A0A] mb-1 tracking-tight leading-snug">
                 {tool.title}
               </h1>
-              <p className="text-lg text-[#6B7280] leading-relaxed mb-8 font-medium">
+
+              {/* Divider accent */}
+              <div className="w-8 h-0.5 bg-[#FF6A00] rounded-full mb-2" />
+
+              {/* Description */}
+              <p className="text-xs text-[#6B7280] leading-relaxed mb-4 max-w-xl">
                 {tool.description}
               </p>
 
-              <div className="bg-white border border-[#E5E5E5] rounded-3xl p-6 mb-8">
-                <h2 className="text-base font-bold text-[#0A0A0A] mb-4 tracking-tight">
-                  What&rsquo;s inside
-                </h2>
-                <ul className="space-y-3">
-                  {tool.whatsInside.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-[#374151] font-medium">
-                      <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center"
-                        style={{ background: '#FFF4EB' }}>
-                        <svg className="w-2.5 h-2.5 text-[#FF6A00]" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                      </span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
               {/* Action area — CTA-to-gate, or rendered interactive component */}
               {!showInteractive && (
-                <div className="bg-white border border-[#E5E5E5] rounded-3xl p-8 sm:p-10 text-center mb-10">
+                <div className="bg-white border border-[#E5E5E5] rounded-3xl p-8 sm:p-10 text-center mb-8">
                   <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#FFF4EB] mb-5">
                     <svg className="w-7 h-7 text-[#FF6A00]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
@@ -156,6 +152,28 @@ export default function ToolPageClient({ tool }: { tool: Tool }) {
               {showInteractive && InteractiveComponent && (
                 <div className="mb-10">
                   <InteractiveComponent />
+                </div>
+              )}
+
+              {/* Only show What's inside when the tool hasn't been started yet */}
+              {!showInteractive && (
+                <div className="bg-white border border-[#E5E5E5] rounded-3xl p-6 mb-8">
+                  <h2 className="text-base font-bold text-[#0A0A0A] mb-4 tracking-tight">
+                    What&rsquo;s inside
+                  </h2>
+                  <ul className="space-y-3">
+                    {tool.whatsInside.map((item, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm text-[#374151] font-medium">
+                        <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center"
+                          style={{ background: '#FFF4EB' }}>
+                          <svg className="w-2.5 h-2.5 text-[#FF6A00]" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               )}
             </div>

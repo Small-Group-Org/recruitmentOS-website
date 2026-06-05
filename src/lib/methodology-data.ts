@@ -65,10 +65,10 @@ export const buildDeliverables: string[] = [
 ];
 
 export const runCadence: { period: string; items: string[] }[] = [
-    { period: 'Daily', items: ['List curation', 'Sequence execution', 'Reply triage (4h SLA)'] },
-    { period: 'Weekly', items: ['Pipeline report', 'Reply-rate review', 'Domain health check'] },
-    { period: 'Monthly', items: ['Sequence iteration', 'ICP refinement', 'Signal-source tuning'] },
-    { period: 'Quarterly', items: ['QBR with placement attribution', 'Strategy reset if needed'] },
+    { period: 'Daily', items: ['Fresh lead list built', 'Emails + LinkedIn sent', 'Replies sorted (4h turnaround)'] },
+    { period: 'Weekly', items: ['Pipeline summary sent', 'Reply rates checked', 'Email domain health checked'] },
+    { period: 'Monthly', items: ['Outreach copy updated', 'Target audience tightened', 'Lead sources reviewed'] },
+    { period: 'Quarterly', items: ['Full review with placements traced back', 'Strategy adjusted if needed'] },
 ];
 
 export const sixQuestionInterview: string[] = [
