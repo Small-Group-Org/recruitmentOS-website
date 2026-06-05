@@ -2,7 +2,36 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
-import { pickBracket } from '@/lib/pricing-data';
+
+// Tiers pulled from pricingPlans → Revenue Booster (email plan), matching the pricing page exactly
+// Each tier = platformFee (monthly) + leadsCost (one-off leads)
+type Tier = {
+    name: string;
+    leadsLabel: string;
+    platformFee: number;   // monthly platform fee
+    leadsCost: number;     // one-off leads package
+    totalMonthly: number;  // combined cost treated as monthly for ROI calc
+    capacityLabel: string;
+};
+
+const TIERS: Tier[] = [
+    { name: 'Revenue Booster',   leadsLabel: '2,000 leads/mo',  platformFee: 226,  leadsCost: 149, totalMonthly: 375,  capacityLabel: '2K leads · 6K emails' },
+    { name: 'Revenue Booster',   leadsLabel: '5,000 leads/mo',  platformFee: 400,  leadsCost: 299, totalMonthly: 699,  capacityLabel: '5K leads · 15K emails' },
+    { name: 'Revenue Booster',   leadsLabel: '10,000 leads/mo', platformFee: 499,  leadsCost: 500, totalMonthly: 999,  capacityLabel: '10K leads · 30K emails' },
+    { name: 'Revenue Booster',   leadsLabel: '20,000 leads/mo', platformFee: 659,  leadsCost: 840, totalMonthly: 1499, capacityLabel: '20K leads · 60K emails' },
+    { name: 'Scale Accelerator', leadsLabel: '20,000+ leads',   platformFee: 1159, leadsCost: 840, totalMonthly: 1999, capacityLabel: '20K+ leads · Email + LinkedIn' },
+];
+
+// Pick tier based on monthly placement target: rough heuristic maps placements → leads needed
+// Assumes ~1 placement per ~400–500 leads at average funnel rates
+function pickTierFromPlacements(placements: number): Tier | null {
+    if (!isFinite(placements) || placements <= 0) return null;
+    if (placements <= 3)  return TIERS[0]; // ~2K leads
+    if (placements <= 7)  return TIERS[1]; // ~5K leads
+    if (placements <= 15) return TIERS[2]; // ~10K leads
+    if (placements <= 25) return TIERS[3]; // ~20K leads
+    return null; // above 25 → enterprise, prompt to call
+}
 
 type Props = {
     /** When true, removes the gate-language hint — used on /pricing where there's no email gate. */
@@ -30,19 +59,20 @@ export default function GeneralROICalculator({ embedded = false, initialPlacemen
         onPlacementsChange?.(placements);
     }, [placements, onPlacementsChange]);
 
-    const bracket = useMemo(() => pickBracket(placements), [placements]);
+    const tier = useMemo(() => pickTierFromPlacements(placements), [placements]);
 
     const calc = useMemo(() => {
         const manualCost = hours * hourly;
-        if (!bracket) {
+        if (!tier) {
             return { manualCost, savings: 0, roi: 0, paybackDays: 0 };
         }
-        const savings = manualCost - bracket.monthlyUsd;
+        const savings = manualCost - tier.totalMonthly;
         const monthlyRevenue = placements * fee;
-        const roi = monthlyRevenue > 0 ? monthlyRevenue / bracket.monthlyUsd : 0;
-        const paybackDays = monthlyRevenue > 0 ? (bracket.monthlyUsd / monthlyRevenue) * 30 : 0;
+        const roi = monthlyRevenue > 0 ? monthlyRevenue / tier.totalMonthly : 0;
+        const paybackDays = monthlyRevenue > 0 ? (tier.totalMonthly / monthlyRevenue) * 30 : 0;
         return { manualCost, savings, roi, paybackDays };
-    }, [bracket, fee, placements, hours, hourly]);
+    }, [tier, fee, placements, hours, hourly]);
+
 
     return (
         <section className="bg-white border border-[#E5E5E5] rounded-2xl p-6 sm:p-10">
@@ -71,30 +101,40 @@ export default function GeneralROICalculator({ embedded = false, initialPlacemen
 
                 {/* Outcome card */}
                 <div className="bg-[#0A0A0A] rounded-2xl p-6 sm:p-8 text-white">
-                    {!bracket && placements === 0 && (
+                    {!tier && placements === 0 && (
                         <EmptyState message="Adjust your inputs to see your price." />
                     )}
 
-                    {!bracket && placements > 25 && (
+                    {!tier && placements > 25 && (
                         <EmptyState
-                            title="You're above the Pro bracket."
+                            title="You're above the standard tiers."
                             message="Custom volume — talk to Tushar to scope a bespoke retainer."
                             cta
                         />
                     )}
 
-                    {bracket && (
+                    {tier && (
                         <>
-                            <p className="text-xs font-bold uppercase tracking-widest text-[#FF6A00] mb-2">Your monthly price</p>
-                            <p className="text-5xl sm:text-6xl font-black tracking-tighter leading-none mb-3">
-                                {formatCurrency(bracket.monthlyUsd)}<span className="text-2xl font-bold opacity-60">/mo</span>
-                            </p>
-                            <div className="inline-flex items-center gap-2 bg-[#FF6A00]/10 border border-[#FF6A00]/30 rounded-full px-3 py-1 mb-6">
+                            <p className="text-[10px] font-bold uppercase tracking-widest text-[#FF6A00] mb-2">Recommended plan</p>
+
+                            {/* Plan name + capacity */}
+                            <div className="inline-flex items-center gap-2 bg-[#FF6A00]/10 border border-[#FF6A00]/30 rounded-full px-3 py-1 mb-4">
                                 <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00]" />
-                                <span className="text-xs font-bold text-[#FF6A00]">You're in the {bracket.name} bracket · {bracket.capacityLabel}</span>
+                                <span className="text-xs font-bold text-[#FF6A00]">{tier.name} · {tier.capacityLabel}</span>
                             </div>
 
-                            <div className="grid grid-cols-3 gap-3 mb-6">
+                            {/* Price split */}
+                            <div className="mb-5">
+                                <p className="text-[10px] uppercase tracking-widest opacity-50 mb-1">Your monthly cost</p>
+                                <div className="flex items-baseline gap-1.5 flex-wrap">
+                                    <span className="text-4xl font-black tracking-tight">${tier.platformFee}<span className="text-lg font-semibold opacity-50">/mo</span></span>
+                                    <span className="text-base font-bold opacity-40">+</span>
+                                    <span className="text-4xl font-black tracking-tight">${tier.leadsCost}<span className="text-lg font-semibold opacity-50"> leads</span></span>
+                                </div>
+                                <p className="text-[10px] opacity-40 mt-1">Platform fee (monthly) + one-off leads package</p>
+                            </div>
+
+                            <div className="grid grid-cols-3 gap-3 mb-5">
                                 <Stat label="Savings / mo" value={formatCurrency(calc.savings)} hint="vs manual cost" />
                                 <Stat label="ROI" value={`${calc.roi.toFixed(1)}×`} hint="revenue / retainer" />
                                 <Stat label="Payback" value={`${Math.max(1, Math.round(calc.paybackDays))}d`} hint="from one placement" />
