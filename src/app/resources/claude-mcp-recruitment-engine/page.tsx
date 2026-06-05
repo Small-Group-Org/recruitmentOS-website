@@ -1,5 +1,7 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
+import { Button } from '@/components/ui';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { buildCanonical } from '@/lib/seo';
@@ -122,15 +124,18 @@ export default function ClaudeMCPPage() {
                     </h1>
 
                     <p className="text-[#6B7280] text-lg max-w-3xl mb-16 leading-relaxed">
-                        Think of Claude with MCP as your <span className="font-semibold text-[#0A0A0A]">"AI recruiter brain"</span> that connects with multiple tools and does the work for you. Instead of switching between 10 tools, you give instructions in plain English and the system executes everything.
+                        Think of Claude with MCP as your <span className="font-semibold text-[#0A0A0A]">&#34;AI recruiter brain&#34;</span> that connects with multiple tools and does the work for you. Instead of switching between 10 tools, you give instructions in plain English and the system executes everything.
                     </p>
 
                     {/* GIF / Hero visual */}
-                    <div className="rounded-3xl overflow-hidden border border-[#E5E5E5] mb-24 bg-[#FAFAFA]">
-                        <img
+                    <div className="rounded-2xl overflow-hidden border border-[#E5E5E5] mb-24 bg-[#FAFAFA]">
+                        <Image
                             src="/resources/claude-ai-mcp.webp"
                             alt="Claude AI + MCP Recruitment Engine Demo"
+                            width={1600}
+                            height={1001}
                             className="w-full h-auto object-cover"
+                            sizes="(max-width: 1024px) 100vw, 1100px"
                         />
                     </div>
 
@@ -188,7 +193,7 @@ export default function ClaudeMCPPage() {
                     </div>
 
                     {/* Final System Flow */}
-                    <div className="bg-[#0A0A0A] rounded-3xl px-8 sm:px-12 py-12 mb-20">
+                    <div className="bg-[#0A0A0A] rounded-2xl px-8 sm:px-12 py-12 mb-20">
                         <h2 className="text-white text-2xl font-bold mb-2">Final System Flow</h2>
                         <p className="text-[#9CA3AF] text-sm mb-10">Everything controlled by Claude using simple commands.</p>
                         <div className="space-y-0">
@@ -209,25 +214,22 @@ export default function ClaudeMCPPage() {
                             Most recruiters think tools = advantage. But real advantage is speed, personalization, and data quality.
                         </p>
                         <p className="text-[#6B7280] text-sm">
-                            Claude + MCP gives all three. That's why agencies using this system scale faster.
+                            Claude + MCP gives all three. That&#39;s why agencies using this system scale faster.
                         </p>
                     </div>
 
                     {/* CTA */}
                     <div className="flex flex-col sm:flex-row gap-4">
-                        <Link
-                            href="/resources"
-                            className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[#FF6A00] text-white text-sm font-bold hover:bg-[#e05e00] transition-colors"
-                        >
+                        <Button href="/resources">
                             Explore All Resources
-                        </Link>
-                        <Link
+                        </Button>
+                        <Button
                             href="https://long-streetcar-093.notion.site/Recruitment-AI-System-Free-Audit-Resources-336434e7ef8c8037be1ed5df3f5d8f1d?pvs=73"
                             target="_blank"
-                            className="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-[#E5E5E5] text-[#0A0A0A] text-sm font-bold hover:border-[#FF6A00] transition-colors"
+                            variant="secondary"
                         >
                             Get Free AI Templates
-                        </Link>
+                        </Button>
                     </div>
 
                 </div>

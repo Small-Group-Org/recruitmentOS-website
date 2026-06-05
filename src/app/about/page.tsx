@@ -71,19 +71,19 @@ export default function AboutPage() {
                         <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold mb-6 leading-tight">Why I built this.</h2>
                         <div className="prose prose-lg max-w-none space-y-5 text-[#374151] leading-relaxed text-base sm:text-lg font-medium">
                             <p>
-                                I spoke to 60+ recruitment agency owners in 3 days. US, UK, Australia, Belgium, Singapore, Nigeria. I asked one question: what's your biggest pain right now?
+                                I spoke to 60+ recruitment agency owners in 3 days. US, UK, Australia, Belgium, Singapore, Nigeria. I asked one question: what&#39;s your biggest pain right now?
                             </p>
                             <p>
-                                Every single one — solo founders to 27-year veterans — said the same five things. Can't find new clients fast enough. The team spends all day on manual tasks. Tools don't talk to each other. By the time they reach a job post, it's too late. They tried automation before and it didn't work.
+                                Every single one — solo founders to 27-year veterans — said the same five things. Can&#39;t find new clients fast enough. The team spends all day on manual tasks. Tools don&#39;t talk to each other. By the time they reach a job post, it&#39;s too late. They tried automation before and it didn&#39;t work.
                             </p>
                             <p>
-                                What struck me wasn't the list. It was that a solo founder in Nigeria and a 27-year veteran in Australia had the same problem. Different markets. Different niches. Different experience levels. The same problem.
+                                What struck me wasn&#39;t the list. It was that a solo founder in Nigeria and a 27-year veteran in Australia had the same problem. Different markets. Different niches. Different experience levels. The same problem.
                             </p>
                             <p>
-                                I watched one agency spend <strong className="font-bold text-[#0A0A0A]">$25,000 on a generic automation system</strong>. Four months. Zero placements. The system wasn't built for their business — it was built for "recruitment agencies in general." Accounting in a practice and accounting in a commercial business are completely different markets. The generic tool didn't know that.
+                                I watched one agency spend <strong className="font-bold text-[#0A0A0A]">$25,000 on a generic automation system</strong>. Four months. Zero placements. The system wasn&#39;t built for their business — it was built for &#34;recruitment agencies in general.&#34; Accounting in a practice and accounting in a commercial business are completely different markets. The generic tool didn&#39;t know that.
                             </p>
                             <p>
-                                I built RecruitmentOS because <strong className="font-bold text-[#0A0A0A]">generic systems fail specific businesses</strong>. Every time. The fix isn't another tool — it's an outsourced BD function built for your niche, your stack, your placement target.
+                                I built RecruitmentOS because <strong className="font-bold text-[#0A0A0A]">generic systems fail specific businesses</strong>. Every time. The fix isn&#39;t another tool — it&#39;s an outsourced BD function built for your niche, your stack, your placement target.
                             </p>
                         </div>
                     </section>
@@ -107,7 +107,7 @@ export default function AboutPage() {
                             <li className="flex items-start gap-4">
                                 <span className="text-[#FF6A00] font-bold flex-shrink-0 mt-1">→</span>
                                 <p className="text-base sm:text-lg text-[#374151] font-medium leading-relaxed">
-                                    I turn down 7 in 10 agencies that ask. The 3 non-compromises (no outreach without niche-specific filtering · no promised meetings without a written QMD · no Setup for an agency whose delivery isn't ready) <Link href="/methodology" className="text-[#FF6A00] font-bold underline underline-offset-2 hover:text-[#0A0A0A]">explain why</Link>.
+                                    I turn down 7 in 10 agencies that ask. The 3 non-compromises (no outreach without niche-specific filtering · no promised meetings without a written QMD · no Setup for an agency whose delivery isn&#39;t ready) <Link href="/methodology" className="text-[#FF6A00] font-bold underline underline-offset-2 hover:text-[#0A0A0A]">explain why</Link>.
                                 </p>
                             </li>
                         </ul>
@@ -121,7 +121,7 @@ export default function AboutPage() {
                                 100 hiring-manager contacts and 10 verified replies in 60 days — or we work free until we do.
                             </h2>
                             <p className="text-[#9CA3AF] text-sm sm:text-base font-medium max-w-2xl mx-auto">
-                                Why I can promise this: niche specificity + signal-first sourcing + daily operation. The system doesn't work on volume alone; it works because every signal is filtered to your niche before a single email goes out.
+                                Why I can promise this: niche specificity + signal-first sourcing + daily operation. The system doesn&#39;t work on volume alone; it works because every signal is filtered to your niche before a single email goes out.
                             </p>
                         </div>
                     </section>

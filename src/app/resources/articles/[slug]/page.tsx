@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import Link from 'next/link';
+import { Button } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import Footer from '@/components/Footer';
 import { articles, getArticleBySlug } from '@/lib/articles-data';
@@ -41,7 +43,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
     <main className="min-h-screen bg-white">
       <JsonLd data={articleSchema(article)} />
       <div className="pt-12 pb-24">
-        <div className="max-w-[820px] mx-auto px-6 sm:px-10">
+        <div className="max-w-[800px] mx-auto px-6 sm:px-10">
           <Link
             href="/resources/articles"
             className="inline-flex items-center text-sm text-black hover:text-[#FF6A00] transition-colors mb-12"
@@ -70,8 +72,8 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
           </p>
 
           {article.image && (
-            <div className="rounded-3xl overflow-hidden border border-[#E5E5E5] mb-16 bg-[#FAFAFA]">
-              <img src={article.image} alt={article.title} className="w-full h-auto object-cover" />
+            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-[#E5E5E5] mb-16 bg-[#FAFAFA]">
+              <Image src={article.image} alt={article.title} fill className="object-cover" sizes="(max-width: 800px) 100vw, 800px" />
             </div>
           )}
 
@@ -81,19 +83,12 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
 
           <div className="border-t border-[#E5E5E5] pt-10 mb-20">
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="https://cal.com/tusharm/30min?user=tusharm"
-                target="_blank"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[#FF6A00] text-white text-sm font-bold hover:bg-[#e05e00] transition-colors"
-              >
+              <Button href="https://cal.com/tusharm/30min?user=tusharm" target="_blank">
                 Book a Free 20-min Agency Audit
-              </Link>
-              <Link
-                href="/resources/articles"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-[#E5E5E5] text-[#0A0A0A] text-sm font-bold hover:border-[#FF6A00] transition-colors"
-              >
+              </Button>
+              <Button href="/resources/articles" variant="secondary">
                 More Articles
-              </Link>
+              </Button>
             </div>
           </div>
 

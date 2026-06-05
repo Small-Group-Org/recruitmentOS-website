@@ -33,7 +33,7 @@ export default function FitCallPage() {
                             Book a 20-min fit call.
                         </h1>
                         <p className="hero-sub mb-6">
-                            Free. Tushar runs the call personally. Pre-call form is mandatory — it sets up everything we'll cover live.
+                            Free. Tushar runs the call personally. Pre-call form is mandatory — it sets up everything we&#39;ll cover live.
                         </p>
                     </div>
 
@@ -41,7 +41,7 @@ export default function FitCallPage() {
                     <section className="mb-12 bg-[#F9FAFB] border border-[#E5E5E5] rounded-2xl p-6 sm:p-8">
                         <h2 className="text-lg font-bold text-[#0A0A0A] mb-4">What happens on the call</h2>
                         <p className="text-sm sm:text-base text-[#374151] font-medium leading-relaxed">
-                            We open the <strong className="text-[#0A0A0A] font-bold">180-point BD scorecard</strong> live, score your agency together, run your <strong className="text-[#0A0A0A] font-bold">volume math</strong> against your actual placement target, and identify the 1–3 highest-leverage things we'd set up first. Either we agree this is a fit and you get a Setup proposal, or Tushar tells you honestly it's not a fit and points you somewhere useful.
+                            We open the <strong className="text-[#0A0A0A] font-bold">180-point BD scorecard</strong> live, score your agency together, run your <strong className="text-[#0A0A0A] font-bold">volume math</strong> against your actual placement target, and identify the 1–3 highest-leverage things we&#39;d set up first. Either we agree this is a fit and you get a Setup proposal, or Tushar tells you honestly it&#39;s not a fit and points you somewhere useful.
                         </p>
                     </section>
 
@@ -53,10 +53,10 @@ export default function FitCallPage() {
                     {/* 6-question interview */}
                     <section className="border-t border-[#E5E5E5] pt-12">
                         <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold mb-3 leading-tight">
-                            6 questions you'll be asked live.
+                            6 questions you&#39;ll be asked live.
                         </h2>
                         <p className="section-sub mb-8 max-w-2xl">
-                            You are being interviewed. You know it. Pass = we sign. Fail = we don't, even if you want to.
+                            You are being interviewed. You know it. Pass = we sign. Fail = we don&#39;t, even if you want to.
                         </p>
                         <ol className="space-y-3">
                             {sixQuestionInterview.map((q, i) => (

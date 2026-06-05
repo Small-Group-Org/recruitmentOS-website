@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { caseStudies } from '@/lib/case-studies-data';
 import { buildCanonical } from '@/lib/seo';
@@ -18,7 +19,7 @@ export const metadata = {
 export default function CaseStudiesListPage() {
   return (
     <div className="min-h-screen bg-[#FAFAFA] pt-12 pb-24 animate-fadeIn">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-10">
 
         <div className="mb-20 animate-slideUp">
           <p className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-3">Proof of Results</p>
@@ -40,12 +41,12 @@ export default function CaseStudiesListPage() {
             >
               {/* Image Container with hover scale and grayscale transition */}
               <div className="relative w-full aspect-[16/10] overflow-hidden bg-gray-50 border-b border-gray-100">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={study.image}
                   alt={study.title}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700 ease-out"
-                  loading="lazy"
+                  fill
+                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700 ease-out"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                 />
                 {study.cardStats && (
                   <div className="absolute top-4 left-4 bg-black/95 backdrop-blur-sm text-white text-[10px] font-black tracking-widest px-3 py-1.5 rounded-full uppercase">

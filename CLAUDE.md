@@ -53,24 +53,32 @@ src/
 ```
 
 ## Design system
-All colours are defined as CSS variables in `src/app/globals.css`:
+All colours are defined as CSS variables in `src/app/globals.css`. **Use a token — do not hand-pick raw hex.** The palette was consolidated: one orange brand, one green success accent, and a single gray ramp (no slate).
 
 | Variable | Value | Usage |
 |---|---|---|
-| `--accent` | `#1a6b4a` | Primary green — CTAs, badges, active states |
-| `--accent-light` | `#e8f5ef` | Green tint backgrounds |
-| `--foreground` / `--ink` | `#0d0d0d` | Body text |
-| `--muted` | `#6b7280` | Secondary text |
-| `--border` | `#e5e5e5` | Default borders |
-| `--surface` | `#ffffff` | Card backgrounds |
-| `#f5f2ec` | — | Page background (tools, resources) |
-| `#F97316` | — | Orange — "New" badge, headline accents |
+| `--brand` | `#FF6A00` | **Primary** — CTAs, headline accents, "New" badge |
+| `--brand-hover` | `#E55F00` | Brand hover / pressed state |
+| `--brand-tint` | `#FFF4EB` | Orange tint backgrounds |
+| `--accent` | `#1A6B4A` | Success / active green — checkmarks, status badges, spinners |
+| `--accent-light` | `#E8F5EF` | Green tint backgrounds |
+| `--foreground` / `--ink` | `#0A0A0A` | Body text (the only near-black) |
+| `--muted` / `--gray-500` | `#6B7280` | Secondary text |
+| `--border` / `--gray-200` | `#E5E5E5` | Default borders |
+| `--border-strong` / `--gray-300` | `#D1D5DB` | Stronger borders / dividers |
+| `--surface` | `#FFFFFF` | Card backgrounds |
+| `--gray-50…--gray-800` | ramp | Neutral scale — use these, never `slate-*` |
+| `#FAFAFA` | — | Page background (body default) |
 
-**Font usage pattern**:
+Brand/success colors are also exposed as Tailwind utilities via `@theme`: `bg-brand`, `text-brand`, `bg-brand-tint`, `text-success`, etc.
+
+**Font wiring** (see `@theme` in `globals.css`): `font-sans` → **Outfit** (default body/UI), `font-serif` → **DM Serif Display** (400 only — headings auto-reset to 400, no faux-bold), `font-mono` → **DM Mono**.
+
+**Font usage pattern** — class and inline-var forms are equivalent; prefer the class:
 ```tsx
-style={{ fontFamily: 'var(--font-serif)' }}   // headings
-style={{ fontFamily: 'var(--font-outfit)' }}  // body / UI
-style={{ fontFamily: 'var(--font-mono)' }}    // labels, badges, tags
+className="font-sans"                          // body / UI (Outfit) — also the default
+style={{ fontFamily: 'var(--font-serif)' }}   // display headings (DM Serif Display)
+style={{ fontFamily: 'var(--font-mono)' }}    // labels, badges, tags (DM Mono)
 ```
 
 **Border radius conventions**: `rounded-[4px]` buttons/inputs · `rounded-[10px]` cards

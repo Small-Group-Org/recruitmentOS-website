@@ -29,7 +29,7 @@ function SocialIcon({ icon, className }: { icon: SocialIconName; className?: str
 
 export default function Footer() {
     return (
-        <footer className="py-8 bg-white border-t border-[#e5e5e5]">
+        <footer className="py-8 bg-white border-t border-[#E5E5E5]">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
                 <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div className="flex items-center font-black text-xl tracking-tight">
@@ -40,14 +40,14 @@ export default function Footer() {
                         </span>
                     </div>
 
-                    <div className="flex items-center gap-6 text-xs text-[#9ca3af]">
+                    <div className="flex items-center gap-6 text-xs text-[#9CA3AF]">
                         <Link href="/#services" className="hover:text-[#0A0A0A] transition-colors">Services</Link>
                         <Link href="https://smallgrp.com" target="_blank" className="hover:text-[#0A0A0A] transition-colors">About</Link>
                         <Link href="https://chat.whatsapp.com/I9PLSmDMJ06B6qYYVsRb0q?mode=gi_t" target="_blank" className="hover:text-[#0A0A0A] transition-colors">Join Our Community</Link>
                         <Link href="https://wa.me/919667353913" target="_blank" className="hover:text-[#0A0A0A] transition-colors">Chat with Expert</Link>
                     </div>
 
-                    <div className="flex items-center gap-4 text-[#9ca3af]">
+                    <div className="flex items-center gap-4 text-[#9CA3AF]">
                         {socialLinks.map((link) => (
                             <Link
                                 key={link.name}
@@ -62,9 +62,9 @@ export default function Footer() {
                         ))}
                     </div>
 
-                    <p className="text-xs text-[#9ca3af]">
+                    <p className="text-xs text-[#9CA3AF]">
                         &copy; {new Date().getFullYear()} RecruitmentOS by{' '}
-                        <Link href="https://smallgrp.com" target="_blank" className="text-[#6b7280] hover:text-[#0A0A0A] transition-colors">
+                        <Link href="https://smallgrp.com" target="_blank" className="text-[#6B7280] hover:text-[#0A0A0A] transition-colors">
                             Small Group
                         </Link>
                     </p>

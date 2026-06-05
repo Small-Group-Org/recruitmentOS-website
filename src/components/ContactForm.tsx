@@ -97,7 +97,7 @@ export default function ContactForm({ variant = 'embed' }: { variant?: 'embed' |
                         Submit the form and Tushar will get in touch.
                     </h2>
                     <p className="section-sub">
-                        Tell us about your agency and what you're trying to fix. We'll come back within 48 hours.
+                        Tell us about your agency and what you&#39;re trying to fix. We&#39;ll come back within 48 hours.
                     </p>
                 </div>
             )}
@@ -138,7 +138,7 @@ export default function ContactForm({ variant = 'embed' }: { variant?: 'embed' |
                 <button
                     type="submit"
                     disabled={status === 'submitting'}
-                    className="w-full sm:w-auto inline-flex items-center justify-center bg-[#0A0A0A] text-white px-8 py-4 rounded-full font-medium hover:bg-[#222222] active:scale-95 transition-all text-base sm:text-lg disabled:opacity-60 disabled:cursor-not-allowed group"
+                    className="w-full sm:w-auto inline-flex items-center justify-center bg-[#0A0A0A] text-white px-8 py-4 rounded-full font-medium hover:bg-[#0A0A0A] active:scale-95 transition-all text-base sm:text-lg disabled:opacity-60 disabled:cursor-not-allowed group"
                 >
                     {status === 'submitting' ? 'Sending…' : 'Submit'}
                     {status !== 'submitting' && (

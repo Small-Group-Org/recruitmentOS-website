@@ -7,7 +7,7 @@ import { pricingPlans, type PricingPlan } from '@/lib/pricing-data';
 export default function Pricing() {
     return (
         <section className="bg-white pt-12 pb-24" id="pricing">
-            <div className="max-w-[1180px] mx-auto px-6 sm:px-10">
+            <div className="max-w-[1280px] mx-auto px-6 sm:px-10">
 
                 {/* ── Header ── */}
                 <div className="mb-10 sm:mb-12 max-w-3xl">
@@ -48,7 +48,7 @@ export default function Pricing() {
                     </p>
                     <Link
                         href="/fit-call"
-                        className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-7 py-4 rounded-full font-semibold hover:bg-[#222] transition-colors text-base group"
+                        className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-7 py-4 rounded-full font-semibold hover:bg-[#0A0A0A] transition-colors text-base group"
                         style={{ fontFamily: 'var(--font-outfit)' }}
                         id="pricing-enterprise-cta"
                     >
@@ -74,9 +74,9 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
 
     return (
         <div
-            className={`relative rounded-3xl flex flex-col bg-white p-8 transition-all duration-300 ${isPopular
+            className={`relative rounded-2xl flex flex-col bg-white p-8 transition-all duration-300 ${isPopular
                 ? 'border-2 border-[#FF6A00] shadow-[0_8px_40px_-12px_rgba(255,106,0,0.35)] lg:-mt-4 lg:mb-0'
-                : 'border border-[#E5E5E5] shadow-sm hover:border-[#D4D4D4]'
+                : 'border border-[#E5E5E5] shadow-sm hover:border-[#D1D5DB]'
                 }`}
         >
             {isPopular && (
@@ -88,7 +88,7 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
 
             {/* Category pill */}
             <div className="mb-5">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-[#FFF1E8] text-[#C2511C] text-[11px] font-bold px-3 py-1"
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-[#FFF4EB] text-[#C2511C] text-[11px] font-bold px-3 py-1"
                     style={{ fontFamily: 'var(--font-mono)' }}>
                     <CategoryIcon icon={plan.icon} />
                     {plan.category}
@@ -207,7 +207,7 @@ function VolumeDropdown({
                 onClick={() => setOpen((v) => !v)}
                 aria-haspopup="listbox"
                 aria-expanded={open}
-                className="w-full flex items-center justify-between gap-2 px-4 py-3 rounded-xl border border-[#E5E5E5] bg-white text-left text-sm font-semibold text-[#0A0A0A] hover:border-[#D4D4D4] transition-colors"
+                className="w-full flex items-center justify-between gap-2 px-4 py-3 rounded-xl border border-[#E5E5E5] bg-white text-left text-sm font-semibold text-[#0A0A0A] hover:border-[#D1D5DB] transition-colors"
                 style={{ fontFamily: 'var(--font-outfit)' }}
             >
                 <div className="flex flex-col items-start gap-0">
@@ -240,7 +240,7 @@ function VolumeDropdown({
                                     setOpen(false);
                                 }}
                                 className={`w-full flex items-center justify-between gap-3 px-4 py-2.5 text-left text-sm transition-colors ${i === index
-                                    ? 'bg-[#FFF1E8] text-[#C2511C] font-bold'
+                                    ? 'bg-[#FFF4EB] text-[#C2511C] font-bold'
                                     : 'text-[#374151] hover:bg-[#FAFAFA]'
                                     }`}
                                 style={{ fontFamily: 'var(--font-outfit)' }}

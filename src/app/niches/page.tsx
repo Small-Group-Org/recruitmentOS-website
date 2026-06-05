@@ -28,10 +28,10 @@ export default function NichesIndexPage() {
                     <div className="mb-16 sm:mb-20 max-w-3xl">
                         <p className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-3">Niches</p>
                         <h1 className="text-[#0A0A0A] text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.05] mb-5">
-                            Built for your niche, not "recruitment in general".
+                            Built for your niche, not &#34;recruitment in general&#34;.
                         </h1>
                         <p className="hero-sub">
-                            A biotech recruiter and an accounting recruiter share zero source data. We don't pretend they do. Each agency gets their own ICP map and signal sources — that's the single biggest predictor of whether the engine performs.
+                            A biotech recruiter and an accounting recruiter share zero source data. We don&#39;t pretend they do. Each agency gets their own ICP map and signal sources — that&#39;s the single biggest predictor of whether the engine performs.
                         </p>
                     </div>
 
@@ -62,11 +62,11 @@ export default function NichesIndexPage() {
                             Your niche not listed?
                         </h2>
                         <p className="section-sub mb-6">
-                            We've worked with 12+ verticals — these 3 are just the most-trafficked landing pages. Scope your specific niche on the fit call.
+                            We&#39;ve worked with 12+ verticals — these 3 are just the most-trafficked landing pages. Scope your specific niche on the fit call.
                         </p>
                         <Link
                             href="/fit-call"
-                            className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-medium hover:bg-[#222222] transition-colors text-base sm:text-lg"
+                            className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-medium hover:bg-[#0A0A0A] transition-colors text-base sm:text-lg"
                         >
                             Book a fit call
                         </Link>

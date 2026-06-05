@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import Link from 'next/link';
+import { Button, Card } from '@/components/ui';
 import {
     scorecard,
     computeReport,
@@ -53,7 +53,7 @@ export default function BDScorecard() {
     const progressPct = Math.round((answeredQs / totalQs) * 100);
 
     return (
-        <section className="bg-white border border-[#E5E5E5] rounded-2xl p-6 sm:p-10">
+        <Card as="section" padding="lg">
 
             {/* Progress */}
             <div className="mb-8">
@@ -118,13 +118,13 @@ export default function BDScorecard() {
                     type="button"
                     onClick={next}
                     disabled={!answered}
-                    className="inline-flex items-center bg-[#0A0A0A] text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-[#222222] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                    className="inline-flex items-center bg-[#0A0A0A] text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-[#0A0A0A] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                 >
                     {sectionIdx === totalSections - 1 ? 'See your score →' : 'Next section →'}
                 </button>
             </div>
 
-        </section>
+        </Card>
     );
 }
 
@@ -134,7 +134,7 @@ function Results({ report, onReset }: { report: ReturnType<typeof computeReport>
     const synthesis = bdAutoSynthesis(report.bdAutoPct);
 
     return (
-        <section className="bg-white border border-[#E5E5E5] rounded-2xl p-6 sm:p-10">
+        <Card as="section" padding="lg">
 
             {/* Overall score */}
             <div className="text-center mb-10 pb-10 border-b border-[#E5E5E5]">
@@ -197,12 +197,9 @@ function Results({ report, onReset }: { report: ReturnType<typeof computeReport>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link
-                    href="/fit-call"
-                    className="inline-flex items-center justify-center bg-[#FF6A00] text-white px-8 py-4 rounded-full font-medium hover:bg-[#E55F00] transition-colors text-base sm:text-lg"
-                >
+                <Button href="/fit-call" size="lg" pill>
                     Book a fit call to walk through your score →
-                </Link>
+                </Button>
                 <button
                     onClick={onReset}
                     type="button"
@@ -212,6 +209,6 @@ function Results({ report, onReset }: { report: ReturnType<typeof computeReport>
                 </button>
             </div>
 
-        </section>
+        </Card>
     );
 }

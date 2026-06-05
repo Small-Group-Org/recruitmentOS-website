@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { Badge } from '@/components/ui';
 import { Tool } from '@/lib/tools-data';
 import { useToolGate } from '@/hooks/useToolGate';
 
@@ -22,7 +23,7 @@ export default function ToolHub({ tools }: { tools: Tool[] }) {
             Built for established recruitment agencies. Browse what&rsquo;s inside each tool freely — one email unlocks all of them when you&rsquo;re ready to use one.
           </p>
           {isHydrated && isUnlocked && (
-            <p className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-md bg-[#e7f9ee] text-[#128c5e]">
+            <p className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-md bg-[#E7F9EE] text-[#128C5E]">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
@@ -45,11 +46,7 @@ export default function ToolHub({ tools }: { tools: Tool[] }) {
                 <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-md text-[#9CA3AF] bg-[#F3F4F6]">
                   {tool.badge}
                 </span>
-                {tool.isNew && (
-                  <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-md text-white bg-[#FF6A00]">
-                    New
-                  </span>
-                )}
+                {tool.isNew && <Badge square>New</Badge>}
               </div>
               <h3 className="text-lg font-bold text-[#0A0A0A] mb-2 leading-snug group-hover:text-[#FF6A00] transition-colors">
                 {tool.title}

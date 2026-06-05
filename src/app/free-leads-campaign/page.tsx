@@ -53,11 +53,11 @@ export default function FreeLeadsCampaignPage() {
                             Get 10 verified hiring-manager contacts a day. For 30 days. Free.
                         </h1>
                         <p className="hero-sub mb-8">
-                            Apply with your niche and revenue band. If you're a fit, we send you 10 hand-verified hiring-manager contacts in your niche, every day for the next month. 300 leads. No commitment. No upsell during the campaign.
+                            Apply with your niche and revenue band. If you&#39;re a fit, we send you 10 hand-verified hiring-manager contacts in your niche, every day for the next month. 300 leads. No commitment. No upsell during the campaign.
                         </p>
                         <a
                             href="#apply"
-                            className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-medium hover:bg-[#222222] transition-colors text-base sm:text-lg group"
+                            className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-medium hover:bg-[#0A0A0A] transition-colors text-base sm:text-lg group"
                         >
                             Apply now
                             <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -94,9 +94,9 @@ export default function FreeLeadsCampaignPage() {
 
                     {/* Who this isn't for */}
                     <section className="mb-20 border-t border-[#E5E5E5] pt-12">
-                        <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold mb-3 leading-tight">Who this isn't for</h2>
+                        <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold mb-3 leading-tight">Who this isn&#39;t for</h2>
                         <p className="section-sub mb-8 max-w-2xl">
-                            We'd rather say no upfront than waste your time. If any of these describe your agency, the campaign isn't a fit.
+                            We&#39;d rather say no upfront than waste your time. If any of these describe your agency, the campaign isn&#39;t a fit.
                         </p>
                         <ul className="space-y-3">
                             {notForYou.map((item) => (

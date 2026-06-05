@@ -129,7 +129,7 @@ function renderInline(text: string, keyPrefix: string): React.ReactNode[] {
             href={url}
             target={isExternal ? '_blank' : undefined}
             rel={isExternal ? 'noopener noreferrer' : undefined}
-            className="text-[#FF6A00] underline underline-offset-2 hover:text-[#e05e00]"
+            className="text-[#FF6A00] underline underline-offset-2 hover:text-[#E55F00]"
           >
             {label}
           </a>

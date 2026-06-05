@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
         start_url: '/',
         display: 'standalone',
         background_color: '#0A0A0A',
-        theme_color: '#F97316',
+        theme_color: '#FF6A00',
         icons: [
             // NOTE: 192/512 PNG assets will be added in /public when Tushar provides the logo wordmark
             // For now, falls back to the SVG favicon.

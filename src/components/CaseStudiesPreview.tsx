@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { caseStudies } from '@/lib/case-studies-data';
 
@@ -9,7 +10,7 @@ const proofStats = [
 
 export default function CaseStudiesPreview() {
     return (
-        <section className="py-20 md:py-28 bg-[#FAFAFA] border-y border-[#e5e5e5]" id="proof">
+        <section className="py-16 md:py-24 bg-[#FAFAFA] border-y border-[#E5E5E5]" id="proof">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
                 {/* Proof of work */}
                 <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
@@ -30,7 +31,7 @@ export default function CaseStudiesPreview() {
                     {proofStats.map((stat) => (
                         <div key={stat.label} className="text-center">
                             <div className="text-2xl md:text-4xl font-bold text-[#0A0A0A] tracking-tight mb-1">{stat.value}</div>
-                            <div className="text-[11px] md:text-xs text-[#9ca3af] uppercase tracking-wider leading-tight">{stat.label}</div>
+                            <div className="text-[11px] md:text-xs text-[#9CA3AF] uppercase tracking-wider leading-tight">{stat.label}</div>
                         </div>
                     ))}
                 </div>
@@ -44,12 +45,12 @@ export default function CaseStudiesPreview() {
                             className="group flex flex-col h-full bg-white border border-[#E5E5E5] rounded-[1.5rem] overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:border-black/10 transition-all duration-500 ease-out"
                         >
                             <div className="relative w-full aspect-[16/10] overflow-hidden bg-gray-50 border-b border-gray-100">
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img
+                                <Image
                                     src={study.image}
                                     alt={study.title}
-                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700 ease-out"
-                                    loading="lazy"
+                                    fill
+                                    className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700 ease-out"
+                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                                 />
                                 {study.cardStats && (
                                     <div className="absolute top-3 left-3 bg-black/95 backdrop-blur-sm text-white text-[9px] font-black tracking-widest px-2.5 py-1 rounded-full uppercase">
@@ -76,7 +77,7 @@ export default function CaseStudiesPreview() {
                 <div className="text-center mt-12">
                     <Link
                         href="/case-studies"
-                        className="inline-flex items-center justify-center text-[#6b7280] hover:text-[#0A0A0A] text-sm font-medium transition-colors duration-200 group"
+                        className="inline-flex items-center justify-center text-[#6B7280] hover:text-[#0A0A0A] text-sm font-medium transition-colors duration-200 group"
                     >
                         See all case studies
                         <svg className="ml-1.5 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

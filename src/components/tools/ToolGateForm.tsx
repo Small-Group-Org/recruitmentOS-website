@@ -88,7 +88,7 @@ export default function ToolGateForm({ toolTitle = 'Free Recruitment Tools', red
           </p>
         </div>
 
-        <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-[#E5E5E5]">
+        <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-[#E5E5E5]">
 
           {/* Step indicator */}
           <div className="px-8 pt-7 pb-5 border-b border-[#E5E5E5]">
@@ -149,7 +149,7 @@ export default function ToolGateForm({ toolTitle = 'Free Recruitment Tools', red
                   />
                 </div>
                 <button type="submit"
-                  className="w-full py-3 rounded-xl text-sm font-bold text-white bg-[#0A0A0A] hover:bg-[#1a1a1a] transition-colors">
+                  className="w-full py-3 rounded-xl text-sm font-bold text-white bg-[#0A0A0A] hover:bg-[#0A0A0A] transition-colors">
                   Continue →
                 </button>
                 <p className="text-center text-xs text-[#9CA3AF]">
@@ -179,7 +179,7 @@ export default function ToolGateForm({ toolTitle = 'Free Recruitment Tools', red
                 {error && <p className="text-xs text-red-500 pt-1">{error}</p>}
 
                 <button type="submit" disabled={loading || selected.length === 0}
-                  className="w-full py-3 rounded-xl text-sm font-bold text-white bg-[#0A0A0A] hover:bg-[#1a1a1a] transition-colors disabled:opacity-40 !mt-4">
+                  className="w-full py-3 rounded-xl text-sm font-bold text-white bg-[#0A0A0A] hover:bg-[#0A0A0A] transition-colors disabled:opacity-40 !mt-4">
                   {loading ? 'Unlocking…' : 'Get My Free Access →'}
                 </button>
 
@@ -193,7 +193,7 @@ export default function ToolGateForm({ toolTitle = 'Free Recruitment Tools', red
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-4 mt-4 border border-[#E5E5E5] rounded-3xl overflow-hidden bg-white">
+        <div className="grid grid-cols-4 mt-4 border border-[#E5E5E5] rounded-2xl overflow-hidden bg-white">
           {[
             { num: '10+', lbl: 'Agencies using this' },
             { num: '500+', lbl: 'Jobs tracked daily' },

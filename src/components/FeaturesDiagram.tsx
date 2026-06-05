@@ -54,7 +54,7 @@ function StepCard({ feature }: { feature: (typeof features)[number] }) {
     return (
         <div className="relative bg-white border border-[#E5E5E5] rounded-[1.5rem] p-5 shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:shadow-xl hover:border-[#FF6A00]/40 hover:-translate-y-0.5 transition-all duration-300">
             <span
-                className="absolute top-4 right-5 text-xl font-bold text-[#EFEFEF] leading-none"
+                className="absolute top-4 right-5 text-xl font-bold text-[#F3F4F6] leading-none"
                 style={{ fontFamily: 'var(--font-mono)' }}
             >
                 {feature.step}
@@ -112,7 +112,7 @@ const connectorPaths = [
 
 export default function FeaturesDiagram() {
     return (
-        <section className="py-12 sm:py-20 md:py-28 bg-white" id="solution-overview">
+        <section className="py-16 md:py-24 bg-white" id="solution-overview">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
                 <div className="text-center mb-12 md:mb-16">
                     <p className="text-xs font-semibold uppercase tracking-widest text-[#FF6A00] mb-3">
@@ -137,7 +137,7 @@ export default function FeaturesDiagram() {
                     >
                         {connectorPaths.map((arrow, i) => (
                             <g key={i}>
-                                <path d={arrow.d} stroke="#EDEDED" strokeWidth="2" fill="none" />
+                                <path d={arrow.d} stroke="#E5E5E5" strokeWidth="2" fill="none" />
                                 <path
                                     d={arrow.d}
                                     stroke="#FF6A00"

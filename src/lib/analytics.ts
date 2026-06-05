@@ -57,7 +57,7 @@ export const trackScrollDepth = (percentage: number) => {
 // TypeScript declaration for gtag
 declare global {
     interface Window {
-        gtag: (...args: any[]) => void;
-        dataLayer: any[];
+        gtag: (...args: unknown[]) => void;
+        dataLayer: unknown[];
     }
 }

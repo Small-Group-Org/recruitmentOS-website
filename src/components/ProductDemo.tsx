@@ -21,7 +21,7 @@ export default function ProductDemo() {
     }, []);
 
     return (
-        <section className="bg-[#F9FAFB] py-20 md:py-28" id="demo">
+        <section className="bg-[#F9FAFB] py-16 md:py-24" id="demo">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
                 {/* Heading */}
                 <div className="text-center mb-12">
@@ -52,7 +52,7 @@ export default function ProductDemo() {
                                     allowFullScreen
                                 />
                             ) : (
-                                <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-[#111]">
+                                <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-[#0A0A0A]">
                                     <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center">
                                         <svg className="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M8 5v14l11-7z" />

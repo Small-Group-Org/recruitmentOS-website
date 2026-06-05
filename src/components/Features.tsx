@@ -5,8 +5,8 @@ import { services } from '@/lib/services-data';
 
 export default function Features() {
     return (
-        <section className="py-20 md:py-28 bg-white border-t border-[#E5E5E5]" id="services">
-            <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
+        <section className="py-16 md:py-24 bg-white border-t border-[#E5E5E5]" id="services">
+            <div className="max-w-[1280px] mx-auto px-6 sm:px-10">
                 <div className="grid lg:grid-cols-[0.85fr_1.4fr] gap-12 lg:gap-20">
 
                     {/* Left — intro (sticky on desktop) */}
@@ -25,7 +25,7 @@ export default function Features() {
                         </p>
                         <Link
                             href="/services"
-                            className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 rounded-full font-medium hover:bg-[#222222] transition-colors text-sm group"
+                            className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 rounded-full font-medium hover:bg-[#0A0A0A] transition-colors text-sm group"
                         >
                             See all five services
                             <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>

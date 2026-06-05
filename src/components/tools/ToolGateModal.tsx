@@ -94,7 +94,7 @@ export default function ToolGateModal({ toolTitle = 'Free Recruitment Tools', on
             style={{ background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(4px)' }}
             onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
         >
-            <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden relative">
+            <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden relative">
                 <button
                     onClick={onClose}
                     className="absolute top-4 right-4 text-[#9CA3AF] hover:text-[#0A0A0A] transition-colors z-10"

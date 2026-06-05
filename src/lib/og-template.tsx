@@ -20,27 +20,27 @@ export function renderOgImage(eyebrow: string, title: string, subtitle?: string)
                 }}
             >
                 {/* Orange accent line top */}
-                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '6px', background: '#F97316' }} />
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '6px', background: '#FF6A00' }} />
 
                 {/* Eyebrow */}
-                <div style={{ color: '#F97316', fontSize: '20px', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '32px', fontWeight: 700 }}>
+                <div style={{ color: '#FF6A00', fontSize: '20px', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '32px', fontWeight: 700 }}>
                     {eyebrow}
                 </div>
 
                 {/* Title */}
-                <div style={{ color: '#ffffff', fontSize: '64px', fontWeight: 800, lineHeight: 1.05, marginBottom: subtitle ? '24px' : 0, maxWidth: '950px', letterSpacing: '-0.02em' }}>
+                <div style={{ color: '#FFFFFF', fontSize: '64px', fontWeight: 800, lineHeight: 1.05, marginBottom: subtitle ? '24px' : 0, maxWidth: '950px', letterSpacing: '-0.02em' }}>
                     {title}
                 </div>
 
                 {/* Subtitle */}
                 {subtitle && (
-                    <div style={{ color: '#a1a1aa', fontSize: '28px', fontWeight: 500, lineHeight: 1.3, maxWidth: '950px' }}>
+                    <div style={{ color: '#A1A1AA', fontSize: '28px', fontWeight: 500, lineHeight: 1.3, maxWidth: '950px' }}>
                         {subtitle}
                     </div>
                 )}
 
                 {/* Bottom-right wordmark */}
-                <div style={{ position: 'absolute', bottom: '60px', right: '80px', color: '#F97316', fontSize: '22px', fontWeight: 900, letterSpacing: '-0.02em' }}>
+                <div style={{ position: 'absolute', bottom: '60px', right: '80px', color: '#FF6A00', fontSize: '22px', fontWeight: 900, letterSpacing: '-0.02em' }}>
                     recruitmentos.smallgrp.com
                 </div>
             </div>

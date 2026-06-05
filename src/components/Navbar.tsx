@@ -15,7 +15,7 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
     ];
 
     return (
-        <header className="w-full bg-white/90 backdrop-blur-md border-b border-[#e5e5e5] relative z-50">
+        <header className="w-full bg-white/90 backdrop-blur-md border-b border-[#E5E5E5] relative z-50">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
                 <nav className="flex items-center justify-between h-16">
                     <Link href="/" className="flex items-center font-bold text-2xl sm:text-3xl tracking-tight z-50">
@@ -31,7 +31,7 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-sm font-medium text-neutral-500 hover:text-[#1A1A1A] transition-colors"
+                                className="text-sm font-medium text-neutral-500 hover:text-[#0A0A0A] transition-colors"
                             >
                                 {link.name}
                             </Link>
@@ -41,14 +41,14 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
                     <div className="hidden lg:flex items-center gap-2">
                         <Link
                             href="/tools"
-                            className="inline-flex items-center px-5 py-2 rounded-full border border-[#1A1A1A] bg-transparent text-[#1A1A1A] text-sm font-medium hover:bg-neutral-100 transition-colors"
+                            className="inline-flex items-center px-5 py-2 rounded-full border border-[#0A0A0A] bg-transparent text-[#0A0A0A] text-sm font-medium hover:bg-neutral-100 transition-colors"
                         >
                             Free Tools
                         </Link>
                         <Link
                             href="https://cal.com/tusharm/30min?user=tusharm"
                             target="_blank"
-                            className="inline-flex items-center px-5 py-2 rounded-full bg-[#1A1A1A] text-white text-sm font-medium hover:bg-neutral-800 transition-colors"
+                            className="inline-flex items-center px-5 py-2 rounded-full bg-[#0A0A0A] text-white text-sm font-medium hover:bg-neutral-800 transition-colors"
                         >
                             Book a Call
                         </Link>
@@ -76,20 +76,20 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
                 </nav>
 
                 {isMenuOpen && (
-                    <div className="lg:hidden pt-4 pb-2 space-y-3 border-t border-[#e5e5e5] mt-4">
+                    <div className="lg:hidden pt-4 pb-2 space-y-3 border-t border-[#E5E5E5] mt-4">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
                                 href={link.href}
                                 onClick={() => setIsMenuOpen(false)}
-                                className="block text-sm font-medium text-[#6b7280] hover:text-[#0A0A0A] transition-colors py-1"
+                                className="block text-sm font-medium text-[#6B7280] hover:text-[#0A0A0A] transition-colors py-1"
                             >
                                 {link.name}
                             </Link>
                         ))}
                         <Link
                             href="/tools"
-                            className="block bg-transparent text-[#1A1A1A] border border-[#1A1A1A] px-5 py-2.5 rounded-full text-sm font-medium text-center mt-2"
+                            className="block bg-transparent text-[#0A0A0A] border border-[#0A0A0A] px-5 py-2.5 rounded-full text-sm font-medium text-center mt-2"
                         >
                             Free Tools
                         </Link>

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import { articles } from '@/lib/articles-data';
@@ -15,7 +16,7 @@ export default function ArticlesPage() {
   return (
     <main className="min-h-screen bg-white">
       <div className="pt-12 pb-24">
-        <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
+        <div className="max-w-[1280px] mx-auto px-6 sm:px-10">
           <Link
             href="/resources"
             className="inline-flex items-center text-sm text-black hover:text-[#FF6A00] transition-colors mb-12"
@@ -32,7 +33,7 @@ export default function ArticlesPage() {
               Recruitment lead gen, decoded.
             </h1>
             <p className="text-[#6B7280] text-base sm:text-lg leading-relaxed">
-              Frameworks, case studies, and AI workflows from 60+ specialist recruitment agencies — what's working in 2026, and what's wasting your time.
+              Frameworks, case studies, and AI workflows from 60+ specialist recruitment agencies — what&#39;s working in 2026, and what&#39;s wasting your time.
             </p>
           </div>
 
@@ -45,16 +46,17 @@ export default function ArticlesPage() {
                   href={href}
                   className="flex flex-col group"
                 >
-                  <div className="relative aspect-[4/3] bg-[#FAFAFA] border border-[#E5E5E5] rounded-2xl sm:rounded-3xl mb-5 overflow-hidden flex items-center justify-center group-hover:border-[#FF6A00]/20 transition-all duration-300">
+                  <div className="relative aspect-[4/3] bg-[#FAFAFA] border border-[#E5E5E5] rounded-2xl sm:rounded-2xl mb-5 overflow-hidden flex items-center justify-center group-hover:border-[#FF6A00]/20 transition-all duration-300">
                     <div className="absolute inset-0 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity duration-300">
                       <div className="absolute inset-0 bg-[radial-gradient(#FF6A00_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
                     </div>
                     {article.image ? (
-                      <img
+                      <Image
                         src={article.image}
                         alt={article.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
                       />
                     ) : (
                       <div className="text-center px-8">

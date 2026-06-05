@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Button } from '@/components/ui';
 import Footer from '@/components/Footer';
 import {
     methodologySteps,
@@ -159,7 +160,7 @@ export default function MethodologyPage() {
                         <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">The fit interview</p>
                         <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold mb-3 leading-tight">6 questions we ask on the fit call.</h2>
                         <p className="section-sub mb-8 max-w-2xl">
-                            You are being interviewed. You know it. Pass = we sign. Fail = we don't, even if you want to.
+                            You are being interviewed. You know it. Pass = we sign. Fail = we don&#39;t, even if you want to.
                         </p>
                         <ol className="space-y-4">
                             {sixQuestionInterview.map((q, i) => (
@@ -173,7 +174,7 @@ export default function MethodologyPage() {
 
                     {/* Three non-compromises */}
                     <section className="mb-20 border-t border-[#E5E5E5] pt-12">
-                        <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">The three things we won't compromise on</p>
+                        <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">The three things we won&#39;t compromise on</p>
                         <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold mb-8 leading-tight">Selectivity is the product.</h2>
                         <div className="space-y-5">
                             {nonCompromises.map((nc) => (
@@ -191,22 +192,15 @@ export default function MethodologyPage() {
                             Ready to walk through your numbers?
                         </h2>
                         <p className="section-sub mb-8">
-                            On the fit call we open the 180-point BD scorecard live, score your agency together, run your volume math, and identify the 1–3 highest-leverage things we'd build first.
+                            On the fit call we open the 180-point BD scorecard live, score your agency together, run your volume math, and identify the 1–3 highest-leverage things we&#39;d build first.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <Link
-                                href="https://cal.com/tusharm/30min?user=tusharm"
-                                target="_blank"
-                                className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-medium hover:bg-[#222222] transition-colors text-base sm:text-lg"
-                            >
+                            <Button href="https://cal.com/tusharm/30min?user=tusharm" target="_blank" variant="dark" size="lg" pill>
                                 Book a fit call
-                            </Link>
-                            <Link
-                                href="/services"
-                                className="inline-flex items-center justify-center bg-white text-[#0A0A0A] border border-[#e5e5e5] px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-medium hover:bg-[#f9fafb] transition-colors"
-                            >
+                            </Button>
+                            <Button href="/services" variant="secondary" size="lg" pill>
                                 See the 5 services →
-                            </Link>
+                            </Button>
                         </div>
                     </section>
 

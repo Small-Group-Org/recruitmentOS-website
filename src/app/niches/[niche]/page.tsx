@@ -91,7 +91,7 @@ export default async function NicheDetailPage({ params }: { params: Promise<{ ni
                         <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">Disqualifications</p>
                         <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold mb-3 leading-tight">When we say no for {n.shortName.toLowerCase()}.</h2>
                         <p className="section-sub mb-8 max-w-2xl">
-                            We'd rather decline upfront than waste your retainer on a niche where our signal layer can't see opportunities.
+                            We&#39;d rather decline upfront than waste your retainer on a niche where our signal layer can&#39;t see opportunities.
                         </p>
                         <ul className="space-y-3">
                             {n.disqualify.map((d) => (
@@ -109,11 +109,11 @@ export default async function NicheDetailPage({ params }: { params: Promise<{ ni
                             See the candidate map for {n.shortName.toLowerCase()}.
                         </h2>
                         <p className="section-sub mb-6">
-                            On the fit call we'll open the live signal feed and your specific ICP filter so you see what's possible before any commitment.
+                            On the fit call we&#39;ll open the live signal feed and your specific ICP filter so you see what&#39;s possible before any commitment.
                         </p>
                         <Link
                             href={`/fit-call?niche=${encodeURIComponent(n.shortName.toLowerCase())}`}
-                            className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-medium hover:bg-[#222222] transition-colors text-base sm:text-lg"
+                            className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-medium hover:bg-[#0A0A0A] transition-colors text-base sm:text-lg"
                         >
                             Book a fit call
                         </Link>

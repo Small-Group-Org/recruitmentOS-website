@@ -103,7 +103,7 @@ export default function FitCallForm() {
                     </div>
                     <h3 className="text-2xl sm:text-3xl font-bold text-[#0A0A0A] mb-2">Pick a time.</h3>
                     <p className="section-sub max-w-md mx-auto">
-                        We'll open the BD scorecard live on the call and run your volume math together.
+                        We&#39;ll open the BD scorecard live on the call and run your volume math together.
                     </p>
                 </div>
                 <div className="rounded-2xl overflow-hidden border border-[#E5E5E5] h-[700px] bg-white">
@@ -174,7 +174,7 @@ export default function FitCallForm() {
             <button
                 type="submit"
                 disabled={status === 'submitting'}
-                className="w-full inline-flex items-center justify-center bg-[#0A0A0A] text-white px-8 py-4 rounded-full font-medium hover:bg-[#222222] active:scale-95 transition-all text-base sm:text-lg disabled:opacity-60 disabled:cursor-not-allowed group"
+                className="w-full inline-flex items-center justify-center bg-[#0A0A0A] text-white px-8 py-4 rounded-full font-medium hover:bg-[#0A0A0A] active:scale-95 transition-all text-base sm:text-lg disabled:opacity-60 disabled:cursor-not-allowed group"
             >
                 {status === 'submitting' ? 'Submitting…' : 'Continue to calendar'}
                 {status !== 'submitting' && (

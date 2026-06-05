@@ -23,7 +23,7 @@ export default function Hero() {
     }, []);
 
     return (
-        <section className="relative overflow-hidden pt-3 pb-24 md:pt-2 md:pb-40 bg-[#F9FAFB]" id="hero">
+        <section className="relative overflow-hidden pt-3 pb-16 md:pb-24 bg-[#F9FAFB]" id="hero">
             <RetroGrid />
             <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 text-center">
                 <div className="flex flex-col items-center justify-center">
@@ -55,7 +55,7 @@ export default function Hero() {
                         className="text-[2.5rem] sm:text-5xl md:text-7xl lg:text-[7.6rem] xl:text-[8.3rem] tracking-[-0.04em] mb-6 leading-[0.9] mx-auto"
                         style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}
                     >
-                        <span className="block mb-2 font-semibold text-[#000000]">
+                        <span className="block mb-2 font-semibold text-[#0A0A0A]">
                             We replace your BD function.
                         </span>
                         <span className="block font-bold scale-y-105 text-[#FF6A00]">
@@ -75,7 +75,7 @@ export default function Hero() {
                         <Link
                             href="/fit-call"
                             onClick={() => trackCTAClick('Book a strategy call', 'Hero')}
-                            className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-medium hover:bg-[#222222] hover:-translate-y-1 hover:shadow-xl active:scale-95 transition-all duration-300 text-base sm:text-lg group"
+                            className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-medium hover:bg-[#0A0A0A] hover:-translate-y-1 hover:shadow-xl active:scale-95 transition-all duration-300 text-base sm:text-lg group"
                         >
                             Book a strategy call
                             <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

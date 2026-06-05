@@ -78,25 +78,25 @@ export default function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <section className="py-20 md:py-28 bg-white border-t border-[#e5e5e5]" id="faq">
+        <section className="py-16 md:py-24 bg-white border-t border-[#E5E5E5]" id="faq">
             <JsonLd data={faqSchema(faqsForSchema)} />
-            <div className="max-w-[720px] mx-auto px-6">
+            <div className="max-w-[700px] mx-auto px-6">
                 <div className="mb-12">
-                    <p className="text-xs font-medium text-[#6b7280] uppercase tracking-widest mb-3">FAQ</p>
+                    <p className="text-xs font-medium text-[#6B7280] uppercase tracking-widest mb-3">FAQ</p>
                     <h2 className="text-[#0A0A0A]">Common questions</h2>
                 </div>
 
                 <div>
                     {faqs.map((faq, index) => (
-                        <div key={index} className="border-b border-[#e5e5e5]">
+                        <div key={index} className="border-b border-[#E5E5E5]">
                             <button
                                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                                 className="w-full flex items-center justify-between py-5 text-left group"
                             >
-                                <span className="text-[15px] font-medium text-[#0A0A0A] pr-4 group-hover:text-[#6b7280] transition-colors">
+                                <span className="text-[15px] font-medium text-[#0A0A0A] pr-4 group-hover:text-[#6B7280] transition-colors">
                                     {faq.question}
                                 </span>
-                                <span className="text-[#9ca3af] text-xl shrink-0 w-6 h-6 flex items-center justify-center rounded-full border border-[#e5e5e5] group-hover:border-[#d4d4d4] transition-colors">
+                                <span className="text-[#9CA3AF] text-xl shrink-0 w-6 h-6 flex items-center justify-center rounded-full border border-[#E5E5E5] group-hover:border-[#D1D5DB] transition-colors">
                                     <svg
                                         className={`w-3 h-3 transition-transform duration-200 ${openIndex === index ? 'rotate-45' : ''}`}
                                         fill="none"
@@ -114,7 +114,7 @@ export default function FAQ() {
                                     openIndex === index ? 'max-h-[500px] pb-5' : 'max-h-0'
                                 }`}
                             >
-                                <p className="text-sm text-[#6b7280] leading-relaxed pr-10">{faq.answer}</p>
+                                <p className="text-sm text-[#6B7280] leading-relaxed pr-10">{faq.answer}</p>
                             </div>
                         </div>
                     ))}

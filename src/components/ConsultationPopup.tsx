@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import { Button } from '@/components/ui';
 
 export default function ConsultationPopup() {
     const [isVisible, setIsVisible] = useState(false);
@@ -73,7 +75,7 @@ export default function ConsultationPopup() {
                 </div>
 
                 {/* Testimonial Section */}
-                <div className="bg-[#FFF9F4] border border-[#FF6A00]/10 rounded-none p-5 mb-6 relative">
+                <div className="bg-[#FFF4EB] border border-[#FF6A00]/10 rounded-none p-5 mb-6 relative">
                     <div className="absolute top-5 left-5">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF6A00" className="opacity-20">
                             <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C20.1216 16 21.017 16.8954 21.017 18V21C21.017 22.1046 20.1216 23 19.017 23H16.017C14.9124 23 14.017 22.1046 14.017 21ZM14.017 13L14.017 10C14.017 8.89543 14.9124 8 16.017 8H19.017C20.1216 8 21.017 8.89543 21.017 10V13C21.017 14.1046 20.1216 15 19.017 15H16.017C14.9124 15 14.017 14.1046 14.017 13ZM3 21L3 18C3 16.8954 3.89543 16 5 16H8C9.10457 16 10 16.8954 10 18V21C10 22.1046 9.10457 23 8 23H5C3.89543 23 3 22.1046 3 21ZM3 13L3 10C3 8.89543 3.89543 8 5 8H8C9.10457 8 10 8.89543 10 10V13C10 14.1046 9.10457 15 8 15H5C3.89543 15 3 14.1046 3 13Z" />
@@ -81,14 +83,16 @@ export default function ConsultationPopup() {
                     </div>
                     <div className="flex flex-col gap-4">
                         <p className="text-[#374151] font-medium leading-relaxed italic text-sm">
-                            "The insights from our consultation were a game-changer. We identified key areas for automation that we hadn't even considered."
+                            &#34;The insights from our consultation were a game-changer. We identified key areas for automation that we hadn&#39;t even considered.&#34;
                         </p>
                         <div className="flex items-center gap-3">
                             <div className="relative w-8 h-8 shrink-0">
-                                <img 
-                                    src="/testimonials/tushar.webp" 
-                                    alt="Tushar mangla" 
-                                    className="w-full h-full rounded-lg object-cover border border-[#FF6A00]/10 shadow-sm"
+                                <Image
+                                    src="/testimonials/tushar.webp"
+                                    alt="Tushar mangla"
+                                    fill
+                                    sizes="32px"
+                                    className="rounded-lg object-cover border border-[#FF6A00]/10 shadow-sm"
                                 />
                             </div>
                             <div>
@@ -101,15 +105,16 @@ export default function ConsultationPopup() {
 
                 {/* Buttons Section */}
                 <div className="flex flex-col gap-2 mb-4">
-                    <button 
+                    <Button
                         onClick={handleConsultation}
-                        className="w-full bg-[#FF6A00] text-white py-3 rounded-xl font-bold text-base shadow-lg shadow-orange-500/10 hover:bg-[#E55F00] transition-all"
+                        fullWidth
+                        className="text-base shadow-lg shadow-orange-500/10"
                     >
                         Get AI Consultation
-                    </button>
+                    </Button>
                     <button 
                         onClick={closePopup}
-                        className="w-full bg-[#F1F3F5] text-[#374151] py-3 rounded-xl font-bold text-base hover:bg-[#E9ECEF] transition-colors"
+                        className="w-full bg-[#F3F4F6] text-[#374151] py-3 rounded-xl font-bold text-base hover:bg-[#F3F4F6] transition-colors"
                     >
                         Maybe Later
                     </button>

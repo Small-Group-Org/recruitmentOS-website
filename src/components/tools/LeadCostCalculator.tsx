@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import Link from 'next/link';
+import { Button } from '@/components/ui';
 import { packages, addOns, LEAD_VOLUMES, type LeadVolume, type PackageId } from '@/lib/pricing-data';
 
 type Props = {
@@ -132,8 +132,8 @@ export default function LeadCostCalculator({ embedded = false }: Props) {
                                     id={`calc-pkg-${pkg.id}`}
                                     className={`w-full flex items-start gap-3 px-4 py-3.5 rounded-xl border-2 text-left transition-all ${
                                         packageId === pkg.id
-                                            ? 'border-[#FF6A00] bg-[#FFF9F4]'
-                                            : 'border-[#E5E5E5] bg-white hover:border-[#d4d4d4]'
+                                            ? 'border-[#FF6A00] bg-[#FFF4EB]'
+                                            : 'border-[#E5E5E5] bg-white hover:border-[#D1D5DB]'
                                     }`}
                                 >
                                     <div className="flex-1 min-w-0">
@@ -199,12 +199,9 @@ export default function LeadCostCalculator({ embedded = false }: Props) {
                                 20K–100K+ leads/month, multi-region, white-label, dedicated AM.
                                 Typical entry: $5,000–$8,000/mo.
                             </p>
-                            <Link
-                                href="/fit-call"
-                                className="inline-flex items-center justify-center bg-[#FF6A00] text-white px-6 py-3 rounded-xl text-sm font-bold hover:bg-[#E55F00] transition-colors"
-                            >
+                            <Button href="/fit-call">
                                 Talk to us about Enterprise →
-                            </Link>
+                            </Button>
                         </div>
                     ) : (
                         <>
@@ -262,7 +259,7 @@ export default function LeadCostCalculator({ embedded = false }: Props) {
                             <div className="mb-6 flex-1">
                                 <p className="text-[10px] font-bold uppercase tracking-widest opacity-50 mb-3"
                                     style={{ fontFamily: 'var(--font-mono)' }}>
-                                    What's included
+                                    What&#39;s included
                                 </p>
                                 <ul className="space-y-2">
                                     {selectedPkg.includes.map((item) => (
@@ -282,15 +279,15 @@ export default function LeadCostCalculator({ embedded = false }: Props) {
                                 </ul>
                             </div>
 
-                            <Link
+                            <Button
                                 href="https://cal.com/tusharm/30min?user=tusharm"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="block w-full text-center py-3.5 rounded-xl text-sm font-bold bg-[#FF6A00] text-white hover:bg-[#E55F00] transition-colors"
+                                fullWidth
                                 id="calc-cta"
                             >
                                 Book a free strategy call →
-                            </Link>
+                            </Button>
                         </>
                     )}
                 </div>

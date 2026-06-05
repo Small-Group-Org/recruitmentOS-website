@@ -32,7 +32,7 @@ export default function ContactPage() {
                             Send Tushar a note.
                         </h1>
                         <p className="hero-sub">
-                            Not ready to book a call? Tell us about your agency and what you're trying to fix. We'll come back within 48 hours.
+                            Not ready to book a call? Tell us about your agency and what you&#39;re trying to fix. We&#39;ll come back within 48 hours.
                         </p>
                     </div>
 

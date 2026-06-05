@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Button } from '@/components/ui';
 import Footer from '@/components/Footer';
 import { services } from '@/lib/services-data';
 
@@ -72,19 +73,12 @@ export default function ServicesPage() {
                             Most agencies need all five together. Some need just outreach + triage. We scope on the fit call.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <Link
-                                href="https://cal.com/tusharm/30min?user=tusharm"
-                                target="_blank"
-                                className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-medium hover:bg-[#222222] transition-colors text-base sm:text-lg"
-                            >
+                            <Button href="https://cal.com/tusharm/30min?user=tusharm" target="_blank" variant="dark" size="lg" pill>
                                 Book a fit call
-                            </Link>
-                            <Link
-                                href="/methodology"
-                                className="inline-flex items-center justify-center bg-white text-[#0A0A0A] border border-[#e5e5e5] px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-medium hover:bg-[#f9fafb] transition-colors"
-                            >
+                            </Button>
+                            <Button href="/methodology" variant="secondary" size="lg" pill>
                                 See the full methodology →
-                            </Link>
+                            </Button>
                         </div>
                     </div>
 

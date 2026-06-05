@@ -112,7 +112,7 @@ export default function ApplyForm() {
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-[#0A0A0A] mb-3">Got it.</h3>
                 <p className="section-sub max-w-md mx-auto mb-4">
-                    We'll come back within 24 hours with a yes/no on fit.
+                    We&#39;ll come back within 24 hours with a yes/no on fit.
                 </p>
                 <p className="text-xs text-[#9CA3AF]">
                     Approved applicants receive their first 10 contacts the morning after approval.
@@ -164,7 +164,7 @@ export default function ApplyForm() {
             <button
                 type="submit"
                 disabled={status === 'submitting'}
-                className="w-full inline-flex items-center justify-center bg-[#0A0A0A] text-white px-8 py-4 rounded-full font-medium hover:bg-[#222222] active:scale-95 transition-all text-base sm:text-lg disabled:opacity-60 disabled:cursor-not-allowed group"
+                className="w-full inline-flex items-center justify-center bg-[#0A0A0A] text-white px-8 py-4 rounded-full font-medium hover:bg-[#0A0A0A] active:scale-95 transition-all text-base sm:text-lg disabled:opacity-60 disabled:cursor-not-allowed group"
             >
                 {status === 'submitting' ? 'Submitting…' : 'Submit application'}
                 {status !== 'submitting' && (

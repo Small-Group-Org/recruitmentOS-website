@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
-import Link from 'next/link';
+import { Button, Card } from '@/components/ui';
 
 // Tiers pulled from pricingPlans → Revenue Booster (email plan), matching the pricing page exactly
 // Each tier = platformFee (monthly) + leadsCost (one-off leads)
@@ -75,7 +75,7 @@ export default function GeneralROICalculator({ embedded = false, initialPlacemen
 
 
     return (
-        <section className="bg-white border border-[#E5E5E5] rounded-2xl p-6 sm:p-10">
+        <Card as="section" padding="lg">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-12">
 
                 {/* Inputs */}
@@ -140,17 +140,14 @@ export default function GeneralROICalculator({ embedded = false, initialPlacemen
                                 <Stat label="Payback" value={`${Math.max(1, Math.round(calc.paybackDays))}d`} hint="from one placement" />
                             </div>
 
-                            <Link
-                                href="/fit-call"
-                                className="block w-full text-center py-3 rounded-xl text-sm font-bold bg-[#FF6A00] text-white hover:bg-[#E55F00] transition-colors"
-                            >
+                            <Button href="/fit-call" fullWidth>
                                 Book a fit call to walk through your numbers →
-                            </Link>
+                            </Button>
                         </>
                     )}
                 </div>
             </div>
-        </section>
+        </Card>
     );
 }
 
@@ -160,12 +157,9 @@ function EmptyState({ title, message, cta }: { title?: string; message: string; 
             {title && <p className="text-2xl font-bold mb-3">{title}</p>}
             <p className="text-base font-medium opacity-80 mb-6">{message}</p>
             {cta && (
-                <Link
-                    href="/fit-call"
-                    className="inline-block py-3 px-6 rounded-xl text-sm font-bold bg-[#FF6A00] text-white hover:bg-[#E55F00] transition-colors"
-                >
+                <Button href="/fit-call">
                     Talk to Tushar →
-                </Link>
+                </Button>
             )}
         </div>
     );

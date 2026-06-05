@@ -2,6 +2,8 @@
 
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { Badge } from '@/components/ui';
 import SkillsGateModal from './SkillsGateModal';
 import { articles } from '@/lib/articles-data';
 import { tools } from '@/lib/tools-data';
@@ -120,6 +122,8 @@ export default function Resources() {
 
     // Restore tab from URL hash on mount + listen for hashchange (e.g. back button)
     useEffect(() => {
+        // Intentional: restore the active tab from the URL hash on mount.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setActiveTab(readTabFromHash());
         function onHashChange() { setActiveTab(readTabFromHash()); }
         window.addEventListener('hashchange', onHashChange);
@@ -149,7 +153,7 @@ export default function Resources() {
     return (
         <>
         {showModal && <SkillsGateModal onClose={() => setShowModal(false)} redirectUrl={GITHUB_URL} />}
-        <section className="pt-8 sm:pt-10 pb-16 sm:pb-24 md:pb-36 bg-white" id="resources">
+        <section className="pt-8 sm:pt-10 pb-16 md:pb-24 bg-white" id="resources">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
 
                 {/* Page header */}
@@ -200,16 +204,17 @@ export default function Resources() {
                             {resources.map((resource, index) => {
                                 const cardInner = (
                                     <>
-                                        <div className="relative aspect-[4/3] bg-[#FAFAFA] border border-[#E5E5E5] rounded-2xl sm:rounded-3xl mb-4 sm:mb-6 overflow-hidden flex items-center justify-center group-hover:border-[#FF6A00]/20 transition-all duration-300">
+                                        <div className="relative aspect-[4/3] bg-[#FAFAFA] border border-[#E5E5E5] rounded-2xl sm:rounded-2xl mb-4 sm:mb-6 overflow-hidden flex items-center justify-center group-hover:border-[#FF6A00]/20 transition-all duration-300">
                                             <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-300">
                                                 <div className="absolute inset-0 bg-[radial-gradient(#FF6A00_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
                                             </div>
                                             {resource.image ? (
-                                                <img
+                                                <Image
                                                     src={resource.image}
                                                     alt={resource.title}
-                                                    loading="lazy"
-                                                    className={`w-full h-full group-hover:scale-105 transition-transform duration-700 ${index === 0 ? 'object-contain p-4' : 'object-cover'}`}
+                                                    fill
+                                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
+                                                    className={`group-hover:scale-105 transition-transform duration-700 ${index === 0 ? 'object-contain p-4' : 'object-cover'}`}
                                                 />
                                             ) : (
                                                 <div className="p-4 bg-white rounded-2xl shadow-sm border border-[#E5E5E5] group-hover:scale-110 transition-transform duration-500">
@@ -272,7 +277,7 @@ export default function Resources() {
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
                                 {tools.map((tool) => (
                                     <Link key={tool.slug} href={`/tools/${tool.slug}`} className="flex flex-col group">
-                                        <div className="relative aspect-[4/3] bg-[#FAFAFA] border border-[#E5E5E5] rounded-2xl sm:rounded-3xl mb-4 sm:mb-5 overflow-hidden flex items-center justify-center group-hover:border-[#FF6A00]/20 transition-all duration-300 p-6">
+                                        <div className="relative aspect-[4/3] bg-[#FAFAFA] border border-[#E5E5E5] rounded-2xl sm:rounded-2xl mb-4 sm:mb-5 overflow-hidden flex items-center justify-center group-hover:border-[#FF6A00]/20 transition-all duration-300 p-6">
                                             <div className="absolute inset-0 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity duration-300">
                                                 <div className="absolute inset-0 bg-[radial-gradient(#FF6A00_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
                                             </div>
@@ -285,11 +290,7 @@ export default function Resources() {
                                             <span className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] bg-[#FFF4EB] px-2 py-1 rounded-md">
                                                 {tool.badge}
                                             </span>
-                                            {tool.isNew && (
-                                                <span className="text-[10px] font-bold tracking-widest uppercase text-white bg-[#FF6A00] px-2 py-1 rounded-md">
-                                                    New
-                                                </span>
-                                            )}
+                                            {tool.isNew && <Badge square>New</Badge>}
                                         </div>
                                         <h3 className="text-base sm:text-lg font-bold text-[#0A0A0A] mb-2 leading-snug group-hover:text-[#FF6A00] transition-colors">
                                             {tool.title}
@@ -337,16 +338,17 @@ export default function Resources() {
                                     const href = article.customRoute || `/resources/articles/${article.slug}`;
                                     return (
                                         <Link key={article.slug} href={href} className="flex flex-col group">
-                                            <div className="relative aspect-[4/3] bg-[#FAFAFA] border border-[#E5E5E5] rounded-2xl sm:rounded-3xl mb-4 sm:mb-5 overflow-hidden flex items-center justify-center group-hover:border-[#FF6A00]/20 transition-all duration-300">
+                                            <div className="relative aspect-[4/3] bg-[#FAFAFA] border border-[#E5E5E5] rounded-2xl sm:rounded-2xl mb-4 sm:mb-5 overflow-hidden flex items-center justify-center group-hover:border-[#FF6A00]/20 transition-all duration-300">
                                                 <div className="absolute inset-0 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity duration-300">
                                                     <div className="absolute inset-0 bg-[radial-gradient(#FF6A00_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
                                                 </div>
                                                 {article.image ? (
-                                                    <img
+                                                    <Image
                                                         src={article.image}
                                                         alt={article.title}
-                                                        loading="lazy"
-                                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                                        fill
+                                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
+                                                        className="object-cover group-hover:scale-105 transition-transform duration-700"
                                                     />
                                                 ) : (
                                                     <div className="text-center px-6">
@@ -425,7 +427,7 @@ export default function Resources() {
                             Straight from LinkedIn
                         </h2>
                         <p className="text-[#6B7280] text-sm sm:text-base sm:text-lg max-w-2xl font-medium">
-                            What we're building, learning, and achieving—shared openly with you.
+                            What we&#39;re building, learning, and achieving—shared openly with you.
                         </p>
                     </div>
 

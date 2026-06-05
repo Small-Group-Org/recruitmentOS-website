@@ -9,6 +9,8 @@ export function useToolGate() {
   const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
+    // Intentional: sync gate state from localStorage once after mount (avoids SSR/client mismatch).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsUnlocked(localStorage.getItem(STORAGE_KEY) === 'true');
     setIsHydrated(true);
   }, []);

@@ -151,15 +151,15 @@ type Column = {
 const columns: Column[] = [
     {
         pill: 'Manual',
-        pillBg: 'bg-[#94A3B8]',
+        pillBg: 'bg-[#9CA3AF]',
         pillText: 'text-white',
-        bg: 'bg-[#F1F5F9]',
+        bg: 'bg-[#F3F4F6]',
         iconBg: 'bg-white',
-        iconText: 'text-[#94A3B8]',
-        iconHover: 'group-hover:text-[#475569]',
+        iconText: 'text-[#9CA3AF]',
+        iconHover: 'group-hover:text-[#4B5563]',
         title: 'Manual recruiting',
         items: manualItems,
-        textColor: 'text-[#475569]',
+        textColor: 'text-[#4B5563]',
     },
     {
         pill: 'Modern software',
@@ -175,30 +175,30 @@ const columns: Column[] = [
     },
     {
         pill: '10× better',
-        pillBg: 'bg-[#F97316]',
+        pillBg: 'bg-[#FF6A00]',
         pillText: 'text-white',
         bg: 'bg-[#FFF4EB]',
         iconBg: 'bg-[#FFEDD5]',
         iconText: 'text-[#9A6B3A]',
-        iconHover: 'group-hover:text-[#F97316]',
-        title: (<>With Recruitment<span className="text-[#F97316]">OS</span></>),
+        iconHover: 'group-hover:text-[#FF6A00]',
+        title: (<>With Recruitment<span className="text-[#FF6A00]">OS</span></>),
         items: osItems,
-        textColor: 'text-[#1A1A1A]',
+        textColor: 'text-[#0A0A0A]',
     },
 ];
 
 export default function BeforeAfter() {
     return (
-        <section className="py-14 md:py-32 bg-[#FAFAFA]" id="before-after">
+        <section className="py-16 md:py-24 bg-[#FAFAFA]" id="before-after">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
                 <div className="text-center mb-10 md:mb-20 max-w-3xl mx-auto">
                     <p className="text-xs font-semibold text-[#6B7280] uppercase tracking-[0.2em] mb-4">
                         The Transformation
                     </p>
-                    <h2 className="text-3xl md:text-[44px] font-extrabold text-[#111] tracking-tight leading-tight mb-4">
+                    <h2 className="text-3xl md:text-[44px] font-extrabold text-[#0A0A0A] tracking-tight leading-tight mb-4">
                         Manual recruiting fails. Modern software falls short. Our AI system is 10× better.
                     </h2>
-                    <p className="text-base md:text-lg text-[#475569] font-medium">
+                    <p className="text-base md:text-lg text-[#4B5563] font-medium">
                         Most agencies are stuck between two broken options. Here&apos;s the third one.
                     </p>
                 </div>
@@ -216,14 +216,14 @@ export default function BeforeAfter() {
                         ))}
                     </div>
 
-                    <div className="rounded-[28px] border-2 border-[#E2E8F0] bg-white shadow-[0_8px_40px_rgba(0,0,0,0.06)] overflow-hidden">
+                    <div className="rounded-[28px] border-2 border-[#E5E5E5] bg-white shadow-[0_8px_40px_rgba(0,0,0,0.06)] overflow-hidden">
                         <div className="grid grid-cols-1 md:grid-cols-3">
                             {columns.map((col, idx) => (
                                 <div
                                     key={col.pill}
-                                    className={`relative ${col.bg} p-6 md:p-8 lg:p-10 transition-all duration-300 hover:-translate-y-1 group ${idx < columns.length - 1 ? 'md:border-r md:border-[#CBD5E1]/40' : ''} ${idx > 0 ? 'border-t md:border-t-0 border-[#CBD5E1]/40' : ''}`}
+                                    className={`relative ${col.bg} p-6 md:p-8 lg:p-10 transition-all duration-300 hover:-translate-y-1 group ${idx < columns.length - 1 ? 'md:border-r md:border-[#D1D5DB]/40' : ''} ${idx > 0 ? 'border-t md:border-t-0 border-[#D1D5DB]/40' : ''}`}
                                 >
-                                    <h3 className="text-[20px] md:text-[24px] font-extrabold text-[#1A1A1A] leading-snug mb-6 md:mb-8 tracking-tight">
+                                    <h3 className="text-[20px] md:text-[24px] font-extrabold text-[#0A0A0A] leading-snug mb-6 md:mb-8 tracking-tight">
                                         {col.title}
                                     </h3>
 

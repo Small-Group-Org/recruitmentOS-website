@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import Link from 'next/link';
+import { Button, Card } from '@/components/ui';
 
 const REPLY_TO_MEETING_DEFAULT = 15; // % of replies that become booked meetings
 
@@ -56,7 +56,7 @@ export default function VolumeGapCalculator() {
     }, [fee, closeRate, replyRate, replyToMeeting, targetPlacements, currentOutreach]);
 
     return (
-        <section className="bg-white border border-[#E5E5E5] rounded-2xl p-6 sm:p-10">
+        <Card as="section" padding="lg">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_1px_1fr] gap-8 lg:gap-12">
 
                 {/* Inputs */}
@@ -131,15 +131,12 @@ export default function VolumeGapCalculator() {
                         </div>
                     )}
 
-                    <Link
-                        href="/fit-call"
-                        className="block w-full text-center py-2.5 rounded-xl text-sm font-bold bg-[#0A0A0A] text-white hover:bg-[#FF6A00] transition-colors"
-                    >
+                    <Button href="/fit-call" variant="dark" fullWidth>
                         Book a fit call →
-                    </Link>
+                    </Button>
                 </div>
             </div>
-        </section>
+        </Card>
     );
 }
 
