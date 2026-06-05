@@ -68,7 +68,7 @@ export default function ConsultationPopup() {
 
                 <div className="text-center mb-4">
                     <h2 className="text-lg font-extrabold text-[#0A0A0A] tracking-tight mb-2 border-b border-[#E5E5E5] pb-2">
-                        Live chat with CEO
+                        Chat with Expert
                     </h2>
                 </div>
 
@@ -93,7 +93,7 @@ export default function ConsultationPopup() {
                             </div>
                             <div>
                                 <div className="font-bold text-[#0A0A0A] leading-none mb-1 text-sm">Tushar mangla</div>
-                                <div className="text-[10px] text-[#6B7280] font-medium">CEO, Tech Innovators</div>
+                                <div className="text-[10px] text-[#6B7280] font-medium">Founder, RecruitmentOS</div>
                             </div>
                         </div>
                     </div>

@@ -6,9 +6,9 @@ export default function QualityGuarantee() {
 
             <div className="max-w-[1200px] mx-auto px-5 relative z-10">
                 <h2 className="text-2xl sm:text-4xl md:text-[56px] font-black mb-4 sm:mb-6 tracking-tight leading-loose sm:leading-none text-[#E0F2FE]">Proven 6%+ Reply Rates</h2>
-                <p className="text-base sm:text-xl mb-8 sm:mb-12 text-slate-300 font-bold">We don't just promise quality. We prove it with every lead batch.</p>
+                <p className="text-base sm:text-xl mb-8 sm:mb-12 text-slate-300 font-medium">We don't just promise quality. We prove it with every lead batch.</p>
                 <div className="text-4xl sm:text-6xl md:text-[120px] font-black my-8 sm:my-12 tracking-tighter text-white drop-shadow-[0_10px_10px_rgba(0,0,0,0.3)] leading-none uppercase">6%+ Reply Rate</div>
-                <p className="text-base sm:text-xl text-slate-300 max-w-[800px] mx-auto leading-relaxed font-bold">
+                <p className="text-base sm:text-xl text-slate-300 max-w-[800px] mx-auto leading-relaxed font-medium">
                     Our campaigns consistently achieve 6%+ reply rates. <br />
                     You get full transparency with verified reply rate data for every batch.
                 </p>

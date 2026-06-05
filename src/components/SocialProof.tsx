@@ -27,7 +27,7 @@ export default function SocialProof() {
 
                     <div className="border border-white/10 rounded-xl p-8 md:p-10">
                         <blockquote className="text-lg text-white/90 leading-relaxed mb-8 font-light italic">
-                            &ldquo;We stopped cold calling. RecruitmentOS now sends matched candidate pitches to hiring managers on autopilot. Revenue is up 30% in just 60 days.&rdquo;
+                            &ldquo;We stopped cold calling. RecruitmentOS now sends matched candidate pitches to hiring managers for us. Revenue is up 30% in just 60 days.&rdquo;
                         </blockquote>
                         <div className="flex items-center gap-3">
                             <div className="w-10 h-10 bg-[#1a6b4a] rounded-full flex items-center justify-center text-white text-sm font-semibold">

@@ -23,7 +23,7 @@ const phases = [
     {
         period: 'Day 60+',
         title: 'Revenue Compounds',
-        description: 'System runs on autopilot. Placements increase. Revenue grows predictably. You scale without adding headcount.',
+        description: 'System operates daily. Placements increase. Revenue grows predictably. You scale without adding headcount.',
         status: 'Growth',
         statusColor: 'bg-[#e8f5ef] text-[#1a6b4a]',
     },

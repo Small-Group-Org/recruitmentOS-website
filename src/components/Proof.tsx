@@ -8,7 +8,7 @@ export default function Proof() {
                 <h2 className="text-2xl sm:text-3xl md:text-[48px] font-black mb-4 sm:mb-6 text-[#1E293B] tracking-tight leading-none">
                     We Don't Just Promise Results—We Show You The Dashboard
                 </h2>
-                <p className="text-lg sm:text-xl text-[#475569] mb-10 sm:mb-16 max-w-[800px] mx-auto font-bold">
+                <p className="text-lg sm:text-xl text-[#475569] mb-10 sm:mb-16 max-w-[800px] mx-auto font-medium">
                     Live data from our active lead generation campaigns
                 </p>
 
@@ -47,7 +47,7 @@ export default function Proof() {
                 </div>
 
                 {/* Description */}
-                <p className="text-base sm:text-lg text-[#1E293B] max-w-[800px] mx-auto font-bold leading-relaxed">
+                <p className="text-base sm:text-lg text-[#1E293B] max-w-[800px] mx-auto font-medium leading-relaxed">
                     This is one of dozens of campaigns we run 24/7. Every client gets
                     the same level of transparency and access to real-time analytics.
                 </p>

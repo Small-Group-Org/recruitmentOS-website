@@ -1,596 +1,300 @@
 'use client';
 
-import React from 'react';
+import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import { pricingPlans, type PricingPlan } from '@/lib/pricing-data';
 
 export default function Pricing() {
-  return (
-    <div id="pricing-root" className="pricing-container fade-up delay-1">
-      <style dangerouslySetInnerHTML={{ __html: `
-        .pricing-container {
-          --ink: #0d0d0d;
-          --paper: #ffffff;
-          --paper-dark: #f5f5f5;
-          --accent: #1a6b4a;
-          --accent-light: #e8f5ef;
-          --accent-mid: #2d9e6e;
-          --gold: #b8862a;
-          --gold-light: #fdf6e8;
-          --muted: #6b6860;
-          --border: rgba(13,13,13,0.12);
-          --border-strong: rgba(13,13,13,0.25);
-          --purple: #3d2e7c;
-          --purple-light: #eeebfb;
-          --coral: #c0412b;
-          --coral-light: #fcecea;
-          --blue: #1b4f8a;
-          --blue-light: #e8eef8;
-          font-family: 'Outfit', sans-serif;
-          background: var(--paper);
-          color: var(--ink);
-          font-size: 19.5px;
-          line-height: 1.6;
-          padding-bottom: 5rem;
-        }
+    return (
+        <section className="bg-white pt-24 pb-32" id="pricing">
+            <div className="max-w-[1180px] mx-auto px-6 sm:px-10">
 
-        .pricing-container h2, .pricing-container .logo, .pricing-container .card-name, .pricing-container .bundle-title, .pricing-container .saas-name, .pricing-container .saas-bundle-title, .pricing-container .footer-left {
-          font-family: 'DM Serif Display', serif;
-        }
+                {/* ── Header ── */}
+                <div className="mb-14 sm:mb-20 max-w-3xl">
+                    <p className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-3"
+                        style={{ fontFamily: 'var(--font-mono)' }}>
+                        Pricing
+                    </p>
+                    <h1 className="text-[#0A0A0A] text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-5"
+                        style={{ fontFamily: 'var(--font-serif)' }}>
+                        Pay for pipeline, not promises.
+                    </h1>
+                    <p className="hero-sub text-[#6B7280]" style={{ fontFamily: 'var(--font-outfit)' }}>
+                        Start with raw leads. Scale to fully-managed BD across email and LinkedIn.
+                        Pick your volume on any plan — no lock-in on your data.
+                    </p>
+                </div>
 
-        .pricing-container h1 {
-          font-family: 'Outfit', sans-serif;
-          font-weight: 500;
-        }
+                {/* ── Plan cards ── */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+                    {pricingPlans.map((plan) => (
+                        <PlanCard key={plan.id} plan={plan} />
+                    ))}
+                </div>
 
-        .pricing-container .hero {
-          max-width: 1280px;
-          margin: 0 auto;
-          padding: 6rem 2rem 3rem;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 3rem;
-          align-items: center;
-        }
+                <p className="mt-8 text-[13px] text-[#9CA3AF] text-center" style={{ fontFamily: 'var(--font-outfit)' }}>
+                    All plans include a 14-day money-back guarantee. Retainer plans require a 2-month minimum.
+                </p>
 
-        .pricing-container .hero-headline {
-          font-size: 4.55rem;
-          line-height: 1.1;
-          letter-spacing: -0.02em;
-          color: var(--ink);
-        }
+                {/* ── Custom scope CTA ── */}
+                <div className="mt-20 sm:mt-28 border-t border-[#E5E5E5] pt-14 sm:pt-20 text-center max-w-2xl mx-auto">
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#0A0A0A] mb-3 leading-tight"
+                        style={{ fontFamily: 'var(--font-serif)' }}>
+                        Need something custom?
+                    </h3>
+                    <p className="section-sub mb-8 text-[#6B7280]" style={{ fontFamily: 'var(--font-outfit)' }}>
+                        20K+ leads per month, multiple seats, custom signal sources, CRM integration,
+                        or white-label — let&apos;s build a plan around your agency&apos;s specific BD needs.
+                    </p>
+                    <Link
+                        href="/fit-call"
+                        className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-7 py-4 rounded-full font-semibold hover:bg-[#222] transition-colors text-base group"
+                        style={{ fontFamily: 'var(--font-outfit)' }}
+                        id="pricing-enterprise-cta"
+                    >
+                        Talk to sales team
+                        <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </Link>
+                </div>
 
-        .pricing-container .hero-headline em {
-          font-style: normal;
-          color: #F97316;
-        }
-
-        .pricing-container .hero-copy {
-          color: var(--muted);
-          font-size: 1.235rem;
-          line-height: 1.75;
-          max-width: 380px;
-          margin-top: 1.25rem;
-        }
-
-        .pricing-container .hero-stats {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1px;
-          background: var(--border-strong);
-          border: 1px solid var(--border-strong);
-          border-radius: 8px;
-          overflow: hidden;
-        }
-
-        .pricing-container .stat-box {
-          background: var(--paper);
-          padding: 1.5rem;
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-        }
-
-        .pricing-container .stat-num {
-          font-size: 2.6rem;
-          color: var(--ink);
-          line-height: 1;
-        }
-
-        .pricing-container .stat-label {
-          font-size: 0.975rem;
-          color: var(--muted);
-        }
-
-        .pricing-container .section {
-          max-width: 1280px;
-          margin: 0 auto;
-          padding: 3rem 2rem;
-        }
-
-        .pricing-container .section-header {
-          display: flex;
-          align-items: baseline;
-          gap: 1rem;
-          margin-bottom: 1.5rem;
-        }
-
-        .pricing-container .section-eyebrow {
-          font-family: 'DM Mono', monospace;
-          font-size: 0.845rem;
-          letter-spacing: 0.16em;
-          text-transform: uppercase;
-          color: var(--muted);
-        }
-
-        .pricing-container .section-title {
-          font-size: 2.34rem;
-          color: var(--ink);
-          letter-spacing: -0.01em;
-        }
-
-        .pricing-container .section-line {
-          flex: 1;
-          height: 1px;
-          background: var(--border-strong);
-        }
-
-        .pricing-container .cards-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 0;
-          border: 1px solid var(--border-strong);
-          border-radius: 10px;
-          overflow: hidden;
-        }
-
-        .pricing-container .product-card {
-          background: var(--paper);
-          padding: 1.75rem 1.5rem;
-          border-right: 1px solid var(--border-strong);
-          display: flex;
-          flex-direction: column;
-          transition: background 0.2s;
-        }
-
-        .pricing-container .product-card:last-child { border-right: none; }
-        .pricing-container .product-card:hover { background: #fff; }
-
-        .pricing-container .card-tag {
-          display: inline-block;
-          font-family: 'DM Mono', monospace;
-          font-size: 0.78rem;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          font-weight: 500;
-          padding: 3px 8px;
-          border-radius: 2px;
-          margin-bottom: 1rem;
-          width: fit-content;
-        }
-
-        .pricing-container .tag-green { background: var(--ink); color: #fff; font-weight: 700; }
-        .pricing-container .tag-purple { background: var(--ink); color: #fff; font-weight: 700; }
-        .pricing-container .tag-gold { background: var(--ink); color: #fff; font-weight: 700; }
-        .pricing-container .tag-coral { background: var(--ink); color: #fff; font-weight: 700; }
-
-        .pricing-container .card-name {
-          font-size: 1.5rem;
-          color: var(--ink);
-          line-height: 1.2;
-          margin-bottom: 6px;
-          background: #FDEDD3;
-          display: inline-block;
-          padding: 4px 10px;
-          border-radius: 6px;
-        }
-
-        .pricing-container .card-desc {
-          font-size: 1.04rem;
-          color: var(--muted);
-          line-height: 1.6;
-          flex: 1;
-          margin-bottom: 1.25rem;
-        }
-
-        .pricing-container .card-price {
-          font-size: 2.47rem;
-          color: var(--ink);
-          line-height: 1;
-        }
-
-        .pricing-container .card-price-unit {
-          font-size: 0.975rem;
-          color: var(--muted);
-          margin-top: 4px;
-        }
-
-        .pricing-container .bundle-banner {
-          margin-top: 1rem;
-          background: #FDEDD3;
-          color: var(--ink);
-          border-radius: 10px;
-          padding: 2rem 2.5rem;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 2rem;
-          flex-wrap: wrap;
-        }
-
-        .pricing-container .bundle-tag {
-          font-family: 'DM Mono', monospace;
-          font-size: 0.78rem;
-          letter-spacing: 0.16em;
-          text-transform: uppercase;
-          color: var(--ink);
-          margin-bottom: 8px;
-        }
-
-        .pricing-container .bundle-title {
-          font-size: 1.95rem;
-          margin-bottom: 6px;
-        }
-
-        .pricing-container .bundle-sub {
-          font-size: 1.04rem;
-          opacity: 0.7;
-        }
-
-        .pricing-container .bundle-price {
-          font-size: 3.64rem;
-          line-height: 1;
-        }
-
-        .pricing-container .bundle-was {
-          font-size: 1.04rem;
-          opacity: 0.6;
-          text-decoration: line-through;
-          margin-bottom: 4px;
-        }
-
-        .pricing-container .bundle-save {
-          font-size: 1.04rem;
-          color: var(--accent-mid);
-          font-weight: 500;
-          margin-top: 4px;
-        }
-
-        .pricing-container .section-divider {
-          max-width: 1280px;
-          margin: 0 auto;
-          border: none;
-          border-top: 1px solid var(--border-strong);
-        }
-
-        .pricing-container .saas-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 1.5rem;
-        }
-
-        .pricing-container .saas-card {
-          background: #fff;
-          border: 1px solid var(--border-strong);
-          border-radius: 10px;
-          padding: 1.75rem;
-          display: flex;
-          flex-direction: column;
-        }
-
-        .pricing-container .saas-card-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          margin-bottom: 1.25rem;
-        }
-
-        .pricing-container .commit-badge {
-          font-family: 'DM Mono', monospace;
-          font-size: 0.78rem;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          background: var(--paper-dark);
-          color: var(--muted);
-          padding: 4px 10px;
-          border-radius: 20px;
-        }
-
-        .pricing-container .metrics-table {
-          width: 100%;
-          border-collapse: collapse;
-          margin: 1rem 0;
-          font-size: 1.04rem;
-        }
-
-        .pricing-container .metrics-table td {
-          padding: 7px 0;
-          border-bottom: 1px solid var(--border);
-        }
-
-        .pricing-container .metrics-table td:first-child { color: var(--muted); width: 55%; }
-        .pricing-container .metrics-table td:last-child { text-align: right; font-weight: 500; font-family: 'DM Mono', monospace; }
-
-        .pricing-container .saas-price-row {
-          display: flex;
-          align-items: baseline;
-          gap: 6px;
-          margin-top: auto;
-          padding-top: 1rem;
-          border-top: 1px solid var(--border);
-        }
-
-        .pricing-container .saas-price { font-size: 2.21rem; font-family: 'DM Serif Display', serif; }
-        .pricing-container .saas-price-unit { font-size: 0.975rem; color: var(--muted); }
-
-        .pricing-container .saas-bundle {
-          margin-top: 1rem;
-          background: var(--paper-dark);
-          border: 2px dashed var(--border-strong);
-          border-radius: 10px;
-          padding: 2rem 2.5rem;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 2rem;
-          flex-wrap: wrap;
-        }
-
-        .pricing-container .saas-bundle-title { font-size: 1.82rem; margin-bottom: 5px; }
-
-        .pricing-container .compare-table-wrap { overflow-x: auto; border: 1px solid var(--border-strong); border-radius: 10px; }
-        .pricing-container .compare-table { width: 100%; border-collapse: collapse; font-size: 1.07rem; background: #fff; }
-        .pricing-container .compare-table th { padding: 1rem 1.25rem; text-align: left; font-family: 'DM Mono', monospace; font-size: 0.78rem; text-transform: uppercase; background: var(--paper-dark); border-bottom: 1px solid var(--border-strong); }
-        .pricing-container .compare-table td { padding: 0.9rem 1.25rem; border-bottom: 1px solid var(--border); }
-        .pricing-container .compare-table td:not(:first-child) { text-align: center; }
-        .pricing-container .strong-val { font-family: 'DM Mono', monospace; font-weight: 500; color: var(--ink); }
-
-        .pricing-container .cta-btn {
-          display: inline-block;
-          background: var(--accent);
-          color: #fff;
-          padding: 10px 22px;
-          border-radius: 4px;
-          text-decoration: none;
-          font-weight: 500;
-          transition: background 0.2s;
-        }
-
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(18px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .pricing-container.fade-up { animation: fadeUp 0.55s ease both; }
-
-        @media (max-width: 900px) {
-          .pricing-container .hero { grid-template-columns: 1fr; }
-          .pricing-container .hero-headline { font-size: 3.5rem; }
-          .pricing-container .cards-grid { grid-template-columns: repeat(2, 1fr); }
-          .pricing-container .saas-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 768px) {
-          .pricing-container .hero { padding: 4rem 1.5rem 2.5rem; gap: 2rem; }
-          .pricing-container .hero-headline { font-size: 2.75rem; }
-          .pricing-container .hero-copy { font-size: 1.05rem; }
-          .pricing-container .section { padding: 2.5rem 1.5rem; }
-          .pricing-container .section-title { font-size: 1.75rem; }
-          .pricing-container .cards-grid { grid-template-columns: repeat(2, 1fr); }
-          .pricing-container .card-name { font-size: 1.25rem; }
-          .pricing-container .stat-num { font-size: 2rem; }
-          .pricing-container .bundle-banner { padding: 1.5rem 1.75rem; flex-direction: column; text-align: center; gap: 1.25rem; }
-          .pricing-container .bundle-banner > div:last-child { text-align: center; }
-          .pricing-container .bundle-price { font-size: 2.75rem; }
-          .pricing-container .saas-bundle { padding: 1.5rem 1.75rem; flex-direction: column; text-align: center; gap: 1.25rem; }
-          .pricing-container .saas-bundle > div:last-child { text-align: center; }
-        }
-
-        @media (max-width: 640px) {
-          .pricing-container { font-size: 16px; }
-          .pricing-container .hero { padding: 3rem 1.25rem 2rem; gap: 1.5rem; }
-          .pricing-container .hero-headline { font-size: 2.25rem; }
-          .pricing-container .hero-copy { font-size: 1rem; }
-          .pricing-container .section { padding: 2rem 1.25rem; }
-          .pricing-container .cards-grid { grid-template-columns: 1fr; }
-          .pricing-container .product-card { border-right: none; border-bottom: 1px solid var(--border-strong); }
-          .pricing-container .product-card:last-child { border-bottom: none; }
-          .pricing-container .card-price { font-size: 1.75rem; }
-          .pricing-container .card-name { font-size: 1.2rem; }
-          .pricing-container .stat-num { font-size: 1.75rem; }
-          .pricing-container .section-title { font-size: 1.5rem; }
-          .pricing-container .section-header { flex-wrap: wrap; }
-          .pricing-container .bundle-banner { padding: 1.25rem; }
-          .pricing-container .bundle-price { font-size: 2.25rem; }
-          .pricing-container .bundle-title { font-size: 1.4rem; }
-          .pricing-container .saas-bundle { padding: 1.25rem; }
-          .pricing-container .compare-table { font-size: 0.85rem; }
-          .pricing-container .compare-table th, .pricing-container .compare-table td { padding: 0.6rem 0.5rem; }
-        }
-      `}} />
-
-      {/* HERO */}
-      <div className="hero">
-        <div>
-          <h1 className="hero-headline">Hire smarter.<br /><em>Pay only for</em><br />what you need.</h1>
-          <p className="hero-copy">Four specialized modules built for recruitment agencies — available as a custom build or as a scalable SaaS subscription.</p>
-        </div>
-        <div className="hero-stats">
-          <div className="stat-box">
-            <div className="stat-num">4</div>
-            <div className="stat-label">Core modules</div>
-          </div>
-          <div className="stat-box">
-            <div className="stat-num">20%</div>
-            <div className="stat-label">Custom bundle save</div>
-          </div>
-          <div className="stat-box">
-            <div className="stat-num">38%</div>
-            <div className="stat-label">SaaS bundle save</div>
-          </div>
-          <div className="stat-box">
-            <div className="stat-num">3mo</div>
-            <div className="stat-label">Min. SaaS commit</div>
-          </div>
-        </div>
-      </div>
-
-      {/* CUSTOM SECTION */}
-      <div className="section" id="custom-builds">
-        <div className="section-header">
-          <span className="section-eyebrow">01</span>
-          <h2 className="section-title">Custom Solution</h2>
-          <div className="section-line"></div>
-          <span className="section-eyebrow">One-time build fee</span>
-        </div>
-
-        <div className="cards-grid">
-          <div className="product-card">
-            <div className="card-tag tag-green">Lead Generation</div>
-            <div className="card-name">Find Qualified Leads</div>
-            <p className="card-desc">Automated sourcing and targeting system for your recruitment pipelines.</p>
-            <div className="card-price">$4,000</div>
-            <div className="card-price-unit">one-time build</div>
-          </div>
-          <div className="product-card">
-            <div className="card-tag tag-purple">Candidate to Customer</div>
-            <div className="card-name">Hybrid Model</div>
-            <p className="card-desc">Lead generation combined with resume screening in a single integrated system.</p>
-            <div className="card-price">$2,500</div>
-            <div className="card-price-unit">one-time build</div>
-          </div>
-          <div className="product-card">
-            <div className="card-tag tag-gold">Resume Screening</div>
-            <div className="card-name">Smart Resume Filter</div>
-            <p className="card-desc">AI-powered screening to shortlist the best-fit candidates fast.</p>
-            <div className="card-price">$2,000</div>
-            <div className="card-price-unit">one-time build</div>
-          </div>
-          <div className="product-card">
-            <div className="card-tag tag-coral">Outreach</div>
-            <div className="card-name">Mass Outreach Engine</div>
-            <p className="card-desc">Send hundreds of thousands of personalized emails with delivery built in.</p>
-            <div className="card-price">$3,000</div>
-            <div className="card-price-unit">one-time build</div>
-          </div>
-        </div>
-
-        <div className="bundle-banner">
-          <div>
-            <div className="bundle-tag">Full Suite Bundle — Best Value</div>
-            <div className="bundle-title">All 4 modules, fully integrated</div>
-            <div className="bundle-sub">Lead Gen + C2C + Resume Screening + Outreach</div>
-          </div>
-          <div style={{ textAlign: 'right' }}>
-            <div className="bundle-was">$12,500 separately</div>
-            <div className="bundle-price">$10,000</div>
-            <div className="bundle-save">Save $2,500 &middot; 20% off</div>
-          </div>
-        </div>
-      </div>
-
-      <hr className="section-divider" />
-
-      {/* SAAS SECTION */}
-      <div className="section" id="saas-subscriptions">
-        <div className="section-header">
-          <span className="section-eyebrow">02</span>
-          <h2 className="section-title">SaaS Subscription</h2>
-          <div className="section-line"></div>
-          <span className="section-eyebrow">Pay as you grow</span>
-        </div>
-
-        <div className="saas-grid">
-          <div className="saas-card">
-            <div className="saas-card-header">
-              <div>
-                <div className="card-tag tag-green">Lead Generation</div>
-                <div className="saas-name">Per-Lead Billing</div>
-              </div>
-              <div className="commit-badge">3-mo min</div>
             </div>
-            <table className="metrics-table">
-              <tbody>
-                <tr><td>Cost per lead</td><td>$0.80 / lead</td></tr>
-                <tr><td>Leads per month</td><td>750 leads</td></tr>
-                <tr><td>Monthly minimum</td><td>$600 / mo</td></tr>
-              </tbody>
-            </table>
-            <div className="saas-price-row">
-              <div className="saas-price">$600</div>
-              <div className="saas-price-unit">/ mo minimum</div>
+        </section>
+    );
+}
+
+// ─── Plan card ────────────────────────────────────────────────────────────────
+
+function PlanCard({ plan }: { plan: PricingPlan }) {
+    const [index, setIndex] = useState(plan.defaultIndex);
+    const option = plan.options[index];
+    const isPopular = plan.highlight;
+    const isExternal = plan.cta.href.startsWith('http');
+
+    return (
+        <div
+            className={`relative rounded-3xl flex flex-col bg-white p-8 transition-all duration-300 ${
+                isPopular
+                    ? 'border-2 border-[#FF6A00] shadow-[0_8px_40px_-12px_rgba(255,106,0,0.35)] lg:-mt-4 lg:mb-0'
+                    : 'border border-[#E5E5E5] shadow-sm hover:border-[#D4D4D4]'
+            }`}
+        >
+            {isPopular && (
+                <span className="absolute -top-3 left-8 bg-[#FF6A00] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm"
+                    style={{ fontFamily: 'var(--font-mono)' }}>
+                    Most popular
+                </span>
+            )}
+
+            {/* Category pill */}
+            <div className="mb-5">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-[#FFF1E8] text-[#C2511C] text-[11px] font-bold px-3 py-1"
+                    style={{ fontFamily: 'var(--font-mono)' }}>
+                    <CategoryIcon icon={plan.icon} />
+                    {plan.category}
+                </span>
             </div>
-          </div>
 
-          <div className="saas-card">
-            <div className="saas-card-header">
-              <div>
-                <div className="card-tag tag-purple">Candidate to Customer</div>
-                <div className="saas-name">Per-Candidate Billing</div>
-              </div>
-              <div className="commit-badge">3-mo min</div>
+            {/* Name + tagline */}
+            <h2 className="text-[#0A0A0A] text-2xl font-normal tracking-tight mb-2"
+                style={{ fontFamily: 'var(--font-serif)' }}>
+                {plan.name}
+            </h2>
+            <p className="text-[13px] leading-relaxed text-[#6B7280] mb-6 min-h-[40px]"
+                style={{ fontFamily: 'var(--font-outfit)' }}>
+                {plan.tagline}
+            </p>
+
+            {/* Price */}
+            <div className="mb-5">
+                <div className="flex items-baseline gap-1.5 flex-wrap">
+                    <span className="text-[44px] leading-none font-normal tracking-tight text-[#0A0A0A]"
+                        style={{ fontFamily: 'var(--font-serif)' }}>
+                        ${(option.monthlyPlatformFee || 0) > 0 ? option.monthlyPlatformFee?.toLocaleString() : option.price.toLocaleString()}
+                    </span>
+                    <span className="text-sm text-[#6B7280] font-medium" style={{ fontFamily: 'var(--font-outfit)' }}>
+                        {plan.billing === 'one-off' ? 'one-off' : '/mo'}
+                    </span>
+                    {(option.monthlyPlatformFee || 0) > 0 && (
+                        <div className="flex items-baseline gap-1.5">
+                            <span className="text-2xl font-normal text-[#9CA3AF] mx-1" style={{ fontFamily: 'var(--font-outfit)' }}>+</span>
+                            <span className="text-[44px] leading-none font-normal tracking-tight text-[#0A0A0A]"
+                                style={{ fontFamily: 'var(--font-serif)' }}>
+                                ${option.price.toLocaleString()}
+                            </span>
+                            <span className="text-sm text-[#6B7280] font-medium" style={{ fontFamily: 'var(--font-outfit)' }}>
+                                leads
+                            </span>
+                        </div>
+                    )}
+                </div>
+                <p className="text-[12px] text-[#9CA3AF] mt-2" style={{ fontFamily: 'var(--font-outfit)' }}>
+                    {(option.monthlyPlatformFee || 0) > 0 ? 'Fixed platform fee + one-off leads package' : `${option.label.replace('/mo', '')} · ${option.detail}`}
+                </p>
             </div>
-            <table className="metrics-table">
-              <tbody>
-                <tr><td>Cost per match</td><td>$1.00</td></tr>
-                <tr><td>Monthly matches</td><td>1,200 matches</td></tr>
-                <tr><td>Est. monthly</td><td>~$1,200 / mo</td></tr>
-              </tbody>
-            </table>
-            <div className="saas-price-row">
-              <div className="saas-price">$1.200</div>
-              <div className="saas-price-unit">/ mo estimated</div>
-            </div>
-          </div>
-        </div>
 
-        <div className="saas-bundle">
-          <div>
-            <div className="saas-bundle-title">SaaS Full Suite — Bulk Rate</div>
-            <div className="saas-bundle-sub">All 4 modules at a locked-in rate &middot; 3-month min.</div>
-          </div>
-          <div style={{ textAlign: 'right' }}>
-            <div className="saas-bundle-was">~$2,400 / mo</div>
-            <div className="saas-bundle-price">$1,500 <span style={{fontSize:'1rem'}}> / mo</span></div>
-            <div className="saas-bundle-save">Save ~$900 / mo &middot; 38% off</div>
-          </div>
-        </div>
-      </div>
+            {/* Volume dropdown */}
+            <VolumeDropdown plan={plan} index={index} onSelect={setIndex} />
 
-      <hr className="section-divider" />
+            {/* Divider */}
+            <hr className="border-t border-[#E5E5E5] my-6" />
 
-      {/* COMPARISON */}
-      <div className="section">
-        <div className="section-header">
-          <span className="section-eyebrow">03</span>
-          <h2 className="section-title">Quick Comparison</h2>
-          <div className="section-line"></div>
-        </div>
+            {/* Features */}
+            <ul className="space-y-3.5 mb-8 flex-1">
+                {plan.features.map((feat) => (
+                    <li key={feat} className="flex items-start gap-3 text-[13px] font-medium leading-snug">
+                        <span className="w-5 h-5 rounded-full bg-[#FF6A00]/10 text-[#FF6A00] flex items-center justify-center shrink-0 mt-0.5">
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </span>
+                        <span className="text-[#374151]" style={{ fontFamily: 'var(--font-outfit)' }}>{feat}</span>
+                    </li>
+                ))}
+            </ul>
 
-        <div className="compare-table-wrap">
-          <table className="compare-table">
-            <thead>
-              <tr>
-                <th>Module</th>
-                <th>Custom Build</th>
-                <th>SaaS (unit)</th>
-                <th>SaaS (min)</th>
-                <th>Commit</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Lead Generation</td><td><span className="strong-val">$4,000</span></td><td>$0.80</td><td>$600</td><td>3mo</td></tr>
-              <tr><td>C2C</td><td><span className="strong-val">$2,500</span></td><td>$1.00</td><td>$1,200</td><td>3mo</td></tr>
-              <tr><td>Resume Screening</td><td><span className="strong-val">$2,000</span></td><td>$10/1K</td><td>$300</td><td>3mo</td></tr>
-              <tr><td>Outreach</td><td><span className="strong-val">$3,000</span></td><td>Included</td><td>$300</td><td>3mo</td></tr>
-              <tr style={{ background: 'var(--paper-dark)' }}>
-                <td><strong>Full Suite</strong></td>
-                <td><span className="strong-val" style={{color:'var(--accent)'}}>$10,000</span></td>
-                <td>-</td>
-                <td><span className="strong-val" style={{color:'var(--accent)'}}>$1,500</span></td>
-                <td>3mo</td>
-              </tr>
-            </tbody>
-          </table>
+            {/* CTA */}
+            <Link
+                href={plan.cta.href}
+                {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className={`block text-center py-3.5 rounded-full text-sm font-bold transition-all duration-300 ${
+                    isPopular
+                        ? 'bg-[#FF6A00] text-white hover:bg-[#E55F00]'
+                        : 'border border-[#0A0A0A] text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white'
+                }`}
+                style={{ fontFamily: 'var(--font-outfit)' }}
+                id={`pricing-card-${plan.id}`}
+            >
+                {plan.cta.label}
+            </Link>
         </div>
-      </div>
-    </div>
-  );
+    );
+}
+
+// ─── Volume dropdown ──────────────────────────────────────────────────────────
+
+function VolumeDropdown({
+    plan,
+    index,
+    onSelect,
+}: {
+    plan: PricingPlan;
+    index: number;
+    onSelect: (i: number) => void;
+}) {
+    const [open, setOpen] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (!open) return;
+        function handleClick(e: MouseEvent) {
+            if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+        }
+        function handleKey(e: KeyboardEvent) {
+            if (e.key === 'Escape') setOpen(false);
+        }
+        document.addEventListener('mousedown', handleClick);
+        document.addEventListener('keydown', handleKey);
+        return () => {
+            document.removeEventListener('mousedown', handleClick);
+            document.removeEventListener('keydown', handleKey);
+        };
+    }, [open]);
+
+    return (
+        <div className="relative" ref={ref}>
+            <button
+                type="button"
+                onClick={() => setOpen((v) => !v)}
+                aria-haspopup="listbox"
+                aria-expanded={open}
+                className="w-full flex items-center justify-between gap-2 px-4 py-3 rounded-xl border border-[#E5E5E5] bg-white text-left text-sm font-semibold text-[#0A0A0A] hover:border-[#D4D4D4] transition-colors"
+                style={{ fontFamily: 'var(--font-outfit)' }}
+            >
+                <div className="flex flex-col items-start gap-0">
+                    <span>{plan.options[index].label}</span>
+                    {(plan.options[index].monthlyPlatformFee || 0) > 0 && (
+                        <span className="text-[11px] font-normal text-[#6B7280] leading-none mt-1">
+                            ${plan.options[index].price.toLocaleString()} for leads
+                        </span>
+                    )}
+                </div>
+                <svg
+                    className={`w-4 h-4 text-[#9CA3AF] shrink-0 transition-transform ${open ? 'rotate-180' : ''}`}
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}
+                >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+
+            {open && (
+                <ul
+                    role="listbox"
+                    className="absolute z-20 mt-2 w-full rounded-xl border border-[#E5E5E5] bg-white shadow-lg overflow-hidden py-1"
+                >
+                    {plan.options.map((opt, i) => (
+                        <li key={opt.leads} role="option" aria-selected={i === index}>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    onSelect(i);
+                                    setOpen(false);
+                                }}
+                                className={`w-full flex items-center justify-between gap-3 px-4 py-2.5 text-left text-sm transition-colors ${
+                                    i === index
+                                        ? 'bg-[#FFF1E8] text-[#C2511C] font-bold'
+                                        : 'text-[#374151] hover:bg-[#FAFAFA]'
+                                }`}
+                                style={{ fontFamily: 'var(--font-outfit)' }}
+                            >
+                                <div className="flex flex-col items-start gap-0.5 text-left">
+                                    <span>{opt.label}</span>
+                                    {(opt.monthlyPlatformFee || 0) > 0 && (
+                                        <span className={`text-[10px] font-normal ${i === index ? 'text-[#C2511C]/80' : 'text-[#9CA3AF]'}`}>
+                                            {opt.detail}
+                                        </span>
+                                    )}
+                                </div>
+                                <span className={`text-[12px] font-semibold ${i === index ? 'text-[#C2511C]' : 'text-[#9CA3AF]'}`}>
+                                    ${opt.price.toLocaleString()}{plan.billing === 'monthly' && (opt.monthlyPlatformFee || 0) === 0 ? '/mo' : ''}
+                                </span>
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </div>
+    );
+}
+
+// ─── Category icons ───────────────────────────────────────────────────────────
+
+function CategoryIcon({ icon }: { icon: PricingPlan['icon'] }) {
+    const cls = 'w-3 h-3';
+    if (icon === 'data') {
+        return (
+            <svg className={cls} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                <ellipse cx="12" cy="5" rx="8" ry="3" />
+                <path strokeLinecap="round" d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" />
+            </svg>
+        );
+    }
+    if (icon === 'mail') {
+        return (
+            <svg className={cls} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 7l9 6 9-6" />
+            </svg>
+        );
+    }
+    // network / multichannel
+    return (
+        <svg className={cls} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+            <circle cx="6" cy="6" r="2.5" />
+            <circle cx="18" cy="6" r="2.5" />
+            <circle cx="12" cy="18" r="2.5" />
+            <path strokeLinecap="round" d="M7.7 7.7l3 7.5M16.3 7.7l-3 7.5" />
+        </svg>
+    );
 }

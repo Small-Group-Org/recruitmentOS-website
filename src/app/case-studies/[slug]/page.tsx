@@ -1,107 +1,210 @@
-'use client';
-
-import React from 'react';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { caseStudies } from '@/lib/case-studies-data';
+import { buildCanonical } from '@/lib/seo';
 
-export default function CaseStudyDetailPage() {
-  const { slug } = useParams();
+export function generateStaticParams() {
+  return caseStudies.map((s) => ({ slug: s.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const study = caseStudies.find((s) => s.slug === slug);
+  if (!study) return {};
+
+  const description = study.problem
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 155);
+
+  const canonical = buildCanonical(`/case-studies/${slug}`);
+
+  return {
+    title: `${study.title} — RecruitmentOS case study`,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title: study.title,
+      description,
+      url: canonical,
+      siteName: 'RecruitmentOS',
+      type: 'article',
+      images: study.image ? [{ url: study.image }] : undefined,
+    },
+  };
+}
+
+export default async function CaseStudyDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const study = caseStudies.find((s) => s.slug === slug);
 
-  if (!study) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Case Study Not Found</h1>
-          <Link href="/case-studies" className="text-[#FF6A00] font-bold">Back to List</Link>
-        </div>
-      </div>
-    );
-  }
+  if (!study) notFound();
+
+  // Split "cardStats" (e.g. "+30% Revenue Growth") into the headline metric and its label.
+  const [metricValue, ...metricRest] = study.cardStats.trim().split(' ');
+  const metricLabel = metricRest.join(' ');
+
+  const sections = [
+    { label: 'The Challenge', body: study.problem },
+    { label: 'The Root Cause', body: study.rootCause },
+    { label: 'What We Built', body: study.solution },
+    { label: 'The Result', body: study.result, highlight: true },
+    { label: 'Why It Matters', body: study.takeaway },
+  ];
 
   return (
-    <div className="min-h-screen bg-white pt-24 pb-32 animate-fadeIn">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
+    <div className="min-h-screen bg-white animate-fadeIn">
 
-        {/* Back Link */}
-        <Link
-          href="/case-studies"
-          className="inline-flex items-center text-sm text-black hover:text-[#FF6A00] transition-colors mb-16 animate-slideUp"
-        >
-          <svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          BACK TO ALL STORIES
-        </Link>
+      {/* ── Hero ─────────────────────────────────────────────── */}
+      <section className="relative bg-[#FAFAFA] text-[#0A0A0A] overflow-hidden border-b border-[#e5e5e5] pt-10 pb-8 md:pb-10">
+        {/* subtle orange glow */}
+        <div
+          className="pointer-events-none absolute -top-32 right-0 w-[480px] h-[480px] rounded-full opacity-30 blur-3xl"
+          style={{ background: 'radial-gradient(circle, rgba(255,106,0,0.18) 0%, transparent 70%)' }}
+          aria-hidden
+        />
 
-        <div className="animate-slideUp">
-          {/* Title Section */}
-          <h1 className="text-2xl md:text-3xl font-bold mb-16 max-w-5xl leading-tight">
+        <div className="relative max-w-[1100px] mx-auto px-6 sm:px-10">
+          <Link
+            href="/case-studies"
+            className="inline-flex items-center text-[13px] font-medium text-[#9CA3AF] hover:text-[#FF6A00] transition-colors mb-8"
+            style={{ fontFamily: 'var(--font-mono)' }}
+          >
+            <svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            ALL CASE STUDIES
+          </Link>
+
+          <p
+            className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#FF6A00] mb-3"
+            style={{ fontFamily: 'var(--font-mono)' }}
+          >
+            Case Study
+          </p>
+
+          <h1
+            className="text-xl sm:text-2xl md:text-[1.75rem] font-bold leading-[1.25] tracking-tight max-w-2xl mb-6"
+            style={{ fontFamily: 'var(--font-serif)' }}
+          >
             {study.title}
           </h1>
 
-          {/* Two Column Layout (40/60) */}
-          <div className="grid grid-cols-1 lg:grid-cols-[40fr_60fr] gap-12 lg:gap-24 items-start">
+          {/* Headline metric */}
+          <div className="flex items-end gap-4 border-t border-[#e5e5e5] pt-5">
+            <span
+              className="text-3xl md:text-4xl font-extrabold leading-none text-[#FF6A00] tracking-tight"
+              style={{ fontFamily: 'var(--font-serif)' }}
+            >
+              {metricValue}
+            </span>
+            <span className="text-sm md:text-base text-[#6b7280] font-medium pb-0.5 leading-snug max-w-[260px]">
+              {metricLabel}
+            </span>
+          </div>
+        </div>
+      </section>
 
-            {/* Left: Image */}
-            <div className="rounded-xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+      {/* ── Banner image ─────────────────────────────────────── */}
+      {study.image && (
+        <div className="bg-[#FAFAFA]">
+          <div className="max-w-[1100px] mx-auto px-6 sm:px-10">
+            <div className="relative -mb-16 md:-mb-24 rounded-2xl overflow-hidden border border-[#e5e5e5] shadow-[0_20px_60px_rgba(0,0,0,0.12)]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={study.image}
                 alt={study.title}
-                className="w-full h-auto object-cover"
+                className="w-full h-[220px] sm:h-[300px] md:h-[360px] object-cover"
               />
-            </div>
-
-            {/* Right: Content */}
-            <div className="space-y-6 text-black text-lg leading-snug antialiased" style={{ color: '#000000' }}>
-
-              <div>
-                <p className="font-bold mb-2">THE PROBLEM</p>
-                <p className="whitespace-pre-line">{study.problem}</p>
-              </div>
-
-              <div>
-                <p className="font-bold mb-2">THE ROOT CAUSE</p>
-                <p className="whitespace-pre-line">{study.rootCause}</p>
-              </div>
-
-              <div>
-                <p className="font-bold mb-2">THE SOLUTION</p>
-                <p className="whitespace-pre-line">{study.solution}</p>
-              </div>
-
-              <div>
-                <p className="font-bold mb-2 text-[#FF6A00]">THE RESULT</p>
-                <p className="whitespace-pre-line">{study.result}</p>
-              </div>
-
-              <div>
-                <p className="font-bold mb-2">THE TAKEAWAY</p>
-                <p className="whitespace-pre-line">{study.takeaway}</p>
-              </div>
-
             </div>
           </div>
         </div>
-      </div>
+      )}
 
-      <style jsx global>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes slideUp {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.5s ease-out forwards;
-        }
-        .animate-slideUp {
-          opacity: 0;
-          animation: slideUp 0.6s ease-out forwards;
-        }
+      {/* ── Body ─────────────────────────────────────────────── */}
+      <article className={`max-w-[760px] mx-auto px-6 sm:px-10 ${study.image ? 'pt-28 md:pt-40' : 'pt-20'} pb-24`}>
+        {sections.map((section, i) =>
+          !section.body ? null : (
+            <section
+              key={section.label}
+              className={`animate-slideUp ${i > 0 ? 'mt-14 md:mt-16' : ''}`}
+              style={{ animationDelay: `${i * 0.06}s` }}
+            >
+              {section.highlight ? (
+                <div className="rounded-2xl border border-[#FF6A00]/25 bg-[#FFF7F0] p-7 md:p-9">
+                  <p
+                    className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF6A00] mb-4"
+                    style={{ fontFamily: 'var(--font-mono)' }}
+                  >
+                    {section.label}
+                  </p>
+                  <p
+                    className="text-[#1a1a1a] text-lg md:text-xl leading-relaxed whitespace-pre-line font-medium"
+                    style={{ fontFamily: 'var(--font-outfit)' }}
+                  >
+                    {section.body}
+                  </p>
+                </div>
+              ) : (
+                <>
+                  <p
+                    className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#9CA3AF] mb-3"
+                    style={{ fontFamily: 'var(--font-mono)' }}
+                  >
+                    {section.label}
+                  </p>
+                  <p
+                    className="text-[#374151] text-base md:text-[17px] leading-[1.75] whitespace-pre-line"
+                    style={{ fontFamily: 'var(--font-outfit)' }}
+                  >
+                    {section.body}
+                  </p>
+                </>
+              )}
+            </section>
+          )
+        )}
+      </article>
+
+      {/* ── Closing CTA ──────────────────────────────────────── */}
+      <section className="border-t border-[#e5e5e5] bg-[#FAFAFA]">
+        <div className="max-w-[760px] mx-auto px-6 sm:px-10 py-16 md:py-20 text-center">
+          <h2
+            className="text-2xl md:text-3xl font-bold text-[#0A0A0A] tracking-tight mb-4"
+            style={{ fontFamily: 'var(--font-serif)' }}
+          >
+            Want results like this on your stack?
+          </h2>
+          <p className="text-[#6b7280] text-base md:text-lg mb-8 max-w-md mx-auto">
+            We run the full BD function for established recruitment agencies. Book a call to see if it&apos;s a fit.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://cal.com/tusharm/30min?user=tusharm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#222] transition-colors group"
+            >
+              Book a strategy call
+              <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <Link
+              href="/case-studies"
+              className="inline-flex items-center justify-center text-[#6b7280] hover:text-[#0A0A0A] px-4 py-4 font-medium transition-colors"
+            >
+              Read more case studies
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <style>{`
+        @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(24px) } to { opacity: 1; transform: translateY(0) } }
+        .animate-fadeIn { animation: fadeIn 0.5s ease-out forwards }
+        .animate-slideUp { opacity: 0; animation: slideUp 0.6s ease-out forwards }
       `}</style>
     </div>
   );

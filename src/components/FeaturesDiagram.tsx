@@ -4,8 +4,10 @@ import React from 'react';
 
 const features = [
     {
-        title: 'Detect Hiring Signals',
-        description: 'AI monitors job boards 24/7',
+        step: '01',
+        pill: 'Signal-Triggered Sourcing',
+        title: 'We spot hiring before your competitors do',
+        body: 'We monitor live job boards, LinkedIn, and hiring signals across your target sectors — surfacing roles in your niche the moment demand appears, often before the job post goes live.',
         icon: (
             <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -13,147 +15,174 @@ const features = [
         ),
     },
     {
-        title: 'Auto Source Candidates',
-        description: 'Match from your database instantly',
+        step: '02',
+        pill: 'Identify Hiring Companies',
+        title: 'Pinpoint the companies actually hiring',
+        body: "We map every company actively hiring for those roles — including stealth hiring signals — so your outreach only ever targets companies with a live, current need.",
         icon: (
             <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-4 8v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
             </svg>
         ),
     },
     {
-        title: 'Scale Outreach',
-        description: 'Hyper-personalized emails at scale',
+        step: '03',
+        pill: 'Find the Hiring Manager',
+        title: 'Reach the decision-maker, not HR',
+        body: 'Waterfall enrichment across 20+ sources surfaces the direct contact of the actual hiring manager — the person who owns the budget. Every contact is email- and phone-verified.',
+        icon: (
+            <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+        ),
+    },
+    {
+        step: '04',
+        pill: 'Outreach & Reply Filtering',
+        title: 'Outreach, replies & warm handoff',
+        body: 'We run personalised multi-channel sequences on your stack, then filter every reply. Only positive, on-brief replies reach you — ready to close. You step in when they say "yes."',
         icon: (
             <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
         ),
     },
-    {
-        title: 'Find Decision Makers',
-        description: 'Reach the right people first',
-        icon: (
-            <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
-        ),
-    },
+];
+
+// Detailed step card — full content always visible (no hover).
+function StepCard({ feature }: { feature: (typeof features)[number] }) {
+    return (
+        <div className="relative bg-white border border-[#E5E5E5] rounded-[1.5rem] p-5 shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:shadow-xl hover:border-[#FF6A00]/40 hover:-translate-y-0.5 transition-all duration-300">
+            <span
+                className="absolute top-4 right-5 text-xl font-bold text-[#EFEFEF] leading-none"
+                style={{ fontFamily: 'var(--font-mono)' }}
+            >
+                {feature.step}
+            </span>
+            <div className="flex items-center gap-3 mb-3">
+                <div className="w-11 h-11 rounded-2xl bg-[#FFF4EB] flex items-center justify-center text-[#FF6A00] shrink-0">
+                    {feature.icon}
+                </div>
+                <span
+                    className="text-[10px] font-bold uppercase tracking-widest text-[#FF6A00] leading-tight pr-6"
+                    style={{ fontFamily: 'var(--font-mono)' }}
+                >
+                    {feature.pill}
+                </span>
+            </div>
+            <h3 className="text-[14px] font-bold text-[#0A0A0A] leading-snug mb-1.5">{feature.title}</h3>
+            <p className="text-[12.5px] text-[#6B7280] leading-relaxed">{feature.body}</p>
+        </div>
+    );
+}
+
+// Center hub — robot with soft glow (no muddy blend mode).
+function Hub({ size = 'lg' }: { size?: 'lg' | 'sm' }) {
+    const robot = size === 'lg' ? 'w-32 h-32' : 'w-24 h-24';
+    const wrap = size === 'lg' ? 'w-44 h-44' : 'w-32 h-32';
+    return (
+        <div className="flex flex-col items-center justify-center">
+            <div className={`text-xl font-extrabold text-[#0A0A0A] tracking-tight leading-none mb-1`}>
+                Recruitment<span className="text-[#FF6A00]">OS</span>
+            </div>
+            <div className={`relative flex items-center justify-center ${wrap}`}>
+                <div
+                    aria-hidden
+                    className="absolute inset-0 rounded-full"
+                    style={{ background: 'radial-gradient(circle, rgba(255,106,0,0.18) 0%, rgba(255,106,0,0) 66%)' }}
+                />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                    src="/logos/robot.webp"
+                    alt="RecruitmentOS AI assistant"
+                    className={`relative ${robot} object-contain animate-float`}
+                    style={{ filter: 'drop-shadow(0 10px 16px rgba(10,10,10,0.16))' }}
+                />
+            </div>
+        </div>
+    );
+}
+
+const connectorPaths = [
+    { d: 'M500 300 C 380 250, 260 185, 165 155', delay: '0s' },    // top-left
+    { d: 'M500 300 C 620 250, 740 185, 835 155', delay: '0.4s' },  // top-right
+    { d: 'M500 300 C 380 350, 260 415, 165 445', delay: '0.8s' },  // bottom-left
+    { d: 'M500 300 C 620 350, 740 415, 835 445', delay: '1.2s' },  // bottom-right
 ];
 
 export default function FeaturesDiagram() {
-    // We'll use two sets of paths - one for mobile, one for desktop
-    const desktopPaths = [
-        { d: 'M 400 250 C 300 250, 200 180, 140 120', delay: '0s' },      // top-left
-        { d: 'M 400 250 C 500 250, 600 180, 660 120', delay: '0.4s' },    // top-right
-        { d: 'M 400 250 C 300 250, 200 320, 140 380', delay: '0.8s' },    // bottom-left
-        { d: 'M 400 250 C 500 250, 600 320, 660 380', delay: '1.2s' },    // bottom-right
-    ];
-
-    const mobilePaths = [
-        { d: 'M 200 80 C 180 150, 150 180, 100 220', delay: '0s' },     // card 1
-        { d: 'M 200 80 C 220 150, 250 180, 300 220', delay: '0.4s' },   // card 2
-        { d: 'M 200 80 C 180 250, 150 350, 100 420', delay: '0.8s' },   // card 3
-        { d: 'M 200 80 C 220 250, 250 350, 300 420', delay: '1.2s' },   // card 4
-    ];
-
     return (
         <section className="py-12 sm:py-20 md:py-28 bg-white" id="solution-overview">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
                 <div className="text-center mb-12 md:mb-16">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-[#FF6A00] mb-3">
+                        How the engine runs
+                    </p>
                     <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-                        The Ultimate Automation Engine for Recruitment agencies.
+                        The BD engine, running in the background.
                     </h2>
+                    <p className="section-sub max-w-2xl mx-auto mt-3">
+                        Four steps that turn live hiring signals into warm replies — handled for you, on your stack.
+                    </p>
                 </div>
 
-                {/* Unified Diagram Container */}
-                <div className="relative w-full overflow-visible">
-                    
-                    {/* Mobile Architecture (Vertical) */}
-                    <div className="md:hidden relative w-full h-[650px] mx-auto">
-                        <svg viewBox="0 0 400 600" fill="none" className="absolute inset-0 w-full h-full pointer-events-none z-10">
-                            <defs>
-                                <marker id="arrowhead-mob" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
-                                    <polygon points="0 0, 6 2, 0 4" fill="#FF6A00" />
-                                </marker>
-                            </defs>
-                            {mobilePaths.map((arrow, i) => (
-                                <g key={i}>
-                                    <path d={arrow.d} stroke="#E5E5E5" strokeWidth="1.5" fill="none" markerEnd="url(#arrowhead-mob)" />
-                                    <path d={arrow.d} stroke="#FF6A00" strokeWidth="2" fill="none" strokeDasharray="8 12" className="animate-flow" style={{ animationDelay: arrow.delay }} />
-                                    <circle r="3" fill="#FF6A00" className="animate-dot" style={{ animationDelay: arrow.delay }}>
-                                        <animateMotion dur="2.5s" repeatCount="indefinite" begin={arrow.delay} path={arrow.d} />
-                                    </circle>
-                                </g>
-                            ))}
-                        </svg>
+                {/* ── Desktop: animated hub-and-spoke ─────────────────────────── */}
+                <div className="hidden md:block relative max-w-[1100px] mx-auto">
+                    {/* Animated connector lines (decorative) */}
+                    <svg
+                        viewBox="0 0 1000 600"
+                        preserveAspectRatio="none"
+                        fill="none"
+                        className="absolute inset-0 w-full h-full pointer-events-none z-0"
+                    >
+                        {connectorPaths.map((arrow, i) => (
+                            <g key={i}>
+                                <path d={arrow.d} stroke="#EDEDED" strokeWidth="2" fill="none" />
+                                <path
+                                    d={arrow.d}
+                                    stroke="#FF6A00"
+                                    strokeWidth="2.5"
+                                    fill="none"
+                                    strokeDasharray="12 20"
+                                    className="animate-flow"
+                                    style={{ animationDelay: arrow.delay }}
+                                />
+                                <circle r="4" fill="#FF6A00">
+                                    <animateMotion dur="2.6s" repeatCount="indefinite" begin={arrow.delay} path={arrow.d} />
+                                </circle>
+                            </g>
+                        ))}
+                    </svg>
 
-                        {/* Top Robot */}
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center">
-                            <div className="text-sm font-extrabold text-[#0A0A0A] tracking-tight mb-0.5">
-                                Recruitment<span className="text-[#FF6A00]">OS</span>
-                            </div>
-                            <img src="/logos/robot.webp" alt="RecruitmentOS AI Bot" className="w-24 h-24 object-contain animate-float mix-blend-multiply" />
+                    {/* Grid: cards in the four corners, hub centered */}
+                    <div className="relative z-10 grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] grid-rows-2 items-center gap-x-10 lg:gap-x-16 gap-y-10">
+                        <div className="w-full max-w-[300px]">
+                            <StepCard feature={features[0]} />
                         </div>
-
-                        {/* 4 Cards in 2x2 Grid using absolute positions to match SVG paths */}
-                        <div className="absolute top-[200px] left-0 w-full grid grid-cols-2 gap-x-4 gap-y-16 px-2">
-                             {features.map((feature, i) => (
-                                <div key={feature.title} className="bg-white border border-[#E5E5E5] rounded-2xl p-4 shadow-[0_4px_16px_rgba(0,0,0,0.04)] z-20">
-                                    <div className="w-10 h-10 rounded-xl bg-[#FFF4EB] flex items-center justify-center text-[#FF6A00] mb-3">
-                                        {feature.icon}
-                                    </div>
-                                    <h4 className="text-sm font-bold text-[#0A0A0A] leading-snug mb-1">{feature.title}</h4>
-                                    <p className="text-[10px] text-[#9CA3AF] font-medium leading-tight">{feature.description}</p>
-                                </div>
-                             ))}
+                        <div className="col-start-2 row-span-2 px-2">
+                            <Hub size="lg" />
+                        </div>
+                        <div className="w-full max-w-[300px] justify-self-end">
+                            <StepCard feature={features[1]} />
+                        </div>
+                        <div className="w-full max-w-[300px]">
+                            <StepCard feature={features[2]} />
+                        </div>
+                        <div className="w-full max-w-[300px] justify-self-end">
+                            <StepCard feature={features[3]} />
                         </div>
                     </div>
+                </div>
 
-                    {/* Desktop Architecture (Horizontal Diagram) */}
-                    <div className="hidden md:block relative w-full max-w-[800px] mx-auto" style={{ aspectRatio: '800 / 500' }}>
-                        <svg viewBox="0 0 800 500" fill="none" className="absolute inset-0 w-full h-full z-10 pointer-events-none">
-                            <defs>
-                                <marker id="arrowhead-desk" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-                                    <polygon points="0 0, 8 3, 0 6" fill="#FF6A00" />
-                                </marker>
-                            </defs>
-                            {desktopPaths.map((arrow, i) => (
-                                <g key={i}>
-                                    <path d={arrow.d} stroke="#E5E5E5" strokeWidth="2" fill="none" markerEnd="url(#arrowhead-desk)" />
-                                    <path d={arrow.d} stroke="#FF6A00" strokeWidth="2.5" fill="none" strokeDasharray="12 20" className="animate-flow" style={{ animationDelay: arrow.delay }} />
-                                    <circle r="4" fill="#FF6A00">
-                                        <animateMotion dur="2.5s" repeatCount="indefinite" begin={arrow.delay} path={arrow.d} />
-                                    </circle>
-                                </g>
-                            ))}
-                        </svg>
-
-                        {/* Center Hub */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-                            <div className="flex flex-col items-center justify-center">
-                                <div className="text-xl font-extrabold text-[#0A0A0A] tracking-tight leading-none mb-1">
-                                    Recruitment<span className="text-[#FF6A00]">OS</span>
-                                </div>
-                                <img src="/logos/robot.webp" alt="RecruitmentOS AI Bot" className="w-32 h-32 object-contain animate-float mix-blend-multiply" />
-                            </div>
-                        </div>
-
-                        {/* Feature Cards positioned absolutely around center */}
-                        {features.map((feature, i) => {
-                            const positionClasses = ['top-0 left-0', 'top-0 right-0', 'bottom-0 left-0', 'bottom-0 right-0'];
-                            return (
-                                <div key={feature.title} className={`absolute ${positionClasses[i]} z-20 w-[180px] lg:w-[220px] group`}>
-                                    <div className="bg-white border border-[#E5E5E5] rounded-[2rem] p-6 shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:shadow-xl transition-all duration-300">
-                                        <div className="w-12 h-12 rounded-2xl bg-[#FFF4EB] flex items-center justify-center text-[#FF6A00] mb-4 group-hover:scale-110 transition-transform">
-                                            {feature.icon}
-                                        </div>
-                                        <h4 className="text-lg font-bold text-[#0A0A0A] leading-tight mb-2">{feature.title}</h4>
-                                        <p className="text-sm text-[#9CA3AF] font-medium leading-relaxed">{feature.description}</p>
-                                    </div>
-                                </div>
-                            );
-                        })}
+                {/* ── Mobile: hub on top, detailed cards stacked ──────────────── */}
+                <div className="md:hidden">
+                    <div className="mb-8">
+                        <Hub size="sm" />
+                    </div>
+                    <div className="grid grid-cols-1 gap-4">
+                        {features.map((feature) => (
+                            <StepCard key={feature.step} feature={feature} />
+                        ))}
                     </div>
                 </div>
             </div>

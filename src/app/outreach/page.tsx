@@ -8,7 +8,7 @@ import Analytics from '@/components/Analytics';
 
 export const metadata = {
     title: 'Get 1,000 Quality Leads Every Month | RecruitmentOS',
-    description: 'Automated lead generation for Recruiting agencies. Verified 6%+ reply rates. 1,000 quality leads delivered monthly on autopilot.',
+    description: 'Done-for-you lead generation for recruitment agencies. Verified 6%+ reply rates. 1,000 quality leads delivered monthly.',
 };
 
 function OutreachContent() {

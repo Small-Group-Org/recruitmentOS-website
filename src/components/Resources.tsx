@@ -3,6 +3,10 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import SkillsGateModal from './SkillsGateModal';
+import { articles } from '@/lib/articles-data';
+import { tools } from '@/lib/tools-data';
+
+type TabId = 'resources' | 'tools' | 'articles';
 
 const resources = [
     {
@@ -96,8 +100,40 @@ function LazyIframe({ src, height, title, allow, allowFullScreen, className, sty
 const GITHUB_URL = 'https://github.com/tushar-mangla/recruitment-skills';
 const STORAGE_KEY = 'rOS_unlocked';
 
+const TABS: { id: TabId; label: string; count: number }[] = [
+    { id: 'resources', label: 'Free Resources', count: resources.length },
+    { id: 'tools', label: 'Tools', count: tools.length },
+    { id: 'articles', label: 'Articles', count: articles.length },
+];
+
+const VALID_TABS: TabId[] = ['resources', 'tools', 'articles'];
+
+function readTabFromHash(): TabId {
+    if (typeof window === 'undefined') return 'resources';
+    const hash = window.location.hash.replace('#', '') as TabId;
+    return VALID_TABS.includes(hash) ? hash : 'resources';
+}
+
 export default function Resources() {
     const [showModal, setShowModal] = useState(false);
+    const [activeTab, setActiveTab] = useState<TabId>('resources');
+
+    // Restore tab from URL hash on mount + listen for hashchange (e.g. back button)
+    useEffect(() => {
+        setActiveTab(readTabFromHash());
+        function onHashChange() { setActiveTab(readTabFromHash()); }
+        window.addEventListener('hashchange', onHashChange);
+        return () => window.removeEventListener('hashchange', onHashChange);
+    }, []);
+
+    function selectTab(id: TabId) {
+        setActiveTab(id);
+        if (typeof window !== 'undefined') {
+            // replaceState — clicking tabs doesn't pollute history, but the hash IS in the URL,
+            // so navigating away and pressing Back returns to /resources with the right tab active.
+            window.history.replaceState(null, '', `#${id}`);
+        }
+    }
 
     const handleSkillsClick = useCallback((e: React.MouseEvent) => {
         e.preventDefault();
@@ -108,113 +144,253 @@ export default function Resources() {
         }
     }, []);
 
+    const sortedArticles = [...articles].sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1));
+
     return (
         <>
         {showModal && <SkillsGateModal onClose={() => setShowModal(false)} redirectUrl={GITHUB_URL} />}
         <section className="pt-8 sm:pt-10 pb-16 sm:pb-24 md:pb-36 bg-white" id="resources">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
-                {/* Header */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 sm:mb-14 md:mb-16">
-                    <div className="max-w-2xl">
-                        <p className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-3">Knowledge Base</p>
-                        <h2 className="text-[#0A0A0A] text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
-                            Resources to Scale Your Agency
-                        </h2>
-                    </div>
+
+                {/* Page header */}
+                <div className="mb-10 sm:mb-12 md:mb-14 max-w-3xl">
+                    <p className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-3">Knowledge Base</p>
+                    <h2 className="text-[#0A0A0A] text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
+                        Resources to scale your agency
+                    </h2>
                 </div>
 
-                {/* Resource Cards Grid — 1 col mobile, 2 col tablet, 3 col desktop */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 mb-16 sm:mb-24 md:mb-32">
-                    {resources.map((resource, index) => {
-                        const cardInner = (
-                            <>
-                                <div className="relative aspect-[4/3] bg-[#FAFAFA] border border-[#E5E5E5] rounded-2xl sm:rounded-3xl mb-4 sm:mb-6 overflow-hidden flex items-center justify-center group-hover:border-[#FF6A00]/20 transition-all duration-300">
-                                    <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-300">
-                                        <div className="absolute inset-0 bg-[radial-gradient(#FF6A00_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
-                                    </div>
-                                    {resource.image ? (
-                                        <img
-                                            src={resource.image}
-                                            alt={resource.title}
-                                            loading="lazy"
-                                            className={`w-full h-full group-hover:scale-105 transition-transform duration-700 ${index === 0 ? 'object-contain p-4' : 'object-cover'}`}
-                                        />
-                                    ) : (
-                                        <div className="p-4 bg-white rounded-2xl shadow-sm border border-[#E5E5E5] group-hover:scale-110 transition-transform duration-500">
-                                            {resource.icon}
-                                        </div>
-                                    )}
-                                </div>
-                                <div className="flex flex-col flex-grow">
-                                    <div className="flex items-center gap-3 mb-2 sm:mb-3">
-                                        <span className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] bg-[#FFF4EB] px-2 py-1 rounded-md">
-                                            {resource.type}
-                                        </span>
-                                        <span className="text-[10px] font-bold tracking-widest uppercase text-[#9CA3AF]">
-                                            {resource.li_duration}
-                                        </span>
-                                    </div>
-                                    <h3 className="text-lg sm:text-xl font-bold text-[#0A0A0A] mb-2 sm:mb-3 group-hover:text-[#FF6A00] transition-colors">
-                                        {resource.title}
-                                    </h3>
-                                    <p className="text-[#6B7280] text-sm leading-relaxed font-medium mb-4 sm:mb-6">
-                                        {resource.description}
-                                    </p>
-                                    <div className="mt-auto flex items-center text-sm font-bold text-[#0A0A0A] group-hover:gap-1 transition-all">
-                                        {resource.cta || "Read Feature"}
-                                        <svg className="ml-2 w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-3 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </>
-                        );
-
-                        return resource.link === '__skills_gate__' ? (
-                            <div key={index} onClick={handleSkillsClick} className="flex flex-col group cursor-pointer">
-                                {cardInner}
-                            </div>
-                        ) : (
-                            <Link key={index} href={resource.link} target="_blank" className="flex flex-col group">
-                                {cardInner}
-                            </Link>
+                {/* Tabs — editorial underline style */}
+                <div role="tablist" aria-label="Resource categories" className="flex items-center gap-8 sm:gap-12 border-b border-[#E5E5E5] mb-10 sm:mb-14 md:mb-16">
+                    {TABS.map(tab => {
+                        const isActive = activeTab === tab.id;
+                        return (
+                            <button
+                                key={tab.id}
+                                role="tab"
+                                aria-selected={isActive}
+                                aria-controls={`panel-${tab.id}`}
+                                id={`tab-${tab.id}`}
+                                onClick={() => selectTab(tab.id)}
+                                className={`relative pb-3 sm:pb-4 -mb-[1px] flex items-center gap-2 text-sm sm:text-base font-bold transition-colors ${
+                                    isActive
+                                        ? 'text-[#0A0A0A] border-b-2 border-[#FF6A00]'
+                                        : 'text-[#9CA3AF] hover:text-[#0A0A0A] border-b-2 border-transparent'
+                                }`}
+                            >
+                                {tab.label}
+                                <span className={`text-[10px] font-mono ${isActive ? 'text-[#FF6A00]' : 'text-[#9CA3AF]'}`}>
+                                    {tab.count}
+                                </span>
+                            </button>
                         );
                     })}
                 </div>
 
-                {/* Claude AI + MCP Feature Section */}
-                <div className="mb-16 sm:mb-24 md:mb-32 border border-[#E5E5E5] rounded-2xl sm:rounded-3xl overflow-hidden">
-                    <div className="flex flex-col px-6 py-10 sm:px-10 sm:py-12 md:px-14 md:py-16">
-                        <span className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] bg-[#FFF4EB] px-2.5 py-1 rounded-md w-fit mb-4">
-                            7-Step System
-                        </span>
-                        <h2 className="text-[#0A0A0A] text-xl sm:text-3xl md:text-4xl font-bold tracking-tight leading-[1.15] mb-4 sm:mb-5 max-w-2xl">
-                            How Recruiters Can Use Claude AI + MCP to Build a Full Recruitment Engine
-                        </h2>
-                        <p className="text-[#6B7280] text-sm sm:text-base leading-relaxed font-medium mb-6 sm:mb-8 max-w-xl">
-                            Think of Claude with MCP as your "AI recruiter brain" that connects with multiple tools and does the work for you. Instead of switching between 10 tools, you give instructions in plain English — and the system executes everything.
-                        </p>
-                        <div className="flex flex-wrap gap-2 mb-8 sm:mb-10">
-                            {["Apify", "Exa.ai", "Prospeo", "Lemlist", "Airtable", "RapidAPI"].map((tool) => (
-                                <span key={tool} className="text-[10px] font-bold tracking-widest uppercase bg-[#F9FAFB] border border-[#E5E5E5] text-[#374151] px-2.5 py-1 rounded-md">
-                                    {tool}
-                                </span>
-                            ))}
+                {/* Panel: Free Resources */}
+                <div
+                    id="panel-resources"
+                    role="tabpanel"
+                    aria-labelledby="tab-resources"
+                    hidden={activeTab !== 'resources'}
+                    className={activeTab === 'resources' ? 'mb-16 sm:mb-24 md:mb-32' : ''}
+                >
+                    {activeTab === 'resources' && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+                            {resources.map((resource, index) => {
+                                const cardInner = (
+                                    <>
+                                        <div className="relative aspect-[4/3] bg-[#FAFAFA] border border-[#E5E5E5] rounded-2xl sm:rounded-3xl mb-4 sm:mb-6 overflow-hidden flex items-center justify-center group-hover:border-[#FF6A00]/20 transition-all duration-300">
+                                            <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-300">
+                                                <div className="absolute inset-0 bg-[radial-gradient(#FF6A00_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
+                                            </div>
+                                            {resource.image ? (
+                                                <img
+                                                    src={resource.image}
+                                                    alt={resource.title}
+                                                    loading="lazy"
+                                                    className={`w-full h-full group-hover:scale-105 transition-transform duration-700 ${index === 0 ? 'object-contain p-4' : 'object-cover'}`}
+                                                />
+                                            ) : (
+                                                <div className="p-4 bg-white rounded-2xl shadow-sm border border-[#E5E5E5] group-hover:scale-110 transition-transform duration-500">
+                                                    {resource.icon}
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="flex flex-col flex-grow">
+                                            <div className="flex items-center gap-3 mb-2 sm:mb-3">
+                                                <span className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] bg-[#FFF4EB] px-2 py-1 rounded-md">
+                                                    {resource.type}
+                                                </span>
+                                                <span className="text-[10px] font-bold tracking-widest uppercase text-[#9CA3AF]">
+                                                    {resource.li_duration}
+                                                </span>
+                                            </div>
+                                            <h3 className="text-lg sm:text-xl font-bold text-[#0A0A0A] mb-2 sm:mb-3 group-hover:text-[#FF6A00] transition-colors">
+                                                {resource.title}
+                                            </h3>
+                                            <p className="text-[#6B7280] text-sm leading-relaxed font-medium mb-4 sm:mb-6">
+                                                {resource.description}
+                                            </p>
+                                            <div className="mt-auto flex items-center text-sm font-bold text-[#0A0A0A] group-hover:gap-1 transition-all">
+                                                {resource.cta || "Read Feature"}
+                                                <svg className="ml-2 w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-3 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </>
+                                );
+
+                                return resource.link === '__skills_gate__' ? (
+                                    <div key={index} onClick={handleSkillsClick} className="flex flex-col group cursor-pointer">
+                                        {cardInner}
+                                    </div>
+                                ) : (
+                                    <Link key={index} href={resource.link} target="_blank" className="flex flex-col group">
+                                        {cardInner}
+                                    </Link>
+                                );
+                            })}
                         </div>
-                        <Link
-                            href="/resources/claude-mcp-recruitment-engine"
-                            className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-[#0A0A0A] text-white text-sm font-bold hover:bg-[#FF6A00] transition-colors w-fit group"
-                        >
-                            Read More
-                            <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </Link>
-                    </div>
+                    )}
+                </div>
+
+                {/* Panel: Tools */}
+                <div
+                    id="panel-tools"
+                    role="tabpanel"
+                    aria-labelledby="tab-tools"
+                    hidden={activeTab !== 'tools'}
+                    className={activeTab === 'tools' ? 'mb-16 sm:mb-24 md:mb-32' : ''}
+                >
+                    {activeTab === 'tools' && (
+                        <>
+                            <p className="text-sm text-[#6B7280] font-medium mb-8 max-w-2xl">
+                                Free interactive tools. One email unlocks all of them.
+                            </p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+                                {tools.map((tool) => (
+                                    <Link key={tool.slug} href={`/tools/${tool.slug}`} className="flex flex-col group">
+                                        <div className="relative aspect-[4/3] bg-[#FAFAFA] border border-[#E5E5E5] rounded-2xl sm:rounded-3xl mb-4 sm:mb-5 overflow-hidden flex items-center justify-center group-hover:border-[#FF6A00]/20 transition-all duration-300 p-6">
+                                            <div className="absolute inset-0 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity duration-300">
+                                                <div className="absolute inset-0 bg-[radial-gradient(#FF6A00_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
+                                            </div>
+                                            <div className="relative text-center">
+                                                <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-2">{tool.category}</p>
+                                                <p className="text-2xl font-black text-[#0A0A0A] leading-tight">{tool.title}</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center gap-3 mb-2 sm:mb-3">
+                                            <span className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] bg-[#FFF4EB] px-2 py-1 rounded-md">
+                                                {tool.badge}
+                                            </span>
+                                            {tool.isNew && (
+                                                <span className="text-[10px] font-bold tracking-widest uppercase text-white bg-[#FF6A00] px-2 py-1 rounded-md">
+                                                    New
+                                                </span>
+                                            )}
+                                        </div>
+                                        <h3 className="text-base sm:text-lg font-bold text-[#0A0A0A] mb-2 leading-snug group-hover:text-[#FF6A00] transition-colors">
+                                            {tool.title}
+                                        </h3>
+                                        <p className="text-[#6B7280] text-sm leading-relaxed font-medium line-clamp-3 mb-3">
+                                            {tool.description}
+                                        </p>
+                                        <span className="mt-auto inline-flex items-center text-sm font-bold text-[#0A0A0A] group-hover:gap-1 transition-all">
+                                            Launch tool
+                                            <svg className="ml-2 w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-3 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                            </svg>
+                                        </span>
+                                    </Link>
+                                ))}
+                            </div>
+
+                            <div className="mt-10 sm:mt-12 flex justify-center">
+                                <Link
+                                    href="/tools"
+                                    className="inline-flex items-center text-sm font-bold text-[#0A0A0A] hover:text-[#FF6A00] transition-colors group"
+                                >
+                                    Open tools hub
+                                    <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </Link>
+                            </div>
+                        </>
+                    )}
+                </div>
+
+                {/* Panel: Articles */}
+                <div
+                    id="panel-articles"
+                    role="tabpanel"
+                    aria-labelledby="tab-articles"
+                    hidden={activeTab !== 'articles'}
+                    className={activeTab === 'articles' ? 'mb-16 sm:mb-24 md:mb-32' : ''}
+                >
+                    {activeTab === 'articles' && (
+                        <>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+                                {sortedArticles.map((article) => {
+                                    const href = article.customRoute || `/resources/articles/${article.slug}`;
+                                    return (
+                                        <Link key={article.slug} href={href} className="flex flex-col group">
+                                            <div className="relative aspect-[4/3] bg-[#FAFAFA] border border-[#E5E5E5] rounded-2xl sm:rounded-3xl mb-4 sm:mb-5 overflow-hidden flex items-center justify-center group-hover:border-[#FF6A00]/20 transition-all duration-300">
+                                                <div className="absolute inset-0 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity duration-300">
+                                                    <div className="absolute inset-0 bg-[radial-gradient(#FF6A00_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
+                                                </div>
+                                                {article.image ? (
+                                                    <img
+                                                        src={article.image}
+                                                        alt={article.title}
+                                                        loading="lazy"
+                                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                                    />
+                                                ) : (
+                                                    <div className="text-center px-6">
+                                                        <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-2">{article.category}</p>
+                                                        <p className="text-[#9CA3AF] text-xs font-mono">{article.readTime}</p>
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div className="flex items-center gap-3 mb-2 sm:mb-3">
+                                                <span className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] bg-[#FFF4EB] px-2 py-1 rounded-md">
+                                                    {article.category}
+                                                </span>
+                                                <span className="text-[10px] font-bold tracking-widest uppercase text-[#9CA3AF]">
+                                                    {article.readTime}
+                                                </span>
+                                            </div>
+                                            <h3 className="text-base sm:text-lg font-bold text-[#0A0A0A] mb-2 leading-snug group-hover:text-[#FF6A00] transition-colors">
+                                                {article.title}
+                                            </h3>
+                                            <p className="text-[#6B7280] text-sm leading-relaxed font-medium line-clamp-3">
+                                                {article.description}
+                                            </p>
+                                        </Link>
+                                    );
+                                })}
+                            </div>
+
+                            <div className="mt-10 sm:mt-12 flex justify-center">
+                                <Link
+                                    href="/resources/articles"
+                                    className="inline-flex items-center text-sm font-bold text-[#0A0A0A] hover:text-[#FF6A00] transition-colors group"
+                                >
+                                    Open full articles index
+                                    <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </Link>
+                            </div>
+                        </>
+                    )}
                 </div>
 
                 {/* YouTube Video Section */}
-                <div className="mb-16 sm:mb-24 md:mb-32">
+                <div className="mb-16 sm:mb-24 md:mb-32 pt-12 sm:pt-16 md:pt-20 border-t border-[#E5E5E5]">
                     <div className="mb-8 sm:mb-12">
                         <h2 className="text-[#0A0A0A] text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4">
                             Learn how to implement AI in your business

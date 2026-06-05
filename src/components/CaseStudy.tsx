@@ -38,7 +38,7 @@ export default function CaseStudy() {
                         </svg>
 
                         <blockquote className="text-xl md:text-2xl text-[#0A0A0A] leading-relaxed mb-8 font-light tracking-tight">
-                            We stopped cold calling. RecruitmentOS now sends matched candidate pitches to hiring managers on autopilot. We went from inconsistent deals to a predictable pipeline — revenue is up 30% in just 60 days.
+                            We stopped cold calling. RecruitmentOS now sends matched candidate pitches to hiring managers for us. We went from inconsistent deals to a predictable pipeline — revenue is up 30% in just 60 days.
                         </blockquote>
 
                         <div className="flex items-center gap-3 mb-8">

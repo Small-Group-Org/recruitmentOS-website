@@ -1,120 +1,87 @@
 'use client';
 
-import React from 'react';
 import Link from 'next/link';
-
-const services = [
-  {
-    id: 'lead-gen',
-    tag: 'LEAD GENERATION',
-    tagColor: 'bg-[#e8f5ef] text-[#1a6b4a]',
-    headline: 'Find real hiring managers automatically',
-    description: "AI identifies and ranks the actual decision makers tied to each departed candidate. Enriches their contact info (email, LinkedIn) and generates personalized outreach messages that don't sound like AI.",
-    cta: 'Get sample leads →'
-  },
-  {
-    id: 'job-intel',
-    tag: 'JOB INTELLIGENCE',
-    tagColor: 'bg-[#eeebfb] text-[#3d2e7c]',
-    headline: 'Only high-intent job opportunities',
-    description: 'Filters out Recruiter spam and duplicates so you only see real openings with a direct path to hiring managers.',
-    cta: 'Explore jobs →'
-  },
-  {
-    id: 'candidate-match',
-    tag: 'CANDIDATE MATCHING',
-    tagColor: 'bg-[#fdf6e8] text-[#b8862a]',
-    headline: 'Match candidates to roles in seconds',
-    description: 'AI ranks candidates against job requirements and builds ready-to-send shortlists instantly.',
-    cta: 'Explore jobs →'
-  },
-  {
-    id: 'outreach',
-    tag: 'OUTREACH ENGINE',
-    tagColor: 'bg-[#fcecea] text-[#c0412b]',
-    headline: 'Emails that actually get replies',
-    description: 'Hyper-personalized outreach based on role, company, and company context that feels human, not automated.',
-    cta: 'View demo →'
-  },
-  {
-    id: 'custom-ai',
-    tag: 'CUSTOM AI SOLUTIONS',
-    tagColor: 'bg-[#e3f2fd] text-[#0d47a1]',
-    headline: 'Custom AI built around your recruitment workflow',
-    description: "We dig into your agency's specific bottlenecks — whether it's sourcing, screening, or client reporting — and engineer AI solutions tailored to how you actually work, not generic templates.",
-    cta: 'Book a discovery call →'
-  }
-];
+import { services } from '@/lib/services-data';
 
 export default function Features() {
-  return (
-    <section className="py-24 bg-white" id="services">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
+    return (
+        <section className="py-20 md:py-28 bg-white border-t border-[#E5E5E5]" id="services">
+            <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
+                <div className="grid lg:grid-cols-[0.85fr_1.4fr] gap-12 lg:gap-20">
 
-        {/* Section Header */}
-        <div className="mb-20">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0A0A] tracking-tighter">
-            Our Services
-          </h2>
-        </div>
+                    {/* Left — intro (sticky on desktop) */}
+                    <div className="lg:sticky lg:top-28 self-start">
+                        <p
+                            className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-4"
+                            style={{ fontFamily: 'var(--font-mono)' }}
+                        >
+                            What we do
+                        </p>
+                        <h2 className="text-3xl sm:text-4xl font-bold text-[#0A0A0A] tracking-tight leading-[1.15] mb-5">
+                            Five services. One outcome — your BD function, replaced.
+                        </h2>
+                        <p className="text-[#6B7280] text-base leading-relaxed mb-8 max-w-sm">
+                            Each service maps to a specific bottleneck. Bundle them or scope individually.
+                        </p>
+                        <Link
+                            href="/services"
+                            className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 rounded-full font-medium hover:bg-[#222222] transition-colors text-sm group"
+                        >
+                            See all five services
+                            <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </Link>
+                    </div>
 
-        {/* Timeline Container */}
-        <div className="relative">
+                    {/* Right — service list */}
+                    <div className="border-t border-[#E5E5E5]">
+                        {services.map((service) => (
+                            <Link
+                                key={service.slug}
+                                href={`/services#service-${service.slug}`}
+                                className="group grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_auto] items-start md:items-center gap-x-5 md:gap-x-8 py-6 border-b border-[#E5E5E5] transition-colors"
+                            >
+                                {/* Number */}
+                                <span
+                                    className="text-sm font-bold text-[#D1D5DB] group-hover:text-[#FF6A00] transition-colors pt-0.5 md:pt-0"
+                                    style={{ fontFamily: 'var(--font-mono)' }}
+                                >
+                                    {service.number}
+                                </span>
 
-          {/* Vertical Line */}
-          <div className="absolute left-[22px] top-0 bottom-0 w-[1px] bg-gray-200 hidden md:block"></div>
+                                {/* Name + one-liner */}
+                                <div className="min-w-0">
+                                    <h3 className="text-base md:text-lg font-bold text-[#0A0A0A] leading-snug group-hover:text-[#FF6A00] transition-colors">
+                                        {service.name}
+                                    </h3>
+                                    <p className="text-sm text-[#6B7280] leading-snug mt-1">
+                                        {service.oneLine}
+                                    </p>
+                                    {/* Outcome — inline on mobile */}
+                                    <div className="md:hidden mt-3 inline-flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] shrink-0" />
+                                        <span className="text-[12px] font-semibold text-[#0A0A0A]">{service.outcome}</span>
+                                    </div>
+                                </div>
 
-          <div className="space-y-24">
-            {services.map((service, index) => (
-              <div key={service.id} className="relative flex flex-col md:flex-row gap-12 md:gap-20">
-
-                {/* Timeline Dot (Desktop only) */}
-                <div className="absolute left-0 top-2 hidden md:flex items-center justify-center w-11 h-11 bg-white border border-black rounded-full z-10">
-                  <div className="w-1.5 h-1.5 bg-black rounded-full"></div>
+                                {/* Outcome + arrow — desktop */}
+                                <div className="hidden md:flex items-center gap-6 justify-self-end">
+                                    <div className="flex items-center gap-2 max-w-[200px]">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] shrink-0" />
+                                        <span className="text-[13px] font-semibold text-[#0A0A0A] leading-snug text-right">
+                                            {service.outcome}
+                                        </span>
+                                    </div>
+                                    <svg className="w-4 h-4 text-[#D1D5DB] group-hover:text-[#FF6A00] group-hover:translate-x-1 transition-all shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
-
-                {/* Content Area */}
-                <div className="flex-1 md:pl-24">
-                  {/* Badge */}
-                  <div className="mb-6">
-                    <span className={`inline-block text-[10px] font-bold uppercase tracking-[0.1em] px-3 py-1 rounded-sm ${service.tagColor}`}>
-                      {service.tag}
-                    </span>
-                  </div>
-
-                  {/* Headline with Highlight */}
-                  <div className="mb-6">
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-gray-900 leading-tight">
-                      <span className="relative inline-block">
-                        <span className="relative z-10">{service.headline}</span>
-                        <span className="absolute bottom-0 left-0 right-0 h-[60%] bg-[#FDEDD3]/60 -z-0 rounded-sm transform -rotate-1"></span>
-                      </span>
-                    </h3>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-lg text-gray-600 leading-relaxed max-w-[640px] mb-8 font-medium italic">
-                    {service.description}
-                  </p>
-
-                  {/* CTA */}
-                  <Link
-                    href="https://cal.com/tusharm/30min?user=tusharm"
-                    target="_blank"
-                    className="inline-flex items-center text-base font-bold text-black group"
-                  >
-                    <span className="border-b-2 border-black pb-0.5 group-hover:border-[#FF6A00] transition-colors">
-                      {service.cta}
-                    </span>
-                  </Link>
-                </div>
-
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </div>
-    </section>
-  );
+            </div>
+        </section>
+    );
 }

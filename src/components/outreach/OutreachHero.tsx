@@ -49,7 +49,7 @@ export default function OutreachHero() {
 
                     {/* Trust Line */}
                     <p className="text-sm sm:text-base text-[#475569] font-bold">
-                        Join agencies scaling to <span className="text-[#1E293B] font-black">100K+ leads/month</span> on autopilot
+                        Join agencies scaling to <span className="text-[#1E293B] font-black">100K+ leads/month</span> — operated for them
                     </p>
                 </div>
             </div>

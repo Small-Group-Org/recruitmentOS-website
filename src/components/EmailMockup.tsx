@@ -67,7 +67,7 @@ export default function EmailMockup() {
                     {/* Below card callout */}
                     <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                         {[
-                            { label: 'Time to send', value: '0 min', sub: 'fully automated' },
+                            { label: 'Time to send', value: '0 min', sub: 'operated for you' },
                             { label: 'Reply rate', value: '5.3%', sub: 'vs 1% industry avg' },
                             { label: 'Why it works', value: 'Solution', sub: 'not a pitch' },
                         ].map((item, i) => (
