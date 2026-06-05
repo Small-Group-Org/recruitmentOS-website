@@ -9,9 +9,9 @@ export default function ToolHub({ tools }: { tools: Tool[] }) {
 
   return (
     <main className="min-h-screen bg-[#F9FAFB]">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 py-16 sm:py-24">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 pt-8 pb-12 sm:pt-10 sm:pb-16">
 
-        <div className="mb-12">
+        <div className="mb-6">
           <p className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-3">
             Free tools
           </p>
