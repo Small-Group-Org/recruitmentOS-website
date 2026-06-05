@@ -24,7 +24,7 @@ export const services: Service[] = [
         name: 'Signal-Triggered Lead Generation',
         oneLine: 'We find hiring managers before the job post exists.',
         deepDive: 'Daily scrape of departure signals, funding announcements, leadership changes, restructures, and hiring intent. Enriched, ranked, niche-filtered. Drops into your CRM every morning.',
-        outcome: '2,500–25,000 verified leads/mo',
+        outcome: '2,000–20,000 verified leads/mo',
         tagColor: 'bg-[#eeebfb] text-[#3d2e7c]',
     },
     {
