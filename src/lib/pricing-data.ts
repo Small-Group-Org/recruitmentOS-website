@@ -134,8 +134,10 @@ export type PlanVolumeOption = {
     leads: number;
     /** Collapsed dropdown label, e.g. "500 leads" / "2,000 leads/mo" */
     label: string;
-    /** Price in USD */
+    /** Price in USD for leads */
     price: number;
+    /** Fixed monthly platform fee (if applicable) */
+    monthlyPlatformFee?: number;
     /** Sub-line under the price, e.g. "$0.09 / lead" or "6K emails · Smartlead Basic" */
     detail: string;
 };
@@ -195,9 +197,10 @@ export const pricingPlans: PricingPlan[] = [
         highlight: true,
         defaultIndex: 0,
         options: [
-            { leads: 2000, label: '2,000 leads/mo', price: 375, detail: '6K emails · Smartlead Basic' },
-            { leads: 5000, label: '5,000 leads/mo', price: 699, detail: '15K emails · Smartlead Pro' },
-            { leads: 10000, label: '10,000 leads/mo', price: 999, detail: '30K emails · Smartlead Custom' },
+            { leads: 2000, label: '2,000 leads', price: 149, monthlyPlatformFee: 226, detail: '6K emails · Smartlead Basic' },
+            { leads: 5000, label: '5,000 leads', price: 299, monthlyPlatformFee: 400, detail: '15K emails · Smartlead Pro' },
+            { leads: 10000, label: '10,000 leads', price: 500, monthlyPlatformFee: 499, detail: '30K emails · Smartlead Custom' },
+            { leads: 20000, label: '20,000 leads', price: 840, monthlyPlatformFee: 659, detail: '60K emails · Smartlead Custom' },
         ],
         features: [
             'Everything in Leads',
@@ -218,9 +221,10 @@ export const pricingPlans: PricingPlan[] = [
         highlight: false,
         defaultIndex: 0,
         options: [
-            { leads: 2000, label: '2,000 leads/mo', price: 499, detail: 'email + LinkedIn sequences' },
-            { leads: 5000, label: '5,000 leads/mo', price: 849, detail: 'email + LinkedIn sequences' },
-            { leads: 10000, label: '10,000 leads/mo', price: 1299, detail: 'email + LinkedIn sequences' },
+            { leads: 2000, label: '2,000 leads', price: 149, monthlyPlatformFee: 350, detail: 'email + LinkedIn sequences' },
+            { leads: 5000, label: '5,000 leads', price: 299, monthlyPlatformFee: 550, detail: 'email + LinkedIn sequences' },
+            { leads: 10000, label: '10,000 leads', price: 500, monthlyPlatformFee: 799, detail: 'email + LinkedIn sequences' },
+            { leads: 20000, label: '20,000 leads', price: 840, monthlyPlatformFee: 1159, detail: 'email + LinkedIn sequences' },
         ],
         features: [
             'Everything in Email outreach',
