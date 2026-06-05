@@ -40,7 +40,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
   return (
     <main className="min-h-screen bg-white">
       <JsonLd data={articleSchema(article)} />
-      <div className="pt-24 pb-32">
+      <div className="pt-12 pb-24">
         <div className="max-w-[820px] mx-auto px-6 sm:px-10">
           <Link
             href="/resources/articles"

@@ -6,7 +6,7 @@ export default function FinalCTA() {
     return (
         <section className="py-16 sm:py-28 md:py-40 bg-[#FAFAFA] border-t border-[#e5e5e5]" id="contact">
             <div className="max-w-[900px] mx-auto px-4 sm:px-6 text-center">
-                <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#0A0A0A] tracking-tight leading-[1.1] mb-6">Ready to take BD off your desk for good?</h2>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0A0A0A] tracking-tight leading-[1.1] mb-6">Ready to take BD off your desk for good?</h2>
                 <p className="text-lg md:text-xl text-[#6b7280] mb-12 max-w-[560px] mx-auto leading-relaxed">
                     10+ established recruitment agencies already on retainer. We run the full BD function on your stack — your team steps in when a hiring manager replies yes.
                 </p>

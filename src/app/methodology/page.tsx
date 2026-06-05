@@ -22,7 +22,7 @@ export default function MethodologyPage() {
     return (
         <main className="min-h-screen bg-white">
             <JsonLd data={serviceWithOffersSchema} />
-            <div className="pt-24 pb-32">
+            <div className="pt-12 pb-24">
                 <div className="max-w-[1100px] mx-auto px-6 sm:px-10">
 
                     <Link
@@ -38,7 +38,7 @@ export default function MethodologyPage() {
                     {/* Hero */}
                     <div className="mb-20 max-w-3xl">
                         <p className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-3">Methodology</p>
-                        <h1 className="text-[#0A0A0A] text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-6">
+                        <h1 className="text-[#0A0A0A] text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.05] mb-6">
                             How RecruitmentOS works.
                         </h1>
                         <p className="hero-sub mb-8">
