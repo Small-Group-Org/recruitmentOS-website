@@ -6,22 +6,22 @@ import { pricingPlans, type PricingPlan } from '@/lib/pricing-data';
 
 export default function Pricing() {
     return (
-        <section className="bg-white pt-24 pb-32" id="pricing">
+        <section className="bg-white pt-12 pb-24" id="pricing">
             <div className="max-w-[1180px] mx-auto px-6 sm:px-10">
 
                 {/* ── Header ── */}
-                <div className="mb-14 sm:mb-20 max-w-3xl">
+                <div className="mb-10 sm:mb-12 max-w-3xl">
                     <p className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-3"
                         style={{ fontFamily: 'var(--font-mono)' }}>
                         Pricing
                     </p>
-                    <h1 className="text-[#0A0A0A] text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-5"
+                    <h1 className="text-[#0A0A0A] text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.05] mb-4"
                         style={{ fontFamily: 'var(--font-serif)' }}>
                         Pay for pipeline, not promises.
                     </h1>
-                    <p className="hero-sub text-[#6B7280]" style={{ fontFamily: 'var(--font-outfit)' }}>
+                    <p className="text-base sm:text-lg text-[#6B7280] leading-relaxed" style={{ fontFamily: 'var(--font-outfit)' }}>
                         Start with raw leads. Scale to fully-managed BD across email and LinkedIn.
-                        Pick your volume on any plan — no lock-in on your data.
+                        Pick your volume on any plan. No lock-in on your data.
                     </p>
                 </div>
 
@@ -44,7 +44,7 @@ export default function Pricing() {
                     </h3>
                     <p className="section-sub mb-8 text-[#6B7280]" style={{ fontFamily: 'var(--font-outfit)' }}>
                         20K+ leads per month, multiple seats, custom signal sources, CRM integration,
-                        or white-label — let&apos;s build a plan around your agency&apos;s specific BD needs.
+                        or white-label, let&apos;s build a plan around your agency&apos;s specific BD needs.
                     </p>
                     <Link
                         href="/fit-call"
@@ -74,11 +74,10 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
 
     return (
         <div
-            className={`relative rounded-3xl flex flex-col bg-white p-8 transition-all duration-300 ${
-                isPopular
-                    ? 'border-2 border-[#FF6A00] shadow-[0_8px_40px_-12px_rgba(255,106,0,0.35)] lg:-mt-4 lg:mb-0'
-                    : 'border border-[#E5E5E5] shadow-sm hover:border-[#D4D4D4]'
-            }`}
+            className={`relative rounded-3xl flex flex-col bg-white p-8 transition-all duration-300 ${isPopular
+                ? 'border-2 border-[#FF6A00] shadow-[0_8px_40px_-12px_rgba(255,106,0,0.35)] lg:-mt-4 lg:mb-0'
+                : 'border border-[#E5E5E5] shadow-sm hover:border-[#D4D4D4]'
+                }`}
         >
             {isPopular && (
                 <span className="absolute -top-3 left-8 bg-[#FF6A00] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm"
@@ -109,7 +108,7 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
             {/* Price */}
             <div className="mb-5">
                 <div className="flex items-baseline gap-1.5 flex-wrap">
-                    <span className="text-[44px] leading-none font-normal tracking-tight text-[#0A0A0A]"
+                    <span className={`${(option.monthlyPlatformFee || 0) > 0 ? 'text-[36px]' : 'text-[44px]'} leading-none font-normal tracking-tight text-[#0A0A0A]`}
                         style={{ fontFamily: 'var(--font-serif)' }}>
                         ${(option.monthlyPlatformFee || 0) > 0 ? option.monthlyPlatformFee?.toLocaleString() : option.price.toLocaleString()}
                     </span>
@@ -118,8 +117,8 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
                     </span>
                     {(option.monthlyPlatformFee || 0) > 0 && (
                         <div className="flex items-baseline gap-1.5">
-                            <span className="text-2xl font-normal text-[#9CA3AF] mx-1" style={{ fontFamily: 'var(--font-outfit)' }}>+</span>
-                            <span className="text-[44px] leading-none font-normal tracking-tight text-[#0A0A0A]"
+                            <span className="text-xl font-normal text-[#9CA3AF] mx-1" style={{ fontFamily: 'var(--font-outfit)' }}>+</span>
+                            <span className="text-[32px] leading-none font-normal tracking-tight text-[#0A0A0A]"
                                 style={{ fontFamily: 'var(--font-serif)' }}>
                                 ${option.price.toLocaleString()}
                             </span>
@@ -158,11 +157,10 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
             <Link
                 href={plan.cta.href}
                 {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className={`block text-center py-3.5 rounded-full text-sm font-bold transition-all duration-300 ${
-                    isPopular
-                        ? 'bg-[#FF6A00] text-white hover:bg-[#E55F00]'
-                        : 'border border-[#0A0A0A] text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white'
-                }`}
+                className={`block text-center py-3.5 rounded-full text-sm font-bold transition-all duration-300 ${isPopular
+                    ? 'bg-[#FF6A00] text-white hover:bg-[#E55F00]'
+                    : 'border border-[#0A0A0A] text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white'
+                    }`}
                 style={{ fontFamily: 'var(--font-outfit)' }}
                 id={`pricing-card-${plan.id}`}
             >
@@ -241,11 +239,10 @@ function VolumeDropdown({
                                     onSelect(i);
                                     setOpen(false);
                                 }}
-                                className={`w-full flex items-center justify-between gap-3 px-4 py-2.5 text-left text-sm transition-colors ${
-                                    i === index
-                                        ? 'bg-[#FFF1E8] text-[#C2511C] font-bold'
-                                        : 'text-[#374151] hover:bg-[#FAFAFA]'
-                                }`}
+                                className={`w-full flex items-center justify-between gap-3 px-4 py-2.5 text-left text-sm transition-colors ${i === index
+                                    ? 'bg-[#FFF1E8] text-[#C2511C] font-bold'
+                                    : 'text-[#374151] hover:bg-[#FAFAFA]'
+                                    }`}
                                 style={{ fontFamily: 'var(--font-outfit)' }}
                             >
                                 <div className="flex flex-col items-start gap-0.5 text-left">
