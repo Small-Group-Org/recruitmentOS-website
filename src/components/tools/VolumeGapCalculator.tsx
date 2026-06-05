@@ -60,70 +60,82 @@ export default function VolumeGapCalculator() {
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_1px_1fr] gap-8 lg:gap-12">
 
                 {/* Inputs */}
-                <div className="space-y-5">
-                    <h3 className="text-sm font-bold uppercase tracking-widest text-[#FF6A00] mb-2">Your numbers</h3>
+                <div className="space-y-4">
+                    <div>
+                        <h3 className="text-xs font-bold uppercase tracking-widest text-[#FF6A00]">Your numbers</h3>
+                        <p className="text-[11px] text-[#9CA3AF] mt-0.5">Adjust to match your agency</p>
+                    </div>
                     <NumberField label="Average placement fee" prefix="$" value={fee} setValue={setFee} step={500} />
-                    <SliderField label="Close rate (% meetings → placements)" value={closeRate} setValue={setCloseRate} min={1} max={50} suffix="%" />
-                    <SliderField label="Reply rate (% outreach → replies)" value={replyRate} setValue={setReplyRate} min={0.5} max={15} step={0.5} suffix="%" />
-                    <SliderField label="Reply → meeting rate (% replies that book)" value={replyToMeeting} setValue={setReplyToMeeting} min={1} max={60} suffix="%" />
-                    <NumberField label="Monthly placement target" value={targetPlacements} setValue={setTargetPlacements} step={1} min={1} max={50} />
-                    <NumberField label="Current monthly outreach volume" value={currentOutreach} setValue={setCurrentOutreach} step={100} min={0} />
+                    <SliderField label="Close rate (meetings → placements)" value={closeRate} setValue={setCloseRate} min={1} max={50} suffix="%" />
+                    <SliderField label="Reply rate (outreach → replies)" value={replyRate} setValue={setReplyRate} min={0.5} max={15} step={0.5} suffix="%" />
+                    <SliderField label="Reply → booking rate" value={replyToMeeting} setValue={setReplyToMeeting} min={1} max={60} suffix="%" />
+                    <div className="grid grid-cols-2 gap-3">
+                        <NumberField label="Placements / mo" value={targetPlacements} setValue={setTargetPlacements} step={1} min={1} max={50} />
+                        <NumberField label="Current outreach / mo" value={currentOutreach} setValue={setCurrentOutreach} step={100} min={0} />
+                    </div>
                 </div>
 
                 <div className="hidden lg:block bg-[#E5E5E5]" />
 
                 {/* Outputs */}
-                <div className="bg-[#0A0A0A] rounded-2xl p-6 sm:p-8 text-white lg:bg-transparent lg:text-[#0A0A0A] lg:p-0">
-                    <h3 className="text-sm font-bold uppercase tracking-widest text-[#FF6A00] mb-5">Your math</h3>
-
-                    <div className="mb-6">
-                        <p className="text-xs font-bold uppercase tracking-widest opacity-70 mb-2">Required outreach</p>
-                        <p className="text-5xl sm:text-6xl font-black tracking-tighter leading-none">{formatNum(calc.requiredOutreach)}</p>
-                        <p className="text-sm opacity-70 mt-2">emails / month to hit {targetPlacements} placements</p>
+                <div className="flex flex-col gap-3">
+                    <div>
+                        <h3 className="text-xs font-bold uppercase tracking-widest text-[#FF6A00]">Your math</h3>
+                        <p className="text-[11px] text-[#6B7280] mt-0.5">Updates live as you change inputs</p>
                     </div>
 
+                    {/* Hero number card */}
+                    <div className="bg-[#F9FAFB] border border-[#E5E5E5] rounded-xl p-4">
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-[#9CA3AF] mb-1">Emails needed / month</p>
+                        <p className="text-4xl font-black tracking-tight leading-none text-[#0A0A0A]">{formatNum(calc.requiredOutreach)}</p>
+                        <p className="text-[11px] text-[#6B7280] mt-1.5">to reach {targetPlacements} placements at {closeRate}% close rate</p>
+                    </div>
+
+                    {/* Gap alert */}
                     {currentOutreach > 0 && calc.gapMultiplier > 1.1 && (
-                        <div className="mb-6 p-4 rounded-xl bg-[#FF6A00]/10 border border-[#FF6A00]/30">
-                            <p className="text-sm font-bold leading-snug">
-                                You're <span className="text-[#FF6A00] text-lg">{calc.gapMultiplier.toFixed(1)}×</span> below the volume your math demands.
+                        <div className="p-3 rounded-xl bg-orange-50 border border-orange-200 flex items-start gap-2">
+                            <span className="text-orange-500 text-sm leading-none mt-0.5 shrink-0">⚠</span>
+                            <p className="text-xs font-semibold text-[#0A0A0A] leading-snug">
+                                You&apos;re <span className="text-[#FF6A00] font-black">{calc.gapMultiplier.toFixed(1)}×</span> below what your target demands.
                             </p>
                         </div>
                     )}
-
                     {currentOutreach > 0 && calc.gapMultiplier <= 1.1 && (
-                        <div className="mb-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30">
-                            <p className="text-sm font-bold leading-snug">
-                                You're at or above the volume your math demands. The leak is somewhere else (close rate? reply rate? niche fit?).
+                        <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 flex items-start gap-2">
+                            <span className="text-emerald-600 text-sm leading-none mt-0.5 shrink-0">✓</span>
+                            <p className="text-xs font-semibold text-[#0A0A0A] leading-snug">
+                                Volume looks sufficient — the leak is in close rate, reply rate, or niche fit.
                             </p>
                         </div>
                     )}
 
-                    <div className="grid grid-cols-2 gap-3 mb-5">
+                    {/* 4-stat grid */}
+                    <div className="grid grid-cols-2 gap-2">
                         <Stat label="Meetings needed" value={formatNum(calc.requiredMeetings)} />
-                        <Stat label="Positive replies needed" value={formatNum(calc.requiredReplies)} />
-                        <Stat label="Target revenue / mo" value={`$${formatNum(calc.targetRevenue)}`} />
+                        <Stat label="Replies needed" value={formatNum(calc.requiredReplies)} />
+                        <Stat label="Revenue target / mo" value={`$${formatNum(calc.targetRevenue)}`} />
                         <Stat label="Leads needed / mo" value={formatNum(calc.requiredOutreach)} />
                     </div>
 
-                    {/* Recommended plan pricing breakdown */}
+                    {/* Recommended plan */}
                     {calc.recommendedTier && (
-                        <div className="mb-5 rounded-xl border border-[#FF6A00]/30 bg-[#FF6A00]/5 p-4">
-                            <p className="text-[10px] font-bold uppercase tracking-widest text-[#FF6A00] mb-2">Recommended plan · {calc.recommendedTier.name}</p>
-                            <p className="text-xs font-medium opacity-70 mb-2">{calc.recommendedTier.leadsLabel} · {calc.recommendedTier.detail}</p>
-                            <div className="flex items-baseline gap-2 flex-wrap">
-                                <span className="text-2xl font-black">${calc.recommendedTier.platformFee}<span className="text-sm font-semibold opacity-60">/mo</span></span>
-                                <span className="text-sm font-bold opacity-50">+</span>
-                                <span className="text-2xl font-black">${calc.recommendedTier.leadsCost}<span className="text-sm font-semibold opacity-60"> leads</span></span>
+                        <div className="rounded-xl border border-[#FF6A00]/25 bg-orange-50 p-4">
+                            <p className="text-[9px] font-bold uppercase tracking-widest text-[#FF6A00] mb-1">Recommended · {calc.recommendedTier.name}</p>
+                            <p className="text-[10px] text-[#6B7280] mb-2">{calc.recommendedTier.leadsLabel} · {calc.recommendedTier.detail}</p>
+                            <div className="flex items-baseline gap-1.5 flex-wrap">
+                                <span className="text-xl font-black text-[#0A0A0A]">${calc.recommendedTier.platformFee}<span className="text-xs font-medium text-[#6B7280]">/mo</span></span>
+                                <span className="text-xs font-bold text-[#9CA3AF]">+</span>
+                                <span className="text-xl font-black text-[#0A0A0A]">${calc.recommendedTier.leadsCost}<span className="text-xs font-medium text-[#6B7280]"> leads</span></span>
                             </div>
-                            <p className="text-[10px] opacity-50 mt-1">Platform fee (monthly) + one-off leads package</p>
+                            <p className="text-[9px] text-[#9CA3AF] mt-1">Platform fee (monthly) + one-off leads package</p>
                         </div>
                     )}
 
                     <Link
                         href="/fit-call"
-                        className="block w-full text-center py-3 rounded-xl text-sm font-bold bg-[#FF6A00] text-white hover:bg-[#E55F00] transition-colors"
+                        className="block w-full text-center py-2.5 rounded-xl text-sm font-bold bg-[#0A0A0A] text-white hover:bg-[#FF6A00] transition-colors"
                     >
-                        Book a fit call to plan the lift →
+                        Book a fit call →
                     </Link>
                 </div>
             </div>
