@@ -33,7 +33,7 @@ export default function Pricing() {
                 </div>
 
                 <p className="mt-8 text-[13px] text-[#9CA3AF] text-center" style={{ fontFamily: 'var(--font-outfit)' }}>
-                    All plans include a 14-day money-back guarantee. Retainer plans require a 2-month minimum.
+                    Managed plans require a 3-month minimum contract.
                 </p>
 
                 {/* ── Custom scope CTA ── */}
@@ -131,6 +131,21 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
                 <p className="text-[12px] text-[#9CA3AF] mt-2" style={{ fontFamily: 'var(--font-outfit)' }}>
                     {(option.monthlyPlatformFee || 0) > 0 ? 'Fixed platform fee + one-off leads package' : `${option.label.replace('/mo', '')} · ${option.detail}`}
                 </p>
+                {plan.minMonths && (option.monthlyPlatformFee || 0) > 0 && (
+                    <div className="mt-3 flex items-center gap-2 flex-wrap">
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-[#E5E5E5] bg-[#FAFAFA] text-[#6B7280] text-[11px] font-semibold px-2.5 py-1"
+                            style={{ fontFamily: 'var(--font-mono)' }}>
+                            <svg className="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                                <rect x="3" y="4" width="18" height="18" rx="2" />
+                                <path strokeLinecap="round" d="M16 2v4M8 2v4M3 10h18" />
+                            </svg>
+                            {plan.minMonths}-month minimum
+                        </span>
+                        <span className="text-[11px] text-[#9CA3AF]" style={{ fontFamily: 'var(--font-outfit)' }}>
+                            ${((option.monthlyPlatformFee || 0) * plan.minMonths).toLocaleString()} total commitment
+                        </span>
+                    </div>
+                )}
             </div>
 
             {/* Volume dropdown */}

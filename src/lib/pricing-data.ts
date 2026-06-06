@@ -151,6 +151,8 @@ export type PricingPlan = {
     name: string;
     tagline: string;
     billing: 'one-off' | 'monthly';
+    /** Minimum contract length in months (monthly plans only) */
+    minMonths?: number;
     /** Marks the "Most popular" card */
     highlight: boolean;
     options: PlanVolumeOption[];
@@ -194,6 +196,7 @@ export const pricingPlans: PricingPlan[] = [
         name: 'Revenue Booster',
         tagline: 'We run the campaigns end-to-end. You take the replies.',
         billing: 'monthly',
+        minMonths: 3,
         highlight: true,
         defaultIndex: 0,
         options: [
@@ -218,6 +221,7 @@ export const pricingPlans: PricingPlan[] = [
         name: 'Scale Accelerator',
         tagline: 'Email + LinkedIn. Full outsourced BD function.',
         billing: 'monthly',
+        minMonths: 3,
         highlight: false,
         defaultIndex: 0,
         options: [
