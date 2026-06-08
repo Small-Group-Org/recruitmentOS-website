@@ -64,7 +64,7 @@ export default function Hero() {
                     </h1>
 
                     <p className="hero-sub mb-8 max-w-3xl mx-auto">
-                        The outsourced BD function for established recruitment agencies. We handle sourcing, enrichment, outreach, and reply filtering on your stack — your team steps in when a hiring manager replies &ldquo;yes, send me candidates.&rdquo;
+                        The outsourced BD function for established recruitment agencies. We handle sourcing, enrichment, outreach, and reply filtering on your stack your team steps in when a hiring manager replies &ldquo;yes, send me candidates.&rdquo;
                     </p>
 
                     <p className="text-sm sm:text-base font-semibold text-[#FF6A00] mb-12 max-w-2xl mx-auto leading-relaxed">
