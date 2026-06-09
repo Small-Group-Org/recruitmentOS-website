@@ -68,7 +68,7 @@ export default function Hero() {
                     </p>
 
                     <p className="text-sm sm:text-base font-semibold text-[#FF6A00] mb-6 max-w-2xl mx-auto leading-relaxed">
-                        20k+ verified hiring-manager contacts + 10 positive replies in 60 days — or we keep working, free.
+                        20k+ verified hiring-manager contacts + 10 positive replies in 60 days
                     </p>
 
                     {/* A-Z clarity strip */}
