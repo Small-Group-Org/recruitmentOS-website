@@ -108,28 +108,16 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
             {/* Price */}
             <div className="mb-5">
                 <div className="flex items-baseline gap-1.5 flex-wrap">
-                    <span className={`${(option.monthlyPlatformFee || 0) > 0 ? 'text-[36px]' : 'text-[44px]'} leading-none font-normal tracking-tight text-[#0A0A0A]`}
+                    <span className="text-[44px] leading-none font-normal tracking-tight text-[#0A0A0A]"
                         style={{ fontFamily: 'var(--font-serif)' }}>
-                        ${(option.monthlyPlatformFee || 0) > 0 ? option.monthlyPlatformFee?.toLocaleString() : option.price.toLocaleString()}
+                        ${option.price.toLocaleString()}
                     </span>
                     <span className="text-sm text-[#6B7280] font-medium" style={{ fontFamily: 'var(--font-outfit)' }}>
                         {plan.billing === 'one-off' ? 'one-off' : '/mo'}
                     </span>
-                    {(option.monthlyPlatformFee || 0) > 0 && (
-                        <div className="flex items-baseline gap-1.5">
-                            <span className="text-xl font-normal text-[#9CA3AF] mx-1" style={{ fontFamily: 'var(--font-outfit)' }}>+</span>
-                            <span className="text-[32px] leading-none font-normal tracking-tight text-[#0A0A0A]"
-                                style={{ fontFamily: 'var(--font-serif)' }}>
-                                ${option.price.toLocaleString()}
-                            </span>
-                            <span className="text-sm text-[#6B7280] font-medium" style={{ fontFamily: 'var(--font-outfit)' }}>
-                                leads
-                            </span>
-                        </div>
-                    )}
                 </div>
                 <p className="text-[12px] text-[#9CA3AF] mt-2" style={{ fontFamily: 'var(--font-outfit)' }}>
-                    {(option.monthlyPlatformFee || 0) > 0 ? 'Fixed platform fee + one-off leads package' : `${option.label.replace('/mo', '')} · ${option.detail}`}
+                    {`${option.label.replace('/mo', '')} · ${option.detail}`}
                 </p>
                 {plan.minMonths && (
                     <div className="mt-3 flex items-center gap-2 flex-wrap">
@@ -141,11 +129,6 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
                             </svg>
                             {plan.minMonths}-month minimum
                         </span>
-                        {(option.monthlyPlatformFee || 0) > 0 && (
-                            <span className="text-[11px] text-[#9CA3AF]" style={{ fontFamily: 'var(--font-outfit)' }}>
-                                ${((option.monthlyPlatformFee || 0) * plan.minMonths).toLocaleString()} total commitment
-                            </span>
-                        )}
                     </div>
                 )}
             </div>
@@ -229,11 +212,6 @@ function VolumeDropdown({
             >
                 <div className="flex flex-col items-start gap-0">
                     <span>{plan.options[index].label}</span>
-                    {(plan.options[index].monthlyPlatformFee || 0) > 0 && (
-                        <span className="text-[11px] font-normal text-[#6B7280] leading-none mt-1">
-                            ${plan.options[index].price.toLocaleString()} for leads
-                        </span>
-                    )}
                 </div>
                 <svg
                     className={`w-4 h-4 text-[#9CA3AF] shrink-0 transition-transform ${open ? 'rotate-180' : ''}`}
@@ -264,14 +242,12 @@ function VolumeDropdown({
                             >
                                 <div className="flex flex-col items-start gap-0.5 text-left">
                                     <span>{opt.label}</span>
-                                    {(opt.monthlyPlatformFee || 0) > 0 && (
-                                        <span className={`text-[10px] font-normal ${i === index ? 'text-[#C2511C]/80' : 'text-[#9CA3AF]'}`}>
-                                            {opt.detail}
-                                        </span>
-                                    )}
+                                    <span className={`text-[10px] font-normal ${i === index ? 'text-[#C2511C]/80' : 'text-[#9CA3AF]'}`}>
+                                        {opt.detail}
+                                    </span>
                                 </div>
                                 <span className={`text-[12px] font-semibold ${i === index ? 'text-[#C2511C]' : 'text-[#9CA3AF]'}`}>
-                                    ${opt.price.toLocaleString()}{plan.billing === 'monthly' && (opt.monthlyPlatformFee || 0) === 0 ? '/mo' : ''}
+                                    ${opt.price.toLocaleString()}{plan.billing === 'monthly' ? '/mo' : ''}
                                 </span>
                             </button>
                         </li>
