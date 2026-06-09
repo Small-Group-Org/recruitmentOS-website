@@ -131,7 +131,7 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
                 <p className="text-[12px] text-[#9CA3AF] mt-2" style={{ fontFamily: 'var(--font-outfit)' }}>
                     {(option.monthlyPlatformFee || 0) > 0 ? 'Fixed platform fee + one-off leads package' : `${option.label.replace('/mo', '')} · ${option.detail}`}
                 </p>
-                {plan.minMonths && (option.monthlyPlatformFee || 0) > 0 && (
+                {plan.minMonths && (
                     <div className="mt-3 flex items-center gap-2 flex-wrap">
                         <span className="inline-flex items-center gap-1.5 rounded-full border border-[#E5E5E5] bg-[#FAFAFA] text-[#6B7280] text-[11px] font-semibold px-2.5 py-1"
                             style={{ fontFamily: 'var(--font-mono)' }}>
@@ -141,9 +141,11 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
                             </svg>
                             {plan.minMonths}-month minimum
                         </span>
-                        <span className="text-[11px] text-[#9CA3AF]" style={{ fontFamily: 'var(--font-outfit)' }}>
-                            ${((option.monthlyPlatformFee || 0) * plan.minMonths).toLocaleString()} total commitment
-                        </span>
+                        {(option.monthlyPlatformFee || 0) > 0 && (
+                            <span className="text-[11px] text-[#9CA3AF]" style={{ fontFamily: 'var(--font-outfit)' }}>
+                                ${((option.monthlyPlatformFee || 0) * plan.minMonths).toLocaleString()} total commitment
+                            </span>
+                        )}
                     </div>
                 )}
             </div>
