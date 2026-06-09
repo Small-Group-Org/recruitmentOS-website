@@ -184,7 +184,7 @@ export const pricingPlans: PricingPlan[] = [
         features: [
             'Hiring signal detection',
             'Decision-maker enrichment',
-            'CSV export',
+            'Campaign-ready B2B cold email lists (Smartlead/Instantly formatted)',
             'Top-up extra leads anytime at $0.09 / lead',
         ],
         cta: { label: 'Get leads', href: CAL_LINK },
