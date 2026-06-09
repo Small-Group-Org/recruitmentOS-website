@@ -2,6 +2,7 @@ import Hero from '@/components/Hero';
 import TrustBar from '@/components/TrustBar';
 import FeaturesDiagram from '@/components/FeaturesDiagram';
 import BeforeAfter from '@/components/BeforeAfter';
+import WhyNotDIY from '@/components/WhyNotDIY';
 import Features from '@/components/Features';
 import ToolTicker from '@/components/ToolTicker';
 import FinalCTA from '@/components/FinalCTA';
@@ -33,6 +34,7 @@ export default function Home() {
             <CaseStudiesPreview />
             <FeaturesDiagram />
             <BeforeAfter />
+            <WhyNotDIY />
             <Features />
             <ToolTicker />
             <FinalCTA />
