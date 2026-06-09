@@ -223,8 +223,8 @@ export const pricingPlans: PricingPlan[] = [
         highlight: false,
         defaultIndex: 1,
         options: [
-            { leads: 100, label: '500 prospects / mo', price: 444, detail: 'All Infra & LinkedIn included' },
-            { leads: 500, label: '3,000 prospects / mo', price: 609, detail: 'All Infra & LinkedIn included' },
+            { leads: 100, label: '500 prospects / mo', price: 344, detail: 'All Infra & LinkedIn included' },
+            { leads: 500, label: '3,000 prospects / mo', price: 509, detail: 'All Infra & LinkedIn included' },
             { leads: 2000, label: '10,000 prospects / mo', price: 899, detail: 'All Infra & LinkedIn included' },
         ],
         features: [
