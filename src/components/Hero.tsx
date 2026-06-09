@@ -67,9 +67,57 @@ export default function Hero() {
                         The outsourced BD function for established recruitment agencies. We handle sourcing, enrichment, outreach, and reply filtering on your stack your team steps in when a hiring manager replies &ldquo;yes, send me candidates.&rdquo;
                     </p>
 
-                    <p className="text-sm sm:text-base font-semibold text-[#FF6A00] mb-12 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-sm sm:text-base font-semibold text-[#FF6A00] mb-6 max-w-2xl mx-auto leading-relaxed">
                         20k+ verified hiring-manager contacts + 10 positive replies in 60 days — or we keep working, free.
                     </p>
+
+                    {/* A-Z clarity strip */}
+                    <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+                        {[
+                            {
+                                icon: (
+                                    <svg className="w-3.5 h-3.5 text-[#FF6A00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                        <circle cx="12" cy="12" r="10" />
+                                        <circle cx="12" cy="12" r="6" />
+                                        <circle cx="12" cy="12" r="2" />
+                                    </svg>
+                                ),
+                                label: 'We source the leads'
+                            },
+                            {
+                                icon: (
+                                    <svg className="w-3.5 h-3.5 text-[#FF6A00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                ),
+                                label: 'We write & send outreach'
+                            },
+                            {
+                                icon: (
+                                    <svg className="w-3.5 h-3.5 text-[#FF6A00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                                    </svg>
+                                ),
+                                label: 'We filter every reply'
+                            },
+                            {
+                                icon: (
+                                    <svg className="w-3.5 h-3.5 text-[#FF6A00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                ),
+                                label: 'You respond to "yes"'
+                            },
+                        ].map((step, idx) => (
+                            <span
+                                key={idx}
+                                className="inline-flex items-center gap-1.5 bg-white border border-[#E5E5E5] rounded-full px-3.5 py-1.5 text-[12px] font-medium text-[#374151] shadow-sm"
+                            >
+                                {step.icon}
+                                {step.label}
+                            </span>
+                        ))}
+                    </div>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link
