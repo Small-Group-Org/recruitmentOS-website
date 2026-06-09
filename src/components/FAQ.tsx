@@ -6,6 +6,18 @@ import { faqSchema } from '@/lib/schemas';
 
 const faqs = [
     {
+        question: 'Do you manage everything end-to-end, or do I still need to run the outreach?',
+        answer: "We manage the entire BD function: lead sourcing, enrichment, email and LinkedIn campaign setup, deliverability, sequence writing, sending, and reply triage. The only thing your team does is respond when a hiring manager replies with interest. Nothing else touches your desk. You manage positive replies we manage everything that generates them.",
+    },
+    {
+        question: 'What\'s the difference between a positive reply and a booked meeting? What exactly gets handed to us?',
+        answer: 'We hand off at the positive-reply stage that\'s the moment a hiring manager says "yes, tell me more" or "let\'s talk." We filter out out-of-office messages, unsubscribes, and non-committal replies so that only on-brief, genuinely interested replies reach your inbox. Booking and closing the meeting is your team\'s job that\'s your competitive edge as a recruiter, and we don\'t try to replace it.',
+    },
+    {
+        question: 'I\'ve used Instantly / run cold email before. Why wouldn\'t I just set this up myself?',
+        answer: "You could. The agencies who come to us usually have. Here's what changes the calculus: (1) Signal sourcing — we don't cold email random companies. We detect live hiring signals first (departures, funding, restructures, LinkedIn job posts) so every email goes to a company with a current, verified need. That's what drives the 4%+ reply rates vs. the 1% you get with blind lists. (2) Waterfall enrichment — we maintain 20+ data sources and niche-specific enrichment most solo setups can't replicate cost-effectively. (3) Full-time operation someone has to monitor deliverability, iterate sequences, triage replies, and maintain list hygiene daily. We're cheaper than hiring for that, and faster than doing it yourself. The honest answer: if you have the systems and the time, do it. If you'd rather spend that time on delivery and closing, we're the faster path.",
+    },
+    {
         question: 'How do we know the ROI makes sense?',
         answer: "We run the math live on the fit call. You give us your average placement fee, your close rate, and your current lead-to-meeting ratio. We map those against the volume the engine produces and the retainer cost. If the numbers don't work at your fee level, we'll tell you on the call — we'd rather lose the sale than set up a system that can't pay for itself.",
     },
@@ -43,7 +55,7 @@ const faqs = [
     },
     {
         question: 'What if we cancel mid-month?',
-        answer: '30-day notice to cancel. No 3, 6, or 12-month minimums. At exit, you receive full handover documentation — every sequence, every domain config, every contact list. The pipeline keeps working without us.',
+        answer: '30-day notice to cancel. No 3, 6, or 12-month minimums beyond the initial contract. At exit, you receive full handover documentation — every sequence, every domain config, every contact list. The pipeline keeps working without us.',
     },
     {
         question: 'Who owns the data and infrastructure?',
@@ -110,9 +122,8 @@ export default function FAQ() {
                                 </span>
                             </button>
                             <div
-                                className={`overflow-hidden transition-all duration-200 ${
-                                    openIndex === index ? 'max-h-[500px] pb-5' : 'max-h-0'
-                                }`}
+                                className={`overflow-hidden transition-all duration-200 ${openIndex === index ? 'max-h-[500px] pb-5' : 'max-h-0'
+                                    }`}
                             >
                                 <p className="text-sm text-[#6B7280] leading-relaxed pr-10">{faq.answer}</p>
                             </div>
