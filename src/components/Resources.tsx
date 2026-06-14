@@ -325,17 +325,7 @@ export default function Resources() {
                                 ))}
                             </div>
 
-                            <div className="mt-10 sm:mt-12 flex justify-center">
-                                <Link
-                                    href="/tools"
-                                    className="inline-flex items-center text-sm font-bold text-[#0A0A0A] hover:text-[#FF6A00] transition-colors group"
-                                >
-                                    Open tools hub
-                                    <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                    </svg>
-                                </Link>
-                            </div>
+
                         </>
                     )}
                 </div>

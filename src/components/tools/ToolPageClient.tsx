@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui';
 import { useToolGate } from '@/hooks/useToolGate';
 import { Tool } from '@/lib/tools-data';
@@ -17,6 +18,7 @@ const INTERACTIVE_COMPONENTS: Record<string, React.ComponentType> = {
 };
 
 export default function ToolPageClient({ tool }: { tool: Tool }) {
+  const router = useRouter();
   const { isUnlocked, isHydrated } = useToolGate();
   const [gateOpen, setGateOpen] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
@@ -29,6 +31,15 @@ export default function ToolPageClient({ tool }: { tool: Tool }) {
       setHasStarted(true);
     }
   }, [isHydrated, isUnlocked, tool.interactive]);
+
+  const handleBack = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (window.history.length > 2) {
+      router.back();
+    } else {
+      router.push('/resources#tools');
+    }
+  };
 
   function handlePrimaryCta() {
     if (tool.interactive) {
@@ -82,13 +93,13 @@ export default function ToolPageClient({ tool }: { tool: Tool }) {
       <main className="min-h-screen bg-[#F9FAFB]">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 pt-8 pb-16 sm:pt-12 sm:pb-24">
 
-          <Link href="/tools"
-            className="inline-flex items-center text-xs font-medium text-[#9CA3AF] hover:text-[#0A0A0A] transition-colors mb-4">
+          <a href="/resources#tools" onClick={handleBack}
+            className="inline-flex items-center text-xs font-medium text-[#9CA3AF] hover:text-[#0A0A0A] transition-colors mb-4 cursor-pointer">
             <svg className="mr-1 w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
-            All Tools
-          </Link>
+            Back
+          </a>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
 

@@ -11,7 +11,7 @@ export default function GatePageClient() {
 
   useEffect(() => {
     if (isHydrated && isUnlocked) {
-      router.replace('/tools');
+      router.replace('/resources#tools');
     }
   }, [isHydrated, isUnlocked, router]);
 

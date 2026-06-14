@@ -62,7 +62,7 @@ export default function ToolGateForm({ toolTitle = 'Free Recruitment Tools', red
         if (redirectUrl) {
           window.location.href = redirectUrl;
         } else {
-          router.push('/tools');
+          router.push('/resources#tools');
         }
       } else {
         setError('Something went wrong. Please try again.');

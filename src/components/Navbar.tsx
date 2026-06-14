@@ -36,7 +36,7 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
 
                     <div className="hidden lg:flex items-center gap-2">
                         <Link
-                            href="/tools"
+                            href="/resources#tools"
                             className="inline-flex items-center px-5 py-2 rounded-full border border-[#0A0A0A] bg-transparent text-[#0A0A0A] text-sm font-medium hover:bg-neutral-100 transition-colors"
                         >
                             Free Tools
@@ -84,7 +84,7 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
                             </Link>
                         ))}
                         <Link
-                            href="/tools"
+                            href="/resources#tools"
                             className="block bg-transparent text-[#0A0A0A] border border-[#0A0A0A] px-5 py-2.5 rounded-full text-sm font-medium text-center mt-2"
                         >
                             Free Tools
