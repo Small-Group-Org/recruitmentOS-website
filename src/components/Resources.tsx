@@ -10,13 +10,25 @@ import { tools } from '@/lib/tools-data';
 
 type TabId = 'resources' | 'tools' | 'articles';
 
+const GITHUB_URL = 'https://github.com/tushar-mangla/recruitment-skills';
+
 const resources = [
+    {
+        title: "AI Recruiter Team with Claude Code",
+        description: "5 AI agents. 15 recruiting skills. Parse resumes, source candidates, write outreach, build scorecards & generate reports.",
+        type: "Skills Pack",
+        li_duration: "Free Setup",
+        link: "__gate__https://long-streetcar-093.notion.site/Entire-AI-Recruiter-Team-with-Claude-Code-37b434e7ef8c812cb640f41a362a7609",
+        image: "/resources/ai-recruiter-team.webp",
+        cta: "Get Free Skills Pack",
+        icon: undefined
+    },
     {
         title: "6 Free AI Skills for Recruiters",
         description: "6 free AI skills built to handle the most time-consuming parts of your workflow — sourcing, screening, outreach, and more.",
         type: "Tool",
         li_duration: "Free Access",
-        link: "__skills_gate__",
+        link: "__gate__" + GITHUB_URL,
         image: "/resources/recruitment-skills.webp",
         cta: "Get Free Skills",
         icon: undefined
@@ -99,7 +111,7 @@ function LazyIframe({ src, height, title, allow, allowFullScreen, className, sty
     );
 }
 
-const GITHUB_URL = 'https://github.com/tushar-mangla/recruitment-skills';
+
 const STORAGE_KEY = 'rOS_unlocked';
 
 const TABS: { id: TabId; label: string; count: number }[] = [
@@ -118,6 +130,7 @@ function readTabFromHash(): TabId {
 
 export default function Resources() {
     const [showModal, setShowModal] = useState(false);
+    const [targetUrl, setTargetUrl] = useState("");
     const [activeTab, setActiveTab] = useState<TabId>('resources');
 
     // Restore tab from URL hash on mount + listen for hashchange (e.g. back button)
@@ -139,11 +152,12 @@ export default function Resources() {
         }
     }
 
-    const handleSkillsClick = useCallback((e: React.MouseEvent) => {
+    const handleGatedClick = useCallback((e: React.MouseEvent, url: string) => {
         e.preventDefault();
         if (typeof window !== 'undefined' && localStorage.getItem(STORAGE_KEY) === 'true') {
-            window.open(GITHUB_URL, '_blank');
+            window.open(url, '_blank');
         } else {
+            setTargetUrl(url);
             setShowModal(true);
         }
     }, []);
@@ -152,7 +166,7 @@ export default function Resources() {
 
     return (
         <>
-        {showModal && <SkillsGateModal onClose={() => setShowModal(false)} redirectUrl={GITHUB_URL} />}
+        {showModal && <SkillsGateModal onClose={() => setShowModal(false)} redirectUrl={targetUrl} />}
         <section className="pt-8 sm:pt-10 pb-16 md:pb-24 bg-white" id="resources">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
 
@@ -247,8 +261,11 @@ export default function Resources() {
                                     </>
                                 );
 
-                                return resource.link === '__skills_gate__' ? (
-                                    <div key={index} onClick={handleSkillsClick} className="flex flex-col group cursor-pointer">
+                                const isGated = resource.link.startsWith('__gate__');
+                                const redirectUrl = isGated ? resource.link.replace('__gate__', '') : '';
+
+                                return isGated ? (
+                                    <div key={index} onClick={(e) => handleGatedClick(e, redirectUrl)} className="flex flex-col group cursor-pointer">
                                         {cardInner}
                                     </div>
                                 ) : (
