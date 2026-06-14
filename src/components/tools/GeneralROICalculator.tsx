@@ -15,21 +15,18 @@ type Tier = {
 };
 
 const TIERS: Tier[] = [
-    { name: 'Revenue Booster',   leadsLabel: '2,000 leads/mo',  platformFee: 226,  leadsCost: 149, totalMonthly: 375,  capacityLabel: '2K leads · 6K emails' },
-    { name: 'Revenue Booster',   leadsLabel: '5,000 leads/mo',  platformFee: 400,  leadsCost: 299, totalMonthly: 699,  capacityLabel: '5K leads · 15K emails' },
-    { name: 'Revenue Booster',   leadsLabel: '10,000 leads/mo', platformFee: 499,  leadsCost: 500, totalMonthly: 999,  capacityLabel: '10K leads · 30K emails' },
-    { name: 'Revenue Booster',   leadsLabel: '20,000 leads/mo', platformFee: 659,  leadsCost: 840, totalMonthly: 1499, capacityLabel: '20K leads · 60K emails' },
-    { name: 'Scale Accelerator', leadsLabel: '20,000+ leads',   platformFee: 1159, leadsCost: 840, totalMonthly: 1999, capacityLabel: '20K+ leads · Email + LinkedIn' },
+    { name: 'Revenue Booster',   leadsLabel: '500 leads/mo',  platformFee: 150,  leadsCost: 45,  totalMonthly: 195,  capacityLabel: '500 leads · 100 emails/day' },
+    { name: 'Revenue Booster',   leadsLabel: '3,000 leads/mo',  platformFee: 150,  leadsCost: 210, totalMonthly: 360,  capacityLabel: '3K leads · 500 emails/day' },
+    { name: 'Revenue Booster',   leadsLabel: '10,000 leads/mo', platformFee: 250,  leadsCost: 500, totalMonthly: 750,  capacityLabel: '10K leads · 2,000 emails/day' },
 ];
 
 // Pick tier based on monthly placement target: rough heuristic maps placements → leads needed
 // Assumes ~1 placement per ~400–500 leads at average funnel rates
 function pickTierFromPlacements(placements: number): Tier | null {
     if (!isFinite(placements) || placements <= 0) return null;
-    if (placements <= 3)  return TIERS[0]; // ~2K leads
-    if (placements <= 7)  return TIERS[1]; // ~5K leads
-    if (placements <= 15) return TIERS[2]; // ~10K leads
-    if (placements <= 25) return TIERS[3]; // ~20K leads
+    if (placements <= 1)  return TIERS[0]; // ~500 leads
+    if (placements <= 7)  return TIERS[1]; // ~3,000 leads
+    if (placements <= 25) return TIERS[2]; // ~10,000 leads
     return null; // above 25 → enterprise, prompt to call
 }
 

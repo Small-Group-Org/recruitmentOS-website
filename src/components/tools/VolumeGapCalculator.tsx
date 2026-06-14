@@ -24,12 +24,11 @@ type TierMatch = {
 
 function pickTierFromLeads(leadsNeeded: number): TierMatch | null {
     if (!isFinite(leadsNeeded) || leadsNeeded <= 0) return null;
-    if (leadsNeeded <= 2000)  return { name: 'Revenue Booster', leadsLabel: '2,000 leads/mo',  platformFee: 226,  leadsCost: 149, detail: '6K emails · Smartlead Basic' };
-    if (leadsNeeded <= 5000)  return { name: 'Revenue Booster', leadsLabel: '5,000 leads/mo',  platformFee: 400,  leadsCost: 299, detail: '15K emails · Smartlead Pro' };
-    if (leadsNeeded <= 10000) return { name: 'Revenue Booster', leadsLabel: '10,000 leads/mo', platformFee: 499,  leadsCost: 500, detail: '30K emails · Smartlead Custom' };
-    if (leadsNeeded <= 20000) return { name: 'Revenue Booster', leadsLabel: '20,000 leads/mo', platformFee: 659,  leadsCost: 840, detail: '60K emails · Smartlead Custom' };
-    // Above 20k → Scale Accelerator / Enterprise
-    return { name: 'Scale Accelerator', leadsLabel: '20,000+ leads/mo', platformFee: 1159, leadsCost: 840, detail: 'email + LinkedIn · Book a call' };
+    if (leadsNeeded <= 500)  return { name: 'Revenue Booster', leadsLabel: '500 leads/mo',  platformFee: 150,  leadsCost: 45, detail: '100 emails/day' };
+    if (leadsNeeded <= 3000)  return { name: 'Revenue Booster', leadsLabel: '3,000 leads/mo',  platformFee: 150,  leadsCost: 210, detail: '500 emails/day' };
+    if (leadsNeeded <= 10000) return { name: 'Revenue Booster', leadsLabel: '10,000 leads/mo', platformFee: 250,  leadsCost: 500, detail: '2,000 emails/day' };
+    // Above 10k → Enterprise
+    return null;
 }
 
 export default function VolumeGapCalculator() {
