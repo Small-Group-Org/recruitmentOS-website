@@ -32,13 +32,9 @@ export default function Footer() {
         <footer className="py-8 bg-white border-t border-[#E5E5E5]">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
                 <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="flex items-center font-black text-xl tracking-tight">
-                        <span className="text-[#0A0A0A]">Recruitment</span>
-                        <span className="flex items-center text-orange-500 ml-1.5">
-                            <span className="animate-[spin_4s_linear_infinite] inline-block leading-none">O</span>
-                            <span>S</span>
-                        </span>
-                    </div>
+                    <Link href="/" className="flex items-center">
+                        <img src="/logo.webp" alt="RecruitmentOS Logo" className="h-10 sm:h-12 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all" />
+                    </Link>
 
                     <div className="flex items-center gap-6 text-xs text-[#9CA3AF]">
                         <Link href="/#services" className="hover:text-[#0A0A0A] transition-colors">Services</Link>

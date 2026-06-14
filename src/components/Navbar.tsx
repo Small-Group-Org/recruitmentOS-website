@@ -17,13 +17,9 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
     return (
         <header className="w-full bg-white/90 backdrop-blur-md border-b border-[#E5E5E5] relative z-50">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
-                <nav className="flex items-center justify-between h-16">
-                    <Link href="/" className="flex items-center font-bold text-2xl sm:text-3xl tracking-tight z-50">
-                        <span className="text-[#0A0A0A]">Recruitment</span>
-                        <span className="flex items-center text-orange-500 ml-1">
-                            <span className="animate-[spin_4s_linear_infinite] inline-block leading-none">O</span>
-                            <span>S</span>
-                        </span>
+                <nav className="flex items-center justify-between h-20">
+                    <Link href="/" className="flex items-center z-50">
+                        <img src="/logo.webp" alt="RecruitmentOS Logo" className="h-14 sm:h-16 w-auto object-contain" />
                     </Link>
 
                     <div className="hidden lg:flex items-center gap-8">
