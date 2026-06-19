@@ -9,7 +9,7 @@ export default function AnnouncementBanner() {
     if (!isVisible) return null;
 
     return (
-        <div className="relative z-[100] border-b border-white/10 overflow-hidden bg-gradient-to-r from-[#001D3D] via-[#003566] to-[#001D3D]">
+        <div className="relative z-[100] border-b border-white/10 overflow-hidden bg-black">
             <div
                 aria-hidden
                 className="absolute inset-0 pointer-events-none opacity-30"

@@ -5,7 +5,6 @@ import Analytics from "@/components/Analytics";
 import UTMTracker from "@/components/UTMTracker";
 import SiteHeader from "@/components/SiteHeader";
 import ConsultationPopup from "@/components/ConsultationPopup";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationSchema } from "@/lib/schemas";
 
@@ -18,7 +17,7 @@ export const metadata: Metadata = {
     title: "RecruitmentOS — Done-For-You BD for Recruitment Agencies",
     description: "We replace your BD function — sourcing, enrichment, outreach, reply handling on your stack. 100 hiring-manager contacts in 60 days or we work free.",
     icons: {
-        icon: "/favicon.webp",
+        icon: "/favicon.png",
     },
     openGraph: {
         title: "RecruitmentOS — Done-For-You BD for Recruitment Agencies",
@@ -42,7 +41,6 @@ export default function RootLayout({
                 <UTMTracker />
                 <ConsultationPopup />
                 {children}
-                <WhatsAppButton />
             </body>
         </html>
     );

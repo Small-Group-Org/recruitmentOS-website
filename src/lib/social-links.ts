@@ -20,10 +20,4 @@ export const socialLinks: SocialLink[] = [
         ariaLabel: 'RecruitmentOS on Instagram',
         icon: 'instagram',
     },
-    {
-        name: 'WhatsApp community',
-        url: 'https://chat.whatsapp.com/I9PLSmDMJ06B6qYYVsRb0q?mode=gi_t',
-        ariaLabel: 'Join the RecruitmentOS WhatsApp community',
-        icon: 'whatsapp',
-    },
 ];

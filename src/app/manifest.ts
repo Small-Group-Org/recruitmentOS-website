@@ -12,7 +12,7 @@ export default function manifest(): MetadataRoute.Manifest {
         icons: [
             // NOTE: 192/512 PNG assets will be added in /public when Tushar provides the logo wordmark
             // For now, falls back to the SVG favicon.
-            { src: '/favicon.svg', sizes: 'any', type: 'image/svg+xml' },
+            { src: '/favicon.png', sizes: 'any', type: 'image/png' },
         ],
     };
 }

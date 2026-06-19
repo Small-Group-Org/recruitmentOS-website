@@ -47,7 +47,7 @@ export const tools: Tool[] = [
       'See the exact outreach volume your numbers demand',
       'Compare to what you actually do today',
       'Tier yourself: Starter / Growth / Pro outreach load',
-      'Built on real Sheet 1 funnel math (4% reply → 10% meeting → 20% close)',
+      'Built on real Sheet 1 funnel math (7.5% reply → 10% meeting → 20% close)',
     ],
   },
   {
