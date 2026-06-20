@@ -23,6 +23,30 @@ export default function ProductDemo() {
     return (
         <section className="bg-[#F9FAFB] py-16 md:py-24" id="demo">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
+                {/* Trusted By Section */}
+                <div className="flex flex-col items-center justify-center mb-6 pt-2">
+                    <div className="flex -space-x-3 mb-2">
+                        {[
+                            { id: 1, name: 'Human Capital Ventures' },
+                            { id: 2, name: 'K Logo' },
+                            { id: 3, name: 'Orion Placement' },
+                            { id: 4, name: 'Call It Recruiting' },
+                            { id: 5, name: 'Incube' }
+                        ].map((company, idx) => (
+                            <div 
+                                key={company.id} 
+                                className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white shadow-md border-2 border-[#F9FAFB] flex items-center justify-center overflow-hidden relative hover:scale-110 hover:-translate-y-1 hover:z-50 transition-all duration-300 cursor-pointer"
+                                style={{ zIndex: 10 - idx }}
+                            >
+                                <img src={`/logos/${company.id}.webp`} alt={company.name} className="w-full h-full object-cover" />
+                            </div>
+                        ))}
+                    </div>
+                    <p className="text-[11px] sm:text-xs font-medium text-neutral-400">
+                        Trusted by top agencies
+                    </p>
+                </div>
+
                 {/* Heading */}
                 <div className="text-center mb-12">
                     <p className="text-xs font-semibold uppercase tracking-widest text-[#FF6A00] mb-3">
