@@ -336,7 +336,7 @@ export default function HeroDashboard() {
               <div>
                 <p className="text-[11px] font-bold text-neutral-500 uppercase tracking-wide">Positive Reply Rate</p>
                 <div className="flex items-baseline gap-2 mt-1">
-                  <span className="text-3xl font-black text-[#FF6B00]">8.7%</span>
+                  <span className="text-3xl font-black text-[#FF6B00]">6.2%</span>
                 </div>
                 <p className="text-[10px] text-green-600 font-semibold flex items-center mt-1">
                   <svg className="w-3 h-3 mr-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
