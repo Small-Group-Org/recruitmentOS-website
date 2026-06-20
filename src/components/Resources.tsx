@@ -21,7 +21,8 @@ const resources = [
         link: "__gate__https://long-streetcar-093.notion.site/Entire-AI-Recruiter-Team-with-Claude-Code-37b434e7ef8c812cb640f41a362a7609",
         image: "/resources/ai-recruiter-team.webp",
         cta: "Get Free Skills Pack",
-        icon: undefined
+        icon: undefined,
+        source: 'resource_ai_recruiter_team' as const
     },
     {
         title: "6 Free AI Skills for Recruiters",
@@ -31,7 +32,8 @@ const resources = [
         link: "__gate__" + GITHUB_URL,
         image: "/resources/recruitment-skills.webp",
         cta: "Get Free Skills",
-        icon: undefined
+        icon: undefined,
+        source: 'resource_recruitment_skills' as const
     },
     {
         title: "AI Hiring Blueprint E-book ",
@@ -41,7 +43,8 @@ const resources = [
         link: "https://recruitement-os.netlify.app/",
         image: "/resources/ai-hiring-blueprint.webp",
         cta: "Download Free Guide",
-        icon: undefined
+        icon: undefined,
+        source: 'resource_ai_hiring_blueprint' as const
     },
     {
         title: "Get Free Recruitment AI systems template ",
@@ -51,7 +54,8 @@ const resources = [
         link: "https://long-streetcar-093.notion.site/Recruitment-AI-System-Free-Audit-Resources-336434e7ef8c8037be1ed5df3f5d8f1d?pvs=73",
         cta: "Get Free Access",
         image: "/resources/ai-systems-template.webp",
-        icon: undefined
+        icon: undefined,
+        source: 'resource_ai_systems_template' as const
     },
     {
         title: "Get FREE AI Audit",
@@ -61,7 +65,8 @@ const resources = [
         link: "https://recruitment-audit.netlify.app/",
         cta: "Scan Now",
         image: "/resources/ai-audit.webp",
-        icon: undefined
+        icon: undefined,
+        source: 'resource_ai_audit' as const
     },
 ];
 
@@ -128,9 +133,12 @@ function readTabFromHash(): TabId {
     return VALID_TABS.includes(hash) ? hash : 'resources';
 }
 
+import { CreateLeadPayload } from '@/services/lead.service';
+
 export default function Resources() {
     const [showModal, setShowModal] = useState(false);
     const [targetUrl, setTargetUrl] = useState("");
+    const [selectedSource, setSelectedSource] = useState<CreateLeadPayload['source']>('tools_gate');
     const [activeTab, setActiveTab] = useState<TabId>('resources');
 
     // Restore tab from URL hash on mount + listen for hashchange (e.g. back button)
@@ -152,12 +160,13 @@ export default function Resources() {
         }
     }
 
-    const handleGatedClick = useCallback((e: React.MouseEvent, url: string) => {
+    const handleGatedClick = useCallback((e: React.MouseEvent, url: string, source: CreateLeadPayload['source']) => {
         e.preventDefault();
         if (typeof window !== 'undefined' && localStorage.getItem(STORAGE_KEY) === 'true') {
             window.open(url, '_blank');
         } else {
             setTargetUrl(url);
+            setSelectedSource(source);
             setShowModal(true);
         }
     }, []);
@@ -166,7 +175,7 @@ export default function Resources() {
 
     return (
         <>
-        {showModal && <SkillsGateModal onClose={() => setShowModal(false)} redirectUrl={targetUrl} />}
+        {showModal && <SkillsGateModal onClose={() => setShowModal(false)} redirectUrl={targetUrl} source={selectedSource} />}
         <section className="pt-8 sm:pt-10 pb-16 md:pb-24 bg-white" id="resources">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
 
@@ -265,7 +274,7 @@ export default function Resources() {
                                 const redirectUrl = isGated ? resource.link.replace('__gate__', '') : '';
 
                                 return isGated ? (
-                                    <div key={index} onClick={(e) => handleGatedClick(e, redirectUrl)} className="flex flex-col group cursor-pointer">
+                                    <div key={index} onClick={(e) => handleGatedClick(e, redirectUrl, resource.source)} className="flex flex-col group cursor-pointer">
                                         {cardInner}
                                     </div>
                                 ) : (

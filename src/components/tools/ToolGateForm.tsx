@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useToolGate } from '@/hooks/useToolGate';
+import { leadService } from '@/services/lead.service';
 
 const HEADACHES = [
   'Finding candidates',
@@ -14,7 +15,9 @@ const HEADACHES = [
 
 const WEB3FORMS_KEY = '0e7ac89b-a20a-4df5-a7b9-b5fc081df584';
 
-export default function ToolGateForm({ toolTitle = 'Free Recruitment Tools', redirectUrl }: { toolTitle?: string; redirectUrl?: string }) {
+import { CreateLeadPayload } from '@/services/lead.service';
+
+export default function ToolGateForm({ toolTitle = 'Free Recruitment Tools', redirectUrl, source = 'tools_gate' }: { toolTitle?: string; redirectUrl?: string; source?: CreateLeadPayload['source'] }) {
   const { unlock } = useToolGate();
   const router = useRouter();
 
@@ -42,33 +45,23 @@ export default function ToolGateForm({ toolTitle = 'Free Recruitment Tools', red
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: `New Lead — ${toolTitle}`,
-          name,
-          email,
-          website,
-          headaches: selected.join(', '),
-          submitted_at: new Date().toLocaleString('en-IN', { hour12: true }),
-          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-        }),
+      // 1. Send to local/production RecruitmentOS backend
+      await leadService.createLead({
+        name,
+        email,
+        company: website,
+        source,
+        headaches: selected,
       });
-      const data = await res.json();
-      if (data.success) {
-        unlock();
-        if (redirectUrl) {
-          window.location.href = redirectUrl;
-        } else {
-          router.push('/resources#tools');
-        }
+
+      unlock();
+      if (redirectUrl) {
+        window.location.href = redirectUrl;
       } else {
-        setError('Something went wrong. Please try again.');
+        router.push('/resources#tools');
       }
     } catch {
-      setError('Network error. Please try again.');
+      setError('Something went wrong. Please try again.');
     } finally {
       setLoading(false);
     }

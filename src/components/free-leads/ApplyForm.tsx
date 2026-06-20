@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { leadService } from '@/services/lead.service';
 
 const ACCESS_KEY = '0e7ac89b-a20a-4df5-a7b9-b5fc081df584';
 
@@ -65,25 +66,14 @@ export default function ApplyForm() {
         setErrorMsg('');
 
         try {
-            const res = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-                body: JSON.stringify({
-                    access_key: ACCESS_KEY,
-                    subject: `[FreeLeadsCampaign] ${data.niche.slice(0, 60)} · ${data.agency}`,
-                    from_name: data.name,
-                    name: data.name,
-                    agency: data.agency,
-                    website: data.website,
-                    email: data.email,
-                    niche: data.niche,
-                    revenue_band: data.revenue,
-                    placement_target: data.placementTarget,
-                    current_effort: data.currentEffort,
-                }),
+            // 1. Send to RecruitmentOS backend
+            await leadService.createLead({
+                name: data.name,
+                email: data.email,
+                company: data.agency,
+                source: 'free_leads_campaign',
+                message: `Website: ${data.website}\nNiche: ${data.niche}\nRevenue Band: ${data.revenue}\nPlacement Target: ${data.placementTarget}\nCurrent BD Effort: ${data.currentEffort}`,
             });
-
-            if (!res.ok) throw new Error('web3forms returned non-200');
 
             if (typeof window !== 'undefined') {
                 const w = window as Window & { analytics?: { track: (name: string, props: Record<string, unknown>) => void } };

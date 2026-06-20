@@ -85,6 +85,7 @@ export default function ToolPageClient({ tool }: { tool: Tool }) {
       {gateOpen && (
         <ToolGateModal
           toolTitle={tool.title}
+          source={tool.source}
           onClose={() => setGateOpen(false)}
           onUnlock={handleUnlock}
         />

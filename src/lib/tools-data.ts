@@ -1,6 +1,7 @@
 export type Tool = {
   slug: string;
   title: string;
+  source: 'tool_cold_email_writer' | 'tool_volume_gap_calculator' | 'tool_general_roi' | 'tool_bd_scorecard';
   description: string;
   category: string;
   badge: string;
@@ -19,6 +20,7 @@ export const tools: Tool[] = [
   {
     slug: 'cold-email-writer',
     title: 'AI Cold Email Writer',
+    source: 'tool_cold_email_writer',
     description:
       'AI Cold Email Writer Agent — powered by Claude — uses a 48-law psychology system to write hyper-personalized outreach that books calls. Not templates. Not blasts. Emails that feel human.',
     category: 'Outreach',
@@ -37,6 +39,7 @@ export const tools: Tool[] = [
   {
     slug: 'volume-gap-calculator',
     title: 'Volume Gap Calculator',
+    source: 'tool_volume_gap_calculator',
     description:
       'Plug in your placement target, fee, close rate, reply rate. Get the monthly outreach your math actually requires — and the gap between that and what you do today.',
     category: 'Strategy',
@@ -53,6 +56,7 @@ export const tools: Tool[] = [
   {
     slug: 'general-roi',
     title: 'Recruitment Lead-Gen ROI Calculator',
+    source: 'tool_general_roi',
     description:
       'See what your prospecting actually costs today — and what RecruitmentOS would cost. Get a recommended tier + payback period in days.',
     category: 'Strategy',
@@ -69,9 +73,10 @@ export const tools: Tool[] = [
   {
     slug: 'bd-scorecard',
     title: '180-Point BD Bottleneck Scorecard',
+    source: 'tool_bd_scorecard',
     description:
       'The same diagnostic Tushar runs on every fit call. 36 questions across 7 sections. Self-scored in 12 minutes. Tells you exactly where your BD function is leaking.',
-    category: 'Strategy',
+    category: 'Scorecard',
     badge: 'Scorecard',
     isNew: true,
     interactive: true,

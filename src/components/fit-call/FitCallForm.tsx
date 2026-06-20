@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { leadService } from '@/services/lead.service';
 
 const ACCESS_KEY = '0e7ac89b-a20a-4df5-a7b9-b5fc081df584';
 const CAL_BASE = 'https://cal.com/tusharm/30min';
@@ -52,26 +53,14 @@ export default function FitCallForm() {
         setErrorMsg('');
 
         try {
-            const res = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-                body: JSON.stringify({
-                    access_key: ACCESS_KEY,
-                    subject: `[FitCall] ${data.agency} · ${data.niche.slice(0, 50)}`,
-                    from_name: data.name,
-                    name: data.name,
-                    agency: data.agency,
-                    website: data.website,
-                    email: data.email,
-                    niche: data.niche,
-                    revenue_band: data.revenue,
-                    outreach_band: data.outreach,
-                    placement_target: data.placementTarget,
-                    previous_attempts: data.tried,
-                }),
+            // 1. Send to RecruitmentOS backend
+            await leadService.createLead({
+                name: data.name,
+                email: data.email,
+                company: data.agency,
+                source: 'fit_call',
+                message: `Website: ${data.website}\nNiche: ${data.niche}\nRevenue Band: ${data.revenue}\nOutreach Band: ${data.outreach}\nPlacement Target: ${data.placementTarget}\nTried/Failed: ${data.tried}`,
             });
-
-            if (!res.ok) throw new Error('web3forms returned non-200');
 
             if (typeof window !== 'undefined') {
                 const w = window as Window & { analytics?: { track: (name: string, props: Record<string, unknown>) => void } };

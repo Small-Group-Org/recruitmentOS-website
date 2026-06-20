@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { leadService } from '@/services/lead.service';
 
 const ACCESS_KEY = '0e7ac89b-a20a-4df5-a7b9-b5fc081df584';
 
@@ -42,24 +43,15 @@ export default function ContactForm({ variant = 'embed' }: { variant?: 'embed' |
         setErrorMsg('');
 
         try {
-            const res = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-                body: JSON.stringify({
-                    access_key: ACCESS_KEY,
-                    subject: `[Contact] ${data.company} · ${data.source || 'unspecified'}`,
-                    from_name: `${data.firstName} ${data.lastName}`.trim(),
-                    first_name: data.firstName,
-                    last_name: data.lastName,
-                    email: data.email,
-                    phone: data.phone || '(not provided)',
-                    company: data.company,
-                    project: data.project,
-                    source: data.source,
-                }),
+            // 1. Send to RecruitmentOS backend
+            await leadService.createLead({
+                name: `${data.firstName} ${data.lastName}`.trim(),
+                email: data.email,
+                phone: data.phone || undefined,
+                company: data.company,
+                source: 'contact_form',
+                message: data.project,
             });
-
-            if (!res.ok) throw new Error('web3forms returned non-200');
 
             if (typeof window !== 'undefined') {
                 const w = window as Window & { analytics?: { track: (name: string, props: Record<string, unknown>) => void } };

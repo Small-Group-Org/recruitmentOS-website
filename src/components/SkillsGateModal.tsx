@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { leadService } from '@/services/lead.service';
 
 const HEADACHES = [
   'Finding candidates',
@@ -13,7 +14,9 @@ const HEADACHES = [
 const WEB3FORMS_KEY = '0e7ac89b-a20a-4df5-a7b9-b5fc081df584';
 const STORAGE_KEY = 'rOS_unlocked';
 
-export default function SkillsGateModal({ onClose, redirectUrl }: { onClose: () => void; redirectUrl: string }) {
+import { CreateLeadPayload } from '@/services/lead.service';
+
+export default function SkillsGateModal({ onClose, redirectUrl, source }: { onClose: () => void; redirectUrl: string; source: CreateLeadPayload['source'] }) {
   const [step, setStep] = useState<1 | 2>(1);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -43,31 +46,24 @@ export default function SkillsGateModal({ onClose, redirectUrl }: { onClose: () 
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: 'New Lead — 6 Free AI Skills for Recruiters',
-          name,
-          email,
-          website,
-          headaches: selected.join(', '),
-          submitted_at: new Date().toLocaleString('en-IN', { hour12: true }),
-          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-        }),
+      // 1. Send to local/production RecruitmentOS backend
+      await leadService.createLead({
+        name,
+        email,
+        company: website,
+        source,
+        headaches: selected,
       });
-      const data = await res.json();
-      if (data.success) {
-        localStorage.setItem(STORAGE_KEY, 'true');
-        (window as Window & { fbq?: (...args: unknown[]) => void }).fbq?.('track', 'Lead', { content_name: 'Tools Gate', email });
-        window.open(redirectUrl, '_blank');
-        onClose();
-      } else {
-        setError('Something went wrong. Please try again.');
+
+      localStorage.setItem(STORAGE_KEY, 'true');
+      if (typeof window !== 'undefined') {
+        const w = window as Window & { fbq?: (...args: unknown[]) => void };
+        w.fbq?.('track', 'Lead', { content_name: `Tools Gate · ${source}`, email });
       }
+      window.open(redirectUrl, '_blank');
+      onClose();
     } catch {
-      setError('Network error. Please try again.');
+      setError('Something went wrong. Please try again.');
     } finally {
       setLoading(false);
     }

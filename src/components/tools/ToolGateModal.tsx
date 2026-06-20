@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useToolGate } from '@/hooks/useToolGate';
+import { leadService } from '@/services/lead.service';
 
 const HEADACHES = [
     'Finding candidates',
@@ -13,16 +14,20 @@ const HEADACHES = [
 
 const WEB3FORMS_KEY = '0e7ac89b-a20a-4df5-a7b9-b5fc081df584';
 
+import { CreateLeadPayload } from '@/services/lead.service';
+
 export type ToolGateModalProps = {
     /** Title used in the email subject + heading. e.g. "BD Scorecard" → "Unlock BD Scorecard". */
     toolTitle?: string;
+    /** Dynamic source value. */
+    source: CreateLeadPayload['source'];
     /** Called when user closes without unlocking. */
     onClose: () => void;
     /** Called after successful unlock — before the modal closes. Use it to open URLs or set state. */
     onUnlock?: () => void;
 };
 
-export default function ToolGateModal({ toolTitle = 'Free Recruitment Tools', onClose, onUnlock }: ToolGateModalProps) {
+export default function ToolGateModal({ toolTitle = 'Free Recruitment Tools', source, onClose, onUnlock }: ToolGateModalProps) {
     const { unlock } = useToolGate();
 
     const [step, setStep] = useState<1 | 2>(1);
@@ -54,35 +59,24 @@ export default function ToolGateModal({ toolTitle = 'Free Recruitment Tools', on
         setLoading(true);
         setError('');
         try {
-            const res = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-                body: JSON.stringify({
-                    access_key: WEB3FORMS_KEY,
-                    subject: `[ToolGate] ${toolTitle} · ${name}`,
-                    name,
-                    email,
-                    website,
-                    headaches: selected.join(', '),
-                    tool: toolTitle,
-                    submitted_at: new Date().toLocaleString('en-IN', { hour12: true }),
-                    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-                }),
+            // 1. Send to local/production RecruitmentOS backend
+            await leadService.createLead({
+                name,
+                email,
+                company: website,
+                source,
+                headaches: selected,
             });
-            const data = await res.json();
-            if (data.success) {
-                unlock();
-                if (typeof window !== 'undefined') {
-                    const w = window as Window & { fbq?: (...args: unknown[]) => void };
-                    w.fbq?.('track', 'Lead', { content_name: `Tool Gate · ${toolTitle}`, email });
-                }
-                onUnlock?.();
-                onClose();
-            } else {
-                setError('Something went wrong. Please try again.');
+
+            unlock();
+            if (typeof window !== 'undefined') {
+                const w = window as Window & { fbq?: (...args: unknown[]) => void };
+                w.fbq?.('track', 'Lead', { content_name: `Tool Gate · ${toolTitle}`, email });
             }
+            onUnlock?.();
+            onClose();
         } catch {
-            setError('Network error. Please try again.');
+            setError('Something went wrong. Please try again.');
         } finally {
             setLoading(false);
         }
