@@ -46,6 +46,15 @@ const nextConfig: NextConfig = {
             },
         ];
     },
+    async redirects() {
+        return [
+            {
+                source: '/fit-call',
+                destination: 'https://cal.com/tusharm/30min?user=tusharm',
+                permanent: false,
+            },
+        ];
+    },
 };
 
 export default nextConfig;
