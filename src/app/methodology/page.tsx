@@ -65,7 +65,83 @@ export default function MethodologyPage() {
                         </div>
                     </div>
 
-                    {/* 4 steps */}
+                    {/* Why RecruitmentOS is different */}
+                    <section className="mb-24 border-t border-[#E5E5E5] pt-16">
+                        <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">The Recruitment Difference</p>
+                        <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold mb-8 leading-tight">
+                            Built for recruiters. Not a generic email agency.
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div className="bg-[#F9FAFB] border border-[#E5E5E5] rounded-2xl p-8">
+                                <h3 className="text-sm font-bold uppercase tracking-wider text-[#9CA3AF] mb-6">Generic Lead Gen / Cold Email Agencies</h3>
+                                <ul className="space-y-6">
+                                    <li className="flex items-start gap-3">
+                                        <span className="text-red-500 font-bold text-lg leading-none">✕</span>
+                                        <div>
+                                            <p className="text-sm font-bold text-[#0A0A0A]">Static lists (Apollo / ZoomInfo exports)</p>
+                                            <p className="text-xs text-[#6B7280] mt-1">Outreach is sent to generic lists based on titles, leading to cold, irrelevant pitches.</p>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <span className="text-red-500 font-bold text-lg leading-none">✕</span>
+                                        <div>
+                                            <p className="text-sm font-bold text-[#0A0A0A]">Generic "Can we scale you?" pitches</p>
+                                            <p className="text-xs text-[#6B7280] mt-1">Standard template copies that sound like spam, diluting your recruitment brand.</p>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <span className="text-red-500 font-bold text-lg leading-none">✕</span>
+                                        <div>
+                                            <p className="text-sm font-bold text-[#0A0A0A]">Target general HR or C-suite</p>
+                                            <p className="text-xs text-[#6B7280] mt-1">Outbound sent to HR gatekeepers who don't hold the direct hiring budget for the specific desk.</p>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <span className="text-red-500 font-bold text-lg leading-none">✕</span>
+                                        <div>
+                                            <p className="text-sm font-bold text-[#0A0A0A]">Siloed spreadsheets</p>
+                                            <p className="text-xs text-[#6B7280] mt-1">Leads are sent via Excel or generic CRMs (HubSpot/Salesforce) that don't sync with your workflow.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="bg-[#FFFDFB] border border-[#FFD9C0] rounded-2xl p-8 shadow-sm">
+                                <h3 className="text-sm font-bold uppercase tracking-wider text-[#FF6A00] mb-6">RecruitmentOS Intelligence</h3>
+                                <ul className="space-y-6">
+                                    <li className="flex items-start gap-3">
+                                        <span className="text-[#FF6A00] font-bold text-lg leading-none">✓</span>
+                                        <div>
+                                            <p className="text-sm font-bold text-[#0A0A0A]">Real-time vacancy tracking</p>
+                                            <p className="text-xs text-[#374151] mt-1">Outreach is triggered by active hiring intent (e.g. newly posted roles on job boards or careers pages).</p>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <span className="text-[#FF6A00] font-bold text-lg leading-none">✓</span>
+                                        <div>
+                                            <p className="text-sm font-bold text-[#0A0A0A]">Candidate spec'ing & niche pitches</p>
+                                            <p className="text-xs text-[#374151] mt-1">Outreach is backed by live candidate profiles or specific desk expertise directly matching the open job.</p>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <span className="text-[#FF6A00] font-bold text-lg leading-none">✓</span>
+                                        <div>
+                                            <p className="text-sm font-bold text-[#0A0A0A]">Direct line Hiring Managers</p>
+                                            <p className="text-xs text-[#374151] mt-1">We target the exact engineering lead, sales VP, or head of department who is hurting for talent.</p>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <span className="text-[#FF6A00] font-bold text-lg leading-none">✓</span>
+                                        <div>
+                                            <p className="text-sm font-bold text-[#0A0A0A]">Native Recruitment CRM sync</p>
+                                            <p className="text-xs text-[#374151] mt-1">Seamlessly syncs contacts, replies, and activities directly into Bullhorn, Vincere, or Loxo.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* 5 phases */}
                     <section className="mb-24 space-y-16">
                         {methodologySteps.map((step) => (
                             <div key={step.number} className="grid grid-cols-1 lg:grid-cols-[100px_1fr] gap-6 lg:gap-12 border-t border-[#E5E5E5] pt-10">
@@ -91,6 +167,49 @@ export default function MethodologyPage() {
                                 </div>
                             </div>
                         ))}
+                    </section>
+
+                    {/* The Recruitment Intelligence Engine */}
+                    <section className="mb-24 border-t border-[#E5E5E5] pt-16">
+                        <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">Core Infrastructure</p>
+                        <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold mb-4 leading-tight">
+                            The Recruitment Intelligence Engine
+                        </h2>
+                        <p className="text-[#6B7280] text-sm max-w-2xl mb-10 leading-relaxed">
+                            A proprietary outbound engine engineered specifically for recruitment workflows. We don't blast static lists; we detect active hiring intent and match it with targeted candidate specs.
+                        </p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {[
+                                {
+                                    step: '01',
+                                    title: 'Intent Detection Scrapers',
+                                    desc: 'We monitor 20+ job boards, LinkedIn ads, and company careers pages daily to identify companies that are actively hiring.'
+                                },
+                                {
+                                    step: '02',
+                                    title: 'Manager Mapping System',
+                                    desc: 'Instead of contacting HR generalists, we map exact line managers (e.g. Engineering Lead, Sales VP) owning the active headcount.'
+                                },
+                                {
+                                    step: '03',
+                                    title: 'Candidate-Led Marketing',
+                                    desc: 'We pitch your agency’s matching candidate profiles (Spec CVs) or hyper-specific desk track record directly against their live opening.'
+                                },
+                                {
+                                    step: '04',
+                                    title: 'Native ATS/CRM Syncing',
+                                    desc: 'Leads, contacts, and outreach history are synced natively into your existing tools (Bullhorn, Vincere, Loxo, HubSpot).'
+                                }
+                            ].map((item, idx) => (
+                                <div key={idx} className="bg-[#F9FAFB] border border-[#E5E5E5] rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between min-h-[180px]">
+                                    <div>
+                                        <h3 className="text-sm font-bold text-[#0A0A0A] mb-2">{item.title}</h3>
+                                        <p className="text-xs text-[#6B7280] leading-relaxed relative z-10">{item.desc}</p>
+                                    </div>
+                                    <div className="text-5xl font-black text-[#E5E7EB] text-right select-none leading-none -mt-4">{item.step}</div>
+                                </div>
+                            ))}
+                        </div>
                     </section>
 
                     {/* Build deliverables */}
