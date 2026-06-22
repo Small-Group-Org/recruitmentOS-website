@@ -14,8 +14,8 @@ import { JsonLd } from '@/components/JsonLd';
 import { serviceWithOffersSchema } from '@/lib/schemas';
 
 export const metadata = {
-    title: 'How RecruitmentOS Works — Setup + Run',
-    description: 'The two-part system: a 30–60 day Setup to design your BD engine, then a monthly Run that operates it on your stack.',
+    title: 'How RecruitmentOS Works — 5-Phase Process',
+    description: 'From discovery and ICP to daily outreach, analysis, and scaling — a clear five-phase process that takes you from zero to a self-sustaining BD pipeline.',
     alternates: { canonical: buildCanonical('/methodology') },
 };
 
@@ -43,21 +43,24 @@ export default function MethodologyPage() {
                             How RecruitmentOS works.
                         </h1>
                         <p className="hero-sub mb-8">
-                            Two parts. A 30–60 day <strong className="font-semibold text-[#0A0A0A]">Setup</strong> to design and stand up the BD engine on your stack. A monthly <strong className="font-semibold text-[#0A0A0A]">Run</strong> to operate it.
+                            Five phases. Ready in <strong className="font-semibold text-[#0A0A0A]">2 weeks</strong>. Outreach live by <strong className="font-semibold text-[#0A0A0A]">Week 2</strong>. A self-sustaining pipeline by <strong className="font-semibold text-[#0A0A0A]">Month 3</strong> — and running indefinitely after that.
                         </p>
 
-                        {/* 2-phase visual */}
-                        <div className="bg-[#F9FAFB] border border-[#E5E5E5] rounded-2xl p-6 flex flex-col sm:flex-row gap-4 items-stretch">
-                            <div className="flex-1 bg-white border border-[#E5E5E5] rounded-xl p-5">
-                                <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-2">Setup · One-time</p>
-                                <p className="text-base font-bold text-[#0A0A0A]">Day 1 → Day 60</p>
-                                <p className="text-sm text-[#6B7280] mt-1">ICP map · Signal engine · Outreach engine · Handover</p>
-                            </div>
-                            <div className="flex items-center justify-center text-[#9CA3AF] text-2xl rotate-90 sm:rotate-0">→</div>
-                            <div className="flex-1 bg-white border border-[#E5E5E5] rounded-xl p-5">
-                                <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-2">Run · Monthly</p>
-                                <p className="text-base font-bold text-[#0A0A0A]">Day 60 → ongoing</p>
-                                <p className="text-sm text-[#6B7280] mt-1">Daily operation · Weekly reporting · Monthly iteration</p>
+                        {/* 5-phase timeline strip */}
+                        <div className="bg-[#F9FAFB] border border-[#E5E5E5] rounded-2xl p-6">
+                            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                                {[
+                                    { timing: 'Week 0–2',  label: 'Setup & Foundation' },
+                                    { timing: 'Week 2–3',  label: 'Campaign Live' },
+                                    { timing: 'Week 3–4',  label: 'First Analysis' },
+                                    { timing: 'Month 2–3', label: 'Scale & Optimise' },
+                                    { timing: 'Always',    label: 'Ongoing' },
+                                ].map((p, i) => (
+                                    <div key={i} className="bg-white border border-[#E5E5E5] rounded-xl p-4">
+                                        <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-1">{p.timing}</p>
+                                        <p className="text-sm font-bold text-[#0A0A0A] leading-snug">{p.label}</p>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -71,12 +74,9 @@ export default function MethodologyPage() {
                                 </div>
                                 <div>
                                     <p className="text-[10px] font-bold tracking-widest uppercase text-[#9CA3AF] mb-2">{step.phase}</p>
-                                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0A0A0A] leading-tight mb-5">
+                                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0A0A0A] leading-tight mb-6">
                                         {step.name}
                                     </h2>
-                                    <p className="text-base sm:text-lg text-[#374151] leading-relaxed max-w-3xl mb-6 font-medium">
-                                        {step.body}
-                                    </p>
                                     <div className="space-y-3">
                                         {step.subComponents.map((sc) => (
                                             <div key={sc.title} className="flex items-start gap-3">
@@ -95,8 +95,9 @@ export default function MethodologyPage() {
 
                     {/* Build deliverables */}
                     <section className="mb-20 bg-[#0A0A0A] rounded-2xl px-8 sm:px-12 py-12">
-                        <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">The Setup, in one block</p>
-                        <h2 className="text-white text-2xl sm:text-3xl font-bold mb-8 leading-tight">What you get at end of Setup (Day 60).</h2>
+                        <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">What's ready by Week 2</p>
+                        <h2 className="text-white text-2xl sm:text-3xl font-bold mb-2 leading-tight">What's live before the first email goes out.</h2>
+                        <p className="text-white/50 text-sm mb-8 leading-relaxed">Everything below is built, tested, and handed over during Setup & Foundation — so Campaign Live starts at full speed.</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             {buildDeliverables.map((d) => (
                                 <div key={d} className="flex items-center gap-3 py-2 border-b border-white/10">
@@ -109,7 +110,7 @@ export default function MethodologyPage() {
 
                     {/* Run cadence */}
                     <section className="mb-20">
-                        <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">The Run cadence</p>
+                        <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">Ongoing cadence</p>
                         <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold mb-8 leading-tight">What happens every day, week, month, quarter.</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                             {runCadence.map((c) => (
@@ -189,7 +190,7 @@ export default function MethodologyPage() {
                     {/* CTA */}
                     <section className="border-t border-[#E5E5E5] pt-12 text-center max-w-2xl mx-auto">
                         <h2 className="text-2xl sm:text-3xl font-bold text-[#0A0A0A] mb-3 leading-tight">
-                            Ready to walk through your numbers?
+                            Think your agency passes the fit interview?
                         </h2>
                         <p className="section-sub mb-8">
                             On the fit call we open the 180-point BD scorecard live, score your agency together, run your volume math, and identify the 1–3 highest-leverage things we&#39;d build first.
