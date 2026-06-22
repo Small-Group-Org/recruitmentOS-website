@@ -43,7 +43,7 @@ export default function MethodologyPage() {
                             How RecruitmentOS works.
                         </h1>
                         <p className="hero-sub mb-8">
-                            Five phases. Ready in <strong className="font-semibold text-[#0A0A0A]">2 weeks</strong>. Outreach live by <strong className="font-semibold text-[#0A0A0A]">Week 2</strong>. A self-sustaining pipeline by <strong className="font-semibold text-[#0A0A0A]">Month 3</strong> — and running indefinitely after that.
+                            Most agencies wing their BD. This is what a system looks like. Outreach live by <strong className="font-semibold text-[#0A0A0A]">Week 2</strong>. Self-sustaining pipeline by <strong className="font-semibold text-[#0A0A0A]">Month 3</strong>.
                         </p>
 
                         {/* 5-phase timeline strip */}
@@ -280,6 +280,8 @@ export default function MethodologyPage() {
                         <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">The fit interview</p>
                         <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold mb-3 leading-tight">6 questions we ask on the fit call.</h2>
                         <p className="section-sub mb-8 max-w-2xl">
+                            We turn down more agencies than we take on. Here&#39;s what we&#39;re looking for.
+                            <br />
                             You are being interviewed. You know it. Pass = we sign. Fail = we don&#39;t, even if you want to.
                         </p>
                         <ol className="space-y-4">
@@ -312,7 +314,7 @@ export default function MethodologyPage() {
                             Think your agency passes the fit interview?
                         </h2>
                         <p className="section-sub mb-8">
-                            On the fit call, we dig into your agency, discuss where BD is breaking down, and map out exactly what we'd build first and how fast you'd see results.
+                            On the fit call, we dig into your agency, discuss where BD is breaking down, and map out exactly what we&#39;d build first and how fast you&#39;d see results.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <Button href="https://cal.com/tusharm/30min?user=tusharm" target="_blank" variant="dark" size="lg" pill>
