@@ -42,9 +42,18 @@ export default function MethodologyPage() {
                         <h1 className="text-[#0A0A0A] text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.05] mb-6">
                             How RecruitmentOS works.
                         </h1>
-                        <p className="hero-sub mb-8">
-                            Most agencies wing their BD. This is what a system looks like. Outreach live by <strong className="font-semibold text-[#0A0A0A]">Week 2</strong>. Self-sustaining pipeline by <strong className="font-semibold text-[#0A0A0A]">Month 3</strong>.
+                        <p className="hero-sub mb-5">
+                            Most agencies guess with their BD. We build a clear system. Outreach starts by <strong className="font-semibold text-[#0A0A0A]">Week 2</strong>. Steady pipeline by <strong className="font-semibold text-[#0A0A0A]">Month 3</strong>.
                         </p>
+
+                        {/* Proof stat callout */}
+                        <div className="inline-flex items-center gap-2.5 bg-[#FFF7F0] border border-[#FFD9C0] rounded-lg px-4 py-2.5 mb-8">
+                            <span className="w-2 h-2 rounded-full bg-[#FF6A00] flex-shrink-0" />
+                            <p className="text-sm text-[#374151] font-medium">
+                                From one campaign: <strong className="text-[#0A0A0A]">7,550 leads</strong> → <strong className="text-[#0A0A0A]">11.38% reply rate</strong> → <strong className="text-[#FF6A00]">36 positive opportunities</strong>
+                            </p>
+                        </div>
+
                         <div className="mb-10">
                             <Button href="https://cal.com/tusharm/30min?user=tusharm" target="_blank" variant="dark" size="lg" pill>
                                 Book a fit call
@@ -61,7 +70,7 @@ export default function MethodologyPage() {
                                     { timing: 'Month 2–3', label: 'Scale & Optimise' },
                                     { timing: 'Always', label: 'Ongoing' },
                                 ].map((p, i) => (
-                                    <div key={i} className="bg-white border border-[#E5E5E5] rounded-xl p-4">
+                                    <div key={i} className="bg-white border border-[#E5E5E5] rounded-xl p-4 hover:border-[#FF6A00]/40 transition-colors">
                                         <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-1">{p.timing}</p>
                                         <p className="text-sm font-bold text-[#0A0A0A] leading-snug">{p.label}</p>
                                     </div>
@@ -73,101 +82,80 @@ export default function MethodologyPage() {
                     {/* Why RecruitmentOS is different */}
                     <section className="mb-24 border-t border-[#E5E5E5] pt-16">
                         <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">The Recruitment Difference</p>
-                        <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold mb-8 leading-tight">
+                        <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold mb-4 leading-tight">
                             Built for recruiters. Not a generic email agency.
                         </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div className="bg-[#F9FAFB] border border-[#E5E5E5] rounded-2xl p-8">
-                                <h3 className="text-sm font-bold uppercase tracking-wider text-[#9CA3AF] mb-6">Generic Lead Gen / Cold Email Agencies</h3>
-                                <ul className="space-y-6">
-                                    <li className="flex items-start gap-3">
-                                        <span className="text-red-500 font-bold text-lg leading-none">✕</span>
-                                        <div>
-                                            <p className="text-sm font-bold text-[#0A0A0A]">Static lists (Apollo / ZoomInfo exports)</p>
-                                            <p className="text-xs text-[#6B7280] mt-1">Outreach is sent to generic lists based on titles, leading to cold, irrelevant pitches.</p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            {/* Left Big Card (Bad) */}
+                            <div className="bg-[#FAFAFA] border border-[#E5E5E5] rounded-2xl p-6 md:p-8">
+                                <p className="text-[10px] font-bold tracking-widest uppercase text-[#9CA3AF] mb-6">Generic Lead Gen / Cold Email Agencies</p>
+                                <div className="space-y-6">
+                                    {[
+                                        { title: 'Random contact lists', desc: 'They buy a list, blast it, hope something sticks.' },
+                                        { title: 'Copy-paste pitches', desc: 'Same "can we help you scale?" email to everyone. Feels like spam.' },
+                                        { title: 'They email HR', desc: 'Who forwards it to no one.' },
+                                        { title: 'One template for everyone', desc: 'No context, no relevance, no replies.' },
+                                        { title: 'A spreadsheet dump', desc: 'Here\'s your CSV, good luck.' },
+                                    ].map((bad, idx) => (
+                                        <div key={idx} className="flex items-start gap-3">
+                                            <span className="text-red-400 font-bold text-base leading-none mt-0.5 flex-shrink-0">✕</span>
+                                            <div>
+                                                <p className="text-sm font-bold text-[#374151]">{bad.title}</p>
+                                                <p className="text-xs text-[#9CA3AF] mt-1 leading-relaxed">{bad.desc}</p>
+                                            </div>
                                         </div>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <span className="text-red-500 font-bold text-lg leading-none">✕</span>
-                                        <div>
-                                            <p className="text-sm font-bold text-[#0A0A0A]">Generic "Can we scale you?" pitches</p>
-                                            <p className="text-xs text-[#6B7280] mt-1">Standard template copies that sound like spam, diluting your recruitment brand.</p>
-                                        </div>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <span className="text-red-500 font-bold text-lg leading-none">✕</span>
-                                        <div>
-                                            <p className="text-sm font-bold text-[#0A0A0A]">Target general HR or C-suite</p>
-                                            <p className="text-xs text-[#6B7280] mt-1">Outbound sent to HR gatekeepers who don't hold the direct hiring budget for the specific desk.</p>
-                                        </div>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <span className="text-red-500 font-bold text-lg leading-none">✕</span>
-                                        <div>
-                                            <p className="text-sm font-bold text-[#0A0A0A]">Siloed spreadsheets</p>
-                                            <p className="text-xs text-[#6B7280] mt-1">Leads are sent via Excel or generic CRMs (HubSpot/Salesforce) that don't sync with your workflow.</p>
-                                        </div>
-                                    </li>
-                                </ul>
+                                    ))}
+                                </div>
                             </div>
-                            <div className="bg-[#FFFDFB] border border-[#FFD9C0] rounded-2xl p-8 shadow-sm">
-                                <h3 className="text-sm font-bold uppercase tracking-wider text-[#FF6A00] mb-6">RecruitmentOS Intelligence</h3>
-                                <ul className="space-y-6">
-                                    <li className="flex items-start gap-3">
-                                        <span className="text-[#FF6A00] font-bold text-lg leading-none">✓</span>
-                                        <div>
-                                            <p className="text-sm font-bold text-[#0A0A0A]">Real-time vacancy tracking</p>
-                                            <p className="text-xs text-[#374151] mt-1">Outreach is triggered by active hiring intent (e.g. newly posted roles on job boards or careers pages).</p>
+
+                            {/* Right Big Card (Good) */}
+                            <div className="bg-[#FFFDFB] border border-[#FFD9C0] rounded-2xl p-6 md:p-8 shadow-sm">
+                                <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-6">RecruitmentOS</p>
+                                <div className="space-y-6">
+                                    {[
+                                        { title: 'We research your exact buyer first', desc: 'Industry, seniority, company size, location. No email goes out until we know who we\'re targeting.' },
+                                        { title: 'Your inbox lands, not your spam folder', desc: 'Domains set up properly so emails actually get delivered.' },
+                                        { title: 'We find the actual decision-maker', desc: 'The person with the open role and the budget. Direct email, verified.' },
+                                        { title: 'Every email feels personal', desc: '6–7 sequences written for your niche, tailored to what each hiring manager is actually hiring for.' },
+                                        { title: 'Clean leads, ready to use', desc: 'Every contact exported and ready to drop into whatever CRM you use.' },
+                                    ].map((good, idx) => (
+                                        <div key={idx} className="flex items-start gap-3">
+                                            <span className="text-[#FF6A00] font-bold text-base leading-none mt-0.5 flex-shrink-0">✓</span>
+                                            <div>
+                                                <p className="text-sm font-bold text-[#0A0A0A]">{good.title}</p>
+                                                <p className="text-xs text-[#374151] mt-1 leading-relaxed">{good.desc}</p>
+                                            </div>
                                         </div>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <span className="text-[#FF6A00] font-bold text-lg leading-none">✓</span>
-                                        <div>
-                                            <p className="text-sm font-bold text-[#0A0A0A]">Candidate spec'ing & niche pitches</p>
-                                            <p className="text-xs text-[#374151] mt-1">Outreach is backed by live candidate profiles or specific desk expertise directly matching the open job.</p>
-                                        </div>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <span className="text-[#FF6A00] font-bold text-lg leading-none">✓</span>
-                                        <div>
-                                            <p className="text-sm font-bold text-[#0A0A0A]">Direct line Hiring Managers</p>
-                                            <p className="text-xs text-[#374151] mt-1">We target the exact engineering lead, sales VP, or head of department who is hurting for talent.</p>
-                                        </div>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <span className="text-[#FF6A00] font-bold text-lg leading-none">✓</span>
-                                        <div>
-                                            <p className="text-sm font-bold text-[#0A0A0A]">Native Recruitment CRM sync</p>
-                                            <p className="text-xs text-[#374151] mt-1">Seamlessly syncs contacts, replies, and activities directly into Bullhorn, Vincere, or Loxo.</p>
-                                        </div>
-                                    </li>
-                                </ul>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </section>
 
                     {/* 5 phases */}
-                    <section className="mb-24 space-y-16">
+                    <section className="mb-24 space-y-12">
                         {methodologySteps.map((step) => (
-                            <div key={step.number} className="grid grid-cols-1 lg:grid-cols-[100px_1fr] gap-6 lg:gap-12 border-t border-[#E5E5E5] pt-10">
-                                <div>
-                                    <span className="text-4xl sm:text-5xl font-black text-[#F3F4F6] select-none">{step.number}</span>
+                            <div key={step.number} className="grid grid-cols-1 lg:grid-cols-[80px_1fr] gap-6 lg:gap-10 border-t border-[#E5E5E5] pt-10">
+                                <div className="flex items-start">
+                                    <span className="text-4xl sm:text-5xl font-black text-[#E5E7EB] select-none leading-none">{step.number}</span>
                                 </div>
                                 <div>
-                                    <p className="text-[10px] font-bold tracking-widest uppercase text-[#9CA3AF] mb-2">{step.phase}</p>
-                                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0A0A0A] leading-tight mb-6">
+                                    <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-2">{step.phase}</p>
+                                    <h2 className="text-2xl sm:text-3xl font-bold text-[#0A0A0A] leading-tight mb-4">
                                         {step.name}
                                     </h2>
-                                    <div className="space-y-3">
-                                        {step.subComponents.map((sc) => (
-                                            <div key={sc.title} className="flex items-start gap-3">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] mt-2.5 flex-shrink-0" />
-                                                <div>
-                                                    <span className="text-sm font-bold text-[#0A0A0A]">{sc.title}</span>
-                                                    <span className="text-sm text-[#6B7280] font-medium"> — {sc.description}</span>
+                                    <div className="bg-[#FAFAFA] border border-[#E5E5E5] rounded-2xl p-6 md:p-8">
+                                        <div className="space-y-4">
+                                            {step.subComponents.map((sc, idx) => (
+                                                <div key={idx} className="flex items-start gap-3">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] mt-2 flex-shrink-0" />
+                                                    <div>
+                                                        <span className="text-sm font-bold text-[#0A0A0A]">{sc.title}</span>
+                                                        <span className="text-sm text-[#6B7280] font-medium"> — {sc.description}</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        ))}
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -181,37 +169,42 @@ export default function MethodologyPage() {
                             The Recruitment Intelligence Engine
                         </h2>
                         <p className="text-[#6B7280] text-sm max-w-2xl mb-10 leading-relaxed">
-                            A proprietary outbound engine engineered specifically for recruitment workflows. We don't blast static lists; we detect active hiring intent and match it with targeted candidate specs.
+                            We don&#39;t buy lists and blast them. We detect live hiring intent, find the actual decision-maker, and send something worth reading.
                         </p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                             {[
                                 {
                                     step: '01',
-                                    title: 'Intent Detection Scrapers',
-                                    desc: 'We monitor 20+ job boards, LinkedIn ads, and company careers pages daily to identify companies that are actively hiring.'
+                                    title: 'We spot who\'s hiring',
+                                    desc: '20+ job boards, LinkedIn, and careers pages monitored daily.',
+                                    icon: <svg className="w-5 h-5 text-[#FF6A00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>,
                                 },
                                 {
                                     step: '02',
-                                    title: 'Manager Mapping System',
-                                    desc: 'Instead of contacting HR generalists, we map exact line managers (e.g. Engineering Lead, Sales VP) owning the active headcount.'
+                                    title: 'We find the right person',
+                                    desc: 'The line manager with the open role, not HR.',
+                                    icon: <svg className="w-5 h-5 text-[#FF6A00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}><path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>,
                                 },
                                 {
                                     step: '03',
-                                    title: 'Candidate-Led Marketing',
-                                    desc: 'We pitch your agency’s matching candidate profiles (Spec CVs) or hyper-specific desk track record directly against their live opening.'
+                                    title: 'We write emails that get replies',
+                                    desc: '6–7 sequences built for your desk, tested and improved weekly.',
+                                    icon: <svg className="w-5 h-5 text-[#FF6A00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
                                 },
                                 {
                                     step: '04',
-                                    title: 'Native ATS/CRM Syncing',
-                                    desc: 'Leads, contacts, and outreach history are synced natively into your existing tools (Bullhorn, Vincere, Loxo, HubSpot).'
+                                    title: 'We hand you clean data',
+                                    desc: 'Every contact verified and exported as a CSV ready for your CRM.',
+                                    icon: <svg className="w-5 h-5 text-[#FF6A00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}><path strokeLinecap="round" strokeLinejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>,
                                 }
                             ].map((item, idx) => (
-                                <div key={idx} className="bg-[#F9FAFB] border border-[#E5E5E5] rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between min-h-[180px]">
-                                    <div>
-                                        <h3 className="text-sm font-bold text-[#0A0A0A] mb-2">{item.title}</h3>
-                                        <p className="text-xs text-[#6B7280] leading-relaxed relative z-10">{item.desc}</p>
+                                <div key={idx} className="bg-white border border-[#E5E5E5] rounded-2xl p-6 relative overflow-hidden hover:border-[#FF6A00]/40 hover:shadow-md transition-all duration-200">
+                                    <div className="flex items-center gap-2 mb-3">
+                                        <span className="text-lg">{item.icon}</span>
+                                        <span className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00]">Step {item.step}</span>
                                     </div>
-                                    <div className="text-5xl font-black text-[#E5E7EB] text-right select-none leading-none -mt-4">{item.step}</div>
+                                    <h3 className="text-sm font-bold text-[#0A0A0A] mb-2">{item.title}</h3>
+                                    <p className="text-xs text-[#6B7280] leading-relaxed">{item.desc}</p>
                                 </div>
                             ))}
                         </div>
@@ -219,12 +212,12 @@ export default function MethodologyPage() {
 
                     {/* Build deliverables */}
                     <section className="mb-20 bg-[#0A0A0A] rounded-2xl px-8 sm:px-12 py-12">
-                        <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">What's ready by Week 2</p>
-                        <h2 className="text-white text-2xl sm:text-3xl font-bold mb-2 leading-tight">What's live before the first email goes out.</h2>
-                        <p className="text-white/50 text-sm mb-8 leading-relaxed">Everything below is built, tested, and handed over during Setup & Foundation — so Campaign Live starts at full speed.</p>
+                        <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">What&#39;s ready by Week 2</p>
+                        <h2 className="text-white text-2xl sm:text-3xl font-bold mb-2 leading-tight">What&#39;s ready before the first email goes out.</h2>
+                        <p className="text-white/50 text-sm mb-8 leading-relaxed">Everything below is built, tested, and signed off during Setup & Foundation — so Campaign Live starts at full speed.</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             {buildDeliverables.map((d) => (
-                                <div key={d} className="flex items-center gap-3 py-2 border-b border-white/10">
+                                <div key={d} className="flex items-center gap-3 py-2.5 border-b border-white/10">
                                     <span className="text-[#FF6A00] font-bold text-sm">✓</span>
                                     <span className="text-white text-sm font-medium">{d}</span>
                                 </div>
@@ -237,12 +230,20 @@ export default function MethodologyPage() {
                         <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">Ongoing cadence</p>
                         <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold mb-8 leading-tight">What happens every day, week, month, quarter.</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                            {runCadence.map((c) => (
-                                <div key={c.period} className="bg-white border border-[#E5E5E5] rounded-xl p-5">
-                                    <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">{c.period}</p>
-                                    <ul className="space-y-2">
+                            {runCadence.map((c, idx) => (
+                                <div key={c.period} className="bg-white border border-[#E5E5E5] rounded-xl p-5 hover:border-[#FF6A00]/30 transition-colors">
+                                    <div className="flex items-center gap-2 mb-4">
+                                        <div className="w-8 h-8 rounded-lg bg-[#FFF7F0] flex items-center justify-center">
+                                            <span className="text-[#FF6A00] text-xs font-black">{['D', 'W', 'M', 'Q'][idx]}</span>
+                                        </div>
+                                        <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00]">{c.period}</p>
+                                    </div>
+                                    <ul className="space-y-2.5">
                                         {c.items.map((i) => (
-                                            <li key={i} className="text-sm text-[#374151] font-medium leading-snug">{i}</li>
+                                            <li key={i} className="text-sm text-[#374151] font-medium leading-snug flex items-start gap-2">
+                                                <span className="w-1 h-1 rounded-full bg-[#D1D5DB] mt-2 flex-shrink-0" />
+                                                {i}
+                                            </li>
                                         ))}
                                     </ul>
                                 </div>
@@ -256,8 +257,13 @@ export default function MethodologyPage() {
                         <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold mb-8 leading-tight">Your stack stays yours. We operate it.</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="bg-[#F9FAFB] border border-[#E5E5E5] rounded-xl p-6">
-                                <p className="text-[10px] font-bold tracking-widest uppercase text-[#0A0A0A] mb-3">You own</p>
-                                <ul className="space-y-2">
+                                <div className="flex items-center gap-2 mb-4">
+                                    <div className="w-7 h-7 rounded-md bg-[#0A0A0A] flex items-center justify-center">
+                                        <span className="text-white text-xs font-black">Y</span>
+                                    </div>
+                                    <p className="text-xs font-bold tracking-widest uppercase text-[#0A0A0A]">You own</p>
+                                </div>
+                                <ul className="space-y-3">
                                     {ownership.you.map((item) => (
                                         <li key={item} className="text-sm text-[#374151] font-medium flex items-start gap-2">
                                             <span className="text-[#0A0A0A] font-bold flex-shrink-0">✓</span>
@@ -266,9 +272,14 @@ export default function MethodologyPage() {
                                     ))}
                                 </ul>
                             </div>
-                            <div className="bg-[#F9FAFB] border border-[#E5E5E5] rounded-xl p-6">
-                                <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">We operate</p>
-                                <ul className="space-y-2">
+                            <div className="bg-[#FFFDFB] border border-[#FFD9C0] rounded-xl p-6 shadow-sm">
+                                <div className="flex items-center gap-2 mb-4">
+                                    <div className="w-7 h-7 rounded-md bg-[#FF6A00] flex items-center justify-center">
+                                        <span className="text-white text-xs font-black">W</span>
+                                    </div>
+                                    <p className="text-xs font-bold tracking-widest uppercase text-[#FF6A00]">We operate</p>
+                                </div>
+                                <ul className="space-y-3">
                                     {ownership.we.map((item) => (
                                         <li key={item} className="text-sm text-[#374151] font-medium flex items-start gap-2">
                                             <span className="text-[#FF6A00] font-bold flex-shrink-0">✓</span>
@@ -284,29 +295,35 @@ export default function MethodologyPage() {
                     <section className="mb-20 border-t border-[#E5E5E5] pt-12">
                         <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">The fit interview</p>
                         <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold mb-3 leading-tight">6 questions we ask on the fit call.</h2>
-                        <p className="section-sub mb-8 max-w-2xl">
+                        <p className="section-sub mb-3 max-w-2xl">
                             We turn down more agencies than we take on. Here&#39;s what we&#39;re looking for.
-                            <br />
+                        </p>
+                        <p className="text-sm text-[#374151] italic mb-8 max-w-2xl">
                             You are being interviewed. You know it. Pass = we sign. Fail = we don&#39;t, even if you want to.
                         </p>
-                        <ol className="space-y-4">
+                        <div className="space-y-2.5">
                             {sixQuestionInterview.map((q, i) => (
-                                <li key={i} className="flex items-start gap-4 bg-white border border-[#E5E5E5] rounded-xl p-5">
-                                    <span className="text-2xl font-black text-[#FF6A00] leading-none">{i + 1}</span>
-                                    <p className="text-base text-[#0A0A0A] font-medium leading-relaxed pt-0.5">{q}</p>
-                                </li>
+                                <div key={i} className="flex items-center gap-4 bg-white border border-[#E5E5E5] rounded-xl px-5 py-3 hover:border-[#FF6A00]/30 transition-colors">
+                                    <span className="w-8 h-8 rounded-lg bg-[#FFF7F0] flex items-center justify-center flex-shrink-0">
+                                        <span className="text-base font-black text-[#FF6A00] leading-none">{i + 1}</span>
+                                    </span>
+                                    <p className="text-sm text-[#0A0A0A] font-medium">{q}</p>
+                                </div>
                             ))}
-                        </ol>
+                        </div>
                     </section>
 
                     {/* Three non-compromises */}
                     <section className="mb-20 border-t border-[#E5E5E5] pt-12">
                         <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-3">The three things we won&#39;t compromise on</p>
-                        <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold mb-8 leading-tight">Selectivity is the product.</h2>
-                        <div className="space-y-5">
-                            {nonCompromises.map((nc) => (
-                                <div key={nc.title} className="border-l-4 border-[#FF6A00] pl-6 py-2">
-                                    <h3 className="text-lg font-bold text-[#0A0A0A] mb-2 leading-snug">{nc.title}</h3>
+                        <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl font-bold mb-8 leading-tight">The three things we won&#39;t budge on.</h2>
+                        <div className="space-y-4">
+                            {nonCompromises.map((nc, idx) => (
+                                <div key={nc.title} className="border-l-4 border-[#FF6A00] bg-[#FFFDFB] rounded-r-xl pl-6 pr-6 py-5">
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <span className="text-xs font-black text-[#FF6A00]">0{idx + 1}</span>
+                                        <h3 className="text-base font-bold text-[#0A0A0A] leading-snug">{nc.title}</h3>
+                                    </div>
                                     <p className="text-sm text-[#6B7280] font-medium leading-relaxed">{nc.body}</p>
                                 </div>
                             ))}
@@ -314,12 +331,12 @@ export default function MethodologyPage() {
                     </section>
 
                     {/* CTA */}
-                    <section className="border-t border-[#E5E5E5] pt-12 text-center max-w-2xl mx-auto">
+                    <section className="bg-[#F9FAFB] border border-[#E5E5E5] rounded-2xl px-8 sm:px-12 py-14 text-center max-w-3xl mx-auto">
                         <h2 className="text-2xl sm:text-3xl font-bold text-[#0A0A0A] mb-3 leading-tight">
-                            Think your agency passes the fit interview?
+                            Think your agency passes?
                         </h2>
-                        <p className="section-sub mb-8">
-                            On the fit call, we dig into your agency, discuss where BD is breaking down, and map out exactly what we&#39;d build first and how fast you&#39;d see results.
+                        <p className="section-sub mb-8 max-w-xl mx-auto">
+                            On the fit call, we dig into your agency, discuss where BD is breaking down, and map out exactly what we&#39;d build first — and how fast you&#39;d see results.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <Button href="https://cal.com/tusharm/30min?user=tusharm" target="_blank" variant="dark" size="lg" pill>
