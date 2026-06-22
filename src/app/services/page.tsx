@@ -34,7 +34,7 @@ export default function ServicesPage() {
                             What we actually do.
                         </h1>
                         <p className="hero-sub">
-                            Five services. One outcome — your BD function, replaced. Each one maps to a specific bottleneck. You can buy them as a bundle (most common) or scope individual gaps.
+                            Five services. One outcome — your team wakes up to replies, not tasks. Each one maps to a specific bottleneck. You can buy them as a bundle (most common) or scope individual gaps.
                         </p>
                     </div>
 
