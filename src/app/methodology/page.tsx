@@ -50,11 +50,11 @@ export default function MethodologyPage() {
                         <div className="bg-[#F9FAFB] border border-[#E5E5E5] rounded-2xl p-6">
                             <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
                                 {[
-                                    { timing: 'Week 0–2',  label: 'Setup & Foundation' },
-                                    { timing: 'Week 2–3',  label: 'Campaign Live' },
-                                    { timing: 'Week 3–4',  label: 'First Analysis' },
+                                    { timing: 'Week 0–2', label: 'Setup & Foundation' },
+                                    { timing: 'Week 2–3', label: 'Campaign Live' },
+                                    { timing: 'Week 3–4', label: 'First Analysis' },
                                     { timing: 'Month 2–3', label: 'Scale & Optimise' },
-                                    { timing: 'Always',    label: 'Ongoing' },
+                                    { timing: 'Always', label: 'Ongoing' },
                                 ].map((p, i) => (
                                     <div key={i} className="bg-white border border-[#E5E5E5] rounded-xl p-4">
                                         <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-1">{p.timing}</p>
@@ -312,7 +312,7 @@ export default function MethodologyPage() {
                             Think your agency passes the fit interview?
                         </h2>
                         <p className="section-sub mb-8">
-                            On the fit call we open the 180-point BD scorecard live, score your agency together, run your volume math, and identify the 1–3 highest-leverage things we&#39;d build first.
+                            On the fit call, we dig into your agency, discuss where BD is breaking down, and map out exactly what we'd build first and how fast you'd see results.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <Button href="https://cal.com/tusharm/30min?user=tusharm" target="_blank" variant="dark" size="lg" pill>
