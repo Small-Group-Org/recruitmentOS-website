@@ -118,7 +118,7 @@ const osItems: Item[] = [
         ),
     },
     {
-        text: '4-touch cold + 3-touch warm cadences run daily on your stack',
+        text: 'Personalised multi-touch sequences run daily on your stack',
         icon: (
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
