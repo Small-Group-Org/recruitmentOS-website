@@ -45,6 +45,11 @@ export default function MethodologyPage() {
                         <p className="hero-sub mb-8">
                             Most agencies wing their BD. This is what a system looks like. Outreach live by <strong className="font-semibold text-[#0A0A0A]">Week 2</strong>. Self-sustaining pipeline by <strong className="font-semibold text-[#0A0A0A]">Month 3</strong>.
                         </p>
+                        <div className="mb-10">
+                            <Button href="https://cal.com/tusharm/30min?user=tusharm" target="_blank" variant="dark" size="lg" pill>
+                                Book a fit call
+                            </Button>
+                        </div>
 
                         {/* 5-phase timeline strip */}
                         <div className="bg-[#F9FAFB] border border-[#E5E5E5] rounded-2xl p-6">
