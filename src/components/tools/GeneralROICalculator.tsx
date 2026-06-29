@@ -2,31 +2,15 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { Button, Card } from '@/components/ui';
+import { pricingPlans } from '@/lib/pricing-data';
 
-// Tiers pulled from pricingPlans → Revenue Booster (email plan), matching the pricing page exactly
-// Each tier = platformFee (monthly) + leadsCost (one-off leads)
-type Tier = {
-    name: string;
-    leadsLabel: string;
-    platformFee: number;   // monthly platform fee
-    leadsCost: number;     // one-off leads package
-    totalMonthly: number;  // combined cost treated as monthly for ROI calc
-    capacityLabel: string;
-};
-
-const TIERS: Tier[] = [
-    { name: 'Revenue Booster',   leadsLabel: '500 leads/mo',  platformFee: 150,  leadsCost: 45,  totalMonthly: 195,  capacityLabel: '500 leads · 100 emails/day' },
-    { name: 'Revenue Booster',   leadsLabel: '3,000 leads/mo',  platformFee: 150,  leadsCost: 210, totalMonthly: 360,  capacityLabel: '3K leads · 500 emails/day' },
-    { name: 'Revenue Booster',   leadsLabel: '10,000 leads/mo', platformFee: 250,  leadsCost: 500, totalMonthly: 750,  capacityLabel: '10K leads · 2,000 emails/day' },
-];
-
-// Pick tier based on monthly placement target: rough heuristic maps placements → leads needed
+// Pick tier index based on monthly placement target: rough heuristic maps placements → leads needed
 // Assumes ~1 placement per ~400–500 leads at average funnel rates
-function pickTierFromPlacements(placements: number): Tier | null {
+function pickOptionIndexFromPlacements(placements: number): number | null {
     if (!isFinite(placements) || placements <= 0) return null;
-    if (placements <= 1)  return TIERS[0]; // ~500 leads
-    if (placements <= 7)  return TIERS[1]; // ~3,000 leads
-    if (placements <= 25) return TIERS[2]; // ~10,000 leads
+    if (placements <= 1)  return 0; // ~500 leads
+    if (placements <= 7)  return 1; // ~3,000 leads
+    if (placements <= 25) return 2; // ~10,000 leads
     return null; // above 25 → enterprise, prompt to call
 }
 
@@ -42,8 +26,10 @@ type Props = {
 };
 
 function formatCurrency(n: number): string {
-    if (!isFinite(n) || n <= 0) return '—';
-    return `$${Math.round(n).toLocaleString()}`;
+    if (!isFinite(n)) return '—';
+    const abs = Math.abs(n);
+    const formatted = `$${Math.round(abs).toLocaleString()}`;
+    return n < 0 ? `-${formatted}` : formatted;
 }
 
 export default function GeneralROICalculator({ embedded = false, initialPlacements = 4, initialFee = 10000, onPlacementsChange }: Props) {
@@ -51,25 +37,56 @@ export default function GeneralROICalculator({ embedded = false, initialPlacemen
     const [placements, setPlacements] = useState(initialPlacements);
     const [hours, setHours] = useState(84);
     const [hourly, setHourly] = useState(10);
+    const [activePlanId, setActivePlanId] = useState<string>('email');
 
     useEffect(() => {
         onPlacementsChange?.(placements);
     }, [placements, onPlacementsChange]);
 
-    const tier = useMemo(() => pickTierFromPlacements(placements), [placements]);
+    const optionIndex = useMemo(() => pickOptionIndexFromPlacements(placements), [placements]);
+
+    const planData = useMemo(() => {
+        const activePlan = pricingPlans.find(p => p.id === activePlanId);
+        const leadsPlan = pricingPlans.find(p => p.id === 'leads');
+        
+        if (!activePlan || optionIndex === null || optionIndex >= activePlan.options.length) {
+            return null;
+        }
+
+        const activeOption = activePlan.options[optionIndex];
+        const leadsOption = leadsPlan?.options[optionIndex];
+
+        const totalCost = activeOption.price;
+        const leadsCost = leadsOption ? leadsOption.price : totalCost;
+        const platformFee = activePlanId === 'leads' ? 0 : totalCost - leadsCost;
+
+        // Build a display capacity label
+        // E.g. "Growth Seed" (data only) uses option.label, others use detailed option.detail
+        const capacityLabel = activePlanId === 'leads' 
+            ? `${activeOption.label} only`
+            : `${activeOption.label.replace('/mo', '')} · ${activeOption.detail}`;
+
+        return {
+            name: activePlan.name,
+            billing: activePlan.billing,
+            capacityLabel,
+            platformFee,
+            leadsCost,
+            totalCost
+        };
+    }, [activePlanId, optionIndex]);
 
     const calc = useMemo(() => {
         const manualCost = hours * hourly;
-        if (!tier) {
+        if (!planData) {
             return { manualCost, savings: 0, roi: 0, paybackDays: 0 };
         }
-        const savings = manualCost - tier.totalMonthly;
+        const savings = manualCost - planData.totalCost;
         const monthlyRevenue = placements * fee;
-        const roi = monthlyRevenue > 0 ? monthlyRevenue / tier.totalMonthly : 0;
-        const paybackDays = monthlyRevenue > 0 ? (tier.totalMonthly / monthlyRevenue) * 30 : 0;
+        const roi = monthlyRevenue > 0 ? monthlyRevenue / planData.totalCost : 0;
+        const paybackDays = monthlyRevenue > 0 ? (planData.totalCost / monthlyRevenue) * 30 : 0;
         return { manualCost, savings, roi, paybackDays };
-    }, [tier, fee, placements, hours, hourly]);
-
+    }, [planData, fee, placements, hours, hourly]);
 
     return (
         <Card as="section" padding="lg">
@@ -97,50 +114,82 @@ export default function GeneralROICalculator({ embedded = false, initialPlacemen
                 </div>
 
                 {/* Outcome card */}
-                <div className="bg-[#0A0A0A] rounded-2xl p-6 sm:p-8 text-white">
-                    {!tier && placements === 0 && (
-                        <EmptyState message="Adjust your inputs to see your price." />
-                    )}
-
-                    {!tier && placements > 25 && (
-                        <EmptyState
-                            title="You're above the standard tiers."
-                            message="Custom volume — talk to Tushar to scope a bespoke retainer."
-                            cta
-                        />
-                    )}
-
-                    {tier && (
-                        <>
-                            <p className="text-[10px] font-bold uppercase tracking-widest text-[#FF6A00] mb-2">Recommended plan</p>
-
-                            {/* Plan name + capacity */}
-                            <div className="inline-flex items-center gap-2 bg-[#FF6A00]/10 border border-[#FF6A00]/30 rounded-full px-3 py-1 mb-4">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00]" />
-                                <span className="text-xs font-bold text-[#FF6A00]">{tier.name} · {tier.capacityLabel}</span>
+                <div className="bg-[#0A0A0A] rounded-2xl p-6 sm:p-8 text-white flex flex-col justify-between">
+                    <div>
+                        {/* Plan Selector Tabs */}
+                        <div className="mb-6">
+                            <p className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2.5">Service tier</p>
+                            <div className="grid grid-cols-3 gap-1 bg-white/10 p-1 rounded-xl">
+                                {pricingPlans.map((plan) => (
+                                    <button
+                                        key={plan.id}
+                                        type="button"
+                                        onClick={() => setActivePlanId(plan.id)}
+                                        className={`py-2 px-1 text-[10px] sm:text-[11px] font-bold rounded-lg transition-all text-center cursor-pointer ${
+                                            activePlanId === plan.id
+                                                ? 'bg-[#FF6A00] text-white shadow-sm'
+                                                : 'text-white/60 hover:text-white hover:bg-white/5'
+                                        }`}
+                                    >
+                                        {plan.name}
+                                    </button>
+                                ))}
                             </div>
+                        </div>
 
-                            {/* Price split */}
-                            <div className="mb-5">
-                                <p className="text-[10px] uppercase tracking-widest opacity-50 mb-1">Your monthly cost</p>
-                                <div className="flex items-baseline gap-1.5 flex-wrap">
-                                    <span className="text-4xl font-black tracking-tight">${tier.platformFee}<span className="text-lg font-semibold opacity-50">/mo</span></span>
-                                    <span className="text-base font-bold opacity-40">+</span>
-                                    <span className="text-4xl font-black tracking-tight">${tier.leadsCost}<span className="text-lg font-semibold opacity-50"> leads</span></span>
+                        {optionIndex === null && placements === 0 && (
+                            <EmptyState message="Adjust your inputs to see your price." />
+                        )}
+
+                        {optionIndex === null && placements > 25 && (
+                            <EmptyState
+                                title="You're above the standard tiers."
+                                message="Custom volume — talk to Tushar to scope a bespoke retainer."
+                                cta
+                            />
+                        )}
+
+                        {planData && (
+                            <>
+                                <p className="text-[10px] font-bold uppercase tracking-widest text-[#FF6A00] mb-2">Recommended plan</p>
+
+                                {/* Plan name + capacity */}
+                                <div className="inline-flex items-center gap-2 bg-[#FF6A00]/10 border border-[#FF6A00]/30 rounded-full px-3 py-1 mb-4">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00]" />
+                                    <span className="text-xs font-bold text-[#FF6A00]">{planData.name} · {planData.capacityLabel}</span>
                                 </div>
-                                <p className="text-[10px] opacity-40 mt-1">Platform fee (monthly) + one-off leads package</p>
-                            </div>
 
-                            <div className="grid grid-cols-3 gap-3 mb-5">
-                                <Stat label="Savings / mo" value={formatCurrency(calc.savings)} hint="vs manual cost" />
-                                <Stat label="ROI" value={`${calc.roi.toFixed(1)}×`} hint="revenue / retainer" />
-                                <Stat label="Payback" value={`${Math.max(1, Math.round(calc.paybackDays))}d`} hint="from one placement" />
-                            </div>
+                                {/* Price */}
+                                <div className="mb-5">
+                                    <p className="text-[10px] uppercase tracking-widest opacity-50 mb-1">
+                                        Your cost
+                                    </p>
+                                    <div className="flex items-baseline gap-1.5 flex-wrap">
+                                        <span className="text-4xl font-black tracking-tight">${planData.totalCost}</span>
+                                        <span className="text-sm font-semibold opacity-50">
+                                            {planData.billing === 'one-off' ? 'one-off' : '/mo'}
+                                        </span>
+                                    </div>
+                                    <p className="text-[10px] opacity-40 mt-1">
+                                        {planData.billing === 'one-off' 
+                                            ? 'Data-only leads package' 
+                                            : 'Fully-managed campaign retainer'}
+                                    </p>
+                                </div>
 
-                            <Button href="/fit-call" fullWidth>
-                                Book a fit call to walk through your numbers →
-                            </Button>
-                        </>
+                                <div className="grid grid-cols-3 gap-3 mb-6">
+                                    <Stat label="Savings / mo" value={formatCurrency(calc.savings)} hint={planData.billing === 'one-off' ? 'vs manual data prep' : 'vs manual prospecting'} />
+                                    <Stat label="ROI" value={`${calc.roi.toFixed(1)}×`} hint="revenue / cost" />
+                                    <Stat label="Payback" value={`${Math.max(1, Math.round(calc.paybackDays))}d`} hint="from one placement" />
+                                </div>
+                            </>
+                        )}
+                    </div>
+
+                    {planData && (
+                        <Button href="/fit-call" fullWidth variant="primary">
+                            Book a fit call to walk through your numbers →
+                        </Button>
                     )}
                 </div>
             </div>

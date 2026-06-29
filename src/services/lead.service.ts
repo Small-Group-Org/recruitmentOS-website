@@ -20,7 +20,8 @@ export interface CreateLeadPayload {
     | 'tool_cold_email_writer'
     | 'tool_volume_gap_calculator'
     | 'tool_general_roi'
-    | 'tool_bd_scorecard';
+    | 'tool_bd_scorecard'
+    | 'tool_bd_analyzer';
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;

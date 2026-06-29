@@ -9,12 +9,14 @@ import { Tool } from '@/lib/tools-data';
 import VolumeGapCalculator from './VolumeGapCalculator';
 import GeneralROICalculator from './GeneralROICalculator';
 import BDScorecard from './BDScorecard';
+import BDAnalyzer from './BDAnalyzer';
 import ToolGateModal from './ToolGateModal';
 
 const INTERACTIVE_COMPONENTS: Record<string, React.ComponentType> = {
   'volume-gap-calculator': VolumeGapCalculator,
   'general-roi': GeneralROICalculator,
   'bd-scorecard': BDScorecard,
+  'bd-analyzer': BDAnalyzer,
 };
 
 export default function ToolPageClient({ tool }: { tool: Tool }) {

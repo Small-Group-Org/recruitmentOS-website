@@ -12,23 +12,41 @@ function formatNum(n: number): string {
     return Math.round(n).toLocaleString();
 }
 
+import { pricingPlans } from '@/lib/pricing-data';
+
 // Maps required monthly lead volume → recommended plan from pricingPlans
-// Tiers are based on the Revenue Booster (email) plan options: 2k, 5k, 10k, 20k leads
 type TierMatch = {
     name: string;       // Plan name
-    leadsLabel: string; // e.g. "2,000 leads/mo"
-    platformFee: number; // Monthly platform fee
-    leadsCost: number;  // One-off leads cost
-    detail: string;     // e.g. "6K emails · Smartlead Basic"
+    leadsLabel: string; // e.g. "3,000 leads/mo"
+    totalCost: number;
+    detail: string;     // e.g. "500 emails/day"
 };
 
 function pickTierFromLeads(leadsNeeded: number): TierMatch | null {
     if (!isFinite(leadsNeeded) || leadsNeeded <= 0) return null;
-    if (leadsNeeded <= 500)  return { name: 'Revenue Booster', leadsLabel: '500 leads/mo',  platformFee: 150,  leadsCost: 45, detail: '100 emails/day' };
-    if (leadsNeeded <= 3000)  return { name: 'Revenue Booster', leadsLabel: '3,000 leads/mo',  platformFee: 150,  leadsCost: 210, detail: '500 emails/day' };
-    if (leadsNeeded <= 10000) return { name: 'Revenue Booster', leadsLabel: '10,000 leads/mo', platformFee: 250,  leadsCost: 500, detail: '2,000 emails/day' };
-    // Above 10k → Enterprise
-    return null;
+    
+    const emailPlan = pricingPlans.find(p => p.id === 'email');
+    if (!emailPlan) return null;
+
+    let index = -1;
+    if (leadsNeeded <= 500) index = 0;
+    else if (leadsNeeded <= 3000) index = 1;
+    else if (leadsNeeded <= 10000) index = 2;
+
+    if (index === -1 || index >= emailPlan.options.length) return null;
+
+    const option = emailPlan.options[index];
+    
+    // Extract leads label from option detail
+    // e.g., '3,000 leads/mo · All infra included' -> '3,000 leads/mo'
+    const leadsLabel = option.detail.split(' · ')[0];
+
+    return {
+        name: emailPlan.name,
+        leadsLabel,
+        totalCost: option.price,
+        detail: option.label,
+    };
 }
 
 export default function VolumeGapCalculator() {
@@ -122,11 +140,9 @@ export default function VolumeGapCalculator() {
                             <p className="text-[9px] font-bold uppercase tracking-widest text-[#FF6A00] mb-1">Recommended · {calc.recommendedTier.name}</p>
                             <p className="text-[10px] text-[#6B7280] mb-2">{calc.recommendedTier.leadsLabel} · {calc.recommendedTier.detail}</p>
                             <div className="flex items-baseline gap-1.5 flex-wrap">
-                                <span className="text-xl font-black text-[#0A0A0A]">${calc.recommendedTier.platformFee}<span className="text-xs font-medium text-[#6B7280]">/mo</span></span>
-                                <span className="text-xs font-bold text-[#9CA3AF]">+</span>
-                                <span className="text-xl font-black text-[#0A0A0A]">${calc.recommendedTier.leadsCost}<span className="text-xs font-medium text-[#6B7280]"> leads</span></span>
+                                <span className="text-xl font-black text-[#0A0A0A]">${calc.recommendedTier.totalCost}<span className="text-xs font-medium text-[#6B7280]">/mo</span></span>
                             </div>
-                            <p className="text-[9px] text-[#9CA3AF] mt-1">Platform fee (monthly) + one-off leads package</p>
+                            <p className="text-[9px] text-[#9CA3AF] mt-1">Fully-managed campaign retainer</p>
                         </div>
                     )}
 
