@@ -38,17 +38,17 @@ export const packages: Package[] = [
             'One free re-export within 30 days',
         ],
         prices: {
-            1000: 49,
-            2500: 99,
-            5000: 179,
-            10000: 299,
+            1000: 56,
+            2500: 114,
+            5000: 206,
+            10000: 344,
         },
         annualPrices: {
             // Annual = monthly × 10 months (2 free). Approx per-volume.
-            1000: 409,   // $49 × 10 − rounding
-            2500: 825,
-            5000: 1490,
-            10000: 2490,
+            1000: 470,   // $49 × 10 − rounding
+            2500: 949,
+            5000: 1714,
+            10000: 2864,
         },
     },
     {
@@ -65,16 +65,16 @@ export const packages: Package[] = [
             'Smartlead platform access included',
         ],
         prices: {
-            1000: 149,
-            2500: 249,
-            5000: 399,
-            10000: 699,
+            1000: 171,
+            2500: 286,
+            5000: 459,
+            10000: 804,
         },
         annualPrices: {
-            1000: 1239,
-            2500: 2075,
-            5000: 3325,
-            10000: 5990,
+            1000: 1425,
+            2500: 2386,
+            5000: 3824,
+            10000: 6889,
         },
     },
     {
@@ -91,16 +91,16 @@ export const packages: Package[] = [
             'Bi-weekly pipeline health report',
         ],
         prices: {
-            1000: 299,
-            2500: 499,
-            5000: 799,
-            10000: 1299,
+            1000: 344,
+            2500: 574,
+            5000: 919,
+            10000: 1494,
         },
         annualPrices: {
-            1000: 2490,
-            2500: 4159,
-            5000: 6659,
-            10000: 10990,
+            1000: 2864,
+            2500: 4783,
+            5000: 7658,
+            10000: 12639,
         },
     },
     {
@@ -175,15 +175,15 @@ export const pricingPlans: PricingPlan[] = [
         highlight: false,
         defaultIndex: 0,
         options: [
-            { leads: 500, label: '500 leads', price: 45, detail: '$0.09 / lead' },
-            { leads: 3000, label: '3,000 leads', price: 210, detail: '$0.07 / lead' },
-            { leads: 10000, label: '10,000 leads', price: 500, detail: '$0.05 / lead' },
+            { leads: 500, label: '500 leads', price: 52, detail: '$0.10 / lead' },
+            { leads: 3000, label: '3,000 leads', price: 242, detail: '$0.08 / lead' },
+            { leads: 10000, label: '10,000 leads', price: 575, detail: '$0.058 / lead' },
         ],
         features: [
             'Hiring signal detection',
             'Decision-maker enrichment',
             'Campaign-ready B2B cold email lists (Smartlead/Instantly formatted)',
-            'Top-up to next tier at $0.09 / lead',
+            'Top-up to next tier at $0.10 / lead',
         ],
         cta: { label: 'Get leads', href: CAL_LINK },
     },
@@ -198,9 +198,9 @@ export const pricingPlans: PricingPlan[] = [
         highlight: true,
         defaultIndex: 1,
         options: [
-            { leads: 100, label: '100 emails / day', price: 195, detail: '500 leads/mo · All infra included' },
-            { leads: 500, label: '500 emails / day', price: 360, detail: '3,000 leads/mo · All infra included' },
-            { leads: 2000, label: '2,000 emails / day', price: 750, detail: '10,000 leads/mo · All infra included' },
+            { leads: 100, label: '100 emails / day', price: 224, detail: '500 leads/mo · All infra included' },
+            { leads: 500, label: '500 emails / day', price: 414, detail: '3,000 leads/mo · All infra included' },
+            { leads: 2000, label: '2,000 emails / day', price: 863, detail: '10,000 leads/mo · All infra included' },
         ],
         features: [
             'Everything in Leads',
@@ -208,7 +208,7 @@ export const pricingPlans: PricingPlan[] = [
             'Client dashboard to track every email',
             'Weekly connect with your account manager',
             'All Infra & Smartlead costs covered',
-            'Top-up to next tier at $0.09 / lead',
+            'Top-up to next tier at $0.10 / lead',
         ],
         cta: { label: 'Book a call', href: CAL_LINK },
     },
@@ -223,9 +223,9 @@ export const pricingPlans: PricingPlan[] = [
         highlight: false,
         defaultIndex: 1,
         options: [
-            { leads: 100, label: '500 prospects / mo', price: 344, detail: 'All Infra & LinkedIn included' },
-            { leads: 500, label: '3,000 prospects / mo', price: 509, detail: 'All Infra & LinkedIn included' },
-            { leads: 2000, label: '10,000 prospects / mo', price: 899, detail: 'All Infra & LinkedIn included' },
+            { leads: 100, label: '500 prospects / mo', price: 396, detail: 'All Infra & LinkedIn included' },
+            { leads: 500, label: '3,000 prospects / mo', price: 585, detail: 'All Infra & LinkedIn included' },
+            { leads: 2000, label: '10,000 prospects / mo', price: 1034, detail: 'All Infra & LinkedIn included' },
         ],
         features: [
             'Everything in Email outreach',
@@ -233,7 +233,7 @@ export const pricingPlans: PricingPlan[] = [
             'Multi-touch follow-up',
             'Dedicated account manager',
             'All Infra & Smartlead costs covered',
-            'Top-up to next tier at $0.09 / lead',
+            'Top-up to next tier at $0.10 / lead',
         ],
         cta: { label: 'Book a call', href: CAL_LINK },
     },
@@ -250,7 +250,7 @@ export type AddOn = {
 export const addOns: AddOn[] = [
     {
         label: 'Phone number upgrade',
-        price: '+$320 / 1K leads',
+        price: '+$368 / 1K leads',
         note: 'Adds mobile to any package',
     },
     {
@@ -260,21 +260,21 @@ export const addOns: AddOn[] = [
     },
     {
         label: 'Additional Smartlead sending domain',
-        price: '+$49 / domain / mo',
+        price: '+$56 / domain / mo',
     },
     {
         label: 'ATS / CRM push integration',
-        price: '+$199 / mo',
+        price: '+$229 / mo',
         note: 'Lever, Greenhouse, HubSpot',
     },
     {
         label: 'Custom ICP workshop',
-        price: '$299 one-time',
+        price: '$344 one-time',
         note: '1h strategy call + ICP brief',
     },
     {
         label: 'LinkedIn automation upgrade',
-        price: '+$79 / mo',
+        price: '+$91 / mo',
         note: 'Dedicated LinkedIn account',
     },
 ];
@@ -289,9 +289,9 @@ export type AnnualRow = {
 };
 
 export const annualRows: AnnualRow[] = [
-    { packageName: 'Starter', volume: '10K leads', monthly: 299, annual: 2490 },
-    { packageName: 'Growth', volume: '10K leads', monthly: 699, annual: 5990 },
-    { packageName: 'Scale', volume: '10K leads', monthly: 1299, annual: 10990 },
+    { packageName: 'Starter', volume: '10K leads', monthly: 344, annual: 2864 },
+    { packageName: 'Growth', volume: '10K leads', monthly: 804, annual: 6889 },
+    { packageName: 'Scale', volume: '10K leads', monthly: 1494, annual: 12639 },
 ];
 
 // ─── Legacy bracket helpers (kept for any page that still imports them) ───────
@@ -318,8 +318,8 @@ export const brackets: Bracket[] = [
         name: 'Starter',
         capacityLabel: 'up to 4 placements/mo',
         maxPlacements: 4,
-        monthlyUsd: 1300,
-        buildFeeUsd: 500,
+        monthlyUsd: 1495,
+        buildFeeUsd: 575,
         leadsPerMo: '2,500',
         targetPlacements: 2,
         roiMultiplier: 24,
@@ -335,8 +335,8 @@ export const brackets: Bracket[] = [
         name: 'Growth',
         capacityLabel: 'up to 10 placements/mo',
         maxPlacements: 10,
-        monthlyUsd: 2750,
-        buildFeeUsd: 750,
+        monthlyUsd: 3163,
+        buildFeeUsd: 863,
         leadsPerMo: '8,750',
         targetPlacements: 7,
         roiMultiplier: 26,
@@ -352,8 +352,8 @@ export const brackets: Bracket[] = [
         name: 'Pro',
         capacityLabel: 'up to 25 placements/mo',
         maxPlacements: 25,
-        monthlyUsd: 6500,
-        buildFeeUsd: 1000,
+        monthlyUsd: 7475,
+        buildFeeUsd: 1150,
         leadsPerMo: '25,000',
         targetPlacements: 20,
         roiMultiplier: 31,
