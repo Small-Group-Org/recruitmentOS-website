@@ -17,23 +17,23 @@ export type Tool = {
 };
 
 export const tools: Tool[] = [
-  {
-    slug: 'bd-analyzer',
-    title: 'AI BD System Analyzer',
-    source: 'tool_bd_analyzer',
-    description:
-      'Describe your current BD setup and ICP. Our AI analyzes your bottlenecks, searches the BetterEnrich People API for your addressable market, maps your situation to the RecruitmentOS methodology, and designs your optimal campaign plan with pricing.',
-    category: 'Strategy',
-    badge: 'AI Agent',
-    isNew: true,
-    interactive: true,
-    whatsInside: [
-      'AI diagnosis of your BD system across 4 core pillars with maturity scores',
-      'Estimates the number of qualified leads available for your business based on your ICP',
-      'Your bottlenecks mapped 1:1 to how RecruitmentOS specifically fixes each one',
-      '1/3 campaign plan: addressable market → leads/month → emails/day → pricing tier',
-    ],
-  },
+//   {
+//     slug: 'bd-analyzer',
+//     title: 'AI BD System Analyzer',
+//     source: 'tool_bd_analyzer',
+//     description:
+//       'Describe your current BD setup and ICP. Our AI analyzes your bottlenecks, searches the BetterEnrich People API for your addressable market, maps your situation to the RecruitmentOS methodology, and designs your optimal campaign plan with pricing.',
+//     category: 'Strategy',
+//     badge: 'AI Agent',
+//     isNew: true,
+//     interactive: true,
+//     whatsInside: [
+//       'AI diagnosis of your BD system across 4 core pillars with maturity scores',
+//       'Estimates the number of qualified leads available for your business based on your ICP',
+//       'Your bottlenecks mapped 1:1 to how RecruitmentOS specifically fixes each one',
+//       '1/3 campaign plan: addressable market → leads/month → emails/day → pricing tier',
+//     ],
+//   },
   {
     slug: 'cold-email-writer',
     title: 'AI Cold Email Writer',
