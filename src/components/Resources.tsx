@@ -62,7 +62,7 @@ const resources = [
         description: "A checklist to scan your current workflow for manual bottlenecks and optimization opportunities.",
         type: "Checklist",
         li_duration: "5 min prep",
-        link: "https://recruitment-audit.netlify.app/",
+        link: "/resources/ai-audit",
         cta: "Scan Now",
         image: "/resources/ai-audit.webp",
         icon: undefined,
@@ -278,7 +278,7 @@ export default function Resources() {
                                         {cardInner}
                                     </div>
                                 ) : (
-                                    <Link key={index} href={resource.link} target="_blank" className="flex flex-col group">
+                                    <Link key={index} href={resource.link} {...(resource.link.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className="flex flex-col group">
                                         {cardInner}
                                     </Link>
                                 );
