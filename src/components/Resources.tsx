@@ -40,7 +40,7 @@ const resources = [
         description: "A complete system to automate and scale recruitment with AI. Includes 25+ frameworks and 15+ workflows.",
         type: "Guide",
         li_duration: "30+ Pages",
-        link: "https://recruitement-os.netlify.app/",
+        link: "__gate__https://shy-bottle-afc.notion.site/Recruitment-AI-solutions-playbook-32ab18f67e3c80ab9b02e4840c2143af",
         image: "/resources/ai-hiring-blueprint.webp",
         cta: "Download Free Guide",
         icon: undefined,
