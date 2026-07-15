@@ -68,6 +68,17 @@ const resources = [
         icon: undefined,
         source: 'resource_ai_audit' as const
     },
+    {
+        title: "BD Outreach Email Template & Funnel",
+        description: "The exact email template and outreach funnel that gets replies. One email landed a 'exactly what we need' response from a hiring director — without chasing.",
+        type: "Template",
+        li_duration: "Free Access",
+        link: "/resources/outreach-template",
+        cta: "Get Free Template",
+        image: "/resources/email-outreach-template.png",
+        icon: undefined,
+        source: 'resource_email_outreach_template' as const
+    },
 ];
 
 function LazyIframe({ src, height, title, allow, allowFullScreen, className, style }: {
@@ -457,7 +468,8 @@ export default function Resources() {
                             { src: "https://www.linkedin.com/embed/feed/update/urn:li:share:7420553911931002881?collapsed=1", h: "670" },
                             { src: "https://www.linkedin.com/embed/feed/update/urn:li:share:7445571343707910144?collapsed=1", h: "581" },
                             { src: "https://www.linkedin.com/embed/feed/update/urn:li:share:7445098631516545024?collapsed=1", h: "670" },
-                            { src: "https://www.linkedin.com/embed/feed/update/urn:li:share:7446272906940284928?collapsed=1", h: "670" }
+                            { src: "https://www.linkedin.com/embed/feed/update/urn:li:share:7446272906940284928?collapsed=1", h: "670" },
+                            { src: "https://www.linkedin.com/embed/feed/update/urn:li:activity:7449345678901234567?collapsed=1", h: "720" }
                         ].map((post, idx) => (
                             <div key={idx} className="bg-white border border-[#E5E5E5] rounded-2xl sm:rounded-[2rem] p-3 sm:p-4 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 sm:hover:-translate-y-3 transition-all duration-500 ease-out flex flex-col group">
                                 <div className="rounded-xl sm:rounded-[1.5rem] overflow-hidden border border-[#F3F4F6] bg-[#FAFAFA]">
