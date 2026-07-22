@@ -9,6 +9,7 @@ import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
 import ProductDemo from '@/components/ProductDemo';
 import CaseStudiesPreview from '@/components/CaseStudiesPreview';
+import JobsPreview from '@/components/JobsPreview';
 import FAQ from '@/components/FAQ';
 import { buildCanonical } from '@/lib/seo';
 
@@ -36,6 +37,7 @@ export default function Home() {
             <BeforeAfter />
             <WhyNotDIY />
             <Features />
+            <JobsPreview />
             <ToolTicker />
             <FinalCTA />
             <FAQ />

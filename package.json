@@ -10,6 +10,7 @@
     "lint:banned": "! grep -rniE 'book a demo|5x (your )?placements?|autopilot|ai.powered|fully automated' src/"
   },
   "dependencies": {
+    "lucide-react": "^1.25.0",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",

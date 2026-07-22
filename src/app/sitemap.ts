@@ -10,6 +10,7 @@ const STATIC_ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitem
     { path: '/methodology', priority: 0.9, freq: 'monthly' },
     { path: '/services', priority: 0.9, freq: 'monthly' },
     { path: '/pricing', priority: 0.9, freq: 'monthly' },
+    { path: '/jobs', priority: 0.8, freq: 'weekly' },
     { path: '/about', priority: 0.7, freq: 'monthly' },
     { path: '/contact', priority: 0.6, freq: 'monthly' },
     { path: '/tools', priority: 0.8, freq: 'weekly' },
