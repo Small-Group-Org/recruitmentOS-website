@@ -5,17 +5,28 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { leadService } from '@/services/lead.service';
 
-const NOTION_URL =
-    'https://long-streetcar-093.notion.site/Final-Outbound-Campaign-Plan-UK-Accountancy-Recruitment-39e434e7ef8c8184a591e980132c9b5b?pvs=73';
+const BREAKDOWN_URL = 'https://drive.google.com/file/d/1a4XG6ucSWX0oTiERsfT7PZHqqyqOOJmh/view';
 
-const STORAGE_KEY = 'rOS_unlocked';
+const STORAGE_KEY = 'rOS_claude_unlocked';
 
 const HEADACHES = [
-    'Finding clients',
-    'Cold outreach',
-    'Lead follow-up',
-    'Writing BD emails',
+    'Sourcing candidates',
+    'Finding new clients',
+    'Writing outreach emails',
+    'Admin & manual tasks',
     'Something else',
+];
+
+const FEATURES = [
+    { title: 'Demand Intelligence', desc: 'Identify hiring demand before vacancies become public.' },
+    { title: 'Job Discovery', desc: 'Monitor job boards, filter qualified opportunities, and identify hiring managers automatically.' },
+    { title: 'AI Candidate Sourcing', desc: 'Source and match candidates in real time.' },
+    { title: 'CV Screening', desc: 'Screen, score, and rank applicants instantly.' },
+    { title: 'Candidate Reactivation', desc: 'Reconnect with qualified candidates already in your database.' },
+    { title: 'Client Updates', desc: 'Automatically send progress reports and hiring updates.' },
+    { title: 'Interview Scheduling', desc: 'Coordinate interviews without manual back and forth.' },
+    { title: 'Reference Checking', desc: 'Collect and organize references automatically.' },
+    { title: 'Recruitment Dashboard', desc: 'Track pipeline, performance, and forecasting with live analytics.' }
 ];
 
 declare global {
@@ -24,7 +35,7 @@ declare global {
     }
 }
 
-export default function OutreachTemplateClient() {
+export default function ClaudeSystemClient() {
     const [unlocked, setUnlocked] = useState(false);
     const [checking, setChecking] = useState(true);
 
@@ -66,12 +77,12 @@ export default function OutreachTemplateClient() {
                 name,
                 email,
                 company: website || undefined,
-                source: 'resource_email_outreach_template',
+                source: 'resource_claude_recruitment_os',
                 headaches: selected,
             });
             localStorage.setItem(STORAGE_KEY, 'true');
             window.fbq?.('track', 'Lead', {
-                content_name: 'BD Outreach Template',
+                content_name: 'Claude Recruitment OS',
                 email,
             });
             setUnlocked(true);
@@ -90,7 +101,6 @@ export default function OutreachTemplateClient() {
         );
     }
 
-    // ── UNLOCKED VIEW ──────────────────────────────────────────────────────────
     if (unlocked) {
         return (
             <section className="min-h-screen bg-white">
@@ -109,22 +119,16 @@ export default function OutreachTemplateClient() {
                     </div>
 
                     <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0A0A0A] tracking-tight leading-[1.1] mb-4">
-                        BD Outreach Email Template & Funnel
+                        Recruitment Operating System powered by Claude Code
                     </h1>
                     <p className="text-[#6B7280] text-base sm:text-lg leading-relaxed mb-10 max-w-2xl">
-                        The exact email template and outreach funnel that gets replies — without chasing.
-                        One email landed a{' '}
-                        <span className="font-semibold text-[#0A0A0A]">
-                            &quot;This candidate sounds exactly what we need&quot;
-                        </span>{' '}
-                        reply from a hiring director.
+                        We&apos;ve built AI systems that automate the repetitive work behind recruitment, so recruiters can spend more time building relationships, placing candidates, and growing revenue instead of handling admin.
                     </p>
 
-                    {/* Preview image */}
-                    <div className="relative w-full rounded-2xl overflow-hidden border border-[#E5E5E5] shadow-sm mb-10">
+                    <div className="relative w-full rounded-2xl overflow-hidden border border-[#E5E5E5] shadow-sm mb-10 bg-gray-50">
                         <Image
-                            src="/resources/email-outreach-template.webp"
-                            alt="Real email replies received from the BD outreach template"
+                            src="/resources/claude-automate-ROS.webp"
+                            alt="Claude Automation"
                             width={900}
                             height={600}
                             className="w-full h-auto object-cover"
@@ -135,44 +139,51 @@ export default function OutreachTemplateClient() {
                     {/* What's inside */}
                     <div className="bg-[#FAFAFA] border border-[#E5E5E5] rounded-2xl p-6 sm:p-8 mb-8">
                         <p className="text-[10px] font-bold tracking-widest uppercase text-[#FF6A00] mb-4">
-                            What&apos;s Inside
+                            What The System Automates
                         </p>
-                        <ul className="space-y-3">
-                            {[
-                                'The exact email copy that generated these replies',
-                                'How to find the decision-maker (not HR) before writing anything',
-                                'The full outreach funnel — from research to follow-up',
-                                'Why leading with a candidate beats any pitch',
-                                '4 rules that made one email do what 50 average ones couldn\'t',
-                            ].map((item) => (
-                                <li key={item} className="flex items-start gap-3 text-sm text-[#374151]">
-                                    <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full bg-[#FFF4EB] border border-[#FFD9B8] flex items-center justify-center">
-                                        <svg width="8" height="8" viewBox="0 0 10 8" fill="none">
-                                            <path d="M1 4l3 3 5-6" stroke="#FF6A00" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
+                        <ul className="space-y-4 mb-8">
+                            {FEATURES.map((item, idx) => (
+                                <li key={item.title} className="flex items-start gap-3 text-sm text-[#374151]">
+                                    <span className="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-[#FFF4EB] border border-[#FFD9B8] flex items-center justify-center text-[10px] font-bold text-[#FF6A00]">
+                                        {String(idx + 1).padStart(2, '0')}
                                     </span>
-                                    {item}
+                                    <div>
+                                        <span className="font-semibold text-[#0A0A0A] block">{item.title}</span>
+                                        <span className="text-[#6B7280]">{item.desc}</span>
+                                    </div>
                                 </li>
                             ))}
                         </ul>
+
+                        <div className="border-t border-[#E5E5E5] pt-6 mb-6">
+                            <h3 className="text-lg font-bold text-[#0A0A0A] mb-2">Humans Still Win</h3>
+                            <p className="text-sm text-[#4B5563] mb-2">
+                                AI handles the repetitive work.
+                            </p>
+                            <p className="text-sm text-[#4B5563]">
+                                Recruiters handle the conversations, judgement, negotiation, and placements.
+                            </p>
+                        </div>
+                        
+                        <div className="bg-white border border-[#E5E5E5] rounded-xl p-5">
+                            <h3 className="text-sm font-bold text-[#0A0A0A] uppercase tracking-wider mb-2">The Result</h3>
+                            <p className="text-sm text-[#4B5563]">
+                                One recruiter can manage the workload that previously required an entire team.
+                            </p>
+                        </div>
                     </div>
 
-                    {/* CTA */}
                     <a
-                        href={NOTION_URL}
+                        href={BREAKDOWN_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-3 w-full sm:w-auto justify-center px-8 py-4 bg-[#0A0A0A] hover:bg-[#FF6A00] text-white text-sm font-bold rounded-xl transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-0.5 group"
                     >
-                        Open Template in Notion
+                        Access The Full Breakdown
                         <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
                     </a>
-
-                    <p className="text-xs text-[#9CA3AF] mt-4">
-                        Opens in Notion — free to read, duplicate, and use.
-                    </p>
                 </div>
             </section>
         );
@@ -186,7 +197,6 @@ export default function OutreachTemplateClient() {
         <section className="min-h-screen bg-[#F9FAFB]">
             <div className="max-w-2xl mx-auto px-4 pt-4 pb-10 sm:pt-6 sm:pb-14">
 
-                {/* Hero */}
                 <div className="mb-8">
                     <div className="flex items-center justify-between mb-4">
                         <Link
@@ -201,14 +211,13 @@ export default function OutreachTemplateClient() {
                         </div>
                     </div>
                     <h1 className="text-2xl sm:text-3xl font-bold text-[#0A0A0A] mb-3 leading-tight tracking-tight">
-                        Get the BD Outreach Email Template That Got This Reply
+                        Claude Code books interviews before you even see the job.
                     </h1>
 
-                    {/* Proof image */}
-                    <div className="relative w-full rounded-2xl overflow-hidden border border-[#E5E5E5] shadow-sm mb-5">
+                    <div className="relative w-full rounded-2xl overflow-hidden border border-[#E5E5E5] shadow-sm mb-5 bg-gray-50">
                         <Image
-                            src="/resources/email-outreach-template.webp"
-                            alt="Real email reply: This candidate sounds exactly what we need"
+                            src="/resources/claude-automate-ROS.webp"
+                            alt="Claude Code automates the recruitment operating system"
                             width={800}
                             height={500}
                             className="w-full h-auto object-cover"
@@ -217,18 +226,14 @@ export default function OutreachTemplateClient() {
                     </div>
 
                     <p className="text-[#6B7280] text-sm sm:text-base leading-relaxed mb-5">
-                        One email. The reply came back within days:{' '}
-                        <span className="font-semibold text-[#0A0A0A]">
-                            &quot;This candidate sounds exactly what we need.&quot;
-                        </span>{' '}
-                        Enter your details to get the exact template and outreach funnel we used.
+                        We&apos;ve built AI systems that automate the repetitive work behind recruitment, so recruiters can spend more time building relationships, placing candidates, and growing revenue instead of handling admin.
                     </p>
 
                     <ul className="space-y-2 mb-2">
                         {[
-                            'Find the decision-maker — not HR — before writing',
-                            'Lead with a candidate, not a pitch',
-                            'Send one great email instead of fifty average ones',
+                            'Discover jobs & hiring demand before they are public',
+                            'Source & screen candidates automatically',
+                            'Coordinate interviews without manual back-and-forth',
                         ].map((t) => (
                             <li key={t} className="flex items-start gap-2.5 text-sm text-[#4B5563]">
                                 <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full bg-[#FFF4EB] border border-[#FFD9B8] flex items-center justify-center">
@@ -240,9 +245,12 @@ export default function OutreachTemplateClient() {
                             </li>
                         ))}
                     </ul>
+                    
+                    <p className="text-[#6B7280] text-sm mt-5 font-semibold">
+                        Enter your details to get the full breakdown of how these AI systems connect into a complete Recruitment OS.
+                    </p>
                 </div>
 
-                {/* Form card */}
                 <div className="bg-white border border-[#E5E5E5] rounded-2xl p-6 sm:p-8 shadow-sm">
 
                     {step === 1 && (
@@ -310,7 +318,7 @@ export default function OutreachTemplateClient() {
                                     Step 2 of 2
                                 </p>
                                 <h2 className="text-lg font-bold text-[#0A0A0A]">
-                                    What&apos;s your biggest BD challenge?
+                                    What&apos;s your biggest recruitment challenge?
                                 </h2>
                                 <p className="text-sm text-[#6B7280] mt-1">
                                     Select all that apply — we tailor resources to what matters most.
@@ -340,7 +348,7 @@ export default function OutreachTemplateClient() {
                                 disabled={loading || selected.length === 0}
                                 className="w-full py-3.5 bg-[#0A0A0A] hover:bg-[#FF6A00] text-white text-sm font-bold rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed shadow-sm hover:shadow-md hover:-translate-y-0.5 !mt-5"
                             >
-                                {loading ? 'Unlocking…' : 'Get My Free Template →'}
+                                {loading ? 'Unlocking…' : 'Get The Breakdown →'}
                             </button>
                             <p className="text-center text-xs text-[#9CA3AF]">
                                 Select at least one option to continue

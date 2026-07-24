@@ -18,7 +18,7 @@ const resources = [
         description: "We've built AI systems that automate the repetitive work behind recruitment. The carousel breaks down each AI system and shows how they connect into a complete Recruitment Operating System powered by Claude Code.",
         type: "System",
         li_duration: "Free Breakdown",
-        link: "__gate__https://drive.google.com/file/d/1a4XG6ucSWX0oTiERsfT7PZHqqyqOOJmh/view",
+        link: "/resources/claude-recruitment-os",
         image: "/resources/claude-automate-ROS.webp",
         cta: "Get Full Breakdown",
         icon: undefined,
