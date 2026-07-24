@@ -52,9 +52,10 @@ export default function WhyNotDIY() {
                 </div>
 
                 {/* Comparison table */}
-                <div className="rounded-2xl border border-[#E5E5E5] overflow-hidden shadow-sm mb-12">
-                    {/* Table header */}
-                    <div className="grid grid-cols-[1.2fr_2fr_2fr] bg-[#FAFAFA] border-b border-[#E5E5E5]">
+                <div className="rounded-2xl border border-[#E5E5E5] overflow-hidden shadow-sm mb-12 overflow-x-auto">
+                    <div className="min-w-[650px] md:min-w-0">
+                        {/* Table header */}
+                        <div className="grid grid-cols-[1.2fr_2fr_2fr] bg-[#FAFAFA] border-b border-[#E5E5E5]">
                         <div className="px-5 py-3.5 text-[11px] font-bold uppercase tracking-widest text-[#9CA3AF]" />
                         <div className="px-5 py-3.5 text-[11px] font-bold uppercase tracking-widest text-[#9CA3AF] border-l border-[#E5E5E5]">
                             DIY with Instantly / Clay / etc.
@@ -98,6 +99,7 @@ export default function WhyNotDIY() {
                             </div>
                         </div>
                     ))}
+                    </div>
                 </div>
 
                 {/* Outcome callout */}

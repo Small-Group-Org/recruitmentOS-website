@@ -312,7 +312,7 @@ export default function FeaturesDiagram() {
                     <div className="flex justify-center mb-10">
                         <Hub />
                     </div>
-                    <div className="grid grid-cols-1 gap-4">
+                    <div className="grid grid-cols-1 justify-items-center gap-4">
                         {features.map((f) => (
                             <StepCard key={f.id} feature={f} visible={visible} delay="0s" />
                         ))}

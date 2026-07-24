@@ -363,15 +363,15 @@ export default function JobsFeed() {
     return (
         <>
             {/* ─── Compact Header + Search ──────────────────────────────────── */}
-            <div style={{
+            <div className="sticky-job-header" style={{
                 position: 'sticky',
-                top: 0,
+                top: 80,
                 zIndex: 40,
                 background: 'rgba(255,255,255,0.92)',
                 backdropFilter: 'blur(12px)',
                 borderBottom: '1px solid var(--border)',
             }}>
-                <div style={{ maxWidth: 1280, margin: '0 auto', padding: '12px 24px' }}>
+                <div className="px-4 md:px-6" style={{ maxWidth: 1280, margin: '0 auto', paddingTop: 12, paddingBottom: 12 }}>
                     {/* Row 1: Title + Search + Sort */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
                         {/* Left: Title + count */}
@@ -597,7 +597,7 @@ export default function JobsFeed() {
             </div>
 
             {/* ─── Main Content ──────────────────────────────────────────────── */}
-            <div style={{ maxWidth: 1280, margin: '0 auto', padding: '16px 24px 32px' }}>
+            <div className="px-4 md:px-6" style={{ maxWidth: 1280, margin: '0 auto', paddingTop: 16, paddingBottom: 32 }}>
 
                 {/* Rate Limit */}
                 {rateLimited && (
