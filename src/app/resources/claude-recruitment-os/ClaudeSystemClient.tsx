@@ -7,7 +7,7 @@ import { leadService } from '@/services/lead.service';
 
 const BREAKDOWN_URL = 'https://drive.google.com/file/d/1a4XG6ucSWX0oTiERsfT7PZHqqyqOOJmh/view';
 
-const STORAGE_KEY = 'rOS_claude_unlocked';
+const STORAGE_KEY = 'rOS_unlocked';
 
 const HEADACHES = [
     'Sourcing candidates',
