@@ -10,7 +10,7 @@ export default function Hero() {
         <section className="relative overflow-hidden pt-12 md:pt-20 pb-16 md:pb-24 bg-white font-sans" id="hero">
             {/* Background elements */}
             <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-orange-50 via-white to-white pointer-events-none" />
-            <div className="absolute top-0 right-0 w-full h-[600px] bg-[url('/noise.png')] opacity-[0.03] pointer-events-none mix-blend-overlay" />
+            <div className="absolute top-0 right-0 w-full h-[600px] bg-[url('/noise.webp')] opacity-[0.03] pointer-events-none mix-blend-overlay" />
             
             <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: "RecruitmentOS — Done-For-You BD for Recruitment Agencies",
     description: "We replace your BD function — sourcing, enrichment, outreach, reply handling on your stack. 100 hiring-manager contacts in 60 days or we work free.",
     icons: {
-        icon: "/favicon.png",
+        icon: "/favicon.webp",
     },
     openGraph: {
         title: "RecruitmentOS — Done-For-You BD for Recruitment Agencies",

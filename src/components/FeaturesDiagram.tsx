@@ -152,7 +152,7 @@ function Hub() {
                 >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                        src="/os-logo.png"
+                        src="/os-logo.webp"
                         alt="RecruitmentOS logo"
                         className="w-full h-full object-contain"
                     />

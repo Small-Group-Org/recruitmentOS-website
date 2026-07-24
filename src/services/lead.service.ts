@@ -18,6 +18,7 @@ export interface CreateLeadPayload {
     | 'resource_ai_systems_template'
     | 'resource_ai_audit'
     | 'resource_email_outreach_template'
+    | 'resource_claude_recruitment_os'
     | 'tool_cold_email_writer'
     | 'tool_volume_gap_calculator'
     | 'tool_general_roi'

@@ -131,7 +131,7 @@ export default function OutreachTemplateClient() {
                     {/* Preview image */}
                     <div className="relative w-full rounded-2xl overflow-hidden border border-[#E5E5E5] shadow-sm mb-10">
                         <Image
-                            src="/resources/email-outreach-template.png"
+                            src="/resources/email-outreach-template.webp"
                             alt="Real email replies received from the BD outreach template"
                             width={900}
                             height={600}
@@ -217,7 +217,7 @@ export default function OutreachTemplateClient() {
                     {/* Proof image */}
                     <div className="relative w-full rounded-2xl overflow-hidden border border-[#E5E5E5] shadow-sm mb-5">
                         <Image
-                            src="/resources/email-outreach-template.png"
+                            src="/resources/email-outreach-template.webp"
                             alt="Real email reply: This candidate sounds exactly what we need"
                             width={800}
                             height={500}

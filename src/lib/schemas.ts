@@ -8,7 +8,7 @@ export const organizationSchema = {
     '@type': 'Organization',
     name: SITE_NAME,
     url: SITE_URL,
-    logo: `${SITE_URL}/og-image.png`,
+    logo: `${SITE_URL}/og-image.webp`,
     description: 'Done-for-you BD function for established recruitment agencies.',
     founder: {
         '@type': 'Person',

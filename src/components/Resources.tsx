@@ -14,6 +14,28 @@ const GITHUB_URL = 'https://github.com/tushar-mangla/recruitment-skills';
 
 const resources = [
     {
+        title: "Claude Code Recruitment Operating System",
+        description: "We've built AI systems that automate the repetitive work behind recruitment. The carousel breaks down each AI system and shows how they connect into a complete Recruitment Operating System powered by Claude Code.",
+        type: "System",
+        li_duration: "Free Breakdown",
+        link: "__gate__https://drive.google.com/file/d/1a4XG6ucSWX0oTiERsfT7PZHqqyqOOJmh/view",
+        image: "/resources/claude-automate-ROS.webp",
+        cta: "Get Full Breakdown",
+        icon: undefined,
+        source: 'resource_claude_recruitment_os' as const
+    },
+    {
+        title: "BD Outreach Email Template & Funnel",
+        description: "The exact email template and outreach funnel that gets replies. One email landed a 'exactly what we need' response from a hiring director — without chasing.",
+        type: "Template",
+        li_duration: "Free Access",
+        link: "/resources/outreach-template",
+        cta: "Get Free Template",
+        image: "/resources/email-outreach-template.webp",
+        icon: undefined,
+        source: 'resource_email_outreach_template' as const
+    },
+    {
         title: "AI Recruiter Team with Claude Code",
         description: "5 AI agents. 15 recruiting skills. Parse resumes, source candidates, write outreach, build scorecards & generate reports.",
         type: "Skills Pack",
@@ -67,17 +89,6 @@ const resources = [
         image: "/resources/ai-audit.webp",
         icon: undefined,
         source: 'resource_ai_audit' as const
-    },
-    {
-        title: "BD Outreach Email Template & Funnel",
-        description: "The exact email template and outreach funnel that gets replies. One email landed a 'exactly what we need' response from a hiring director — without chasing.",
-        type: "Template",
-        li_duration: "Free Access",
-        link: "/resources/outreach-template",
-        cta: "Get Free Template",
-        image: "/resources/email-outreach-template.png",
-        icon: undefined,
-        source: 'resource_email_outreach_template' as const
     },
 ];
 
