@@ -4,11 +4,11 @@ import { caseStudies } from '@/lib/case-studies-data';
 import { buildCanonical } from '@/lib/seo';
 
 export const metadata = {
-  title: 'Case Studies — RecruitmentOS',
+  title: 'Case studies: Recruitment Agency Case Studies & BD Results | RecruitmentOS',
   description: 'Real recruitment agencies we\'ve worked with. How we replaced their BD function and what changed — problem, root cause, solution, result.',
   alternates: { canonical: buildCanonical('/case-studies') },
   openGraph: {
-    title: 'Case Studies — RecruitmentOS',
+    title: 'Case studies: Recruitment Agency Case Studies & BD Results | RecruitmentOS',
     description: 'Real recruitment agencies we\'ve worked with. How we replaced their BD function and what changed.',
     url: buildCanonical('/case-studies'),
     siteName: 'RecruitmentOS',

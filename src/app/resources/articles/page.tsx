@@ -5,7 +5,7 @@ import { articles } from '@/lib/articles-data';
 import { buildCanonical } from '@/lib/seo';
 
 export const metadata = {
-  title: 'Articles — RecruitmentOS',
+  title: 'Articles: Recruitment Lead Gen Articles & Guides | RecruitmentOS',
   description: 'Deep-dives on recruitment lead generation, ICP, outreach, KPIs, and the AI stack — built for specialist staffing agencies.',
   alternates: { canonical: buildCanonical('/resources/articles') },
 };
