@@ -25,6 +25,9 @@ export const metadata: Metadata = {
         type: "website",
         siteName: "RecruitmentOS",
     },
+    verification: {
+        google: "sc-3ApNgAwkSHETWsMWQ2TDjTjf25O32FA28TPK58VY",
+    },
 };
 
 export default function RootLayout({
