@@ -77,10 +77,6 @@ const faqs = [
         question: 'What agencies do you work with?',
         answer: "Established recruitment agencies where the owner is the current BD bottleneck. Specifically: you have a delivery team that can handle more clients, you've placed at least a handful of clients in the last 12 months, you have a defined niche (not \"all industries\"), and you've already tried at least one BD method that didn't scale. We don't require a specific revenue band — we require that your delivery is ready for more volume before we start generating it.",
     },
-    {
-        question: 'How does the 10-Leads-a-Day campaign work?',
-        answer: 'Apply at /free-leads-campaign with your niche, agency website, and monthly revenue. We verify fit within 24 hours. If approved, you receive 10 hand-verified hiring-manager contacts in your niche every day at 09:00 UTC for 30 days. 300 leads total. No commitment, no upsell during the campaign.',
-    },
 ];
 
 // Adapter for JSON-LD schema (uses {q, a} shape)

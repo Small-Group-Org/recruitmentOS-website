@@ -18,7 +18,6 @@ const STATIC_ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitem
     { path: '/resources/articles', priority: 0.7, freq: 'weekly' },
     { path: '/case-studies', priority: 0.7, freq: 'monthly' },
     { path: '/niches', priority: 0.8, freq: 'monthly' },
-    // /free-leads-campaign is intentionally NOT in the sitemap — it's noindex until delivery pipeline is staffed.
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
