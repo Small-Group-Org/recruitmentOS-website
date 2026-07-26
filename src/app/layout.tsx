@@ -13,7 +13,7 @@ const dmMono = DM_Mono({ weight: '400', subsets: ["latin"], variable: '--font-mo
 const outfit = Outfit({ subsets: ["latin"], variable: '--font-outfit', display: 'swap' });
 
 export const metadata: Metadata = {
-    metadataBase: new URL("https://recruitmentos.smallgrp.com"),
+    metadataBase: new URL("https://www.hirerecruitmentos.com"),
     title: "RecruitmentOS — Done-For-You BD for Recruitment Agencies",
     description: "We replace your BD function — sourcing, enrichment, outreach, reply handling on your stack. 100 hiring-manager contacts in 60 days or we work free.",
     icons: {

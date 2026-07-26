@@ -111,7 +111,7 @@ ${goals || 'Not provided'}
             headers: {
               'Authorization': `Bearer ${openrouterKey}`,
               'Content-Type': 'application/json',
-              'HTTP-Referer': 'https://hirerecruitmentos.com',
+              'HTTP-Referer': 'https://www.hirerecruitmentos.com',
               'X-Title': 'RecruitmentOS AI BD Analyzer',
             },
             body: JSON.stringify({

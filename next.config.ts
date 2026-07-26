@@ -49,6 +49,28 @@ const nextConfig: NextConfig = {
     async redirects() {
         return [
             {
+                source: '/:path*',
+                has: [
+                    {
+                        type: 'host',
+                        value: 'recruitmentos.smallgrp.com',
+                    },
+                ],
+                destination: 'https://www.hirerecruitmentos.com/:path*',
+                permanent: true,
+            },
+            {
+                source: '/:path*',
+                has: [
+                    {
+                        type: 'host',
+                        value: 'hirerecruitmentos.com',
+                    },
+                ],
+                destination: 'https://www.hirerecruitmentos.com/:path*',
+                permanent: true,
+            },
+            {
                 source: '/fit-call',
                 destination: 'https://cal.com/tusharm/30min?user=tusharm',
                 permanent: false,

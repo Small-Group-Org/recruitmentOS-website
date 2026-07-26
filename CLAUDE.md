@@ -1,7 +1,7 @@
 # RecruitmentOS Landing Page — Claude Instructions
 
 ## Project overview
-Next.js 16 (App Router) marketing site for RecruitmentOS — an AI-powered recruitment agency platform. Deployed at `recruitmentos.smallgrp.com`.
+Next.js 16 (App Router) marketing site for RecruitmentOS — an AI-powered recruitment agency platform. Deployed at `www.hirerecruitmentos.com`.
 
 ## Stack
 - **Framework**: Next.js 16 App Router, React 19, TypeScript

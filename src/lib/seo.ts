@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://recruitmentos.smallgrp.com';
+export const SITE_URL = 'https://www.hirerecruitmentos.com';
 export const SITE_NAME = 'RecruitmentOS';
 
 /** Build a clean canonical URL. Strips trailing slash except for root. */

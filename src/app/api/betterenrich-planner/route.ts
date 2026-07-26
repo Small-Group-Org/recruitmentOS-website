@@ -48,7 +48,7 @@ Do not include any explanation, markdown formatting, or markdown code block synt
           headers: {
             'Authorization': `Bearer ${openrouterKey}`,
             'Content-Type': 'application/json',
-            'HTTP-Referer': 'https://hirerecruitmentos.com',
+            'HTTP-Referer': 'https://www.hirerecruitmentos.com',
             'X-Title': 'RecruitmentOS Outbound Sizing Planner',
           },
           body: JSON.stringify({

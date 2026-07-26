@@ -41,7 +41,7 @@ export function renderOgImage(eyebrow: string, title: string, subtitle?: string)
 
                 {/* Bottom-right wordmark */}
                 <div style={{ position: 'absolute', bottom: '60px', right: '80px', color: '#FF6A00', fontSize: '22px', fontWeight: 900, letterSpacing: '-0.02em' }}>
-                    recruitmentos.smallgrp.com
+                    www.hirerecruitmentos.com
                 </div>
             </div>
         ),
