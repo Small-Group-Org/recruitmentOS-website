@@ -36,10 +36,12 @@ export default function Footer() {
                         <img src="/logo.webp" alt="RecruitmentOS Logo" className="h-10 sm:h-12 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all" />
                     </Link>
 
-                    <div className="flex items-center gap-6 text-xs text-[#9CA3AF]">
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-[#9CA3AF]">
                         <Link href="/#services" className="hover:text-[#0A0A0A] transition-colors">Services</Link>
                         <Link href="/jobs" className="hover:text-[#0A0A0A] transition-colors">Jobs</Link>
                         <Link href="https://www.smallgrp.com" target="_blank" className="hover:text-[#0A0A0A] transition-colors">About</Link>
+                        <Link href="/privacy" className="hover:text-[#0A0A0A] transition-colors">Privacy Policy</Link>
+                        <Link href="/terms" className="hover:text-[#0A0A0A] transition-colors">Terms of Service</Link>
                         <Link href="https://chat.whatsapp.com/I9PLSmDMJ06B6qYYVsRb0q?mode=gi_t" target="_blank" className="hover:text-[#0A0A0A] transition-colors">Join Our Community</Link>
                         <Link href="https://wa.me/919667353913" target="_blank" className="hover:text-[#0A0A0A] transition-colors">Chat with Expert</Link>
                     </div>
