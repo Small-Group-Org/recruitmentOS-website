@@ -115,7 +115,7 @@ export default function TermsOfService() {
                             </p>
                             <div className="bg-white border border-[#E5E5E5] rounded-2xl p-6 mt-4 space-y-1">
                                 <p className="font-bold text-black">RecruitmentOS</p>
-                                <p className="text-gray-600">Email: hello@hirerecruitmentos.com</p>
+                                <p className="text-gray-600">Email: tushar.mangla1120@gmail.com</p>
                                 <p className="text-gray-600">Website: <Link href="/" className="text-black hover:underline font-medium">www.hirerecruitmentos.com</Link></p>
                             </div>
                         </section>

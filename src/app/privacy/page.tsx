@@ -80,7 +80,7 @@ export default function PrivacyPolicy() {
                                 We operate in compliance with major global privacy frameworks, including the General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA).
                             </p>
                             <p>
-                                Depending on your location, you may have the right to request access to, correction of, or deletion of the personal information we hold about you. You can opt out of any future marketing communications or request that we remove your professional contact data from our business development enrichment lists by emailing us at <span className="text-black font-semibold">hello@hirerecruitmentos.com</span>.
+                                Depending on your location, you may have the right to request access to, correction of, or deletion of the personal information we hold about you. You can opt out of any future marketing communications or request that we remove your professional contact data from our business development enrichment lists by emailing us at <span className="text-black font-semibold">tushar.mangla1120@gmail.com</span>.
                             </p>
                         </section>
 
@@ -111,7 +111,7 @@ export default function PrivacyPolicy() {
                             </p>
                             <div className="bg-white border border-[#E5E5E5] rounded-2xl p-6 mt-4 space-y-1">
                                 <p className="font-bold text-black">RecruitmentOS</p>
-                                <p className="text-gray-600">Email: hello@hirerecruitmentos.com</p>
+                                <p className="text-gray-600">Email: tushar.mangla1120@gmail.com</p>
                                 <p className="text-gray-600">Website: <Link href="/" className="text-black hover:underline font-medium">www.hirerecruitmentos.com</Link></p>
                             </div>
                         </section>
