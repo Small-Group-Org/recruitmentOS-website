@@ -14,6 +14,17 @@ const GITHUB_URL = 'https://github.com/tushar-mangla/recruitment-skills';
 
 const resources = [
     {
+        title: "AI Recruiting Operating System with Claude Code",
+        description: "Not another chatbot — a system. 5 AI agents, 15 recruiting skills, MCP connectors, and a knowledge base working together as a complete recruiting OS. Includes prompt library, workflow docs, and full installation guide.",
+        type: "System",
+        li_duration: "Free Access",
+        link: "/resources/ai-recruiting-os",
+        image: "/resources/ai-recruiting-os.webp",
+        cta: "Get Full System",
+        icon: undefined,
+        source: 'resource_ai_recruiting_os' as const
+    },
+    {
         title: "Claude Code Recruitment Operating System",
         description: "We've built AI systems that automate the repetitive work behind recruitment. The carousel breaks down each AI system and shows how they connect into a complete Recruitment Operating System powered by Claude Code.",
         type: "System",
