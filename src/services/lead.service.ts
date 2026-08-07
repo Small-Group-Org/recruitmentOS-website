@@ -6,25 +6,25 @@ export interface CreateLeadPayload {
   company?: string;
   phone?: string;
   source:
-    | 'tools_gate'
-    | 'consultation_popup'
-    | 'contact_form'
-    | 'fit_call'
-    | 'free_leads_campaign'
-    | 'pricing_page'
-    | 'resource_ai_recruiter_team'
-    | 'resource_recruitment_skills'
-    | 'resource_ai_hiring_blueprint'
-    | 'resource_ai_systems_template'
-    | 'resource_ai_audit'
-    | 'resource_email_outreach_template'
-    | 'resource_claude_recruitment_os'
-    | 'resource_ai_recruiting_os'
-    | 'tool_cold_email_writer'
-    | 'tool_volume_gap_calculator'
-    | 'tool_general_roi'
-    | 'tool_bd_scorecard'
-    | 'tool_bd_analyzer';
+  | 'tools_gate'
+  | 'consultation_popup'
+  | 'contact_form'
+  | 'fit_call'
+  | 'free_leads_campaign'
+  | 'pricing_page'
+  | 'resource_ai_recruiter_team'
+  | 'resource_recruitment_skills'
+  | 'resource_ai_hiring_blueprint'
+  | 'resource_ai_systems_template'
+  | 'resource_ai_audit'
+  | 'resource_email_outreach_template'
+  | 'resource_claude_recruitment_os'
+  | 'resource_ai_recruiting_os'
+  | 'tool_cold_email_writer'
+  | 'tool_volume_gap_calculator'
+  | 'tool_general_roi'
+  | 'tool_bd_scorecard'
+  | 'tool_bd_analyzer';
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
