@@ -14,6 +14,17 @@ const GITHUB_URL = 'https://github.com/tushar-mangla/recruitment-skills';
 
 const resources = [
     {
+        title: "The Recruitment Agency Signal Playbook",
+        description: "Stop waiting for hiring demand to become visible. Start looking for what creates it. How to find your next job order before the job is posted.",
+        type: "Playbook",
+        li_duration: "Free Guide",
+        link: "/resources/signal-playbook",
+        image: "/resources/signal-playbook.webp",
+        cta: "Read Playbook",
+        icon: undefined,
+        source: 'resource_signal_playbook' as const
+    },
+    {
         title: "AI Recruiting Operating System with Claude Code",
         description: "Not another chatbot — a system. 5 AI agents, 15 recruiting skills, MCP connectors, and a knowledge base working together as a complete recruiting OS. Includes prompt library, workflow docs, and full installation guide.",
         type: "System",

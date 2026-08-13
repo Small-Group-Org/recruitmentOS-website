@@ -60,7 +60,11 @@ export default function SkillsGateModal({ onClose, redirectUrl, source }: { onCl
         const w = window as Window & { fbq?: (...args: unknown[]) => void };
         w.fbq?.('track', 'Lead', { content_name: `Tools Gate · ${source}`, email });
       }
-      window.open(redirectUrl, '_blank');
+      if (redirectUrl) {
+        window.open(redirectUrl, '_blank');
+      } else {
+        window.location.reload();
+      }
       onClose();
     } catch {
       setError('Something went wrong. Please try again.');
