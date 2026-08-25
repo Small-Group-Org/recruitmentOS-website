@@ -24,6 +24,21 @@ export const metadata: Metadata = {
         description: "We replace your BD function — sourcing, enrichment, outreach, reply handling on your stack. 100 hiring-manager contacts in 60 days or we work free.",
         type: "website",
         siteName: "RecruitmentOS",
+        url: "https://www.hirerecruitmentos.com",
+        images: [
+            {
+                url: "/opengraph-image",
+                width: 1200,
+                height: 630,
+                alt: "RecruitmentOS — Done-For-You BD for Recruitment Agencies",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "RecruitmentOS — Done-For-You BD for Recruitment Agencies",
+        description: "We replace your BD function — sourcing, enrichment, outreach, reply handling on your stack. 100 hiring-manager contacts in 60 days or we work free.",
+        images: ["/opengraph-image"],
     },
     verification: {
         google: "sc-3ApNgAwkSHETWsMWQ2TDjTjf25O32FA28TPK58VY",
