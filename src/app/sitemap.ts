@@ -22,6 +22,7 @@ const STATIC_ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitem
     { path: '/terms', priority: 0.5, freq: 'monthly' },
     { path: '/recruitmentos-vs-hiring-bd-rep', priority: 0.8, freq: 'monthly' },
     { path: '/resources/ai-recruiting-os', priority: 0.8, freq: 'monthly' },
+    { path: '/resources/founders-guide', priority: 0.8, freq: 'monthly' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

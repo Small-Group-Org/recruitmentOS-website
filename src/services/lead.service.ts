@@ -21,6 +21,7 @@ export interface CreateLeadPayload {
   | 'resource_claude_recruitment_os'
   | 'resource_ai_recruiting_os'
   | 'resource_signal_playbook'
+  | 'resource_founders_guide'
   | 'tool_cold_email_writer'
   | 'tool_volume_gap_calculator'
   | 'tool_general_roi'
