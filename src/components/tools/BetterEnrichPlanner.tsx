@@ -1241,7 +1241,7 @@ export default function BetterEnrichPlanner() {
                     <div className="border-t border-[#E5E5E5] pt-4 flex flex-col sm:flex-row justify-between items-center gap-4">
                       <div className="text-center sm:text-left">
                         <p className="text-[9px] font-extrabold uppercase tracking-widest text-zinc-400">Recommended outreach tier</p>
-                        <h6 className="text-sm font-black text-[#0A0A0A] uppercase">{pricingRecommendations?.recommendedPlanId === 'multichannel' ? 'Scale Accelerator' : (pricingRecommendations?.recommendedPlanId === 'leads' ? 'Growth Seed' : 'Revenue Booster')}</h6>
+                        <h6 className="text-sm font-black text-[#0A0A0A] uppercase">{pricingRecommendations?.recommendedPlanId === 'multichannel' ? 'Managed Capacity Plus' : (pricingRecommendations?.recommendedPlanId === 'leads' ? 'Lead Data' : 'Revenue Booster')}</h6>
                       </div>
                       <a
                         href="https://cal.com/tusharm/30min?user=tusharm"
@@ -1272,4 +1272,3 @@ export default function BetterEnrichPlanner() {
     </Card>
   );
 }
-

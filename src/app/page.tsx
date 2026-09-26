@@ -7,8 +7,8 @@ import Features from '@/components/Features';
 import ToolTicker from '@/components/ToolTicker';
 import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
-import ProductDemo from '@/components/ProductDemo';
 import CaseStudiesPreview from '@/components/CaseStudiesPreview';
+import OperationalProof from '@/components/OperationalProof';
 import JobsPreview from '@/components/JobsPreview';
 import FAQ from '@/components/FAQ';
 import { buildCanonical } from '@/lib/seo';
@@ -30,8 +30,8 @@ export default function Home() {
     return (
         <main className="min-h-screen">
             <Hero />
-            <ProductDemo />
             <TrustBar />
+            <OperationalProof />
             <CaseStudiesPreview />
             <FeaturesDiagram />
             <BeforeAfter />

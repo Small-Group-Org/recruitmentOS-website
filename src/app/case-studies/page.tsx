@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { caseStudies } from '@/lib/case-studies-data';
 import { buildCanonical } from '@/lib/seo';
+import OperationalProof from '@/components/OperationalProof';
 
 export const metadata = {
   title: 'Case studies: Recruitment Agency Case Studies & BD Results | RecruitmentOS',
@@ -22,12 +23,12 @@ export default function CaseStudiesListPage() {
       <div className="max-w-[1280px] mx-auto px-6 sm:px-10">
 
         <div className="mb-20 animate-slideUp">
-          <p className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-3">Proof of Results</p>
+          <p className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-3">Verified production evidence</p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-black tracking-tighter mb-4">
-            Case Studies
+            Production evidence across three markets
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl">
-            What We Discovered During Free AI Audit Sessions with Recruitment Agencies
+            Exact acquisition outcomes from Orion Placement, a DACH technology agency, and a UK tech and data agency.
           </p>
         </div>
 
@@ -45,7 +46,7 @@ export default function CaseStudiesListPage() {
                   src={study.image}
                   alt={study.title}
                   fill
-                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700 ease-out"
+                  className="object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700 ease-out"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                 />
                 {study.cardStats && (
@@ -78,6 +79,8 @@ export default function CaseStudiesListPage() {
             </Link>
           ))}
         </div>
+
+        <OperationalProof />
 
       </div>
 

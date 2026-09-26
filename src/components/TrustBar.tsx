@@ -1,8 +1,8 @@
 const stats = [
-    { value: '20k+', label: 'Verified contacts in 60 days' },
-    { value: '7.5%+', label: 'Reply rate on BD outreach' },
-    { value: '36+', label: 'Positive opportunities per campaign' },
-    { value: '60-day', label: 'Results guarantee' },
+    { value: '228', label: 'Signed terms in 38 days' },
+    { value: '56%', label: 'Peak emailed reply rate' },
+    { value: '£180k', label: 'Pipeline with £0 ads' },
+    { value: '$0', label: 'Fee on non-buyers' },
 ];
 
 export default function TrustBar() {

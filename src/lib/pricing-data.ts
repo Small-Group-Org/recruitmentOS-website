@@ -162,14 +162,122 @@ export type PricingPlan = {
     cta: { label: string; href: string };
 };
 
+export type PricingOffering = {
+    id: 'capacity' | 'positive-reply';
+    category: string;
+    name: string;
+    tagline: string;
+    setupFee: number;
+    setupFeeLabel: string;
+    price: number;
+    priceLabel: string;
+    commitment: string;
+    discountBadge?: string;
+    discountDetail?: string;
+    savingsCallout?: SavingsCallout;
+    details: string[];
+    features: string[];
+    highlight: boolean;
+    cta: { label: string; href: string };
+};
+
+export interface SavingsCallout {
+    badgeText: string;
+    discountTag: string;
+    headline: string;
+    effectiveRate: number;
+    effectiveRateLabel: string;
+    standardRate: number;
+    standardRateLabel: string;
+    description: string;
+}
+
 const CAL_LINK = 'https://cal.com/tusharm/30min?user=tusharm';
+
+export const performancePricing = {
+    positiveReply: {
+        price: 200,
+        label: 'Verified Positive Reply',
+        description: 'A qualified decision-maker shows buying intent and receives a human handoff within 24 hours.',
+    },
+    zeroRisk: {
+        price: 0,
+        label: 'Zero-Risk Invariant',
+        description: 'No fee for OOO, negative replies, unsubscribes, bounces, or non-buying signals.',
+    },
+    safeguards: [
+        '5-day dispute window',
+        'Territory and account exclusivity',
+        '100% brand air-gap with mirror domains',
+    ],
+} as const;
+
+export const pricingOfferings: PricingOffering[] = [
+    {
+        id: 'capacity',
+        category: 'Managed capacity',
+        name: 'Monthly Retainer / Managed Capacity',
+        tagline: 'A managed client acquisition sprint with predictable output and dedicated operating support.',
+        setupFee: 1500,
+        setupFeeLabel: '$1,500 setup',
+        price: 1000,
+        priceLabel: '/ month',
+        commitment: '3-month commitment sprint',
+        discountBadge: 'SAVE 37.5% vs. PAY-PER-REPLY',
+        discountDetail: 'Effective $125/reply all-in vs. $200 standard rate ($2,700 sprint savings)',
+        savingsCallout: {
+            badgeText: 'SAVE 37.5% vs. PAY-PER-REPLY',
+            discountTag: '37.5% DISCOUNT',
+            headline: 'Save $2,700 across sprint',
+            effectiveRate: 125,
+            effectiveRateLabel: '/ reply effective all-in',
+            standardRate: 200,
+            standardRateLabel: '/ reply standard rate',
+            description: 'Save $2,700 on 36 guaranteed replies across the 3-month sprint ($4,500 all-in vs. $7,200 at standard pay-per-reply rate).',
+        },
+        details: ['Minimum 12 verified positive replies / month (36 across 3-mo sprint)'],
+        features: [
+            '3-month commitment sprint ($3,000 monthly + $1,500 setup = $4,500 all-in)',
+            'Minimum 12 verified positive replies / month guaranteed',
+            'Save 37.5% compared to Pay per Positive Reply ($125/reply vs $200)',
+            'Dedicated secondary sending domains & complete DNS infrastructure',
+            'Hiring-signal enrichment & custom AI multi-touch sequences',
+            'Dedicated Slack triage channel & weekly pipeline reviews',
+        ],
+        highlight: true,
+        cta: { label: 'Start 3-Month Sprint', href: CAL_LINK },
+    },
+    {
+        id: 'positive-reply',
+        category: 'Performance pricing',
+        name: 'Pay per Positive Reply',
+        tagline: 'Only pay when a qualified prospect confirms genuine buying intent.',
+        setupFee: 1000,
+        setupFeeLabel: '$1,000 setup',
+        price: 200,
+        priceLabel: '/ verified positive reply',
+        commitment: 'Pay only on qualified buyer intent',
+        details: ['<24h triage SLA', '5-day lead dispute window'],
+        features: [
+            '$1,000 one-time cold email infrastructure setup fee',
+            '$200 per verified positive reply (<24h triage SLA)',
+            'Verified decision-makers with hiring intent',
+            '5-day lead dispute window before invoicing',
+            '$0 fee on non-buyers, out-of-office, or unsubscribes',
+            'Dedicated secondary domains & 100% brand air-gap',
+            'Complete lead intelligence dossier included in CRM',
+        ],
+        highlight: false,
+        cta: { label: 'Start on Results', href: CAL_LINK },
+    },
+];
 
 export const pricingPlans: PricingPlan[] = [
     {
         id: 'leads',
         category: 'Data only',
         icon: 'data',
-        name: 'Growth Seed',
+        name: 'Lead Data',
         tagline: 'Signal-detected, enriched contacts. You handle outreach.',
         billing: 'one-off',
         highlight: false,
@@ -216,7 +324,7 @@ export const pricingPlans: PricingPlan[] = [
         id: 'multichannel',
         category: 'Full BD',
         icon: 'network',
-        name: 'Scale Accelerator',
+        name: 'Managed Capacity Plus',
         tagline: 'Email + LinkedIn. Full outsourced BD function.',
         billing: 'monthly',
         minMonths: 3,

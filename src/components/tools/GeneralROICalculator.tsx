@@ -61,7 +61,7 @@ export default function GeneralROICalculator({ embedded = false, initialPlacemen
         const platformFee = activePlanId === 'leads' ? 0 : totalCost - leadsCost;
 
         // Build a display capacity label
-        // E.g. "Growth Seed" (data only) uses option.label, others use detailed option.detail
+        // Data-only pricing uses option.label; managed plans use the detailed option text.
         const capacityLabel = activePlanId === 'leads' 
             ? `${activeOption.label} only`
             : `${activeOption.label.replace('/mo', '')} · ${activeOption.detail}`;

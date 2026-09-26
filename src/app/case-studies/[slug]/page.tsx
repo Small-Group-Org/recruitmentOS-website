@@ -41,17 +41,18 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
 
   if (!study) notFound();
 
+  const metrics = study.metrics ?? [];
+
   // Split "cardStats" (e.g. "+30% Revenue Growth") into the headline metric and its label.
   const [metricValue, ...metricRest] = study.cardStats.trim().split(' ');
   const metricLabel = metricRest.join(' ');
 
-  const sections = [
-    { label: 'The Challenge', body: study.problem },
-    { label: 'The Root Cause', body: study.rootCause },
-    { label: 'What We Built', body: study.solution },
-    { label: 'The Result', body: study.result, highlight: true },
-    { label: 'Why It Matters', body: study.takeaway },
-  ];
+  const star = study.star ?? {
+    situation: study.problem,
+    task: study.rootCause,
+    action: study.solution,
+    result: study.result,
+  };
 
   return (
     <div className="min-h-screen bg-white animate-fadeIn">
@@ -88,7 +89,7 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
             className="text-xl sm:text-2xl md:text-[1.75rem] font-bold leading-[1.25] tracking-tight max-w-2xl mb-6"
             style={{ fontFamily: 'var(--font-serif)' }}
           >
-            {study.title}
+            {study.headline ?? study.title}
           </h1>
 
           {/* Headline metric */}
@@ -115,57 +116,68 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
                 src={study.image}
                 alt={study.title}
                 fill
-                className="object-cover"
-                sizes="(max-width: 1100px) 100vw, 1100px"
-              />
-            </div>
-          </div>
-        </div>
-      )}
+                 className="object-cover object-top"
+                 sizes="(max-width: 1100px) 100vw, 1100px"
+               />
+             </div>
+             {study.heroCaption && (
+               <p className="mt-3 text-center text-xs italic text-[#6B7280]">{study.heroCaption}</p>
+             )}
+           </div>
+         </div>
+       )}
 
       {/* ── Body ─────────────────────────────────────────────── */}
       <article className={`max-w-[760px] mx-auto px-6 sm:px-10 ${study.image ? 'pt-28 md:pt-40' : 'pt-20'} pb-24`}>
-        {sections.map((section, i) =>
-          !section.body ? null : (
-            <section
-              key={section.label}
-              className={`animate-slideUp ${i > 0 ? 'mt-14 md:mt-16' : ''}`}
-              style={{ animationDelay: `${i * 0.06}s` }}
-            >
-              {section.highlight ? (
-                <div className="rounded-2xl border border-[#FF6A00]/25 bg-[#FFF4EB] p-7 md:p-9">
-                  <p
-                    className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF6A00] mb-4"
-                    style={{ fontFamily: 'var(--font-mono)' }}
-                  >
-                    {section.label}
-                  </p>
-                  <p
-                    className="text-[#0A0A0A] text-lg md:text-xl leading-relaxed whitespace-pre-line font-medium"
-                    style={{ fontFamily: 'var(--font-outfit)' }}
-                  >
-                    {section.body}
-                  </p>
+        {study.snapshot && (
+          <section className="mb-12 rounded-[10px] border border-[#E5E5E5] bg-[#FAFAFA] p-6 md:p-8">
+            <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF6A00]" style={{ fontFamily: 'var(--font-mono)' }}>
+              Executive snapshot
+            </p>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+              {[
+                ['Client', study.snapshot.client],
+                ['Industry', study.snapshot.industry],
+                ['Location', study.snapshot.location],
+                ['Core challenge', study.snapshot.bottleneck],
+                ['System deployed', study.snapshot.systemDeployed],
+                ['Primary impact', study.snapshot.primaryImpact],
+              ].map(([label, value]) => (
+                <div key={label}>
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-[#9CA3AF]">{label}</p>
+                  <p className="text-sm leading-relaxed text-[#374151]">{value}</p>
                 </div>
-              ) : (
-                <>
-                  <p
-                    className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#9CA3AF] mb-3"
-                    style={{ fontFamily: 'var(--font-mono)' }}
-                  >
-                    {section.label}
-                  </p>
-                  <p
-                    className="text-[#374151] text-base md:text-[17px] leading-[1.75] whitespace-pre-line"
-                    style={{ fontFamily: 'var(--font-outfit)' }}
-                  >
-                    {section.body}
-                  </p>
-                </>
-              )}
-            </section>
-          )
+              ))}
+            </div>
+          </section>
         )}
+        {metrics.length > 0 && (
+          <div className="mb-14 grid grid-cols-2 gap-3 border-y border-[#E5E5E5] py-6 sm:grid-cols-3">
+            {metrics.map((metric) => (
+              <div key={metric.label} className="rounded-[10px] bg-[#FAFAFA] p-4">
+                <p className="text-2xl text-[#FF6A00]" style={{ fontFamily: 'var(--font-serif)' }}>{metric.value}</p>
+                <p className="mt-1 text-xs leading-snug text-[#6B7280]">{metric.label}</p>
+              </div>
+            ))}
+          </div>
+        )}
+        {[
+          ['Situation', star.situation],
+          ['Task', star.task],
+          ['Action', star.action],
+          ['Result', star.result],
+        ].map(([label, body], i) => (
+          <section key={label} className={`animate-slideUp ${i > 0 ? 'mt-14 md:mt-16' : ''}`} style={{ animationDelay: `${i * 0.06}s` }}>
+            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#9CA3AF]" style={{ fontFamily: 'var(--font-mono)' }}>{label}</p>
+            <p className={`whitespace-pre-line text-base leading-[1.75] md:text-[17px] ${label === 'Result' ? 'rounded-2xl border border-[#FF6A00]/25 bg-[#FFF4EB] p-7 font-medium text-[#0A0A0A] md:p-9' : 'text-[#374151]'}`}>{body}</p>
+            {label === 'Task' && study.quotes?.challenge && <blockquote className="my-6 rounded-r-[8px] border-l-4 border-[#FF6A00] bg-[#FAFAFA] p-5 text-[#374151]">“{study.quotes.challenge.text}”<footer className="mt-3 text-xs font-semibold text-[#6B7280]">{study.quotes.challenge.author}, {study.quotes.challenge.role}</footer></blockquote>}
+            {label === 'Result' && study.quotes?.result && <blockquote className="my-6 rounded-2xl border border-[#FF6A00]/20 bg-[#FFF4EB] p-6 text-[#374151]">“{study.quotes.result.text}”<footer className="mt-3 text-xs font-semibold text-[#6B7280]">{study.quotes.result.author}, {study.quotes.result.role}</footer></blockquote>}
+          </section>
+        ))}
+        <section className="mt-14 md:mt-16">
+          <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#9CA3AF]" style={{ fontFamily: 'var(--font-mono)' }}>Strategic takeaway</p>
+          <p className="whitespace-pre-line text-base leading-[1.75] text-[#374151] md:text-[17px]">{study.takeaway}</p>
+        </section>
       </article>
 
       {/* ── Closing CTA ──────────────────────────────────────── */}

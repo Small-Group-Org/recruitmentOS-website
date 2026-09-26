@@ -1,6 +1,6 @@
 import { SITE_URL, SITE_NAME } from './seo';
 import { socialLinks } from './social-links';
-import { brackets } from './pricing-data';
+import { pricingOfferings } from './pricing-data';
 import type { ArticleMeta } from './articles-data';
 
 export const organizationSchema = {
@@ -49,12 +49,12 @@ export const serviceWithOffersSchema = {
     provider: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
     areaServed: 'Global',
     serviceType: 'Business Development Outsourcing',
-    offers: brackets.map((b) => ({
+    offers: pricingOfferings.map((offering) => ({
         '@type': 'Offer',
-        name: b.name,
-        price: String(b.monthlyUsd),
+        name: offering.name,
+        price: String(offering.price),
         priceCurrency: 'USD',
-        description: b.capabilityBullets.join('. '),
+        description: `${offering.tagline} Setup fee: $${offering.setupFee.toLocaleString()}. ${offering.commitment}. ${offering.details.join('. ')}.`,
         url: `${SITE_URL}/pricing`,
     })),
 };

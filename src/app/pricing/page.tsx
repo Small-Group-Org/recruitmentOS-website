@@ -5,8 +5,8 @@ import { JsonLd } from '@/components/JsonLd';
 import { serviceWithOffersSchema } from '@/lib/schemas';
 
 export const metadata = {
-  title: 'Pricing — RecruitmentOS Lead Packages',
-  description: 'Pay for pipeline, not promises. Leads from $52 one-off · Managed email outreach from $431/mo · Full multichannel BD from $574/mo. Pick your volume on any plan.',
+  title: 'Pricing — $1,000/mo Managed Acquisition Sprint or $200/Reply',
+  description: 'Choose a $1,500 setup plus $1,000/mo managed acquisition sprint with at least 12 verified positive replies per month, or a $1,000 setup plus $200 per verified positive reply.',
   alternates: { canonical: buildCanonical('/pricing') },
 };
 

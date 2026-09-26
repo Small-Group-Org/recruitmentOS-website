@@ -1,12 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { caseStudies } from '@/lib/case-studies-data';
-
-const proofStats = [
-    { value: '50+', label: 'recruitment agencies consulted' },
-    { value: '12+', label: 'verticals worked across' },
-    { value: '300+', label: 'hours of agency interviews' },
-];
+import { verifiedCaseStudies } from '@/lib/case-studies-data';
 
 export default function CaseStudiesPreview() {
     return (
@@ -15,30 +9,18 @@ export default function CaseStudiesPreview() {
                 {/* Proof of work */}
                 <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
                     <p className="text-xs font-semibold uppercase tracking-widest text-[#FF6A00] mb-3">
-                        Built with the industry, not in a vacuum
+                        Verified production evidence
                     </p>
                     <h2 className="text-[#0A0A0A] text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-4">
-                        We built this after talking to 50+ recruitment agencies.
+                        Three markets. Three measurable acquisition outcomes.
                     </h2>
                     <p className="section-sub">
-                        Every part of the engine comes from hundreds of hours of conversations with agency owners about
-                        what actually breaks their BD. Here&rsquo;s what changed when we put it to work.
+                        Exact results from active engagements, with the operating proof behind the numbers.
                     </p>
                 </div>
 
-                {/* Proof stats */}
-                <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto mb-14 md:mb-16">
-                    {proofStats.map((stat) => (
-                        <div key={stat.label} className="text-center">
-                            <div className="text-2xl md:text-4xl font-bold text-[#0A0A0A] tracking-tight mb-1">{stat.value}</div>
-                            <div className="text-[11px] md:text-xs text-[#9CA3AF] uppercase tracking-wider leading-tight">{stat.label}</div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* 4 case studies */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
-                    {caseStudies.slice(0, 4).map((study) => (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-7">
+                    {verifiedCaseStudies.map((study) => (
                         <Link
                             key={study.slug}
                             href={`/case-studies/${study.slug}`}
@@ -49,7 +31,7 @@ export default function CaseStudiesPreview() {
                                     src={study.image}
                                     alt={study.title}
                                     fill
-                                    className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700 ease-out"
+                                    className="object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700 ease-out"
                                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                                 />
                                 {study.cardStats && (
