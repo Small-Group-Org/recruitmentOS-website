@@ -17,7 +17,7 @@ export default function Features() {
                         >
                             What we do
                         </p>
-                        <h2 className="text-3xl sm:text-4xl font-bold text-[#0A0A0A] tracking-tight leading-[1.15] mb-5">
+                        <h2 className="text-3xl sm:text-4xl text-[#0A0A0A] tracking-tight leading-[1.15] mb-5 font-serif">
                             Five services. One outcome — your BD function, replaced.
                         </h2>
                         <p className="text-[#6B7280] text-base leading-relaxed mb-8 max-w-sm">
@@ -25,7 +25,7 @@ export default function Features() {
                         </p>
                         <Link
                             href="/services"
-                            className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 rounded-full font-medium hover:bg-[#0A0A0A] transition-colors text-sm group"
+                            className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-6 py-3 rounded-full font-medium hover:bg-neutral-800 transition-colors text-sm group"
                         >
                             See all five services
                             <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -35,12 +35,12 @@ export default function Features() {
                     </div>
 
                     {/* Right — service list */}
-                    <div className="border-t border-[#E5E5E5]">
+                    <div className="space-y-4">
                         {services.map((service) => (
                             <Link
                                 key={service.slug}
                                 href={`/services#service-${service.slug}`}
-                                className="group grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_auto] items-start md:items-center gap-x-5 md:gap-x-8 py-6 border-b border-[#E5E5E5] transition-colors"
+                                className="group grid grid-cols-[auto_1fr] gap-x-5 md:gap-x-8 p-5 md:p-6 border border-[#E5E5E5] rounded-[10px] bg-white hover:border-brand hover:shadow-[0_18px_45px_rgba(0,0,0,0.06)] transition-all duration-300"
                             >
                                 {/* Number */}
                                 <span
@@ -58,29 +58,25 @@ export default function Features() {
                                     <p className="text-sm text-[#6B7280] leading-snug mt-1">
                                         {service.oneLine}
                                     </p>
-                                    {/* Outcome + arrow — inline on mobile */}
-                                    <div className="md:hidden mt-3 flex items-center justify-between">
-                                        <div className="inline-flex items-center gap-2">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] shrink-0" />
-                                            <span className="text-[12px] font-semibold text-[#0A0A0A]">{service.outcome}</span>
-                                        </div>
-                                        <svg className="w-4 h-4 text-[#D1D5DB] group-hover:text-[#FF6A00] group-hover:translate-x-1 transition-all shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                        </svg>
+                                    <div className="mt-4 flex flex-wrap gap-2">
+                                        {service.deliverables.slice(0, 3).map((deliverable) => (
+                                            <span key={deliverable} className="rounded-full border border-[#E5E5E5] bg-[#FAFAFA] px-2.5 py-1 text-[11px] font-medium text-[#6B7280]">
+                                                {deliverable}
+                                            </span>
+                                        ))}
                                     </div>
-                                </div>
-
-                                {/* Outcome + arrow — desktop */}
-                                <div className="hidden md:flex items-center gap-6 justify-self-end">
-                                    <div className="flex items-center gap-2 max-w-[200px]">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] shrink-0" />
-                                        <span className="text-[13px] font-semibold text-[#0A0A0A] leading-snug text-right">
-                                            {service.outcome}
+                                    <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+                                        <span className="inline-flex items-center gap-2 rounded-full bg-accent-light px-3 py-1.5 text-[12px] font-semibold text-success">
+                                            <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M12 3l7.5 3v5.25c0 4.1-2.65 7.79-7.5 9.75-4.85-1.96-7.5-5.65-7.5-9.75V6L12 3Z" />
+                                            </svg>
+                                            {service.slaOrGuarantee}
+                                        </span>
+                                        <span className="inline-flex items-center text-[12px] font-bold text-[#0A0A0A] group-hover:text-brand">
+                                            Explore service
+                                            <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
                                         </span>
                                     </div>
-                                    <svg className="w-4 h-4 text-[#D1D5DB] group-hover:text-[#FF6A00] group-hover:translate-x-1 transition-all shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                    </svg>
                                 </div>
                             </Link>
                         ))}

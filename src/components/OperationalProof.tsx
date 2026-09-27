@@ -21,12 +21,12 @@ export default function OperationalProof() {
           <div className="rounded-[10px] border border-[#E5E5E5] bg-[#FAFAFA] p-4 sm:p-6">
             <div className="mb-5 flex flex-wrap gap-2" role="tablist" aria-label="Calendar proof views">
               {proofCalendarViews.map((view) => (
-                <button key={view.id} type="button" role="tab" aria-selected={activeView === view.id} onClick={() => setActiveView(view.id)} className={`rounded-[4px] border px-3 py-2 text-xs font-semibold transition-colors ${activeView === view.id ? 'border-brand bg-brand text-white' : 'border-[#E5E5E5] bg-white text-[#6B7280] hover:border-[#0A0A0A]'}`}>
+                <button key={view.id} id={`calendar-tab-${view.id}`} type="button" role="tab" aria-selected={activeView === view.id} aria-controls={`calendar-panel-${view.id}`} onClick={() => setActiveView(view.id)} className={`rounded-[4px] border px-3 py-2 text-xs font-semibold transition-colors ${activeView === view.id ? 'border-brand bg-brand text-white' : 'border-[#E5E5E5] bg-white text-[#6B7280] hover:border-[#0A0A0A]'}`}>
                   {view.label}
                 </button>
               ))}
             </div>
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[4px] border border-[#E5E5E5] bg-white">
+            <div id={`calendar-panel-${activeView}`} role="tabpanel" aria-labelledby={`calendar-tab-${activeView}`} className="relative aspect-[16/10] overflow-hidden rounded-[4px] border border-[#E5E5E5] bg-white">
               <Image src={activeCalendar.image} alt={`${activeCalendar.label} discovery call calendar proof`} fill className="object-contain" sizes="(max-width: 1024px) 100vw, 60vw" />
             </div>
             <p className="mt-4 text-sm text-[#6B7280]">Real client calendars: 15–25 qualified hiring-manager discovery calls booked every week across US and European markets.</p>

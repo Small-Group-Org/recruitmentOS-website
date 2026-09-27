@@ -8,11 +8,12 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
 
     const navLinks = [
         { name: 'Services', href: '/#services' },
+        { name: 'Internal AI', href: '/#internal-operations' },
+        { name: 'Live Proof', href: '/#operational-proof' },
         { name: 'Case Studies', href: '/case-studies' },
-        { name: 'How it works', href: '/methodology' },
-        { name: 'Pricing', href: '/pricing' },
-        { name: 'Jobs', href: '/jobs' },
         { name: 'Resources', href: '/resources' },
+        { name: 'Jobs', href: '/jobs' },
+        { name: 'Pricing', href: '/pricing' },
     ];
 
     return (
@@ -23,12 +24,12 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
                         <img src="/logo.webp" alt="RecruitmentOS Logo" className="h-14 sm:h-16 w-auto object-contain" />
                     </Link>
 
-                    <div className="hidden lg:flex items-center gap-8">
+                    <div className="hidden lg:flex items-center gap-5 xl:gap-7">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-sm font-medium text-neutral-500 hover:text-[#0A0A0A] transition-colors"
+                                className="text-[13px] xl:text-sm font-medium text-neutral-500 hover:text-[#0A0A0A] transition-colors whitespace-nowrap"
                             >
                                 {link.name}
                             </Link>
@@ -36,19 +37,14 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
                     </div>
 
                     <div className="hidden lg:flex items-center gap-2">
-                        <Link
-                            href="/resources#tools"
-                            className="inline-flex items-center px-5 py-2 rounded-full border border-[#0A0A0A] bg-transparent text-[#0A0A0A] text-sm font-medium hover:bg-neutral-100 transition-colors"
-                        >
-                            Free Tools
-                        </Link>
-                        <Link
+                        <a
                             href="https://cal.com/tusharm/30min?user=tusharm"
                             target="_blank"
+                            rel="noopener noreferrer"
                             className="inline-flex items-center px-5 py-2 rounded-full bg-[#0A0A0A] text-white text-sm font-medium hover:bg-neutral-800 transition-colors"
                         >
-                            Book a Call
-                        </Link>
+                            Book a Fit Call
+                        </a>
                     </div>
 
                     <button
@@ -84,19 +80,14 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
                                 {link.name}
                             </Link>
                         ))}
-                        <Link
-                            href="/resources#tools"
-                            className="block bg-transparent text-[#0A0A0A] border border-[#0A0A0A] px-5 py-2.5 rounded-full text-sm font-medium text-center mt-2"
-                        >
-                            Free Tools
-                        </Link>
-                        <Link
+                        <a
                             href="https://cal.com/tusharm/30min?user=tusharm"
                             target="_blank"
+                            rel="noopener noreferrer"
                             className="block bg-[#0A0A0A] text-white px-5 py-2.5 rounded-full text-sm font-medium text-center mt-2"
                         >
-                            Book a Call
-                        </Link>
+                            Book a Fit Call
+                        </a>
                     </div>
                 )}
             </div>

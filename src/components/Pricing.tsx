@@ -49,9 +49,7 @@ export default function Pricing() {
                     </p>
                     <Link
                         href="/fit-call"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-7 py-4 rounded-full font-semibold hover:bg-[#0A0A0A] transition-colors text-base group"
+                        className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-7 py-4 rounded-full font-semibold hover:bg-[#FF6A00] transition-colors text-base group"
                         style={{ fontFamily: 'var(--font-outfit)' }}
                         id="pricing-enterprise-cta"
                     >
@@ -69,13 +67,14 @@ export default function Pricing() {
 
 function OfferingCard({ offering }: { offering: PricingOffering }) {
     return <div className={`relative flex flex-col rounded-[10px] bg-white p-7 ${offering.highlight ? 'border-2 border-brand shadow-[0_12px_44px_-10px_rgba(255,106,0,0.3)] ring-1 ring-brand/20' : 'border border-[#E5E5E5] shadow-sm'}`}>
-        {offering.discountBadge && <div className="absolute -top-3.5 left-6 z-10 flex items-center shadow-md sm:left-7"><span className="rounded-[4px] bg-[#FF6A00] px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-white ring-2 ring-white" style={{ fontFamily: 'var(--font-mono)' }}>{offering.discountBadge}</span></div>}
+        {offering.discountBadge && <div className="absolute -top-3.5 left-6 z-10 flex items-center shadow-md sm:left-7"><span className="rounded-[4px] bg-[#FF6A00] px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-[#0A0A0A] ring-2 ring-white" style={{ fontFamily: 'var(--font-mono)' }}>{offering.discountBadge}</span></div>}
         <p className="mb-4 text-xs font-bold uppercase tracking-widest text-brand" style={{ fontFamily: 'var(--font-mono)' }}>{offering.category}</p>
         <h2 className="text-2xl text-[#0A0A0A]" style={{ fontFamily: 'var(--font-serif)' }}>{offering.name}</h2>
         <p className="mt-2 min-h-[48px] text-sm leading-relaxed text-[#6B7280]">{offering.tagline}</p>
-        <div className="mt-6 flex items-baseline gap-2"><span className="text-5xl text-[#0A0A0A]" style={{ fontFamily: 'var(--font-serif)' }}>${offering.price.toLocaleString()}</span><span className="text-sm text-[#6B7280]">{offering.priceLabel}</span></div>
+        <div className="mt-6 flex flex-col gap-1"><div className="flex items-baseline gap-2"><span className="text-5xl text-[#0A0A0A]" style={{ fontFamily: 'var(--font-serif)' }}>${offering.price.toLocaleString()}</span><span className="text-sm text-[#6B7280]">{offering.priceLabel}</span></div>{offering.heroFigure && <p className="text-sm font-bold text-[#1A6B4A]">{offering.heroFigure}</p>}</div>
         <p className="mt-2 text-sm font-bold text-brand" style={{ fontFamily: 'var(--font-mono)' }}>+{offering.setupFeeLabel}</p>
         <p className="mt-3 text-xs text-[#6B7280]">{offering.commitment}</p>
+        {offering.deliverable && <p className="mt-4 border-l-2 border-brand bg-[#FFF4EB] px-3 py-3 text-sm font-bold text-[#0A0A0A]">{offering.deliverable}</p>}
         {offering.savingsCallout ? <div className="mt-5 rounded-[8px] border border-[#1A6B4A]/25 bg-[#E8F5EF] p-4 text-[#1A6B4A]">
             <div className="flex items-center justify-between gap-2">
                 <span className="inline-flex items-center rounded-[3px] bg-[#1A6B4A] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white sm:text-[11px]" style={{ fontFamily: 'var(--font-mono)' }}>{offering.savingsCallout.discountTag}</span>

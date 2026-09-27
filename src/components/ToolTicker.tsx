@@ -13,8 +13,8 @@ const tools = [
   { name: 'Indeed', icon: '/logos/indeed.webp' },
   { name: 'Stepstone', icon: '/logos/stepstone.webp' },
   { name: 'Clay', icon: '/logos/clay.webp' },
-  { name: 'Apify', icon: '/logos/kaspr.webp' },
-  { name: 'Glassdoor', icon: '/logos/salesnav.webp' },
+  { name: 'Kaspr', icon: '/logos/kaspr.webp' },
+  { name: 'SalesNav', icon: '/logos/salesnav.webp' },
   { name: 'Gemini', icon: '/logos/gemini.webp' },
   { name: 'Airtable', icon: '/logos/airtable.webp' },
 ];
@@ -39,9 +39,9 @@ export default function ToolTicker() {
         </div>
 
         {/* Marquee Wrapper */}
-        <div className="flex whitespace-nowrap animate-marquee py-4">
-          {[...tools, ...tools, ...tools, ...tools].map((tool, index) => (
-            <div key={index} className="flex items-center gap-4 mx-[30px]">
+        <div className="flex min-w-max shrink-0 whitespace-nowrap animate-marquee py-4">
+          {tools.map((tool) => (
+            <div key={tool.name} className="flex items-center gap-4 mx-[30px]">
               <div className="relative w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center bg-transparent shrink-0">
                 <Image src={tool.icon} alt={tool.name} fill sizes="40px" className="object-contain" />
               </div>
@@ -51,11 +51,11 @@ export default function ToolTicker() {
         </div>
 
         {/* Duplicate for seamless loop */}
-        <div className="flex whitespace-nowrap animate-marquee py-4" aria-hidden="true">
-          {[...tools, ...tools, ...tools, ...tools].map((tool, index) => (
-            <div key={index} className="flex items-center gap-4 mx-[30px]">
+        <div className="flex min-w-max shrink-0 whitespace-nowrap animate-marquee py-4" aria-hidden="true">
+          {tools.map((tool) => (
+            <div key={tool.name} className="flex items-center gap-4 mx-[30px]">
               <div className="relative w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center bg-transparent shrink-0">
-                <Image src={tool.icon} alt={tool.name} fill sizes="40px" className="object-contain" />
+                <Image src={tool.icon} alt="" fill sizes="40px" className="object-contain" />
               </div>
               <span className="text-xl font-bold text-[#0A0A0A] tracking-tight">{tool.name}</span>
             </div>

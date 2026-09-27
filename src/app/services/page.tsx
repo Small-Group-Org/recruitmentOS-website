@@ -55,9 +55,16 @@ export default function ServicesPage() {
                                     <p className="text-base sm:text-lg text-[#374151] leading-relaxed max-w-3xl mb-6 font-medium">
                                         {service.deepDive}
                                     </p>
-                                    <div className="inline-flex items-center gap-2 bg-[#F9FAFB] border border-[#E5E5E5] px-4 py-2 rounded-full">
+                                    <div className="flex flex-wrap gap-2 mb-5">
+                                        {service.deliverables.map((deliverable) => (
+                                            <span key={deliverable} className="rounded-full border border-[#E5E5E5] bg-[#FAFAFA] px-3 py-1.5 text-xs font-medium text-[#6B7280]">
+                                                {deliverable}
+                                            </span>
+                                        ))}
+                                    </div>
+                                    <div className="inline-flex items-center gap-2 bg-accent-light border border-[#CFE8DC] px-4 py-2 rounded-full">
                                         <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00]" />
-                                        <span className="text-sm font-bold text-[#0A0A0A]">{service.outcome}</span>
+                                        <span className="text-sm font-bold text-success">{service.slaOrGuarantee}</span>
                                     </div>
                                 </div>
                             </section>

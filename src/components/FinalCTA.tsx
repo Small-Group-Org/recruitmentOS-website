@@ -1,7 +1,5 @@
 'use client';
 
-import Link from 'next/link';
-
 export default function FinalCTA() {
     return (
         <section className="py-16 md:py-24 bg-[#FAFAFA] border-t border-[#E5E5E5]" id="contact">
@@ -12,23 +10,26 @@ export default function FinalCTA() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-                    <Link
+                    <a
                         href="https://cal.com/tusharm/30min?user=tusharm"
                         target="_blank"
+                        rel="noopener noreferrer"
                         onClick={() => (window as Window & { fbq?: (...args: unknown[]) => void }).fbq?.('track', 'Contact', { content_name: 'Book a fit call' })}
-                        className="inline-flex items-center bg-[#0A0A0A] text-white px-8 py-4 sm:px-10 sm:py-5 rounded-xl font-semibold hover:bg-[#0A0A0A] transition-colors text-base sm:text-lg"
+                        className="inline-flex items-center bg-[#0A0A0A] text-white px-8 py-4 sm:px-10 sm:py-5 rounded-[4px] font-semibold hover:bg-[#FF6A00] transition-colors text-base sm:text-lg"
                     >
                         Book a fit call
                         <svg className="ml-3 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
-                    </Link>
-                    <Link
+                    </a>
+                    <a
                         href="mailto:tushar.mangla1120@gmail.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center text-lg text-[#FF6A00] hover:text-[#E55F00] transition-colors px-6 py-5 font-medium"
                     >
                         Or email us directly
-                    </Link>
+                    </a>
                 </div>
 
                 <p className="text-sm text-[#9CA3AF]">

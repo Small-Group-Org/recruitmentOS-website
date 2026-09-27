@@ -29,46 +29,34 @@ function SocialIcon({ icon, className }: { icon: SocialIconName; className?: str
 
 export default function Footer() {
     return (
-        <footer className="py-8 bg-white border-t border-[#E5E5E5]">
+        <footer className="py-14 bg-white border-t border-[#E5E5E5]">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
-                <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-between">
-                    <Link href="/" className="flex items-center">
-                        <img src="/logo.webp" alt="RecruitmentOS Logo" className="h-10 sm:h-12 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all" />
-                    </Link>
-
-                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-[#9CA3AF]">
-                        <Link href="/#services" className="hover:text-[#0A0A0A] transition-colors">Services</Link>
-                        <Link href="/jobs" className="hover:text-[#0A0A0A] transition-colors">Jobs</Link>
-                        <Link href="https://www.smallgrp.com" target="_blank" className="hover:text-[#0A0A0A] transition-colors">About</Link>
-                        <Link href="/privacy" className="hover:text-[#0A0A0A] transition-colors">Privacy Policy</Link>
-                        <Link href="/terms" className="hover:text-[#0A0A0A] transition-colors">Terms of Service</Link>
-                        <Link href="https://chat.whatsapp.com/I9PLSmDMJ06B6qYYVsRb0q?mode=gi_t" target="_blank" className="hover:text-[#0A0A0A] transition-colors">Join Our Community</Link>
-                        <Link href="https://wa.me/919667353913" target="_blank" className="hover:text-[#0A0A0A] transition-colors">Chat with Expert</Link>
-                    </div>
-
-                    <div className="flex items-center gap-4 text-[#9CA3AF]">
-                        {socialLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label={link.ariaLabel}
-                                className="hover:text-[#0A0A0A] transition-colors"
-                            >
-                                <SocialIcon icon={link.icon} />
-                            </Link>
-                        ))}
-                    </div>
-
-                    <p className="text-xs text-[#9CA3AF]">
-                        &copy; {new Date().getFullYear()} RecruitmentOS by{' '}
-                        <Link href="https://www.smallgrp.com" target="_blank" className="text-[#6B7280] hover:text-[#0A0A0A] transition-colors">
-                            Small Group
+                <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
+                    <div className="col-span-2 md:col-span-1">
+                        <Link href="/" className="flex items-center mb-4">
+                            <img src="/logo.webp" alt="RecruitmentOS Logo" className="h-12 w-auto object-contain" />
                         </Link>
-                    </p>
+                        <p className="max-w-xs text-sm leading-relaxed text-[#6B7280]">Done-for-you outbound BD for recruitment agencies that need signed client fee agreements.</p>
+                    </div>
+                    <FooterColumn title="Services" links={[
+                        ['Outbound BD', '/#services'], ['Live Proof', '/#operational-proof'], ['Pricing', '/pricing'],
+                    ]} />
+                    <FooterColumn title="Verified Proof & Wins" links={[
+                        ['Case Studies', '/case-studies'], ['Orion Placement', '/case-studies/orion-placement-228-signed-agreements'], ['DACH Tech Agency', '/case-studies/dach-tech-engineering-42-meetings'], ['UK Tech & Data', '/case-studies/uk-tech-data-24-meetings-zero-ad-spend'],
+                    ]} />
+                    <FooterColumn title="Free Agency Tools" links={[
+                        ['Tools library', '/resources#tools'], ['BD Scorecard', '/tools/bd-scorecard'], ['Join Our Community', 'https://chat.whatsapp.com/I9PLSmDMJ06B6qYYVsRb0q?mode=gi_t'],
+                    ]} />
+                    <div className="col-span-2 border-t border-[#E5E5E5] pt-6 md:col-span-4 flex flex-wrap items-center justify-between gap-4">
+                        <div className="flex flex-wrap gap-5 text-xs text-[#6B7280]"><a href="https://www.smallgrp.com" target="_blank" rel="noopener noreferrer">Company</a><Link href="/privacy">Privacy Policy</Link><Link href="/terms">Terms of Service</Link></div>
+                        <div className="flex items-center gap-4 text-[#9CA3AF]">{socialLinks.map((link) => <Link key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.ariaLabel}><SocialIcon icon={link.icon} /></Link>)}<span className="text-xs">&copy; {new Date().getFullYear()} RecruitmentOS</span></div>
+                    </div>
                 </div>
             </div>
         </footer>
     );
+}
+
+function FooterColumn({ title, links }: { title: string; links: [string, string][] }) {
+    return <div><h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#0A0A0A]">{title}</h3><div className="flex flex-col items-start gap-3 text-sm text-[#6B7280]">{links.map(([label, href]) => <Link key={label} href={href} target={href.startsWith('http') ? '_blank' : undefined} className="hover:text-[#FF6A00] transition-colors">{label}</Link>)}</div></div>;
 }

@@ -13,7 +13,7 @@ export default function TrustBar() {
                     {stats.map((stat) => (
                         <div key={stat.label} className="text-center">
                             <div className="text-2xl md:text-3xl font-bold text-white tracking-tight mb-1">{stat.value}</div>
-                            <div className="text-[11px] text-[#6B7280] uppercase tracking-wider">{stat.label}</div>
+                            <div className="text-[11px] text-[#9CA3AF] uppercase tracking-wider">{stat.label}</div>
                         </div>
                     ))}
                 </div>

@@ -98,7 +98,10 @@ export default function FAQ() {
                     {faqs.map((faq, index) => (
                         <div key={index} className="border-b border-[#E5E5E5]">
                             <button
+                                id={`faq-button-${index}`}
                                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                                aria-expanded={openIndex === index}
+                                aria-controls={`faq-panel-${index}`}
                                 className="w-full flex items-center justify-between py-5 text-left group"
                             >
                                 <span className="text-[15px] font-medium text-[#0A0A0A] pr-4 group-hover:text-[#6B7280] transition-colors">
@@ -118,10 +121,15 @@ export default function FAQ() {
                                 </span>
                             </button>
                             <div
-                                className={`overflow-hidden transition-all duration-200 ${openIndex === index ? 'max-h-[500px] pb-5' : 'max-h-0'
+                                id={`faq-panel-${index}`}
+                                role="region"
+                                aria-labelledby={`faq-button-${index}`}
+                                className={`grid transition-[grid-template-rows] duration-200 ${openIndex === index ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
                                     }`}
                             >
-                                <p className="text-sm text-[#6B7280] leading-relaxed pr-10">{faq.answer}</p>
+                                <div className="overflow-hidden">
+                                    <p className="pb-5 text-sm text-[#6B7280] leading-relaxed pr-10">{faq.answer}</p>
+                                </div>
                             </div>
                         </div>
                     ))}

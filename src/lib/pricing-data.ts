@@ -176,6 +176,8 @@ export type PricingOffering = {
     discountDetail?: string;
     savingsCallout?: SavingsCallout;
     details: string[];
+    heroFigure?: string;
+    deliverable?: string;
     features: string[];
     highlight: boolean;
     cta: { label: string; href: string };
@@ -225,6 +227,8 @@ export const pricingOfferings: PricingOffering[] = [
         commitment: '3-month commitment sprint',
         discountBadge: 'SAVE 37.5% vs. PAY-PER-REPLY',
         discountDetail: 'Effective $125/reply all-in vs. $200 standard rate ($2,700 sprint savings)',
+        heroFigure: '$125 / reply effective all-in',
+        deliverable: '36 Guaranteed Positive Decision-Maker Replies across 3 months',
         savingsCallout: {
             badgeText: 'SAVE 37.5% vs. PAY-PER-REPLY',
             discountTag: '37.5% DISCOUNT',
@@ -235,7 +239,7 @@ export const pricingOfferings: PricingOffering[] = [
             standardRateLabel: '/ reply standard rate',
             description: 'Save $2,700 on 36 guaranteed replies across the 3-month sprint ($4,500 all-in vs. $7,200 at standard pay-per-reply rate).',
         },
-        details: ['Minimum 12 verified positive replies / month (36 across 3-mo sprint)'],
+        details: ['$1,500 setup + ($1,000 × 3 months) = $4,500 total 90-day investment', 'vs $7,200 at standard pay-per-reply rate'],
         features: [
             '3-month commitment sprint ($3,000 monthly + $1,500 setup = $4,500 all-in)',
             'Minimum 12 verified positive replies / month guaranteed',

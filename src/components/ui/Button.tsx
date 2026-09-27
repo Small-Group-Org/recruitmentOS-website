@@ -27,7 +27,7 @@ const sizeClasses: Record<ButtonSize, string> = {
 type BaseProps = {
     variant?: ButtonVariant;
     size?: ButtonSize;
-    /** rounded-full instead of the default rounded-xl */
+    /** rounded-full instead of the default 4px button radius */
     pill?: boolean;
     fullWidth?: boolean;
     className?: string;
@@ -61,7 +61,7 @@ export function Button(props: ButtonProps) {
         base,
         variantClasses[variant],
         sizeClasses[size],
-        pill ? 'rounded-full' : 'rounded-xl',
+        pill ? 'rounded-full' : 'rounded-[4px]',
         fullWidth && 'w-full',
         className,
     );

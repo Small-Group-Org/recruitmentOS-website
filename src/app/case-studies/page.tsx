@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { caseStudies } from '@/lib/case-studies-data';
+import { legacyCaseStudies, verifiedCaseStudies } from '@/lib/case-studies-data';
 import { buildCanonical } from '@/lib/seo';
 import OperationalProof from '@/components/OperationalProof';
 
@@ -24,20 +24,20 @@ export default function CaseStudiesListPage() {
 
         <div className="mb-20 animate-slideUp">
           <p className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-3">Verified production evidence</p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-black tracking-tighter mb-4">
-            Production evidence across three markets
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-normal text-black tracking-tighter mb-4" style={{ fontFamily: 'var(--font-serif)' }}>
+            Verified Client Acquisition Wins
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl">
-            Exact acquisition outcomes from Orion Placement, a DACH technology agency, and a UK tech and data agency.
+            Production client acquisition outcomes with visible calendar and pipeline proof.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
-          {caseStudies.map((study, index) => (
+          {verifiedCaseStudies.map((study, index) => (
             <Link
               key={study.slug}
               href={`/case-studies/${study.slug}`}
-              className="group flex flex-col h-full bg-white border border-[#E5E5E5] rounded-[2rem] overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:border-black/10 transition-all duration-500 ease-out animate-slideUp"
+               className="group flex flex-col h-full bg-white border border-[#E5E5E5] rounded-[10px] overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:border-black/10 transition-all duration-500 ease-out animate-slideUp"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Image Container with hover scale and grayscale transition */}
@@ -63,6 +63,7 @@ export default function CaseStudiesListPage() {
                   {study.title}
                 </h2>
 
+                <blockquote className="mb-6 border-l-2 border-brand pl-3 text-base font-bold leading-snug">&ldquo;{study.quotes?.result?.text ?? study.result}&rdquo;</blockquote>
                 {/* Short Excerpt */}
                 <p className="text-gray-600 text-base leading-relaxed line-clamp-3 mb-6">
                   {study.problem}
@@ -80,6 +81,14 @@ export default function CaseStudiesListPage() {
           ))}
         </div>
 
+        <div className="mt-24 border-t border-[#E5E5E5] pt-16">
+          <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#FF6A00]">Advisory only</p>
+          <h2 className="mb-4 text-3xl font-normal text-black" style={{ fontFamily: 'var(--font-serif)' }}>Diagnostic Audits &amp; Advisory Teardowns</h2>
+          <p className="mb-10 max-w-2xl text-lg text-gray-600">Useful operating teardowns and system diagnostics, kept separate from verified production acquisition wins.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {legacyCaseStudies.map((study) => <Link key={study.slug} href={`/case-studies/${study.slug}`} className="group border border-[#E5E5E5] bg-white p-6 rounded-[10px]"><span className="mb-4 inline-block rounded-[4px] bg-[#FFF4EB] px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-[#FF6A00]">Advisory teardown</span><h3 className="mb-3 text-xl font-bold group-hover:text-[#FF6A00]">{study.title}</h3><p className="text-sm text-gray-600">{study.cardTitle}</p></Link>)}
+          </div>
+        </div>
         <OperationalProof />
 
       </div>

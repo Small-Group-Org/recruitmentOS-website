@@ -5,12 +5,13 @@ import BeforeAfter from '@/components/BeforeAfter';
 import WhyNotDIY from '@/components/WhyNotDIY';
 import Features from '@/components/Features';
 import ToolTicker from '@/components/ToolTicker';
+import Pricing from '@/components/Pricing';
 import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
 import CaseStudiesPreview from '@/components/CaseStudiesPreview';
 import OperationalProof from '@/components/OperationalProof';
-import JobsPreview from '@/components/JobsPreview';
 import FAQ from '@/components/FAQ';
+import InternalOperationsAI from '@/components/InternalOperationsAI';
 import { buildCanonical } from '@/lib/seo';
 
 export const metadata = {
@@ -37,8 +38,9 @@ export default function Home() {
             <BeforeAfter />
             <WhyNotDIY />
             <Features />
-            <JobsPreview />
+            <InternalOperationsAI />
             <ToolTicker />
+            <Pricing />
             <FinalCTA />
             <FAQ />
             <Footer />

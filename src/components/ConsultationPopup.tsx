@@ -1,33 +1,53 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui';
+
+const INITIAL_DELAY_MS = 120000;
+const RESHOW_DELAY_MS = 180000;
+const DISMISSED_UNTIL_KEY = 'rOS_consultation_dismissed_until';
 
 export default function ConsultationPopup() {
     const [isVisible, setIsVisible] = useState(false);
     const [shouldRender, setShouldRender] = useState(false);
+    const showTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     useEffect(() => {
-        const initialTimer = setTimeout(() => {
+        const showPopup = () => {
+            sessionStorage.removeItem(DISMISSED_UNTIL_KEY);
             setShouldRender(true);
             requestAnimationFrame(() => setIsVisible(true));
-        }, 120000); // 2 minutes initial
+        };
 
-        return () => clearTimeout(initialTimer);
+        const dismissedUntil = Number(sessionStorage.getItem(DISMISSED_UNTIL_KEY) ?? 0);
+        const delay = dismissedUntil > Date.now()
+            ? dismissedUntil - Date.now()
+            : INITIAL_DELAY_MS;
+
+        showTimerRef.current = setTimeout(showPopup, delay);
+
+        return () => {
+            if (showTimerRef.current) clearTimeout(showTimerRef.current);
+            if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+        };
     }, []);
 
     const closePopup = () => {
+        const dismissedUntil = Date.now() + RESHOW_DELAY_MS;
+        sessionStorage.setItem(DISMISSED_UNTIL_KEY, String(dismissedUntil));
+        if (showTimerRef.current) clearTimeout(showTimerRef.current);
         setIsVisible(false);
         // Remove from DOM after transition
-        setTimeout(() => {
+        hideTimerRef.current = setTimeout(() => {
             setShouldRender(false);
-            
+
             // Set a second timer to show it again after 3 minutes
-            setTimeout(() => {
+            showTimerRef.current = setTimeout(() => {
+                sessionStorage.removeItem(DISMISSED_UNTIL_KEY);
                 setShouldRender(true);
                 requestAnimationFrame(() => setIsVisible(true));
-            }, 180000); // 3 minutes later
+            }, RESHOW_DELAY_MS);
         }, 300);
     };
 
@@ -39,12 +59,13 @@ export default function ConsultationPopup() {
     if (!shouldRender) return null;
 
     return (
-        <div className={`fixed bottom-4 left-4 right-4 sm:bottom-6 sm:left-auto sm:right-6 sm:w-auto z-[200] sm:p-4 transition-all duration-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+        <div className={`fixed bottom-24 left-4 right-4 sm:bottom-6 sm:left-auto sm:right-6 sm:w-auto z-[200] sm:p-4 transition-all duration-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             {/* Popup Content */}
             <div className={`relative bg-white w-full sm:max-w-[300px] rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.12)] border border-gray-100 overflow-hidden transition-all duration-500 ease-out p-5`}>
                 {/* Close Button */}
                 <button 
                     onClick={closePopup}
+                    aria-label="Close"
                     className="absolute top-6 right-6 text-[#9CA3AF] hover:text-[#0A0A0A] transition-colors"
                 >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -68,39 +89,10 @@ export default function ConsultationPopup() {
                     </div>
                 </div>
 
-                <div className="text-center mb-4">
+                <div className="text-center mb-6">
                     <h2 className="text-lg font-extrabold text-[#0A0A0A] tracking-tight mb-2 border-b border-[#E5E5E5] pb-2">
                         Chat with Expert
                     </h2>
-                </div>
-
-                {/* Testimonial Section */}
-                <div className="bg-[#FFF4EB] border border-[#FF6A00]/10 rounded-none p-5 mb-6 relative">
-                    <div className="absolute top-5 left-5">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF6A00" className="opacity-20">
-                            <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C20.1216 16 21.017 16.8954 21.017 18V21C21.017 22.1046 20.1216 23 19.017 23H16.017C14.9124 23 14.017 22.1046 14.017 21ZM14.017 13L14.017 10C14.017 8.89543 14.9124 8 16.017 8H19.017C20.1216 8 21.017 8.89543 21.017 10V13C21.017 14.1046 20.1216 15 19.017 15H16.017C14.9124 15 14.017 14.1046 14.017 13ZM3 21L3 18C3 16.8954 3.89543 16 5 16H8C9.10457 16 10 16.8954 10 18V21C10 22.1046 9.10457 23 8 23H5C3.89543 23 3 22.1046 3 21ZM3 13L3 10C3 8.89543 3.89543 8 5 8H8C9.10457 8 10 8.89543 10 10V13C10 14.1046 9.10457 15 8 15H5C3.89543 15 3 14.1046 3 13Z" />
-                        </svg>
-                    </div>
-                    <div className="flex flex-col gap-4">
-                        <p className="text-[#374151] font-medium leading-relaxed italic text-sm">
-                            &#34;The insights from our consultation were a game-changer. We identified key areas for automation that we hadn&#39;t even considered.&#34;
-                        </p>
-                        <div className="flex items-center gap-3">
-                            <div className="relative w-8 h-8 shrink-0">
-                                <Image
-                                    src="/testimonials/tushar.webp"
-                                    alt="Tushar mangla"
-                                    fill
-                                    sizes="32px"
-                                    className="rounded-lg object-cover border border-[#FF6A00]/10 shadow-sm"
-                                />
-                            </div>
-                            <div>
-                                <div className="font-bold text-[#0A0A0A] leading-none mb-1 text-sm">Tushar mangla</div>
-                                <div className="text-[10px] text-[#6B7280] font-medium">Founder, RecruitmentOS</div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 {/* Buttons Section */}
