@@ -1,4 +1,7 @@
 import Pricing from '@/components/Pricing';
+import TrustBar from '@/components/TrustBar';
+import CaseStudiesPreview from '@/components/CaseStudiesPreview';
+import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
 import { buildCanonical } from '@/lib/seo';
 import { JsonLd } from '@/components/JsonLd';
@@ -15,6 +18,9 @@ export default function PricingPage() {
     <main className="min-h-screen">
       <JsonLd data={serviceWithOffersSchema} />
       <Pricing />
+      <TrustBar />
+      <CaseStudiesPreview />
+      <FinalCTA />
       <Footer />
     </main>
   );

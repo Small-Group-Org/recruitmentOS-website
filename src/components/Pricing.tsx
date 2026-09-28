@@ -53,11 +53,14 @@ export default function Pricing() {
                         style={{ fontFamily: 'var(--font-outfit)' }}
                         id="pricing-enterprise-cta"
                     >
-                        Talk to sales team
+                        Book 15-Min Fit Call
                         <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
                     </Link>
+                    <p className="mt-2 text-center text-xs text-[#6B7280]">
+                        Direct 1-on-1 with Tushar · No junior SDRs · Zero pitch pressure
+                    </p>
                 </div>
 
             </div>
