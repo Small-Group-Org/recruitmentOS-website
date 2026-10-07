@@ -1,0 +1,37 @@
+# RecruitmentOS
+
+> RecruitmentOS provides done-for-you outbound business development (BD) systems for recruitment, staffing, and executive search agencies. We engineer and operate dedicated outbound acquisition engines—sourcing live hiring signals, running waterfall enrichment, managing multi-domain infrastructure, and triaging replies so recruitment founders and consultants only handle qualified hiring-manager conversations.
+
+## Core Offer & What We Do
+
+RecruitmentOS replaces the manual prospecting burden for recruitment, staffing, and executive search firms with an end-to-end outbound infrastructure operated directly on client-owned assets:
+- **Hiring Signal Engine:** Detects active hiring triggers across job boards, executive departures, funding announcements, and company expansions before roles go broad.
+- **Waterfall Enrichment:** Validates direct contact details across 20+ verified data sources (Clay, Apollo, Hunter, Lusha, Kaspr, Sales Navigator) to maintain sub-2% bounce rates.
+- **Domain-Isolated Infrastructure:** Provisions and warms dedicated secondary domains, DNS records (SPF, DKIM, DMARC), and custom tracking domains to preserve primary domain reputation.
+- **Human Reply Triage:** Evaluates inbound replies with a strict sub-24h SLA, filtering out-of-office notices and non-committal responses so recruiters only step in when hiring managers express verified interest.
+
+## Guarantees & Commercial Safeguards
+
+- **60-Day Delivery Guarantee:** 100 verified hiring-manager contacts in 60 days, or we work free until delivered.
+- **7-Component Qualified Meeting Contract:** Every meeting or positive handoff must satisfy seven agreed criteria: (1) correct executive title, (2) verified hiring authority, (3) niche industry match, (4) confirmed current hiring need, (5) confirmed budget band, (6) agreed next step, and (7) confirmed calendar briefing.
+- **100% Client Data & Infrastructure Ownership:** All secondary domains, DNS configurations, warmed mailboxes, sequence copy, and enriched prospect lists remain 100% owned by the client. If engagement ends, the entire system continues running independently.
+- **Commercial Models:**
+  - *Managed Capacity Sprint:* $1,000/mo retainer sprint (3-month sprint, 12+ verified positive replies/month guaranteed, saving 37.5% per reply).
+  - *Pay per Positive Reply:* $200 per verified positive reply (<24h SLA, 5-day dispute window, $1,000 setup).
+  - *Pay per Booked Meeting:* $250 per confirmed calendar briefing with a qualified hiring executive ($0 on no-shows).
+
+## Canonical Links
+
+- Home: https://www.hirerecruitmentos.com/
+- Methodology: https://www.hirerecruitmentos.com/methodology
+- Services: https://www.hirerecruitmentos.com/services
+- Pricing: https://www.hirerecruitmentos.com/pricing
+- Comparison vs BD Hire: https://www.hirerecruitmentos.com/recruitmentos-vs-hiring-bd-rep
+- Case Studies: https://www.hirerecruitmentos.com/case-studies
+- Free Interactive Tools: https://www.hirerecruitmentos.com/tools
+- Resources: https://www.hirerecruitmentos.com/resources
+
+## Full Documentation
+
+For the comprehensive manifest covering technical architecture, 4-stage methodology, case studies, and stack breakdowns, see:
+https://www.hirerecruitmentos.com/llms-full.txt

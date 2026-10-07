@@ -6,12 +6,14 @@ import type { ArticleMeta } from './articles-data';
 export const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': `${SITE_URL}/#organization`,
     name: SITE_NAME,
     url: SITE_URL,
     logo: `${SITE_URL}/og-image.webp`,
     description: 'Done-for-you BD function for established recruitment agencies.',
     founder: {
         '@type': 'Person',
+        '@id': `${SITE_URL}/#founder`,
         name: 'Tushar Mangla',
         jobTitle: 'Founder',
         sameAs: 'https://www.linkedin.com/in/tusharmanglatm/',
@@ -29,10 +31,15 @@ export const organizationSchema = {
     ],
 };
 
-export function faqSchema(faqs: { q: string; a: string }[]) {
+export function faqSchema(faqs: { q: string; a: string }[], pageUrl: string = `${SITE_URL}/`) {
     return {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
+        '@id': `${pageUrl}#faq`,
+        isPartOf: {
+            '@type': 'WebPage',
+            '@id': `${pageUrl}#webpage`,
+        },
         mainEntity: faqs.map(({ q, a }) => ({
             '@type': 'Question',
             name: q,
@@ -44,9 +51,10 @@ export function faqSchema(faqs: { q: string; a: string }[]) {
 export const serviceWithOffersSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
+    '@id': `${SITE_URL}/#service`,
     name: 'Done-For-You BD for Recruitment Agencies',
     description: 'We replace your entire BD function — niche immersion, signal engine, outreach engine, reply triage — on your stack.',
-    provider: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+    provider: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: SITE_NAME, url: SITE_URL },
     areaServed: 'Global',
     serviceType: 'Business Development Outsourcing',
     offers: pricingOfferings.map((offering) => ({
@@ -62,12 +70,71 @@ export const serviceWithOffersSchema = {
 export const personSchema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': `${SITE_URL}/#founder`,
     name: 'Tushar Mangla',
     jobTitle: 'Founder, RecruitmentOS',
     url: `${SITE_URL}/about`,
     sameAs: ['https://www.linkedin.com/in/tusharmanglatm/'],
-    worksFor: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+    worksFor: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: SITE_NAME, url: SITE_URL },
 };
+
+export interface WebPageSchemaOptions {
+    title: string;
+    description: string;
+    url: string;
+    breadcrumbs?: { name: string; url: string }[];
+    datePublished?: string;
+    dateModified?: string;
+}
+
+export function webPageSchema({
+    title,
+    description,
+    url,
+    breadcrumbs,
+    datePublished,
+    dateModified,
+}: WebPageSchemaOptions) {
+    const schema: Record<string, unknown> = {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: title,
+        description,
+        isPartOf: {
+            '@type': 'WebSite',
+            '@id': `${SITE_URL}/#website`,
+            name: SITE_NAME,
+            url: SITE_URL,
+        },
+        about: { '@id': `${SITE_URL}/#organization` },
+        publisher: { '@id': `${SITE_URL}/#organization` },
+        author: { '@id': `${SITE_URL}/#founder` },
+    };
+    if (datePublished) schema.datePublished = datePublished;
+    if (dateModified) schema.dateModified = dateModified;
+    if (breadcrumbs && breadcrumbs.length > 0) {
+        schema.breadcrumb = {
+            '@type': 'BreadcrumbList',
+            '@id': `${url}#breadcrumb`,
+            itemListElement: breadcrumbs.map((crumb, idx) => ({
+                '@type': 'ListItem',
+                position: idx + 1,
+                name: crumb.name,
+                item: crumb.url,
+            })),
+        };
+    }
+    return schema;
+}
+
+export function buildPageSchemaGraph(nodes: Record<string, unknown>[]) {
+    return {
+        '@context': 'https://schema.org',
+        '@graph': nodes,
+    };
+}
 
 export function webApplicationSchema(name: string, slug: string, description: string) {
     return {
