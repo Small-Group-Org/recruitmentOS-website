@@ -29,7 +29,7 @@ export default function OperationalProof() {
             <div id={`calendar-panel-${activeView}`} role="tabpanel" aria-labelledby={`calendar-tab-${activeView}`} className="relative aspect-[16/10] overflow-hidden rounded-[4px] border border-[#E5E5E5] bg-white">
               <Image src={activeCalendar.image} alt={`${activeCalendar.label} discovery call calendar proof`} fill className="object-contain" sizes="(max-width: 1024px) 100vw, 60vw" />
             </div>
-            <p className="mt-4 text-sm text-[#6B7280]">Real client calendars: 15–25 qualified hiring-manager discovery calls booked every week across US and European markets.</p>
+            <p className="mt-4 text-sm text-[#6B7280]">Real client calendars (client names redacted for confidentiality): 15–25 qualified hiring-manager discovery calls booked every week across US and European markets.</p>
           </div>
 
           <div className="rounded-[10px] bg-[#0A0A0A] p-5 text-white sm:p-7">
