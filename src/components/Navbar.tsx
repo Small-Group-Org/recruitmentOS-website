@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { CONTACT_EMAIL, CONTACT_MAILTO } from '@/lib/seo';
 
 export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => void }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -87,6 +88,12 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
                             className="block bg-[#0A0A0A] text-white px-5 py-2.5 rounded-full text-sm font-medium text-center mt-2"
                         >
                             Book a Fit Call
+                        </a>
+                        <a
+                            href={CONTACT_MAILTO}
+                            className="block text-center text-xs font-semibold text-[#6B7280] hover:text-[#FF6A00] transition-colors py-2"
+                        >
+                            Or email {CONTACT_EMAIL}
                         </a>
                     </div>
                 )}

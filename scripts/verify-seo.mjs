@@ -47,6 +47,8 @@ assert(llmsContent.includes('Client Data & Infrastructure Ownership') || llmsCon
 assert(!bannedRegex.test(llmsContent), 'llms.txt does not contain banned words');
 assert(!/\bboutique\b/i.test(llmsContent), 'llms.txt does not contain "boutique"');
 assert(llmsContent.includes('https://www.hirerecruitmentos.com/llms-full.txt'), 'llms.txt links to llms-full.txt');
+assert(llmsContent.includes('tushar.mangla1120@gmail.com'), 'llms.txt includes direct contact email');
+assert(llmsContent.includes('/contact'), 'llms.txt includes /contact link');
 
 const llmsFullPath = path.join(rootDir, 'public/llms-full.txt');
 assert(fs.existsSync(llmsFullPath), 'public/llms-full.txt exists');
@@ -58,11 +60,22 @@ assert(llmsFullContent.includes('Orion Placement'), 'llms-full.txt has Orion Pla
 assert(llmsFullContent.includes('RecruitmentOS vs. In-House BD Hire') || llmsFullContent.includes('RecruitmentOS vs In-House BD'), 'llms-full.txt has BD hire comparison');
 assert(!bannedRegex.test(llmsFullContent), 'llms-full.txt does not contain banned words');
 assert(!/\bboutique\b/i.test(llmsFullContent), 'llms-full.txt does not contain "boutique"');
+assert(llmsFullContent.includes('tushar.mangla1120@gmail.com'), 'llms-full.txt includes direct contact email');
+assert(llmsFullContent.includes('/contact'), 'llms-full.txt includes /contact link');
 
-console.log('\n--- 3. Checking Schema Graph Unification (schemas.ts) ---');
+console.log('\n--- 3. Checking Schema Graph Unification & Contact (schemas.ts & seo.ts) ---');
+const seoPath = path.join(rootDir, 'src/lib/seo.ts');
+const seoContent = fs.readFileSync(seoPath, 'utf8');
+assert(seoContent.includes("CONTACT_EMAIL = 'tushar.mangla1120@gmail.com'"), 'seo.ts exports CONTACT_EMAIL');
+assert(seoContent.includes('CONTACT_MAILTO'), 'seo.ts exports CONTACT_MAILTO');
+
 const schemasPath = path.join(rootDir, 'src/lib/schemas.ts');
 const schemasContent = fs.readFileSync(schemasPath, 'utf8');
 
+assert(schemasContent.includes('CONTACT_EMAIL'), 'schemas.ts imports CONTACT_EMAIL');
+assert(schemasContent.includes('email: CONTACT_EMAIL'), 'schemas.ts includes email: CONTACT_EMAIL');
+assert(schemasContent.includes('contactPoint: ['), 'organizationSchema includes contactPoint');
+assert(schemasContent.includes("'@type': 'ContactPoint'"), 'organizationSchema contactPoint has ContactPoint @type');
 assert(schemasContent.includes("'@id': `${SITE_URL}/#organization`"), 'organizationSchema has #organization @id');
 assert(schemasContent.includes("'@id': `${SITE_URL}/#founder`"), 'schemas.ts has #founder @id');
 assert(schemasContent.includes("'@id': `${SITE_URL}/#service`"), 'serviceWithOffersSchema has #service @id');

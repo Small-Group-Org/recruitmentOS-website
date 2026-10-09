@@ -25,7 +25,7 @@ export default function SimpleCTA() {
                             We&#39;ll send you 10 real leads from your niche to see the quality firsthand
                         </p>
                         <a
-                            href="mailto:tushar@smallgrp.com?subject=Send%20Me%20Sample%20Leads&body=Hi%2C%20I'd%20like%20to%20see%20sample%20leads%20for%20my%20recruiting%20agency."
+                            href="mailto:tushar.mangla1120@gmail.com?subject=Send%20Me%20Sample%20Leads&body=Hi%2C%20I'd%20like%20to%20see%20sample%20leads%20for%20my%20recruiting%20agency."
                             onClick={() => trackCTAClick('Request Sample Leads', 'Simple CTA')}
                             className="bg-orange-500 text-white px-6 py-3 rounded-xl font-black transition-all hover:translate-y-[-2px] btn-shadow text-base inline-block w-full"
                         >

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
 
-import { buildCanonical } from '@/lib/seo';
+import { buildCanonical, CONTACT_EMAIL, CONTACT_MAILTO } from '@/lib/seo';
 
 export const metadata = {
     title: 'Contact RecruitmentOS — Submit the Form',
@@ -38,8 +38,18 @@ export default function ContactPage() {
 
                     <ContactForm variant="page" />
 
-                    <div className="mt-12 sm:mt-16 text-center text-sm text-[#9CA3AF]">
+                    <div className="mt-12 sm:mt-16 text-center text-sm text-[#6B7280] space-y-3">
                         <p>
+                            Prefer direct email?{' '}
+                            <a
+                                href={CONTACT_MAILTO}
+                                className="text-[#0A0A0A] font-bold hover:text-[#FF6A00] transition-colors underline underline-offset-2"
+                            >
+                                {CONTACT_EMAIL}
+                            </a>
+                            {' '}&middot; Response within 48 hours.
+                        </p>
+                        <p className="text-xs text-[#9CA3AF]">
                             Prefer to talk live?{' '}
                             <Link
                                 href="https://cal.com/tusharm/30min?user=tusharm"

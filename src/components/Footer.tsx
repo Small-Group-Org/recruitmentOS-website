@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { socialLinks, type SocialIconName } from '@/lib/social-links';
+import { CONTACT_EMAIL, CONTACT_MAILTO } from '@/lib/seo';
 
 function SocialIcon({ icon, className }: { icon: SocialIconName; className?: string }) {
     const base = 'w-[18px] h-[18px]';
@@ -37,6 +38,17 @@ export default function Footer() {
                             <img src="/logo.webp" alt="RecruitmentOS Logo" className="h-12 w-auto object-contain" />
                         </Link>
                         <p className="max-w-xs text-sm leading-relaxed text-[#6B7280]">Done-for-you outbound BD for recruitment agencies that need signed client fee agreements.</p>
+                        <div className="mt-4 pt-1">
+                            <a
+                                href={CONTACT_MAILTO}
+                                className="inline-flex items-center gap-2 text-xs sm:text-sm text-[#0A0A0A] hover:text-[#FF6A00] transition-colors font-medium"
+                            >
+                                <svg className="w-4 h-4 text-[#FF6A00] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                <span>{CONTACT_EMAIL}</span>
+                            </a>
+                        </div>
                     </div>
                     <FooterColumn title="Services" links={[
                         ['Outbound BD', '/#services'], ['Live Proof', '/#operational-proof'], ['Pricing', '/pricing'],
@@ -48,7 +60,13 @@ export default function Footer() {
                         ['Tools library', '/resources#tools'], ['BD Scorecard', '/tools/bd-scorecard'], ['Join Our Community', 'https://chat.whatsapp.com/I9PLSmDMJ06B6qYYVsRb0q?mode=gi_t'],
                     ]} />
                     <div className="col-span-2 border-t border-[#E5E5E5] pt-6 md:col-span-4 flex flex-wrap items-center justify-between gap-4">
-                        <div className="flex flex-wrap gap-5 text-xs text-[#6B7280]"><a href="https://www.smallgrp.com" target="_blank" rel="noopener noreferrer">Company</a><Link href="/privacy">Privacy Policy</Link><Link href="/terms">Terms of Service</Link></div>
+                        <div className="flex flex-wrap gap-5 text-xs text-[#6B7280]">
+                            <a href="https://www.smallgrp.com" target="_blank" rel="noopener noreferrer">Company</a>
+                            <Link href="/contact" className="hover:text-[#0A0A0A] transition-colors">Contact</Link>
+                            <a href={CONTACT_MAILTO} className="hover:text-[#0A0A0A] transition-colors">{CONTACT_EMAIL}</a>
+                            <Link href="/privacy" className="hover:text-[#0A0A0A] transition-colors">Privacy Policy</Link>
+                            <Link href="/terms" className="hover:text-[#0A0A0A] transition-colors">Terms of Service</Link>
+                        </div>
                         <div className="flex items-center gap-4 text-[#9CA3AF]">{socialLinks.map((link) => <Link key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.ariaLabel}><SocialIcon icon={link.icon} /></Link>)}<span className="text-xs">&copy; {new Date().getFullYear()} RecruitmentOS</span></div>
                     </div>
                 </div>

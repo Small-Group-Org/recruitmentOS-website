@@ -1,4 +1,4 @@
-import { SITE_URL, SITE_NAME } from './seo';
+import { SITE_URL, SITE_NAME, CONTACT_EMAIL } from './seo';
 import { socialLinks } from './social-links';
 import { pricingOfferings } from './pricing-data';
 import type { ArticleMeta } from './articles-data';
@@ -11,6 +11,16 @@ export const organizationSchema = {
     url: SITE_URL,
     logo: `${SITE_URL}/og-image.webp`,
     description: 'Done-for-you BD function for established recruitment agencies.',
+    email: CONTACT_EMAIL,
+    contactPoint: [
+        {
+            '@type': 'ContactPoint',
+            contactType: 'customer support',
+            email: CONTACT_EMAIL,
+            url: `${SITE_URL}/contact`,
+            availableLanguage: ['English'],
+        },
+    ],
     founder: {
         '@type': 'Person',
         '@id': `${SITE_URL}/#founder`,
@@ -73,6 +83,7 @@ export const personSchema = {
     '@id': `${SITE_URL}/#founder`,
     name: 'Tushar Mangla',
     jobTitle: 'Founder, RecruitmentOS',
+    email: CONTACT_EMAIL,
     url: `${SITE_URL}/about`,
     sameAs: ['https://www.linkedin.com/in/tusharmanglatm/'],
     worksFor: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: SITE_NAME, url: SITE_URL },
