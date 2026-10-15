@@ -347,7 +347,7 @@ export default function FoundersGuideClient() {
 
                         <div className="border border-[#E5E5E5] bg-[#FAFAFA] p-5 rounded-[8px] flex flex-col justify-between">
                             <div>
-                                <span className="text-[10px] font-mono uppercase tracking-wider text-[#6B7280] block mb-2">case_justin_orion</span>
+                                <span className="text-[10px] font-mono uppercase tracking-wider text-[#6B7280] block mb-2">case_justin_us_agency</span>
                                 <div className="text-2xl font-bold text-[#0A0A0A] font-mono leading-tight mb-1">
                                     4 Hrs/Day
                                 </div>
@@ -355,11 +355,11 @@ export default function FoundersGuideClient() {
                                     Saved for Agency Founder
                                 </div>
                                 <p className="text-xs text-[#6B7280] leading-relaxed">
-                                    Automated core outbound sourcing and qualification workflows for Orion Search, unlocking biller bandwidth.
+                                    Automated core outbound sourcing and qualification workflows for a US-based recruitment agency, unlocking biller bandwidth.
                                 </p>
                             </div>
                             <div className="mt-4 pt-3 border-t border-[#E5E5E5] text-[11px] font-mono text-[#0A0A0A]">
-                                Orion Search
+                                US-Based Recruitment Agency
                             </div>
                         </div>
 

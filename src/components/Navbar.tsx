@@ -14,7 +14,6 @@ export default function Navbar({ onPricingToggle }: { onPricingToggle?: () => vo
         { name: 'Case Studies', href: '/case-studies' },
         { name: 'Resources', href: '/resources' },
         { name: 'Jobs', href: '/jobs' },
-        { name: 'Pricing', href: '/pricing' },
     ];
 
     return (

@@ -56,7 +56,7 @@ const llmsFullContent = fs.readFileSync(llmsFullPath, 'utf8');
 
 assert(llmsFullContent.includes('Stage 01: Setup & Foundation'), 'llms-full.txt has 4-stage methodology');
 assert(llmsFullContent.includes('Managed Capacity Sprint'), 'llms-full.txt has Managed Capacity Sprint model');
-assert(llmsFullContent.includes('Orion Placement'), 'llms-full.txt has Orion Placement case study');
+assert(llmsFullContent.includes('US-Based Recruitment Agency'), 'llms-full.txt has US-Based Recruitment Agency case study');
 assert(llmsFullContent.includes('RecruitmentOS vs. In-House BD Hire') || llmsFullContent.includes('RecruitmentOS vs In-House BD'), 'llms-full.txt has BD hire comparison');
 assert(!bannedRegex.test(llmsFullContent), 'llms-full.txt does not contain banned words');
 assert(!/\bboutique\b/i.test(llmsFullContent), 'llms-full.txt does not contain "boutique"');

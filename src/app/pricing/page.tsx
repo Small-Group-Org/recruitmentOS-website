@@ -11,6 +11,7 @@ export const metadata = {
   title: 'Pricing — $1,000/mo Managed Acquisition Sprint or $200/Reply',
   description: 'Choose a $1,500 setup plus $1,000/mo managed acquisition sprint with at least 12 verified positive replies per month, or a $1,000 setup plus $200 per verified positive reply.',
   alternates: { canonical: buildCanonical('/pricing') },
+  robots: { index: false, follow: false },
 };
 
 export default function PricingPage() {

@@ -51,10 +51,10 @@ export default function Footer() {
                         </div>
                     </div>
                     <FooterColumn title="Services" links={[
-                        ['Outbound BD', '/#services'], ['Live Proof', '/#operational-proof'], ['Pricing', '/pricing'],
+                        ['Outbound BD', '/#services'], ['Live Proof', '/#operational-proof'],
                     ]} />
                     <FooterColumn title="Verified Proof & Wins" links={[
-                        ['Case Studies', '/case-studies'], ['Orion Placement', '/case-studies/orion-placement-228-signed-agreements'], ['DACH Tech Agency', '/case-studies/dach-tech-engineering-42-meetings'], ['UK Tech & Data', '/case-studies/uk-tech-data-24-meetings-zero-ad-spend'],
+                        ['Case Studies', '/case-studies'], ['US-Based Recruitment Agency', '/case-studies/orion-placement-228-signed-agreements'], ['DACH Tech Agency', '/case-studies/dach-tech-engineering-42-meetings'], ['UK Tech & Data', '/case-studies/uk-tech-data-24-meetings-zero-ad-spend'],
                     ]} />
                     <FooterColumn title="Free Agency Tools" links={[
                         ['Tools library', '/resources#tools'], ['BD Scorecard', '/tools/bd-scorecard'], ['Join Our Community', 'https://chat.whatsapp.com/I9PLSmDMJ06B6qYYVsRb0q?mode=gi_t'],

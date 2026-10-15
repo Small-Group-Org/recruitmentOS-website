@@ -29,7 +29,7 @@ export default function ProductDemo() {
                         {[
                             { id: 1, name: 'Human Capital Ventures' },
                             { id: 2, name: 'K Logo' },
-                            { id: 3, name: 'Orion Placement' },
+                            { id: 3, name: 'US-Based Recruitment Agency' },
                             { id: 4, name: 'Call It Recruiting' },
                             { id: 5, name: 'Incube' }
                         ].map((company, idx) => (
