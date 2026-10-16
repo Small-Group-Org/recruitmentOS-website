@@ -27,14 +27,17 @@ export default function OperationalProof() {
               ))}
             </div>
             <div id={`calendar-panel-${activeView}`} role="tabpanel" aria-labelledby={`calendar-tab-${activeView}`} className="relative aspect-[16/10] overflow-hidden rounded-[4px] border border-[#E5E5E5] bg-white">
-              <Image src={activeCalendar.image} alt={`${activeCalendar.label} discovery call calendar proof`} fill className="object-contain" sizes="(max-width: 1024px) 100vw, 60vw" />
+              <div className="absolute top-4 left-4 z-10 bg-black/90 text-white text-[11px] font-mono tracking-widest uppercase font-bold px-3 py-1.5 rounded-full shadow-lg border border-white/20 select-none">
+                50+ CONTRACTS SIGNED
+              </div>
+              <Image src={activeCalendar.image} alt={`${activeCalendar.label} discovery call calendar proof`} fill className="object-contain filter blur-[2px] select-none pointer-events-none" sizes="(max-width: 1024px) 100vw, 60vw" />
             </div>
             <p className="mt-4 text-sm text-[#6B7280]">Real client calendars (client names redacted for confidentiality): 15–25 qualified hiring-manager discovery calls booked every week across US and European markets.</p>
           </div>
 
           <div className="rounded-[10px] bg-[#0A0A0A] p-5 text-white sm:p-7">
             <p className="mb-2 text-xs font-bold uppercase tracking-widest text-brand" style={{ fontFamily: 'var(--font-mono)' }}>Weekly funnel</p>
-            <h3 className="mb-6 text-2xl" style={{ fontFamily: 'var(--font-serif)' }}>128 leads to a 56% emailed reply rate.</h3>
+            <h3 className="mb-6 text-2xl" style={{ fontFamily: 'var(--font-serif)' }}>128 leads sourced to verified decision-maker replies.</h3>
             <div className="space-y-3">
               {proofFunnel.map((step, index) => (
                 <div key={step.label} className="border-b border-white/15 pb-3 last:border-0">

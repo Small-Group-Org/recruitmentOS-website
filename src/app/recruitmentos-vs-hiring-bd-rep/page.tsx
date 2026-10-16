@@ -11,7 +11,7 @@ export const metadata = {
 const comparisonPoints = [
     {
         feature: 'Monthly Cost',
-        recruitmentOS: '$224 - $1,034 / month (Fully-Managed)',
+        recruitmentOS: '$1,000/mo sprint or $200/reply (Done-For-You)',
         bdRep: '$6,000 - $8,000 / month base salary + commission',
         winner: 'RecruitmentOS',
     },
@@ -107,7 +107,7 @@ export default function ComparisonPage() {
                                 Hiring a full-time Business Development Representative (BDR) in the US, UK, or EU carries a base salary of $60,000–$80,000, plus commissions, taxes, healthcare benefits, and recruitment overhead. On top of that, you must pay for search databases (ZoomInfo, LinkedIn Sales Navigator) and outreach infrastructure (Instantly, Clay, Lemlist), bringing the total cost closer to $90,000–$110,000 annually.
                             </p>
                             <p className="text-gray-600 leading-relaxed">
-                                **RecruitmentOS** replaces the entire infrastructure cost and BDR salary with a predictable monthly model ranging from **$224 to $1,034/month** (for fully-managed outbound campaigns), cutting your pipeline acquisition costs by 80–90% while deploying a complete data enrichment and delivery stack out of the box.
+                                **RecruitmentOS** replaces the entire infrastructure cost and BDR salary with a predictable model—choose between a **$1,000/month managed sprint** ($1,500 setup, 12+ verified positive replies/mo guaranteed) or **$200 per verified positive reply** ($1,000 setup), cutting your client acquisition costs by 80–90% while deploying a complete data enrichment and delivery stack out of the box.
                             </p>
                         </div>
 
@@ -127,7 +127,7 @@ export default function ComparisonPage() {
                                 BDR attrition is high, with the average rep tenure lasting less than 12 months. When a rep leaves, your pipeline halts, and you must restart the hiring, onboarding, and training cycle.
                             </p>
                             <p className="text-gray-600 leading-relaxed">
-                                **RecruitmentOS** runs on fully automated and monitored cloud systems. Our team handles campaign delivery, inbox reputation, and daily system optimization so your agency outbound operations remain active and consistent 365 days a year.
+                                **RecruitmentOS** runs on rigorously monitored cloud systems with human reply triage. Our team handles campaign delivery, inbox reputation, and daily system optimization so your agency outbound operations remain active and consistent 365 days a year.
                             </p>
                         </div>
                     </section>
@@ -140,7 +140,7 @@ export default function ComparisonPage() {
                                 100 verified hiring-manager contacts in 60 days — or we work free until we do.
                             </h2>
                             <p className="text-[#9CA3AF] text-sm sm:text-base font-medium max-w-2xl mx-auto">
-                                Hiring an employee is a risk. RecruitmentOS carries a contractual performance guarantee. If we don't deliver results within the first 60 days, we work free.
+                                Hiring an employee is a risk. RecruitmentOS carries a contractual performance guarantee. If we don&apos;t deliver results within the first 60 days, we work free.
                             </p>
                         </div>
                     </section>
@@ -148,10 +148,10 @@ export default function ComparisonPage() {
                     {/* Next Steps CTA */}
                     <section className="border-t border-[#E5E5E5] pt-12 text-center">
                         <h2 className="text-2xl sm:text-3xl font-bold text-black mb-4">
-                            Score Your Agency's Outbound System
+                            Score Your Agency&apos;s Outbound System
                         </h2>
                         <p className="text-gray-600 max-w-xl mx-auto mb-8 font-medium">
-                            Let's map out your recruitment agency's volume math, target placement metrics, and active channels on a 30-minute fit call.
+                            Let&apos;s map out your recruitment agency&apos;s volume math, target placement metrics, and active channels on a 30-minute fit call.
                         </p>
                         <Link
                             href="https://cal.com/tusharm/30min?user=tusharm"

@@ -5,7 +5,6 @@ import BeforeAfter from '@/components/BeforeAfter';
 import WhyNotDIY from '@/components/WhyNotDIY';
 import Features from '@/components/Features';
 import ToolTicker from '@/components/ToolTicker';
-import Pricing from '@/components/Pricing';
 import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
 import CaseStudiesPreview from '@/components/CaseStudiesPreview';
@@ -52,7 +51,6 @@ export default function Home() {
             <Features />
             <InternalOperationsAI />
             <ToolTicker />
-            <Pricing />
             <FinalCTA />
             <FAQ />
             <Footer />

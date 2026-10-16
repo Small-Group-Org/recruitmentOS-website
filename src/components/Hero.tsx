@@ -21,17 +21,17 @@ export default function Hero() {
                         </p>
 
                         {/* Headline */}
-                        <h1 className="text-5xl sm:text-6xl lg:text-[4.5rem] text-neutral-900 leading-[1.02] mb-6" style={{ fontFamily: 'var(--font-serif)' }}>
-                            Stop carrying 90% of your agency&apos;s BD. We install a done-for-you acquisition engine that books client fee agreements.
+                        <h1 className="text-5xl sm:text-6xl lg:text-[4.2rem] text-neutral-900 leading-[1.04] mb-6" style={{ fontFamily: 'var(--font-serif)' }}>
+                            RecruitmentOS: The Done-for-You Outbound Acquisition Engine Built Exclusively for Recruitment &amp; Search Agencies.
                         </h1>
 
                         {/* Subheadline */}
-                        <p className="text-lg text-neutral-500 mb-10 leading-relaxed max-w-lg font-medium">
-                             Your billers should be billing, not cold-emailing. We replace job-board candidate spam with a secondary-domain air-gap, live hiring signals, and qualified conversations with the decision-makers who can sign your next client fee agreement. No junior SDR experiment with a 70% failure rate to manage.
+                        <p className="text-lg text-neutral-600 mb-8 leading-relaxed max-w-xl font-medium">
+                            Stop carrying 90% of your agency&apos;s BD. Your billers should be billing, not cold-emailing. We replace blind prospecting with a secondary-domain air-gap, live hiring signals, and qualified conversations with decision-makers who sign client fee agreements.
                         </p>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10 w-full">
-                            {['228 Signed Terms in 38 Days', '$0 Fee on Non-Buyers', '15–25 Client Calls/Wk'].map((proof) => (
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8 w-full">
+                            {['50+ Contracts Signed in 90 Days', '$0 Fee on Non-Buyers', '15–25 Client Calls/Wk'].map((proof) => (
                                 <div key={proof} className="border-l-2 border-brand bg-[#FFF4EB] px-4 py-3 text-sm font-bold text-neutral-900">{proof}</div>
                             ))}
                         </div>
@@ -56,6 +56,24 @@ export default function Hero() {
                             >
                                 See Live Calendar Proof ↓
                             </Link>
+                        </div>
+
+                        {/* Micro-risk guarantees */}
+                        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-mono text-neutral-500 mt-5">
+                            <span className="flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                $0 on Non-Buyers
+                            </span>
+                            <span className="text-neutral-300">·</span>
+                            <span className="flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                60-Day Delivery Guarantee
+                            </span>
+                            <span className="text-neutral-300">·</span>
+                            <span className="flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                100% Brand Air-Gap
+                            </span>
                         </div>
                         
 

@@ -66,11 +66,11 @@ export default function Features() {
                                         ))}
                                     </div>
                                     <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-                                        <span className="inline-flex items-center gap-2 rounded-full bg-accent-light px-3 py-1.5 text-[12px] font-semibold text-success">
+                                        <span className="inline-flex items-center gap-2 rounded-full bg-accent-light px-3 py-1.5 text-[12px] font-semibold text-success" style={{ fontFamily: 'var(--font-mono)' }}>
                                             <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M12 3l7.5 3v5.25c0 4.1-2.65 7.79-7.5 9.75-4.85-1.96-7.5-5.65-7.5-9.75V6L12 3Z" />
                                             </svg>
-                                            {service.slaOrGuarantee}
+                                            Output SLA: {service.slaOrGuarantee}
                                         </span>
                                         <span className="inline-flex items-center text-[12px] font-bold text-[#0A0A0A] group-hover:text-brand">
                                             Explore service

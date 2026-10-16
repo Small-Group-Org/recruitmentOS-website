@@ -8,11 +8,11 @@ import { buildCanonical } from '@/lib/seo';
 
 export const metadata = {
     title: 'Claude MCP Recruitment Engine — 7 AI workflows for recruiters',
-    description: 'A practical guide to building an AI-powered recruitment engine with Claude MCP: sourcing, enrichment, screening, outreach, and reporting workflows you can copy.',
+    description: 'A practical guide to building an intelligent recruitment engine with Claude MCP: sourcing, enrichment, screening, outreach, and reporting workflows you can copy.',
     alternates: { canonical: buildCanonical('/resources/claude-mcp-recruitment-engine') },
     openGraph: {
         title: 'Claude MCP Recruitment Engine — 7 AI workflows for recruiters',
-        description: 'A practical guide to building an AI-powered recruitment engine with Claude MCP: sourcing, enrichment, screening, outreach, and reporting workflows.',
+        description: 'A practical guide to building an intelligent recruitment engine with Claude MCP: sourcing, enrichment, screening, outreach, and reporting workflows.',
         url: buildCanonical('/resources/claude-mcp-recruitment-engine'),
         siteName: 'RecruitmentOS',
         type: 'article',

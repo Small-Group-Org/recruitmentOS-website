@@ -156,7 +156,7 @@ export default function AuditClient() {
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#0A0A0A] mb-2 tracking-tight">Details received — secure your slot</h1>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#0A0A0A] mb-2 tracking-tight">Details received — secure your slot</h2>
             <p className="text-[#6B7280] text-sm sm:text-base max-w-md mx-auto">
               Pick a time below to lock in your free 30-min recruitment AI audit.
             </p>
@@ -208,7 +208,7 @@ export default function AuditClient() {
             Find Out Where Your Hiring Pipeline Is Leaking
           </h1>
           <p className="text-[#6B7280] text-sm sm:text-base leading-relaxed mb-6">
-            Book a free 30-minute audit — we'll show you exactly where your agency is losing time and revenue, and build a custom AI workflow to fix it.
+            Book a free 30-minute audit — we&apos;ll show you exactly where your agency is losing time and revenue, and build a custom AI workflow to fix it.
           </p>
           <ul className="space-y-2 mb-2">
             {[

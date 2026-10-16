@@ -68,7 +68,6 @@ declare global {
 
 export default function AIRecruitingOSClient() {
     const [unlocked, setUnlocked] = useState(false);
-    const [checking, setChecking] = useState(true);
 
     const [step, setStep] = useState<1 | 2>(1);
     const [name, setName] = useState('');
@@ -79,10 +78,9 @@ export default function AIRecruitingOSClient() {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            setUnlocked(localStorage.getItem(STORAGE_KEY) === 'true');
+        if (typeof window !== 'undefined' && localStorage.getItem(STORAGE_KEY) === 'true') {
+            setUnlocked(true);
         }
-        setChecking(false);
     }, []);
 
     function handleStep1(e: React.FormEvent) {
@@ -123,14 +121,6 @@ export default function AIRecruitingOSClient() {
         }
     }
 
-    if (checking) {
-        return (
-            <div className="min-h-screen flex items-center justify-center bg-white">
-                <div className="w-6 h-6 rounded-full border-2 border-[#FF6A00] border-t-transparent animate-spin" />
-            </div>
-        );
-    }
-
     // UNLOCKED VIEW
     if (unlocked) {
         return (
@@ -151,9 +141,9 @@ export default function AIRecruitingOSClient() {
                     </div>
 
                     <p className="text-xs font-bold text-[#FF6A00] uppercase tracking-widest mb-3">AI Recruiting OS</p>
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0A0A0A] tracking-tight leading-[1.1] mb-4">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0A0A0A] tracking-tight leading-[1.1] mb-4">
                         I built an AI Recruiting Operating System with Claude Code
-                    </h1>
+                    </h2>
                     <p className="text-[#6B7280] text-base sm:text-lg leading-relaxed mb-8 max-w-2xl">
                         Not another chatbot. A system. Claude Code, MCP, Knowledge Base, Recruiting Skills, and AI Agents working together as one complete recruiting operating system.
                     </p>

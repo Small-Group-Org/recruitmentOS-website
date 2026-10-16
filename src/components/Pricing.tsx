@@ -1,10 +1,9 @@
 'use client';
 
-import Link from 'next/link';
 import { pricingOfferings, type PricingOffering } from '@/lib/pricing-data';
 import { trackCTAClick } from '@/lib/analytics';
 
-export default function Pricing() {
+export default function Pricing({ asPageHeading = false }: { asPageHeading?: boolean }) {
     return (
         <section className="bg-white pt-12 pb-24" id="pricing">
             <div className="max-w-[1280px] mx-auto px-6 sm:px-10">
@@ -15,10 +14,17 @@ export default function Pricing() {
                         style={{ fontFamily: 'var(--font-mono)' }}>
                         Client acquisition pricing
                     </p>
-                    <h1 className="text-[#0A0A0A] text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.05] mb-4"
-                        style={{ fontFamily: 'var(--font-serif)' }}>
-                        Pay for verified outcomes, not promises.
-                    </h1>
+                    {asPageHeading ? (
+                        <h1 className="text-[#0A0A0A] text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.05] mb-4"
+                            style={{ fontFamily: 'var(--font-serif)' }}>
+                            Pay for verified outcomes, not promises.
+                        </h1>
+                    ) : (
+                        <h2 className="text-[#0A0A0A] text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.05] mb-4"
+                            style={{ fontFamily: 'var(--font-serif)' }}>
+                            Pay for verified outcomes, not promises.
+                        </h2>
+                    )}
                     <p className="text-base sm:text-lg text-[#6B7280] leading-relaxed" style={{ fontFamily: 'var(--font-outfit)' }}>
                         Start with zero-retainer-risk performance acquisition, or choose predictable managed capacity when your team wants a fixed monthly volume.
                     </p>
@@ -26,6 +32,28 @@ export default function Pricing() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto items-stretch">
                     {pricingOfferings.map((offering) => <OfferingCard key={offering.id} offering={offering} />)}
+                </div>
+
+                {/* ── ROI Payback Value-Anchoring Callout ── */}
+                <div className="mt-8 max-w-5xl mx-auto rounded-[10px] border border-[#FF6A00]/30 bg-[#FFF4EB] p-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div className="max-w-2xl text-left">
+                        <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FF6A00] mb-1.5"
+                            style={{ fontFamily: 'var(--font-mono)' }}>
+                            <span className="w-2 h-2 rounded-full bg-[#FF6A00]" />
+                            Placement Payback Mathematics
+                        </div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-[#0A0A0A] tracking-tight"
+                            style={{ fontFamily: 'var(--font-serif)' }}>
+                            1 client placement pays for 2–3 months of the entire outbound engine.
+                        </h3>
+                        <p className="text-sm text-[#4B5563] mt-2 leading-relaxed" style={{ fontFamily: 'var(--font-outfit)' }}>
+                            At standard agency placement fees ($15,000–$25,000 / £12,000–£20,000), closing just one retained search or contingent placement covers the entire infrastructure, data, and sprint retainer several times over.
+                        </p>
+                    </div>
+                    <div className="shrink-0 text-center sm:text-right border-t sm:border-t-0 sm:border-l border-[#FF6A00]/20 pt-4 sm:pt-0 sm:pl-6 w-full sm:w-auto">
+                        <div className="text-3xl font-bold text-[#FF6A00]" style={{ fontFamily: 'var(--font-serif)' }}>15x–25x</div>
+                        <div className="text-xs font-semibold uppercase tracking-wider text-[#6B7280] mt-0.5" style={{ fontFamily: 'var(--font-mono)' }}>Average Fee-to-Sprint ROI</div>
+                    </div>
                 </div>
 
                 <div className="mt-8 max-w-5xl mx-auto rounded-[10px] border border-[#E5E5E5] bg-[#FAFAFA] p-5">
@@ -47,8 +75,10 @@ export default function Pricing() {
                         20K+ leads per month, multiple seats, custom signal sources, CRM integration,
                         or white-label, let&apos;s build a plan around your agency&apos;s specific BD needs.
                     </p>
-                    <Link
-                        href="/fit-call"
+                    <a
+                        href="https://cal.com/tusharm/30min?user=tusharm"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center justify-center bg-[#0A0A0A] text-white px-7 py-4 rounded-full font-semibold hover:bg-[#FF6A00] transition-colors text-base group"
                         style={{ fontFamily: 'var(--font-outfit)' }}
                         id="pricing-enterprise-cta"
@@ -57,7 +87,7 @@ export default function Pricing() {
                         <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
-                    </Link>
+                    </a>
                     <p className="mt-2 text-center text-xs text-[#6B7280]">
                         Direct 1-on-1 with Tushar · No junior SDRs · Zero pitch pressure
                     </p>

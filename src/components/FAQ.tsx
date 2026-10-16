@@ -10,8 +10,8 @@ export default function FAQ() {
         <section className="py-16 md:py-24 bg-white border-t border-[#E5E5E5]" id="faq">
             <div className="max-w-[700px] mx-auto px-6">
                 <div className="mb-12">
-                    <p className="text-xs font-medium text-[#6B7280] uppercase tracking-widest mb-3">FAQ</p>
-                    <h2 className="text-[#0A0A0A]">Common questions</h2>
+                    <p className="text-xs font-bold text-brand uppercase tracking-widest mb-3" style={{ fontFamily: 'var(--font-mono)' }}>FAQ &amp; Knowledge Grounding</p>
+                    <h2 className="text-3xl sm:text-4xl text-[#0A0A0A] tracking-tight leading-[1.15] font-serif">Frequently Asked Questions</h2>
                 </div>
 
                 <div>

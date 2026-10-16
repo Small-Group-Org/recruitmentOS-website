@@ -5,6 +5,7 @@ import Analytics from "@/components/Analytics";
 import UTMTracker from "@/components/UTMTracker";
 import SiteHeader from "@/components/SiteHeader";
 import ConsultationPopup from "@/components/ConsultationPopup";
+import MobileStickyCTA from "@/components/MobileStickyCTA";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationSchema } from "@/lib/schemas";
 
@@ -52,12 +53,13 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body suppressHydrationWarning className={`${dmSerif.variable} ${dmMono.variable} ${outfit.variable} antialiased font-sans`}>
+            <body suppressHydrationWarning className={`${dmSerif.variable} ${dmMono.variable} ${outfit.variable} antialiased font-sans pb-20 md:pb-0`}>
                 <JsonLd data={organizationSchema} />
                 <SiteHeader />
                 <Analytics />
                 <UTMTracker />
                 <ConsultationPopup />
+                <MobileStickyCTA />
                 {children}
             </body>
         </html>

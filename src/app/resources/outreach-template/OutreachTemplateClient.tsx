@@ -26,7 +26,6 @@ declare global {
 
 export default function OutreachTemplateClient() {
     const [unlocked, setUnlocked] = useState(false);
-    const [checking, setChecking] = useState(true);
 
     // Gate state
     const [step, setStep] = useState<1 | 2>(1);
@@ -38,10 +37,9 @@ export default function OutreachTemplateClient() {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            setUnlocked(localStorage.getItem(STORAGE_KEY) === 'true');
+        if (typeof window !== 'undefined' && localStorage.getItem(STORAGE_KEY) === 'true') {
+            setUnlocked(true);
         }
-        setChecking(false);
     }, []);
 
     function handleStep1(e: React.FormEvent) {
@@ -82,14 +80,6 @@ export default function OutreachTemplateClient() {
         }
     }
 
-    if (checking) {
-        return (
-            <div className="min-h-screen flex items-center justify-center bg-white">
-                <div className="w-6 h-6 rounded-full border-2 border-[#FF6A00] border-t-transparent animate-spin" />
-            </div>
-        );
-    }
-
     // ── UNLOCKED VIEW ──────────────────────────────────────────────────────────
     if (unlocked) {
         return (
@@ -108,9 +98,9 @@ export default function OutreachTemplateClient() {
                         </span>
                     </div>
 
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0A0A0A] tracking-tight leading-[1.1] mb-4">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0A0A0A] tracking-tight leading-[1.1] mb-4">
                         BD Outreach Email Template & Funnel
-                    </h1>
+                    </h2>
                     <p className="text-[#6B7280] text-base sm:text-lg leading-relaxed mb-6 max-w-2xl">
                         The exact email template and outreach funnel that gets replies — without chasing.
                         One email landed a{' '}

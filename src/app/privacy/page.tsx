@@ -29,7 +29,7 @@ export default function PrivacyPolicy() {
                                 1. Introduction
                             </h2>
                             <p>
-                                RecruitmentOS ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <Link href="/" className="text-black font-semibold hover:underline">hirerecruitmentos.com</Link> and use our AI-powered B2B outbound lead generation and business development services.
+                                RecruitmentOS (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <Link href="/" className="text-black font-semibold hover:underline">hirerecruitmentos.com</Link> and use our B2B outbound lead generation and business development services.
                             </p>
                             <p>
                                 Please read this Privacy Policy carefully. By using our website or services, you consent to the data practices described in this policy.
@@ -41,7 +41,7 @@ export default function PrivacyPolicy() {
                                 2. Data We Collect
                             </h2>
                             <p>
-                                We collect information that identifies, relates to, describes, or could reasonably be linked with you or your household ("personal information"). We collect this information in several ways:
+                                We collect information that identifies, relates to, describes, or could reasonably be linked with you or your household (&quot;personal information&quot;). We collect this information in several ways:
                             </p>
                             <ul className="list-disc pl-6 space-y-2">
                                 <li>
@@ -98,7 +98,7 @@ export default function PrivacyPolicy() {
                                 6. Changes to This Policy
                             </h2>
                             <p>
-                                We reserve the right to modify this Privacy Policy at any time. We will notify you of any changes by posting the new policy on this page with an updated "Last Updated" date. We encourage you to review this page periodically to stay informed about how we protect your data.
+                                We reserve the right to modify this Privacy Policy at any time. We will notify you of any changes by posting the new policy on this page with an updated &quot;Last Updated&quot; date. We encourage you to review this page periodically to stay informed about how we protect your data.
                             </p>
                         </section>
 

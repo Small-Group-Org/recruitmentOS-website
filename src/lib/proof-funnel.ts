@@ -8,5 +8,5 @@ export const proofFunnel = [
   { value: '128', label: 'Leads sourced', detail: 'Aged vacancies + leadership transitions' },
   { value: '124', label: 'Emailed', detail: '97% delivery through mirror inboxes' },
   { value: '70', label: 'Replied', detail: 'Decision-maker engagement' },
-  { value: '56%', label: 'Emailed reply rate', detail: '55% overall conversion' },
+  { value: '5%–28%', label: 'Positive reply range', detail: 'Verified campaign response benchmark' },
 ] as const;

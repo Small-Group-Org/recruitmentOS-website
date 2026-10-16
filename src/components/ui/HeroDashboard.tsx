@@ -1,420 +1,222 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
-/* ─── Stage definitions ─────────────────────────────────────── */
-const STAGES = [
+interface Stage {
+  number: string;
+  name: string;
+  category: string;
+  description: string;
+  metric: string;
+  metricLabel: string;
+  stack: string[];
+}
+
+const STAGES: Stage[] = [
   {
-    title: 'Hiring Signals Detected',
-    finalValue: 12010,
-    unit: 'leads',
-    icon: (
-      <svg className="w-4 h-4 text-[#FF6A00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-      </svg>
-    ),
+    number: '01',
+    name: 'Real-Time Hiring Signals',
+    category: 'Signal Ingestion',
+    description: 'Active monitoring across 19+ job platforms, executive departures, funding rounds, and stealth headcount expansion.',
+    metric: '12K+',
+    metricLabel: 'Monthly Hiring Triggers',
+    stack: ['Indeed', 'LinkedIn', 'Job Boards', 'SEC Filings'],
   },
   {
-    title: 'Waterfall Enriched',
-    finalValue: 9840,
-    unit: 'profiles',
-    icon: (
-      <svg className="w-4 h-4 text-[#FF6A00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    ),
+    number: '02',
+    name: 'Waterfall Enrichment',
+    category: 'Data Verification',
+    description: 'Multi-provider verification cascade isolating verified hiring-manager emails, direct dials, and MX/catch-all validity.',
+    metric: '98%+',
+    metricLabel: 'Inbox Deliverability SLA',
+    stack: ['Clay', 'Apollo', 'Hunter', 'Lusha', 'Kaspr'],
   },
   {
-    title: 'Air-Gapped Outreach Sent',
-    finalValue: 6520,
-    unit: 'emails',
-    icon: (
-      <svg className="w-4 h-4 text-[#FF6A00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    ),
+    number: '03',
+    name: 'Secondary-Domain Air-Gap',
+    category: 'Reputation Isolation',
+    description: 'Dedicated sending domains with isolated SPF, DKIM, DMARC, and gradual warmup to protect your primary domain reputation.',
+    metric: '100%',
+    metricLabel: 'Primary Domain Air-Gap',
+    stack: ['Instantly', 'Smartlead', 'Google Workspace'],
   },
   {
-    title: 'Positive Reply (<24h SLA)',
-    finalValue: 638,
-    unit: 'replies',
-    icon: (
-      <svg className="w-4 h-4 text-[#FF6A00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Discovery Meetings & Signed Terms',
-    finalValue: 228,
-    unit: 'signed agreements',
-    isLast: true,
-    icon: (
-      <svg className="w-4 h-4 text-[#FF6A00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-      </svg>
-    ),
+    number: '04',
+    name: 'Guaranteed Client Meetings',
+    category: 'Human Triage & SLA',
+    description: 'Every reply triaged under 24h against our 7-component Qualified Meeting standard before briefing your recruiters.',
+    metric: '15–25',
+    metricLabel: 'Client Calls / Mo',
+    stack: ['Sub-24h SLA', 'Human Qualification', 'Cal.com'],
   },
 ];
 
-/* ─── Timing constants ──────────────────────────────────────── */
-// Each stage = 1800ms (pulse travel to card + number count up)
-const STAGE_DURATION = 1800;
-// How long to hold the completed state before resetting
-const HOLD_DURATION  = 1200;
-const TOTAL_ACTIVE   = STAGES.length * STAGE_DURATION; // time for all stages
-const TOTAL_CYCLE    = TOTAL_ACTIVE + HOLD_DURATION;
-
-/* ─── Helpers ───────────────────────────────────────────────── */
-function formatNum(n: number): string {
-  return Math.round(n).toLocaleString('en-US');
-}
-
-function easeOutExpo(t: number): number {
-  return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-}
-
-/* ─── Stage card component ──────────────────────────────────── */
-interface StageCardProps {
-  stage: typeof STAGES[0];
-  isActive: boolean;
-  isDone: boolean;
-  valueRef: (element: HTMLSpanElement | null) => void;
-}
-
-function StageCard({ stage, isActive, isDone, valueRef }: StageCardProps) {
-  const showCheck = isActive || isDone;
+export default function HeroDashboard() {
+  const [activeStage, setActiveStage] = useState<number>(0);
 
   return (
-    <div
-      className="relative z-10 flex items-center gap-4 p-3 rounded-2xl border"
-      style={{
-        background: isActive ? '#0A0A0A' : 'white',
-        borderColor: isActive
-          ? 'rgba(255,107,0,0.5)'
-          : isDone
-          ? 'rgba(255,107,0,0.15)'
-          : '#f3f4f6',
-        boxShadow: isActive
-          ? '0 12px 32px -6px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,107,0,0.2)'
-          : stage.isLast && isDone
-          ? '0 8px 32px -6px rgba(255,107,0,0.3)'
-          : '0 1px 4px rgba(0,0,0,0.04)',
-        transform: isActive ? 'translateY(-4px)' : 'translateY(0)',
-        transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-      }}
-    >
-      {/* Icon */}
+    <div className="relative w-full max-w-[640px] mx-auto lg:ml-auto">
+      {/* Ambient glow */}
+      <div className="absolute -inset-10 bg-gradient-to-r from-[#FF6A00]/15 via-orange-500/10 to-transparent blur-3xl opacity-60 rounded-full z-0 pointer-events-none" />
+
+      {/* Main Architecture Schematic Card */}
       <div
-        className="w-12 h-12 shrink-0 rounded-xl flex items-center justify-center"
+        className="relative z-10 bg-white rounded-2xl md:rounded-3xl p-5 sm:p-7 border border-neutral-200 shadow-xl"
         style={{
-          background: isActive ? 'rgba(255,107,0,0.15)' : 'rgb(255,247,237)',
-          border: isActive ? '2px solid rgba(255,107,0,0.6)' : '2px solid transparent',
-          boxShadow: isActive ? '0 0 16px rgba(255,107,0,0.3)' : 'none',
-          transform: isActive ? 'scale(1.06)' : 'scale(1)',
-          transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+          boxShadow: '0 20px 50px -12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04)',
         }}
       >
-        {stage.icon}
-      </div>
-
-      {/* Text */}
-      <div className="flex-1 min-w-0">
-        <h4
-          className="text-sm font-bold"
-          style={{ color: isActive ? '#ffffff' : '#111827', transition: 'color 0.4s ease' }}
-        >
-          {stage.title}
-        </h4>
-        <p
-          className="text-[11px] font-medium"
-          style={{ color: isActive ? 'rgba(255,255,255,0.65)' : '#6b7280', transition: 'color 0.4s ease' }}
-        >
-          <span ref={valueRef}>0</span> {stage.unit}
-        </p>
-      </div>
-
-      {/* Check / dot */}
-      {showCheck ? (
-        <div
-          className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center shrink-0"
-          style={{
-            transform: isActive ? 'scale(1.15)' : 'scale(1)',
-            boxShadow: isActive ? '0 0 10px rgba(34,197,94,0.45)' : 'none',
-            transition: 'all 0.3s ease',
-          }}
-        >
-          <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-      ) : (
-        <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center shrink-0">
-          <div className="w-2 h-2 rounded-full bg-[#FF6A00]" />
-        </div>
-      )}
-    </div>
-  );
-}
-
-/* ─── Main component ────────────────────────────────────────── */
-export default function HeroDashboard() {
-  const [visualState, setVisualState] = useState({ activeIdx: 0, inHold: false });
-  const rootRef = useRef<HTMLDivElement | null>(null);
-  const lineFillRef = useRef<HTMLDivElement | null>(null);
-  const pulseDotRef = useRef<HTMLDivElement | null>(null);
-  const valueRefs = useRef<Array<HTMLSpanElement | null>>([]);
-  const rafRef = useRef<number | null>(null);
-  const elapsedRef = useRef(0);
-  const visualStateRef = useRef(visualState);
-
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
-
-    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let reducedMotion = motionQuery.matches;
-    let isIntersecting = false;
-    let isDocumentVisible = document.visibilityState === 'visible';
-    let startTimestamp = 0;
-
-    const setVisualStateIfChanged = (activeIdx: number, inHold: boolean) => {
-      const previous = visualStateRef.current;
-      if (previous.activeIdx === activeIdx && previous.inHold === inHold) return;
-      const next = { activeIdx, inHold };
-      visualStateRef.current = next;
-      setVisualState(next);
-    };
-
-    const updateLine = (percentage: number) => {
-      if (lineFillRef.current) {
-        lineFillRef.current.style.height = `calc(${percentage / 100} * (100% - 48px))`;
-      }
-      if (pulseDotRef.current) {
-        pulseDotRef.current.style.top = `calc(24px + ${percentage / 100} * (100% - 48px))`;
-      }
-    };
-
-    const updateValues = (elapsed: number, activeIdx: number, inHold: boolean) => {
-      STAGES.forEach((stage, index) => {
-        const element = valueRefs.current[index];
-        if (!element) return;
-
-        let value = 0;
-        if (inHold || index < activeIdx) {
-          value = stage.finalValue;
-        } else if (index === activeIdx) {
-          const stageElapsed = elapsed - index * STAGE_DURATION;
-          const progress = Math.min(Math.max(stageElapsed / 1000, 0), 1);
-          value = stage.finalValue * easeOutExpo(progress);
-        }
-        element.textContent = formatNum(value);
-      });
-    };
-
-    const renderFinalState = () => {
-      elapsedRef.current = TOTAL_ACTIVE;
-      updateLine(100);
-      STAGES.forEach((stage, index) => {
-        const element = valueRefs.current[index];
-        if (element) element.textContent = formatNum(stage.finalValue);
-      });
-      setVisualStateIfChanged(STAGES.length - 1, true);
-    };
-
-    const stopAnimation = () => {
-      if (rafRef.current !== null) {
-        cancelAnimationFrame(rafRef.current);
-        rafRef.current = null;
-      }
-    };
-
-    const tick = (now: number) => {
-      const elapsed = (now - startTimestamp) % TOTAL_CYCLE;
-      elapsedRef.current = elapsed;
-      const inHold = elapsed >= TOTAL_ACTIVE;
-      const activeIdx = inHold ? STAGES.length - 1 : Math.floor(elapsed / STAGE_DURATION);
-      const lineFill = inHold ? 100 : Math.min(elapsed / TOTAL_ACTIVE, 1) * 100;
-
-      updateLine(lineFill);
-      updateValues(elapsed, activeIdx, inHold);
-      setVisualStateIfChanged(activeIdx, inHold);
-      rafRef.current = requestAnimationFrame(tick);
-    };
-
-    const startAnimation = () => {
-      if (reducedMotion || !isIntersecting || !isDocumentVisible || rafRef.current !== null) return;
-      startTimestamp = performance.now() - elapsedRef.current;
-      rafRef.current = requestAnimationFrame(tick);
-    };
-
-    const observer = new IntersectionObserver(([entry]) => {
-      isIntersecting = entry.isIntersecting;
-      if (isIntersecting) startAnimation();
-      else stopAnimation();
-    }, { threshold: 0.1 });
-
-    const handleVisibilityChange = () => {
-      isDocumentVisible = document.visibilityState === 'visible';
-      if (isDocumentVisible) startAnimation();
-      else stopAnimation();
-    };
-
-    const handleMotionChange = (event: MediaQueryListEvent) => {
-      reducedMotion = event.matches;
-      stopAnimation();
-      if (reducedMotion) {
-        renderFinalState();
-        return;
-      }
-
-      elapsedRef.current = 0;
-      updateLine(0);
-      valueRefs.current.forEach((element) => {
-        if (element) element.textContent = '0';
-      });
-      setVisualStateIfChanged(0, false);
-      startAnimation();
-    };
-
-    observer.observe(root);
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    motionQuery.addEventListener('change', handleMotionChange);
-
-    if (reducedMotion) renderFinalState();
-
-    return () => {
-      stopAnimation();
-      observer.disconnect();
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-      motionQuery.removeEventListener('change', handleMotionChange);
-    };
-  }, []);
-
-  const { activeIdx, inHold } = visualState;
-
-  return (
-    <div ref={rootRef} className="relative w-full max-w-[640px] mx-auto lg:ml-auto">
-      {/* Ambient glow */}
-      <div className="absolute -inset-10 bg-gradient-to-r from-[#FF6A00]/20 to-transparent blur-3xl opacity-50 rounded-full z-0 pointer-events-none" />
-
-      {/* Main Dashboard Card */}
-      <div
-        className="relative z-10 bg-white rounded-3xl p-6 md:p-8 border border-neutral-100 transition-all duration-700 hover:scale-[1.02] hover:-translate-y-2 hover:shadow-2xl"
-        style={{ boxShadow: '0 20px 60px -15px rgba(255,107,0,0.05), 0 30px 100px -20px rgba(0,0,0,0.08)' }}
-      >
         {/* Header */}
-        <div className="flex justify-between items-start gap-4 mb-8">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-5 mb-5 border-b border-neutral-100">
           <div>
-            <p className="text-[10px] font-mono font-semibold uppercase tracking-[0.18em] text-brand mb-1">Live Acquisition Funnel</p>
-            <h3 className="text-xl md:text-2xl text-neutral-900 tracking-tight font-serif">Your Outbound BD Engine.</h3>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-brand" />
+              <p
+                className="text-[11px] font-bold uppercase tracking-widest text-brand"
+                style={{ fontFamily: 'var(--font-mono)' }}
+              >
+                Outbound Engine Architecture
+              </p>
+            </div>
+            <h3
+              className="text-lg sm:text-xl font-bold text-neutral-900 mt-1 tracking-tight"
+              style={{ fontFamily: 'var(--font-serif)' }}
+            >
+              The 4-Stage Agency BD Topology
+            </h3>
           </div>
-          <div className="flex items-center gap-2 bg-neutral-50 px-3 py-1.5 rounded-full border border-neutral-100">
+          <div className="inline-flex items-center gap-1.5 bg-[#E8F5EF] text-[#1A6B4A] px-3 py-1 rounded-full text-xs font-semibold">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
-            <span className="text-[11px] font-mono font-semibold text-neutral-600 uppercase tracking-wider">Live Engine Active</span>
+            <span style={{ fontFamily: 'var(--font-mono)' }}>PRODUCTION READY</span>
           </div>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-          {/* Left: animated pipeline */}
-          <div className="md:col-span-3 space-y-4 relative">
-
-            {/* Grey base line (full height, always visible) */}
-            <div
-              className="absolute left-[23px] top-[24px] bottom-[24px] w-0.5 bg-neutral-100 z-0"
-            />
-
-            {/* Orange fill line — grows from top (0%) to bottom (100%) */}
-            <div
-              ref={lineFillRef}
-              className="absolute left-[23px] top-[24px] w-0.5 z-[1] rounded-full"
-              style={{
-                height: 0,
-                background: 'linear-gradient(to bottom, #FF6A00 0%, #FF9A40 100%)',
-                boxShadow: '0 0 8px 1px rgba(255,107,0,0.35)',
-              }}
-            />
-
-            {/* Glowing pulse dot — rides the tip of the orange fill */}
-            <div
-              ref={pulseDotRef}
-              className="absolute left-[19px] w-2.5 h-2.5 rounded-full z-[2]"
-              style={{
-                top: '24px',
-                background: '#FF6A00',
-                boxShadow: '0 0 0 4px rgba(255,107,0,0.2), 0 0 16px 4px rgba(255,107,0,0.35)',
-                transform: 'translateY(-50%)',
-              }}
-            />
-
-            {/* Stage cards */}
-            {STAGES.map((stage, idx) => (
-              <StageCard
-                key={idx}
-                stage={stage}
-                isActive={!inHold && idx === activeIdx}
-                isDone={inHold || idx < activeIdx}
-                valueRef={(element) => {
-                  valueRefs.current[idx] = element;
-                }}
-              />
-            ))}
-          </div>
-
-          {/* Right: charts */}
-          <div className="md:col-span-2 space-y-4">
-            {/* Positive Reply Rate */}
-            <div className="bg-white p-4 rounded-2xl border border-neutral-100 shadow-sm h-[160px] flex flex-col justify-between">
-              <div>
-                <p className="text-[11px] font-bold text-neutral-500 uppercase tracking-wide">Positive Reply Rate</p>
-                <div className="flex items-baseline gap-2 mt-1">
-                  <span className="text-2xl font-black text-[#FF6A00]">5.0%–56%</span>
-                </div>
-                <p className="text-[10px] text-green-600 font-semibold flex items-center mt-1">
-                  <svg className="w-3 h-3 mr-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                  </svg>
-                  Verified reply-rate range
-                </p>
-              </div>
-              <div className="mt-2 relative h-12 w-full flex items-end">
-                <svg className="w-full h-full overflow-visible" viewBox="0 0 100 40" preserveAspectRatio="none">
-                  <path d="M0 35 L15 25 L30 30 L45 15 L60 20 L75 5 L90 10 L100 0" fill="none" stroke="rgba(255,107,0,0.2)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M0 35 L15 25 L30 30 L45 15 L60 20 L75 5 L90 10 L100 0" fill="none" stroke="#FF6A00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  <circle cx="100" cy="0" r="3" fill="#FF6A00" />
-                </svg>
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent bottom-0 h-1/2" />
-              </div>
-            </div>
-
-            {/* Top Industries */}
-            <div className="bg-white p-4 rounded-2xl border border-neutral-100 shadow-sm flex-1">
-              <p className="text-[11px] font-bold text-neutral-500 uppercase tracking-wide mb-3">Top Industries</p>
-              <div className="space-y-3">
-                {[
-                  { name: 'Legal & Professional', pct: 38 },
-                  { name: 'Tech & Engineering', pct: 28 },
-                  { name: 'Data & AI', pct: 18 },
-                  { name: 'Healthcare', pct: 16 },
-                ].map((ind, i) => (
-                  <div key={i} className="flex items-center text-xs">
-                    <span className="w-28 font-semibold text-neutral-700 truncate">{ind.name}</span>
-                    <div className="flex-1 h-1.5 bg-neutral-100 rounded-full mx-2 overflow-hidden">
-                      <div className="h-full bg-[#FF6A00] rounded-full" style={{ width: `${ind.pct}%` }} />
+        {/* 4 Stages Layout */}
+        <div className="space-y-3">
+          {STAGES.map((stage, idx) => {
+            const isSelected = activeStage === idx;
+            return (
+              <button
+                type="button"
+                key={stage.number}
+                aria-pressed={isSelected}
+                onClick={() => setActiveStage(idx)}
+                onMouseEnter={() => setActiveStage(idx)}
+                className={`w-full cursor-pointer rounded-xl p-3.5 sm:p-4 border transition-all duration-200 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 ${
+                  isSelected
+                    ? 'bg-neutral-900 border-neutral-900 text-white shadow-md'
+                    : 'bg-neutral-50/70 hover:bg-neutral-100/80 border-neutral-200/80 text-neutral-800'
+                }`}
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <span
+                      className={`text-xs font-bold px-2 py-0.5 rounded-md ${
+                        isSelected
+                          ? 'bg-brand text-white'
+                          : 'bg-neutral-200 text-neutral-700'
+                      }`}
+                      style={{ fontFamily: 'var(--font-mono)' }}
+                    >
+                      {stage.number}
+                    </span>
+                    <div>
+                      <span
+                        role="heading"
+                        aria-level={4}
+                        className={`block text-sm sm:text-base font-bold ${
+                          isSelected ? 'text-white' : 'text-neutral-900'
+                        }`}
+                      >
+                        {stage.name}
+                      </span>
+                      <p
+                        className={`text-[11px] uppercase tracking-wider font-semibold ${
+                          isSelected ? 'text-brand' : 'text-neutral-500'
+                        }`}
+                        style={{ fontFamily: 'var(--font-mono)' }}
+                      >
+                        {stage.category}
+                      </p>
                     </div>
-                    <span className="w-7 text-right font-medium text-neutral-500">{ind.pct}%</span>
                   </div>
-                ))}
-              </div>
+
+                  <div className="text-right shrink-0">
+                    <div
+                      className={`text-base sm:text-lg font-extrabold ${
+                        isSelected ? 'text-brand' : 'text-neutral-900'
+                      }`}
+                      style={{ fontFamily: 'var(--font-mono)' }}
+                    >
+                      {stage.metric}
+                    </div>
+                    <div
+                      className={`text-[10px] ${
+                        isSelected ? 'text-neutral-400' : 'text-neutral-500'
+                      }`}
+                    >
+                      {stage.metricLabel}
+                    </div>
+                  </div>
+                </div>
+
+                {isSelected && (
+                  <div className="mt-3 pt-3 border-t border-neutral-800 text-xs text-neutral-300 space-y-2 animate-fadeIn">
+                    <p className="leading-relaxed">{stage.description}</p>
+                    <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                      <span className="text-[10px] uppercase font-mono text-neutral-400 mr-1">
+                        Infrastructure:
+                      </span>
+                      {stage.stack.map((item) => (
+                        <span
+                          key={item}
+                          className="bg-neutral-800 text-neutral-200 px-2 py-0.5 rounded text-[11px] font-mono border border-neutral-700"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Footer Benchmarks */}
+        <div className="mt-5 pt-4 border-t border-neutral-100 grid grid-cols-3 gap-2 text-center">
+          <div className="p-2 rounded-lg bg-neutral-50 border border-neutral-100">
+            <div
+              className="text-sm sm:text-base font-black text-brand"
+              style={{ fontFamily: 'var(--font-mono)' }}
+            >
+              50+ Signed
             </div>
+            <div className="text-[10px] text-neutral-500 font-medium">Contracts in 90 Days</div>
+          </div>
+          <div className="p-2 rounded-lg bg-neutral-50 border border-neutral-100">
+            <div
+              className="text-sm sm:text-base font-black text-neutral-900"
+              style={{ fontFamily: 'var(--font-mono)' }}
+            >
+              8.5%–24%
+            </div>
+            <div className="text-[10px] text-neutral-500 font-medium">Verified Reply Rate</div>
+          </div>
+          <div className="p-2 rounded-lg bg-neutral-50 border border-neutral-100">
+            <div
+              className="text-sm sm:text-base font-black text-emerald-600"
+              style={{ fontFamily: 'var(--font-mono)' }}
+            >
+              $0 Fee
+            </div>
+            <div className="text-[10px] text-neutral-500 font-medium">On Non-Buyers</div>
           </div>
         </div>
       </div>
-
     </div>
   );
 }

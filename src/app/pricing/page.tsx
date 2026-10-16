@@ -18,7 +18,7 @@ export default function PricingPage() {
   return (
     <main className="min-h-screen">
       <JsonLd data={serviceWithOffersSchema} />
-      <Pricing />
+      <Pricing asPageHeading />
       <TrustBar />
       <CaseStudiesPreview />
       <FinalCTA />

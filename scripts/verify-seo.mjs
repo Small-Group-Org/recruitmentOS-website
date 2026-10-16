@@ -112,6 +112,21 @@ if (fs.existsSync(ssgIndexPath)) {
     assert(ssgIndex.includes('FAQPage'), 'Built index.html contains FAQPage JSON-LD in SSR payload');
     assert(ssgIndex.includes('WebPage'), 'Built index.html contains WebPage JSON-LD in SSR payload');
     assert(ssgIndex.includes('#organization'), 'Built index.html contains #organization @id');
+
+    // Verify 3 resource routes SSR HTML have exactly 1 <h1>
+    const resourceRoutes = [
+        'resources/outreach-template',
+        'resources/ai-recruiting-os',
+        'resources/claude-recruitment-os',
+    ];
+    for (const route of resourceRoutes) {
+        const routePath = path.join(rootDir, `.next/server/app/${route}.html`);
+        if (fs.existsSync(routePath)) {
+            const html = fs.readFileSync(routePath, 'utf8');
+            const h1Count = (html.match(/<h1\b/g) || []).length;
+            assert(h1Count === 1, `Built ${route}.html contains exactly 1 <h1> (found ${h1Count})`);
+        }
+    }
 } else {
     console.log('ℹ️ .next/server/app/index.html not built yet (run `npm run build` to verify SSR payload).');
 }

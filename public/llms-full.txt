@@ -30,14 +30,14 @@ Recruitment agency founders and search leaders routinely experience severe reven
 
 ## 3. Offer Architecture & Commercial Models
 
-RecruitmentOS operates via three distinct commercial structures, each backed by written performance standards and dispute protection.
+RecruitmentOS operates via two canonical commercial structures, each backed by written performance standards and dispute protection.
 
 ### Model 1: Managed Capacity Sprint
 - **Retainer:** $1,000 / month
 - **Setup Fee:** $1,500 one-time setup
 - **Structure:** 3-month commitment sprint
 - **Performance Threshold:** 12+ verified positive replies per month guaranteed (36 total verified replies across the sprint).
-- **Unit Economics:** Equivalent to $125 per positive reply, providing a 37.5% cost reduction compared to individual reply pricing.
+- **Unit Economics:** Equivalent to $125 per positive reply all-in, providing a 37.5% cost reduction compared to individual reply pricing ($2,700 sprint savings).
 - **Inclusions:** Full setup, ongoing signal harvesting, waterfall enrichment, multi-mailbox warming, weekly campaign optimization, and dedicated reply monitoring.
 
 ### Model 2: Pay per Positive Reply
@@ -45,11 +45,7 @@ RecruitmentOS operates via three distinct commercial structures, each backed by 
 - **Setup Fee:** $1,000 one-time setup
 - **SLA & Triage:** Sub-24 hour notification on interested prospects.
 - **Dispute Protection:** 5-day dispute window for any reply failing the Agreed Lead Standard.
-
-### Model 3: Pay per Booked Meeting
-- **Fee:** $250 per confirmed calendar briefing with a qualified hiring executive
-- **Setup Fee:** $1,250 one-time setup
-- **Attendance Guarantee:** $0 billed for no-shows or cancellations; fees apply solely to conducted executive briefings.
+- **Zero-Risk Safeguard:** $0 fee on out-of-office, bounces, unsubscribes, or non-buyers.
 
 ### Commercial Invariants Across All Models:
 - **5-Day Dispute Window:** Clients review every qualified handoff against the objective contract definition.
