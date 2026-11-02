@@ -66,6 +66,7 @@ export default function Footer() {
                             <a href={CONTACT_MAILTO} className="hover:text-[#0A0A0A] transition-colors">{CONTACT_EMAIL}</a>
                             <Link href="/privacy" className="hover:text-[#0A0A0A] transition-colors">Privacy Policy</Link>
                             <Link href="/terms" className="hover:text-[#0A0A0A] transition-colors">Terms of Service</Link>
+                            <Link href="/anti-spam-policy" className="hover:text-[#0A0A0A] transition-colors">Anti-Spam Policy</Link>
                         </div>
                         <div className="flex items-center gap-4 text-[#9CA3AF]">{socialLinks.map((link) => <Link key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.ariaLabel}><SocialIcon icon={link.icon} /></Link>)}<span className="text-xs">&copy; {new Date().getFullYear()} RecruitmentOS</span></div>
                     </div>
