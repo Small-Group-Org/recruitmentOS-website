@@ -71,6 +71,11 @@ const nextConfig: NextConfig = {
                 permanent: true,
             },
             {
+                source: '/email-policy',
+                destination: '/anti-spam-policy',
+                permanent: true,
+            },
+            {
                 source: '/fit-call',
                 destination: 'https://cal.com/tusharm/30min?user=tusharm',
                 permanent: false,

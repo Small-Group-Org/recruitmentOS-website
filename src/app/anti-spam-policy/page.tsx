@@ -4,7 +4,7 @@ import { buildCanonical } from '@/lib/seo';
 
 export const metadata: Metadata = {
     title: 'Anti-Spam Policy | RecruitmentOS',
-    description: 'RecruitmentOS anti-spam policy: our rules against using unsolicited messages to advertise getrecruitmentos.com.',
+    description: 'RecruitmentOS anti-spam policy: our rules against using unsolicited messages to advertise hirerecruitmentos.com or getrecruitmentos.com.',
     alternates: { canonical: buildCanonical('/anti-spam-policy') },
 };
 
@@ -23,21 +23,21 @@ export default function AntiSpamPolicy() {
                             Anti-Spam Policy
                         </h1>
                         <p className="text-sm text-gray-500 font-medium">
-                            Applies to: getrecruitmentos.com &middot; Operated by small GROUP &middot; Last updated: 2 November 2026
+                            Applies to: hirerecruitmentos.com and getrecruitmentos.com &middot; Operated by small GROUP &middot; Last updated: 17 November 2026
                         </p>
                     </div>
 
                     <div className="max-w-none space-y-8 text-base leading-relaxed text-gray-600">
                         <section className="space-y-3">
                             <p>
-                                small GROUP, which operates RecruitmentOS at getrecruitmentos.com, does not permit the use of unsolicited bulk email, or any message sent in breach of this policy, to advertise or promote getrecruitmentos.com or any page of this website. This applies to us, our staff, our contractors, our affiliates and any third party acting on our behalf.
+                                small GROUP, which operates RecruitmentOS at hirerecruitmentos.com and getrecruitmentos.com, does not permit the use of unsolicited bulk email, or any message sent in breach of this policy, to advertise or promote hirerecruitmentos.com, getrecruitmentos.com or any page of this website. Neither domain is used to send outreach email. This applies to us, our staff, our contractors, our affiliates and any third party acting on our behalf.
                             </p>
                         </section>
 
                         <section className="space-y-3">
                             <h2 className={h2}>1. What we do not allow</h2>
                             <ul className="list-disc pl-6 space-y-2">
-                                <li>Sending unsolicited bulk commercial email that mentions or links to getrecruitmentos.com.</li>
+                                <li>Sending unsolicited bulk commercial email that mentions or links to hirerecruitmentos.com or getrecruitmentos.com.</li>
                                 <li>Using purchased, rented, harvested or scraped email lists.</li>
                                 <li>Using deceptive subject lines, false sender names or forged headers.</li>
                                 <li>Hiding or disguising the sender, or sending from addresses that are not controlled by us.</li>
@@ -67,7 +67,7 @@ export default function AntiSpamPolicy() {
                         <section className="space-y-3">
                             <h2 className={h2}>4. Reporting abuse</h2>
                             <p>
-                                If you received an unsolicited message that promotes getrecruitmentos.com, please forward it with the full headers to{' '}
+                                If you received an unsolicited message that promotes hirerecruitmentos.com or getrecruitmentos.com, please forward it with the full headers to{' '}
                                 <a href={`mailto:${ABUSE_EMAIL}`} className={link}>{ABUSE_EMAIL}</a>. We investigate every report, stop the sending source, and respond to the reporter where a reply address is provided.
                             </p>
                         </section>
