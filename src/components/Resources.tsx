@@ -14,6 +14,17 @@ const GITHUB_URL = 'https://github.com/tushar-mangla/recruitment-skills';
 
 const resources = [
     {
+        title: "11 BD Mistakes That Cost Recruitment Agencies Mandates",
+        description: "What agency owners told us on sales calls about winning new clients, with the fix next to each mistake. No software needed, nothing to buy.",
+        type: "Guide",
+        li_duration: "14-Page PDF",
+        link: "/resources/11-bd-mistakes",
+        image: "/resources/11-bd-mistakes.webp",
+        cta: "Get the PDF",
+        icon: undefined,
+        source: 'resource_11_bd_mistakes' as const
+    },
+    {
         title: "The Founder's Guide to Finding New Clients Every Week",
         description: "The 16-step architecture to generate new recruitment clients every week. Covers account targeting, domain infrastructure, live hiring signals, and qualification handoffs.",
         type: "Blueprint",
@@ -292,7 +303,7 @@ export default function Resources() {
                                                     alt={resource.title}
                                                     fill
                                                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
-                                                    className={`group-hover:scale-105 transition-transform duration-700 ${resource.source === 'resource_founders_guide' ? 'object-contain p-4' : 'object-cover'}`}
+                                                    className={`group-hover:scale-105 transition-transform duration-700 ${(resource.source === 'resource_founders_guide' || resource.source === 'resource_11_bd_mistakes') ? 'object-contain p-4' : 'object-cover'}`}
                                                 />
                                             ) : (
                                                 <div className="p-4 bg-white rounded-2xl shadow-sm border border-[#E5E5E5] group-hover:scale-110 transition-transform duration-500">

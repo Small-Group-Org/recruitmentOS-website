@@ -22,6 +22,7 @@ export interface CreateLeadPayload {
   | 'resource_ai_recruiting_os'
   | 'resource_signal_playbook'
   | 'resource_founders_guide'
+  | 'resource_11_bd_mistakes' // card links straight to the page (not gated); add to backend LEAD_SOURCES before ever gating it
   | 'tool_cold_email_writer'
   | 'tool_volume_gap_calculator'
   | 'tool_general_roi'
